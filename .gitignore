@@ -1,0 +1,13 @@
+
+.vs
+.vscode
+BUILDTEST
+Library
+Temp/
+obj/
+obj/Debug/
+UserSettings/
+UserSettings/Layouts/
+Logs/
+UserSettings/Layouts/default-2021.dwlt
+*.dwlt

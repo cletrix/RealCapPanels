@@ -1,0 +1,34 @@
+{
+    "tecnicoNome": "Ariel Elfo",
+    "tecnicoCPF": "208.123.075-15",
+    "editionInfos": [
+        {
+            "nome": "Hornet Zero KM",
+            "iD": 0,
+            "numero": "0001",
+            "dataRealizacao": "30/10/2022 18:00",
+            "nomePlano": "VIACAP FILP-PU 388-0701 ",
+            "processoSUSEP": "15414.614025/2022-14",
+            "denominacaoComercial": "REAL X PREMIADO V.01",
+            "tipoTamanhoSerie": 5,
+            "modalidades": 3,
+            "tipoQuantidadeChances": "3",
+            "valor": "50.00",
+            "status": "0"
+        },
+        {
+            "nome": "Camaro Zero KM",
+            "iD": 1,
+            "numero": "0002",
+            "dataRealizacao": "30/10/2022 20:00",
+            "nomePlano": "VIACAP FILP-PU 388-0702 ",
+            "processoSUSEP": "15414.614025/2022-15",
+            "denominacaoComercial": "REAL X PREMIADO V.02",
+            "tipoTamanhoSerie": 5,
+            "modalidades": 2,
+            "tipoQuantidadeChances": "1",
+            "valor": "10.00",
+            "status": "1"
+        }
+    ]
+}

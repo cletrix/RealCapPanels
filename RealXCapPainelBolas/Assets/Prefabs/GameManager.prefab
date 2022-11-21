@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6570969155629736973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6570969155629736974}
+  - component: {fileID: 2895011216557206295}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6570969155629736974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570969155629736973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.017674001, y: -0.101516455, z: 54.894554}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2895011216557206295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570969155629736973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dc20cd0c2e862448b50efcd3f0334a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActiveRaffle: 0
+  clientID: 0
+  roomID: 0
+  raffleID: 0
+  roundID: 0
+  spinID: 0
+  raffleIndex: 0
+  isConnected: 0
+  loginData:
+    erro: 0
+    mensagem: 
+    registros: 0
+    dados: []
+  allRaffleData:
+    erro: 0
+    mensagem: 
+    registros: 0
+    dados: []
+  numberData:
+    erro: 0
+    mensagem: 
+    registros: 0
+    dados: []
+  validateData:
+    erro: 0
+    mensagem: 
+    registros: 0
+    dados: []
+  currentRaffle:
+    sorteio_nome: 
+    sorteio_id: 0
+    sorteio_quantidade_rodadas: 0
+    sorteio_quantidade_giros: 0
+    sorteio_indice_giro: 0
+    sorteio_indice_rodada: 0
+    sorteio_previsao_data: 
+    sorteio_premio_rodada_nome: 
+    sorteio_inicio_data: 
+    sorteio_final_data: 
+  currentRafflesInRoom: []
+  roomDataResponse:
+    erro: 0
+    mensagem: 
+    registros: 0
+    dados: []
+  raffleDataResponse:
+    erro: 0
+    mensagem: 
+    registros: 0
+    dados: []
