@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8081347976287149416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8081347976287149418}
+  - component: {fileID: 8081347976287149417}
+  m_Layer: 0
+  m_Name: PlayAnimations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8081347976287149418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081347976287149416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.7348385, y: 13.473713, z: -369.7189}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8081347976287149417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081347976287149416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5fcbe611327da840840ae1031e6865c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeAnim: 1
+  url: http://192.168.0.2/TesteRGB/
+  lotteryAnimSettings:
+    folders: []
+    animEntrada:
+      pathImages: []
+      isLoop: 0
+      interval: 0.05
+      images: []
+    animLoop:
+      pathImages: []
+      isLoop: 1
+      interval: 0.05
+      images: []
+    animSaida:
+      pathImages: []
+      isLoop: 0
+      interval: 0.05
+      images: []
+  globeAnimSettings:
+    folders: []
+    animEntrada:
+      pathImages: []
+      isLoop: 0
+      interval: 0.05
+      images: []
+    animLoop:
+      pathImages: []
+      isLoop: 0
+      interval: 0.05
+      images: []
+    animSaida:
+      pathImages: []
+      isLoop: 0
+      interval: 0.05
+      images: []
+  luckySpinAnimSettings:
+    folders: []
+    animEntrada:
+      pathImages: []
+      isLoop: 0
+      interval: 0.05
+      images: []
+    animLoop:
+      pathImages: []
+      isLoop: 0
+      interval: 0.05
+      images: []
+    animSaida:
+      pathImages: []
+      isLoop: 0
+      interval: 0.05
+      images: []
+  frameVideo: {fileID: 0}
+  stageOne: []
