@@ -30,7 +30,7 @@ public class BallController : MonoBehaviour
     public List<int> lastIndexBallsRaffle;
 
     public static event Action OnBallRaffled;
-    
+
     private void Start()
     {
         animeGlobe = FindObjectOfType<ballAnimGlobeController>();
@@ -49,7 +49,6 @@ public class BallController : MonoBehaviour
         if (BallsSelected.Count < 5 && !isLoop)
         {
             StartCoroutine(SpawnerBall());
-          
         }
         else
         {
@@ -57,7 +56,6 @@ public class BallController : MonoBehaviour
         }
         if (isLoop)
         {
-            
             StartCoroutine(SpawnerBallLoop());
         }
     }
@@ -69,6 +67,7 @@ public class BallController : MonoBehaviour
         inst.transform.localScale = Vector3.one;
         inst.SetInfoBall(numberBall);
         yield return new WaitForSeconds(0.5f);
+        SetBallWinner();
         MovementOnSpawner(inst);
     }
     //Após mostrar as 5 primeira bolas sorteadas, essa função cria um loop para exibir seguinte bolas sorteadas.
@@ -83,8 +82,10 @@ public class BallController : MonoBehaviour
         BallsSelected[0].RotateLoop(360);
         yield return new WaitForSeconds(0.2f);
         BallsSelected.Remove(BallsSelected[0]);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
+        SetBallWinner();
         MovementOnSpawnerLoop(inst);
+
     }
     private void MovementOnSpawner(Ball instance)
     {
@@ -123,10 +124,11 @@ public class BallController : MonoBehaviour
             instance.transform.SetParent(parentFront);
 
         }));
-        seq.Insert(1, instance.transform.DOMove(spawnerPointBallsStart[2].position, 0.5f).SetDelay(0.2f).OnComplete(() =>
+        seq.Insert(1, instance.transform.DOMove(spawnerPointBallsStart[2].position, 0.2f).SetDelay(0.2f).OnComplete(() =>
         {
             instance.MoveBallAtFinalPos(positionBallsGrid[ballCountSpawn - 1].position);
-            
+            Invoke("CallWinnerScreen", 2f);
+
         }));
         for (int i = 0; i < positionBallsGrid.Count - 1; i++)
         {
@@ -135,8 +137,15 @@ public class BallController : MonoBehaviour
         }
 
     }
+    public void CallWinnerScreen()
+    {
+        if (GameManager.instance.globeScriptable.Winners > 0)
+        {
+            WinnersScreen.instance.SetWinnersScreenVisibility(true);
 
-    public void SetRevokedBall( string[] _numbers)
+        }
+    }
+    public void SetRevokedBall(string[] _numbers)
     {
         GetLastIndexBallsRaffleAfterRevoked(_numbers.Length, _numbers.ToList());
     }
@@ -155,7 +164,7 @@ public class BallController : MonoBehaviour
         }
         RestoreBallsAfterRevoked(_numbers);
         GameManager.instance.globeScriptable.indexBalls--;
-       
+
     }
     ////Essa função mostra na tela em até um máximo das 5 ultimas bolas sorteadas.
     public void RestoreBallsAfterRevoked(List<string> _numbers)
@@ -163,7 +172,7 @@ public class BallController : MonoBehaviour
         List<string> _ballsRaflled = new List<string>();
         _ballsRaflled.AddRange(GameManager.instance.globeScriptable.numberBalls);
         animeGlobe.ResetBall(int.Parse(_ballsRaflled[_ballsRaflled.Count - 1]));
-       
+
         if (_ballsRaflled.Count <= 5)
         {
             for (int i = 0; i < BallsSelected.Count; i++)
@@ -209,17 +218,27 @@ public class BallController : MonoBehaviour
             }
             ballCount--;
         }
-        StartCoroutine(RestoreBalls(lastIndexBallsRaffle,_numbers));
+        StartCoroutine(RestoreBalls(lastIndexBallsRaffle, _numbers));
     }
     ////Essa função mostra na tela em até um máximo das 5 ultimas bolas sorteadas.
     public IEnumerator RestoreBalls(List<int> lastFiveBalls, List<string> _numbers)
     {
-        
+
         for (int i = 0; i < lastFiveBalls.Count; i++)
         {
             StartCoroutine(ShowBigBall(_numbers[lastFiveBalls[i]].ToString()));
             yield return new WaitForSeconds(2f);
         }
+    }
+
+    public void SetBallWinner()
+    {
+        if (GameManager.instance.globeScriptable.Winners > 0)
+        {
+            bigBall.SetBallWinner();
+            BallsSelected[BallsSelected.Count - 1].SetBallWinner();
+        }
+
     }
 
 }

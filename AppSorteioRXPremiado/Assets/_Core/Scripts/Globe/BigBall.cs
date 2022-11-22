@@ -42,4 +42,9 @@ public class BigBall : MonoBehaviour
         imageBall.enabled = true;
     }
 
+    public void SetBallWinner()
+    {
+        imageBall.color = Color.yellow;
+    }
+
 }

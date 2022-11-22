@@ -79,4 +79,9 @@ public class Ball : MonoBehaviour
     {
         ballTransform.DORotate(new Vector3(0, 0, rotZ), rotSpeed).SetLoops(loop).SetRelative(true).SetEase(Ease.Linear).SetDelay(delay);
     }
+
+    public void SetBallWinner()
+    {
+        imageBall.color = Color.yellow;
+    }
 }

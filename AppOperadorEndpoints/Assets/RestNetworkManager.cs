@@ -63,7 +63,7 @@ public class RestNetworkManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnPopulateRaffles += GetRaffleInfos;
-        
+
     }
     private void OnDisable()
     {
@@ -71,7 +71,7 @@ public class RestNetworkManager : MonoBehaviour
     }
     private void Start()
     {
-       // StartCoroutine(PostConfig(baseUrl1 + urlWriteMemory));
+       //StartCoroutine(PostConfig(baseUrl1 + urlWriteMemory));
     }
     public IEnumerator GetInfosServer(string uri)
     {
@@ -97,11 +97,33 @@ public class RestNetworkManager : MonoBehaviour
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoverScriptable);
 
-                       // GameManager.instance.RecoveryScreen();
+                        // GameManager.instance.RecoveryScreen();
                     }
                     break;
             }
         }
+    }
+    public string GetLocalIPAddress()
+    {
+        var host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (var ip in host.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            {
+                return ip.ToString();
+            }
+        }
+        throw new System.Exception("No network adapters with an IPv4 address in the system!");
+    }
+    public void CallWriteMemory()
+    {
+        if (!GameManager.instance.isbackup)
+            StartCoroutine(PostConfig(baseUrl1 + urlWriteMemory));
+    }
+
+    public void CallReadMemory()
+    {
+        StartCoroutine(GetConfig(baseUrl1 + urlReadMemory));
     }
     private IEnumerator PostConfig(string uri)
     {
@@ -136,29 +158,7 @@ public class RestNetworkManager : MonoBehaviour
             }
         }
     }
-    public string GetLocalIPAddress()
-    {
-        var host = Dns.GetHostEntry(Dns.GetHostName());
-        foreach (var ip in host.AddressList)
-        {
-            if (ip.AddressFamily == AddressFamily.InterNetwork)
-            {
-                return ip.ToString();
-            }
-        }
-        throw new System.Exception("No network adapters with an IPv4 address in the system!");
-    }
-    public void CallWriteMemory()
-    {
-        if (!GameManager.instance.isbackup)
-            StartCoroutine(PostConfig(baseUrl1 + urlWriteMemory));
-    }
 
-    public void CallReadMemory()
-    {
-        StartCoroutine(GetConfig(baseUrl1 + urlReadMemory));
-    }
- 
     public IEnumerator GetConfig(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -186,7 +186,7 @@ public class RestNetworkManager : MonoBehaviour
                         print("newjson-------------------" + newj);
                         JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
 
-                       
+
                     }
                     break;
             }
@@ -194,13 +194,13 @@ public class RestNetworkManager : MonoBehaviour
     }
     public void GetRaffleInfos()
     {
-       
-       // StartCoroutine(GetInfosServer(baseUrl1));
-       
-        StartCoroutine(GetLotteryInfos(baseUrl1 + urlInfoLottery));
-        
+
+        // StartCoroutine(GetInfosServer(baseUrl1));
+
         StartCoroutine(GetConfig(baseUrl1 + urlReadMemory));
-        
+        StartCoroutine(GetLotteryInfos(baseUrl1 + urlInfoLottery));
+
+
         StartCoroutine(GetGlobeInfos(baseUrl1 + urlGlobeInfos));
 
         StartCoroutine(GetSpinInfos(baseUrl1 + urlSpin));
@@ -316,7 +316,7 @@ public class RestNetworkManager : MonoBehaviour
                             {
                                 globeController.PopulatePossibleWinners();
                                 globeController.SendBallsRaffledToScreen();
-                               
+
                             }
                         }
                         else

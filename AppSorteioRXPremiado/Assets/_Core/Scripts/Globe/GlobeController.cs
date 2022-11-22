@@ -130,10 +130,9 @@ public class GlobeController : MonoBehaviour
     {
         if (GameManager.instance.globeScriptable.Winners > 0)
         {
-            //winnersScreen.SetWinnersScreenVisibility(true);
             winnersScreen.SetInfosWinnerScreen(GameManager.instance.globeScriptable.Winners, GameManager.instance.globeScriptable.prizeValue);
             UiGlobeManager uiGlobeManager = FindObjectOfType<UiGlobeManager>();
-           
+            
         }
     }
     public void SetUpdateInfoScreen()

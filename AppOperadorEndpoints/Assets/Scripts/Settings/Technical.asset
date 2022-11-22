@@ -10,11 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7553c0730aac7bb4eb3ed4b69faab2e6, type: 3}
-  m_Name: 
+  m_Name: Technical
   m_EditorClassIdentifier: 
-  currentSceneID: 0
-  globeRaffle: []
-  globeOrder: 0
-  spinOrder: 0
-  hasRaffleVisibility: 0
+  currentSceneID: 2
+  globeRaffle:
+  - 5
+  - 19
+  - 29
+  - 32
+  - 22
+  - 46
+  - 42
+  - 27
+  - 43
+  - 57
+  - 35
+  globeOrder: 1
+  spinOrder: 1
+  isVisibleRaffle: 0
   spinsNumberTickets: []

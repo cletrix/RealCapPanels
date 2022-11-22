@@ -20,9 +20,18 @@ MonoBehaviour:
   value: 2.000,00
   Winners: 0
   prizeValue: 2000
-  ballRaffledCount: 3
+  ballRaffledCount: 11
   possiblesWinnersCount: 0
   numberBalls:
-  - 22
+  - 5
+  - 19
   - 29
-  - 45
+  - 32
+  - 22
+  - 46
+  - 42
+  - 27
+  - 43
+  - 57
+  - 35
+  indexBalls: 11

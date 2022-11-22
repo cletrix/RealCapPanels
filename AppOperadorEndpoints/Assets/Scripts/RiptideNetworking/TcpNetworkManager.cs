@@ -74,7 +74,7 @@ public class TcpNetworkManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
 
-      
+
         RiptideLogger.Initialize(Debug.Log, Debug.Log, Debug.LogWarning, Debug.LogError, false);
 
         Server = new Server();
@@ -91,64 +91,64 @@ public class TcpNetworkManager : MonoBehaviour
     [MessageHandler((ushort)ClientToServerId.messageConfirmBall)]
     private static void RecieveMessageFromClientConfirmBall(ClientToServerId id, Message message)
     {
-        if (!GameManager.instance.isbackup)
-        {
-            GlobeController globeController = FindObjectOfType<GlobeController>();
-            globeController.UpdateScreen();
-        }
+        //if (!GameManager.instance.isbackup)
+        //{
+        //    GlobeController globeController = FindObjectOfType<GlobeController>();
+        //    globeController.UpdateScreen();
+        //}
 
     }
 
     [MessageHandler((ushort)ClientToServerId.messageChangeScene)]
     private static void RecieveMessageFromClientConfirmChangeScene(ClientToServerId id, Message message)
     {
-        if (!GameManager.instance.isbackup)
-        {
-            UIChangeRaffleType raffleType = FindObjectOfType<UIChangeRaffleType>();
-            bool isActive = message.GetBool();
-            int sceneID = message.GetInt();
-            if (sceneID != 0)
-                GameManager.instance.sceneId = sceneID;
-            raffleType.SetStateCanChangeScene(isActive);
-            GameManager.instance.technicalScriptable.UpdateConfig(
-                      GameManager.instance.sceneId,
-                      GameManager.instance.globeRaffleScriptable.bolasSorteadas,
-                      GameManager.instance.globeScriptable.sorteioOrdem,
-                      GameManager.instance.canHideRaffle
-                      );
-        }
+        //if (!GameManager.instance.isbackup)
+        //{
+        //    UIChangeRaffleType raffleType = FindObjectOfType<UIChangeRaffleType>();
+        //    bool isActive = message.GetBool();
+        //    int sceneID = message.GetInt();
+        //    GameManager.instance.sceneId = sceneID;
+        //    raffleType.SetStateCanChangeScene(isActive);
+
+        //    GameManager.instance.technicalScriptable.UpdateConfig(
+        //              GameManager.instance.sceneId,
+        //              GameManager.instance.globeRaffleScriptable.bolasSorteadas,
+        //              GameManager.instance.globeScriptable.sorteioOrdem,
+        //              GameManager.instance.isVisibleRaffle
+        //              );
+        //}
     }
 
     [MessageHandler((ushort)ClientToServerId.messageCheckVisibilityScreen)]
     private static void RecieveMessageFromClientCheckSVisibilityRaffle(ClientToServerId id, Message message)
     {
-        if (!GameManager.instance.isbackup)
-        {
-            UIChangeRaffleType raffleType = FindObjectOfType<UIChangeRaffleType>();
-            bool isActive = message.GetBool();
+        //if (!GameManager.instance.isbackup)
+        //{
+        //    UIChangeRaffleType raffleType = FindObjectOfType<UIChangeRaffleType>();
+        //    bool isActive = message.GetBool();
 
-            //GameManager.instance
-            //raffleType.SetStateVisibilityOfRaffle();
-        }
+        //    //GameManager.instance
+        //    //raffleType.SetStateVisibilityOfRaffle();
+        //}
     }
 
     [MessageHandler((ushort)ClientToServerId.messageGetActiveScene)]
     private static void RecieveMessageFromClientSceneIndex(ClientToServerId id, Message message)
     {
-        if (!GameManager.instance.isbackup)
-        {
-            UIChangeRaffleType raffleType = FindObjectOfType<UIChangeRaffleType>();
-            int sceneID = message.GetInt();
-            if (sceneID != 0)
-                GameManager.instance.sceneId = sceneID;
-            raffleType.SelectPanelForActivate(sceneID);
-            GameManager.instance.technicalScriptable.UpdateConfig(
-                      GameManager.instance.sceneId,
-                      GameManager.instance.globeRaffleScriptable.bolasSorteadas,
-                      GameManager.instance.globeScriptable.sorteioOrdem,
-                      GameManager.instance.canHideRaffle
-                      );
-        }
+        //if (!GameManager.instance.isbackup)
+        //{
+        //    UIChangeRaffleType raffleType = FindObjectOfType<UIChangeRaffleType>();
+        //    int sceneID = message.GetInt();
+        //    if (sceneID != 0)
+        //        GameManager.instance.sceneId = sceneID;
+        //    raffleType.SelectPanelForActivate(sceneID);
+        //    GameManager.instance.technicalScriptable.UpdateConfig(
+        //              GameManager.instance.sceneId,
+        //              GameManager.instance.globeRaffleScriptable.bolasSorteadas,
+        //              GameManager.instance.globeScriptable.sorteioOrdem,
+        //              GameManager.instance.isVisibleRaffle
+        //              );
+        //}
     }
 
     private void FixedUpdate()

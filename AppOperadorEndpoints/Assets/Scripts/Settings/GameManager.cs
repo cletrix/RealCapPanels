@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Settings")]
     public bool isConnected = false;
-    public bool canHideRaffle = false;
+    public bool isVisibleRaffle = false;
     public int EditionIndex { get; private set; }
 
     public void SetEditionIndex(int value)
@@ -58,17 +58,11 @@ public class GameManager : MonoBehaviour
     }
     public void RecoveryScreen()
     {
-        technicalScriptable.PopulateConfig();
-
-        UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
-        uIChangeRaffle.SelectPanelForActivate(sceneId);
+        globeRaffleScriptable.bolasSorteadas.Clear();
+        globeRaffleScriptable.bolasSorteadas.AddRange(technicalScriptable.globeRaffle);
 
         GlobeController globeController = FindObjectOfType<GlobeController>();
         globeController.UpdateScreen();
-        globeController.UpdateStateVisibilityButtonsTicket(false);
-
-        RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem, true);
-        uIChangeRaffle.RaffleTypeScene(GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].modalidades);
     }
 
     public void LoadSceneGame(string map)
@@ -95,7 +89,7 @@ public class GameManager : MonoBehaviour
         isConnected = true;
         OnPopulateRaffles?.Invoke();
     }
-  
+
     #region GLOBE FUNCTIONS
     public void SetNewBall(string newBall)
     {
@@ -103,6 +97,7 @@ public class GameManager : MonoBehaviour
         {
             globeRaffleScriptable.SetNewBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem);
+            WriteInfos();
         }
     }
     public List<String> GetBallsRaffled()
@@ -115,6 +110,7 @@ public class GameManager : MonoBehaviour
         {
             globeRaffleScriptable.RevokeBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem);
+            WriteInfos();
         }
     }
     public List<string> GetForOneBalls()
@@ -157,9 +153,19 @@ public class GameManager : MonoBehaviour
         globeRaffleScriptable.porUmaBolas.Clear();
         globeRaffleScriptable.porDuasBolas = 0;
         globeRaffleScriptable.ganhadorContemplado = new TicketInfos[0];
+        WriteInfos();
     }
     #endregion
 
+    public void WriteInfos()
+    {
+        GameManager.instance.technicalScriptable.UpdateConfig(
+                GameManager.instance.sceneId,
+                GameManager.instance.globeRaffleScriptable.bolasSorteadas,
+                GameManager.instance.globeScriptable.sorteioOrdem,
+                GameManager.instance.isVisibleRaffle
+                );
+    }
     private void Update()
     {
         if (Input.GetKey(KeyCode.LeftControl))

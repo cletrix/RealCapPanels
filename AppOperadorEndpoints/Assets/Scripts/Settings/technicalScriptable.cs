@@ -8,9 +8,9 @@ public class technicalScriptable : ScriptableObject
 {
     public int currentSceneID;
     public List<string> globeRaffle;
-    public int globeOrder;
-    public int spinOrder;
-    public bool canHideRaffle;
+    public int globeOrder=1;
+    public int spinOrder=1;
+    public bool isVisibleRaffle;
     public List<string> spinsNumberTickets;
 
     public void UpdateConfig(int sceneId, List<string> _globeRaffle, int globe, bool raffleVisibility)
@@ -20,7 +20,7 @@ public class technicalScriptable : ScriptableObject
             currentSceneID = sceneId;
             globeRaffle = _globeRaffle;
             globeOrder = globe;
-            canHideRaffle = !raffleVisibility;
+            isVisibleRaffle = raffleVisibility;
 
             RestNetworkManager.instance.CallWriteMemory();
         }
@@ -36,8 +36,6 @@ public class technicalScriptable : ScriptableObject
     }
     public void PopulateConfig()
     {
-
-
         GameManager.instance.sceneId = currentSceneID;
         GameManager.instance.globeRaffleScriptable.bolasSorteadas = globeRaffle;
         GameManager.instance.globeScriptable.sorteioOrdem = globeOrder;

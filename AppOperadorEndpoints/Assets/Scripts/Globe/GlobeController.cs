@@ -52,7 +52,7 @@ public class GlobeController : MonoBehaviour
     [SerializeField] private bool isWinner = false;
     [SerializeField] private bool hasRevoked = false;
 
-   
+
     private void Start()
     {
         InitializeVariables();
@@ -60,7 +60,7 @@ public class GlobeController : MonoBehaviour
 
     private void InitializeVariables()
     {
-        
+
         balls = new List<Ball>();
         balls.AddRange(panelGridBalls.GetComponentsInChildren<Ball>());
         ticketController = FindObjectOfType<TicketController>();
@@ -69,11 +69,10 @@ public class GlobeController : MonoBehaviour
         //UpdateScreen();
         UpdateStateVisibilityButtonsTicket(false);
 
-        if(GameManager.instance.isbackup)
+        if (GameManager.instance.isbackup)
         {
             SetDisableAll();
             UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
-            uIChangeRaffle.DisableAllButtons();
         }
         GameManager.instance.RecoveryScreen();
     }
@@ -142,19 +141,20 @@ public class GlobeController : MonoBehaviour
             }
         }
     }
-    private void SetDisableAll()
+    public void SetDisableAll()
     {
         for (int i = 0; i < balls.Count; i++)
         {
             balls[i].DisableInteractable();
         }
     }
-    private void SetEnableAll()
+    public void SetEnableAll()
     {
         for (int i = 0; i < balls.Count; i++)
-        {
+        {   
             balls[i].EnableInteractable();
         }
+        CheckStateBalls();
     }
     public void OpenPanelBall(int index)
     {
@@ -196,7 +196,7 @@ public class GlobeController : MonoBehaviour
         for (int i = 0; i < GameManager.instance.globeRaffleScriptable.bolasSorteadas.Count; i++)
         {
             indexBalls.Add(int.Parse(GameManager.instance.globeRaffleScriptable.bolasSorteadas[i]) - 1);
-            
+
             //balls[int.Parse(GameManager.instance.globeRaffleScriptable.bolasSorteadas[i]) - 1].SetHasSelected(false);
             balls[int.Parse(GameManager.instance.globeRaffleScriptable.bolasSorteadas[i]) - 1].SetHasRaffled(true);
         }
@@ -321,21 +321,12 @@ public class GlobeController : MonoBehaviour
             item.DesactiveIsSelect();
         }
     }
-    private void WriteInfos()
-    {
-        GameManager.instance.technicalScriptable.UpdateConfig(
-                GameManager.instance.sceneId,
-                GameManager.instance.globeRaffleScriptable.bolasSorteadas,
-                GameManager.instance.globeScriptable.sorteioOrdem,
-                GameManager.instance.canHideRaffle
-                );
-    }
+  
     public void ConfirmBallSelected()
     {
         GameManager.instance.SetNewBall(balls[indexBallSelected].GetNumberBall());
         hasRevoked = false;
-        //SetDisableAll();
-        WriteInfos();
+       
     }
     public void RevokeBallSelected()
     {
@@ -344,10 +335,8 @@ public class GlobeController : MonoBehaviour
         lastBallRaffled.SetHasSelected(true);
         lastBallRaffled.SetHasRaffled(false);
         lastBallRaffled.SetHasCanRevoked(false);
-       // SetDisableAll();
 
         hasRevoked = true;
-        WriteInfos();
 
     }
     public void ValidateBall()
@@ -395,13 +384,14 @@ public class GlobeController : MonoBehaviour
            GameManager.instance.globeScriptable.sorteioOrdem,
            GameManager.instance.globeScriptable.sorteioDescricao,
            GameManager.instance.globeScriptable.sorteioValor);
-       
+
         uiInfos.PopulateRaffleInfos(
-            GameManager.instance.globeScriptable.sorteioOrdem.ToString(), 
-            GameManager.instance.globeScriptable.sorteioDescricao, 
+            GameManager.instance.globeScriptable.sorteioOrdem.ToString(),
+            GameManager.instance.globeScriptable.sorteioDescricao,
             GameManager.instance.globeScriptable.sorteioValor);
 
         btNextRaffle.interactable = false;
+       
     }
 
     public void SetInteractableBtNextRaffle(bool isActive)
@@ -409,17 +399,7 @@ public class GlobeController : MonoBehaviour
         btNextRaffle.interactable = isActive;
     }
 
-    private void FixedUpdate()
-    {
-        if(GameManager.instance.canHideRaffle)
-        {
-            SetDisableAll();
-        }
-        else
-        {
-            SetEnableAll();
-        }
-    }
+
     public void ShowTicketGlobe()
     {
         foreach (var item in possiblesWinners)
@@ -458,7 +438,7 @@ public class GlobeController : MonoBehaviour
             2);
     }
 
-   
+
     #region MESSAGES
     public void SendMessageBallsRaffled()
     {
@@ -506,7 +486,10 @@ public class GlobeController : MonoBehaviour
 
 
 
-
+    //private void FixedUpdate()
+    //{
+        
+    //}
 
 }
 
