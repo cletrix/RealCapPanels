@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GlobalSettings", menuName = "Settings/GlobalSettings")]
-public class GlobalScriptable : ScriptableObject
+[CreateAssetMenu(fileName = "EditionInfos", menuName = "Settings/EditionInfos")]
+public class EditionInfosScriptable : ScriptableObject
 {
-    public bool canRecoveryRaffleGlobe;
     public string tecnicoNome;
     public string tecnicoCPF;
     [Space]

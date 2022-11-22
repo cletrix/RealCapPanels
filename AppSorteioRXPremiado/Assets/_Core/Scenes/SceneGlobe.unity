@@ -265,7 +265,7 @@ Transform:
   m_Children:
   - {fileID: 6027870568997482919}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &647547220 stripped
 MonoBehaviour:
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 714116152}
   - component: {fileID: 714116153}
   m_Layer: 0
-  m_Name: RaffleController
+  m_Name: GlobeController
   m_TagString: RaffleController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 729450978}
   - component: {fileID: 729450977}
   m_Layer: 0
-  m_Name: UIRaffleController
+  m_Name: UiGlobeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -638,7 +638,7 @@ RectTransform:
   - {fileID: 711378554}
   - {fileID: 617358092}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -709,7 +709,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1362742824 stripped
 RectTransform:
@@ -829,7 +829,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &207213273656485373
 PrefabInstance:
@@ -1562,7 +1562,7 @@ PrefabInstance:
     - target: {fileID: 7880372426522590686, guid: d11d79322e880da40a0919beedb58b40,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7880372426522590686, guid: d11d79322e880da40a0919beedb58b40,
         type: 3}

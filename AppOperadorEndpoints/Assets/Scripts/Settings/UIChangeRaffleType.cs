@@ -39,9 +39,6 @@ public class UIChangeRaffleType : MonoBehaviour
     }
     private void InitializeVariables()
     {
-        panelRaffleLottery = GameObject.Find("PanelRaffleLottery");
-        panelRaffleGlobe = GameObject.Find("PanelRaffleGlobe");
-        panelRaffleSpin = GameObject.Find("PanelRaffleSpin");
 
         if (GameManager.instance.isbackup)
         {
@@ -55,12 +52,27 @@ public class UIChangeRaffleType : MonoBehaviour
         txtHideRaffle = btVisibilityRaffle.GetComponentInChildren<TextMeshProUGUI>();
 
         SetButtonsEvent();
+
+        
+
+        SetStateButtonsChangeRaffleType();
+
         if (!GameManager.instance.isbackup)
         {
-            DefineModalyties(GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].modalidades);
-            SendMessageToClientGetActiveScene();
-            SetStateButtonsChangeRaffleType();
+            CheckStateVisibilityRaffle();
+            if (GameManager.instance.technicalScriptable.currentSceneID > 0)
+            {
+                SelectPanelForActivate(GameManager.instance.technicalScriptable.currentSceneID);
+            }
+            else
+            {
+                DefineModalities(GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].modalidades);
+            }
+
         }
+        GameManager.instance.canHideRaffle = GameManager.instance.technicalScriptable.canHideRaffle;
+
+
     }
 
     private void SetButtonsEvent()
@@ -71,7 +83,8 @@ public class UIChangeRaffleType : MonoBehaviour
         btRaffleGlobe.onClick.AddListener(WriteInfos);
         btRaffleSpin.onClick.AddListener(SetRaffleSpin);
         btRaffleSpin.onClick.AddListener(WriteInfos);
-        btVisibilityRaffle.onClick.AddListener(SetStateVisibilityOfRaffle);
+        btVisibilityRaffle.onClick.AddListener(SetStateHasRaffleVisibility);
+        btVisibilityRaffle.onClick.AddListener(SendMessageVisibilityRaffle);
         btVisibilityRaffle.onClick.AddListener(WriteInfos);
 
         ResetColorButtons(normalColor);
@@ -79,11 +92,11 @@ public class UIChangeRaffleType : MonoBehaviour
 
     private void WriteInfos()
     {
-        GameManager.instance.configScriptable.UpdateConfig(
+        GameManager.instance.technicalScriptable.UpdateConfig(
                 GameManager.instance.sceneId,
                 GameManager.instance.globeRaffleScriptable.bolasSorteadas,
                 GameManager.instance.globeScriptable.sorteioOrdem,
-                GameManager.instance.hasVisibleRaffle
+                GameManager.instance.canHideRaffle
                 );
     }
     #region RAFFLES PANELS
@@ -124,7 +137,7 @@ public class UIChangeRaffleType : MonoBehaviour
         {
             case 0:
                 {
-                    DefineModalyties(GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].modalidades);
+                    RaffleTypeScene(GameManager.instance.technicalScriptable.currentSceneID);
                     break;
                 }
             case 1:
@@ -165,7 +178,7 @@ public class UIChangeRaffleType : MonoBehaviour
         }
         //SetStateCanChangeScene(true);
     }
-    public void DefineModalyties(int type)
+    public void RaffleTypeScene(int type)
     {
         switch (type)
         {
@@ -176,7 +189,31 @@ public class UIChangeRaffleType : MonoBehaviour
                 }
             case 2:
                 {
+                    SetRaffleGlobe();
+                    break;
+                }
+            case 3:
+                {
+                    SetRaffleSpin();
+                    break;
+                }
+
+        }
+        SetStateCanChangeScene(true);
+
+    }
+    public void DefineModalities(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                {
                     SetRaffleLottery();
+                    break;
+                }
+            case 2:
+                {
+                    SetRaffleGlobe();
                     break;
                 }
             case 3:
@@ -194,17 +231,12 @@ public class UIChangeRaffleType : MonoBehaviour
         hasActiveLottery = false;
         hasActiveGlobe = false;
         hasActiveSpin = false;
-        // SetStateButtonsChangeRaffleType();
     }
     public void SetStateCanChangeScene(bool _state)
     {
         canChangeScene = _state;
         btVisibilityRaffle.interactable = canChangeScene;
 
-    }
-    public void SetStateButtonVisibilityRaffle(bool isActive)
-    {
-        GetStateVisibilityRaffle(isActive);
     }
     public void SetStateButtonsChangeRaffleType()
     {
@@ -243,50 +275,43 @@ public class UIChangeRaffleType : MonoBehaviour
     {
         RestNetworkManager.instance.CallReadMemory();
     }
-    public void GetStateVisibilityRaffle(bool isActive)
+    public void SetStateHasRaffleVisibility()
     {
-        if (isActive)
+        if (GameManager.instance.canHideRaffle)
         {
-            txtHideRaffle.text = "OCULTAR SORTEIO";
-            btVisibilityRaffle.image.color = selectedColor;
-            GameManager.instance.hasVisibleRaffle = false;
+            GameManager.instance.canHideRaffle = false;
         }
         else
         {
-            txtHideRaffle.text = "MOSTRAR SORTEIO";
-            btVisibilityRaffle.image.color = normalColor;
-            GameManager.instance.hasVisibleRaffle = true;
-        }
-        //SetStateButtonsChangeRaffleType();
-    }
+            GameManager.instance.canHideRaffle = true;
 
-    public void SetStateVisibilityOfRaffle()
+        }
+        CheckStateVisibilityRaffle();
+    }
+    public void CheckStateVisibilityRaffle()
     {
-        if (GameManager.instance.hasVisibleRaffle)
+        if (GameManager.instance.canHideRaffle)
         {
             txtHideRaffle.text = "OCULTAR SORTEIO";
             btVisibilityRaffle.image.color = selectedColor;
-            GameManager.instance.hasVisibleRaffle = false;
         }
         else
         {
             txtHideRaffle.text = "MOSTRAR SORTEIO";
             btVisibilityRaffle.image.color = normalColor;
-            GameManager.instance.hasVisibleRaffle = true;
         }
-        SendMessageVisibilityRaffle();
     }
 
     public void SendMessageVisibilityRaffle()
     {
-        if (!GameManager.instance.hasVisibleRaffle)
+        if (!GameManager.instance.canHideRaffle)
         {
             if (panelRaffleLottery.activeSelf == true)
             {
                 SendMessageLotteryInfos(
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
            GameManager.instance.lotteryScriptable.resultadoLoteriaFederalNumeroConcurso,
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
            GameManager.instance.lotteryScriptable.resultadoLoteriaFederalDataConcurso,
            GameManager.instance.lotteryScriptable.sorteioOrdem,
            GameManager.instance.lotteryScriptable.sorteioDescricao,
@@ -295,9 +320,9 @@ public class UIChangeRaffleType : MonoBehaviour
             else if (panelRaffleGlobe.activeSelf == true)
             {
                 SendMessageGlobeInfos(
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
            GameManager.instance.globeScriptable.sorteioOrdem,
            GameManager.instance.globeScriptable.sorteioDescricao,
            GameManager.instance.globeScriptable.sorteioValor);
@@ -305,15 +330,15 @@ public class UIChangeRaffleType : MonoBehaviour
             else if (panelRaffleSpin.activeSelf == true)
             {
                 SendMessageSpinInfos(
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
            GameManager.instance.spinScriptable.sorteioOrdem,
            GameManager.instance.spinScriptable.sorteioDescricao,
            GameManager.instance.spinScriptable.sorteioValor);
             }
         }
-        TcpNetworkManager.instance.Server.SendToAll(GetMessageBool(Message.Create(MessageSendMode.unreliable, ServerToClientId.messageVisibilityRaffle), GameManager.instance.hasVisibleRaffle));
+        TcpNetworkManager.instance.Server.SendToAll(GetMessageBool(Message.Create(MessageSendMode.unreliable, ServerToClientId.messageVisibilityRaffle), GameManager.instance.canHideRaffle));
     }
     private Message GetMessageBool(Message message, bool isActive)
     {
@@ -338,7 +363,6 @@ public class UIChangeRaffleType : MonoBehaviour
     {
         if (!GameManager.instance.isbackup)
         {
-            SendMessageVisibilityRaffle();
             TcpNetworkManager.instance.Server.SendToAll(GetMessageString(Message.Create(MessageSendMode.reliable, ServerToClientId.messageTypeRaffle), _messageString));
         }
     }

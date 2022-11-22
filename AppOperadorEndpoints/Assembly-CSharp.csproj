@@ -60,7 +60,7 @@
     <Compile Include="Assets\Scripts\Spin\SpinScriptable.cs" />
     <Compile Include="Assets\Scripts\Spin\SpinRaffleData.cs" />
     <Compile Include="Assets\Scripts\Settings\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Settings\ConfigScriptable.cs" />
+    <Compile Include="Assets\Scripts\Settings\technicalScriptable.cs" />
     <Compile Include="Assets\Scripts\Globe\FadeController.cs" />
     <Compile Include="Assets\Scripts\Globe\GlobeScriptable.cs" />
     <Compile Include="Assets\Scripts\Lottery\LotteryScriptable.cs" />
@@ -74,13 +74,14 @@
     <Compile Include="Assets\Scripts\UiManagerLoginScene.cs" />
     <Compile Include="Assets\Scripts\Spin\SpinResultScriptable.cs" />
     <Compile Include="Assets\Scripts\Spin\SpinController.cs" />
-    <Compile Include="Assets\Scripts\Settings\GlobalScriptable.cs" />
+    <Compile Include="Assets\Scripts\Settings\EditionInfosScriptable.cs" />
     <Compile Include="Assets\Scripts\Globe\Ball.cs" />
     <Compile Include="Assets\Scripts\Globe\PossibleWinners.cs" />
     <Compile Include="Assets\Scripts\Settings\UiManagerMainScene.cs" />
     <Compile Include="Assets\Scripts\Settings\UIInfosEdition.cs" />
     <Compile Include="Assets\Scripts\Settings\UIChangeRaffleType.cs" />
     <Compile Include="Assets\Scripts\Settings\UiInfosRaffle.cs" />
+    <Compile Include="Assets\Scripts\Settings\RecoveryScriptable.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -323,7 +324,7 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="RiptideNetworking">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Assets/RiptideNetwork/RiptideNetworking.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Assets/RiptideNetwork/RiptideNetworking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -677,82 +678,82 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PsdPlugin">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Path.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppOperadorEndpoints/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

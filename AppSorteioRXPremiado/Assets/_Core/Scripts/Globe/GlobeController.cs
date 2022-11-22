@@ -119,7 +119,7 @@ public class GlobeController : MonoBehaviour
                     if (GameManager.instance.globeScriptable.numberBalls.Count <= 60)
                     {
                         StartCoroutine(ballController.ShowBigBall(GameManager.instance.globeScriptable.numberBalls[GameManager.instance.globeScriptable.indexBalls]));
-                        timeToSpawn = 3f;
+                        timeToSpawn = 1f;
                         canRafleeBall = false;
                     }
                 }

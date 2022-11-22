@@ -17,7 +17,7 @@ public class UiManagerMainScene : MonoBehaviour
             GameManager.instance.lotteryScriptable.resultadoLoteriaFederalQuartoSorteio,
             GameManager.instance.lotteryScriptable.resultadoLoteriaFederalQuintoSorteio
             );
-        uiInfosEdition.ShowTechnicalInfos(GameManager.instance.globalScriptable.tecnicoNome, GameManager.instance.globalScriptable.tecnicoCPF);
+        uiInfosEdition.ShowTechnicalInfos(GameManager.instance.editionScriptable.tecnicoNome, GameManager.instance.editionScriptable.tecnicoCPF);
 
     }
     private void OnEnable()
@@ -31,16 +31,16 @@ public class UiManagerMainScene : MonoBehaviour
     private void PopulateEditionInfos()
     {
         uiInfosEdition.ShowEditionInfos(
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].nomePlano,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].processoSUSEP,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].denominacaoComercial,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].tipoTamanhoSerie,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].modalidades,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].tipoQuantidadeChances,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].valor
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nomePlano,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].processoSUSEP,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].denominacaoComercial,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].tipoTamanhoSerie,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].modalidades,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].tipoQuantidadeChances,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].valor
             );
     }
 }

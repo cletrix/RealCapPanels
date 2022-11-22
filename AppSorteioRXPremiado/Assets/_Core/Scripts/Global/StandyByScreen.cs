@@ -38,16 +38,16 @@ public class StandyByScreen : MonoBehaviour
     {
         if (isActive == true)
         {
-            canvasGroup.DOFade(1, 1f).OnComplete(() =>
+            canvasGroup.DOFade(0, 1f).OnComplete(() =>
             {
-                GameManager.instance.SendMessageToServerVisibilityScene(GetVisibilityStandBy());
+                //GameManager.instance.SendMessageToServerVisibilityScene(GetVisibilityStandBy());
             });
         }
         else
         {
-            canvasGroup.DOFade(0, 1f).OnComplete(() =>
+            canvasGroup.DOFade(1, 1f).OnComplete(() =>
             {
-               GameManager.instance.SendMessageToServerVisibilityScene(GetVisibilityStandBy());
+               //GameManager.instance.SendMessageToServerVisibilityScene(GetVisibilityStandBy());
             });
         }
     }

@@ -91,14 +91,14 @@ public class BallController : MonoBehaviour
         timeBetweenBalls = 2f;
         instance.RotateLoop(-360);
         Sequence seq = DOTween.Sequence();
-        seq.Insert(0, instance.transform.DOMove(spawnerPointBallsStart[1].position, 1f).OnComplete(() =>
+        seq.Insert(0, instance.transform.DOMove(spawnerPointBallsStart[1].position, 0.3f).OnComplete(() =>
         {
             instance.SetSize(_delay: 0f);
             instance.transform.SetParent(parentFront);
             instance.transform.DOMove(instance.transform.position, 0.2f);
         }));
 
-        seq.Insert(1, instance.transform.DOMove(spawnerPointBallsStart[2].position, 1f).OnComplete(() =>
+        seq.Insert(1, instance.transform.DOMove(spawnerPointBallsStart[2].position, 0.2f).OnComplete(() =>
         {
             instance.MoveBallAtFinalPos(positionBallsGrid[ballCountSpawn].position);
             //GlobeController globe = new GlobeController();
@@ -117,15 +117,13 @@ public class BallController : MonoBehaviour
         timeBetweenBalls = 1.5f;
         instance.RotateLoop(-360);
         Sequence seq = DOTween.Sequence();
-        seq.Insert(0, instance.transform.DOMove(spawnerPointBallsStart[1].position, 1f).OnComplete(() =>
+        seq.Insert(0, instance.transform.DOMove(spawnerPointBallsStart[1].position, 0.3f).OnComplete(() =>
         {
             instance.SetSize();
             instance.transform.SetParent(parentFront);
-            //GlobeController globe = new GlobeController();
-            //globe.SendMessageConfirmBallRaffled();
 
         }));
-        seq.Insert(1, instance.transform.DOMove(spawnerPointBallsStart[2].position, 1f).SetDelay(0.5f).OnComplete(() =>
+        seq.Insert(1, instance.transform.DOMove(spawnerPointBallsStart[2].position, 0.5f).SetDelay(0.2f).OnComplete(() =>
         {
             instance.MoveBallAtFinalPos(positionBallsGrid[ballCountSpawn - 1].position);
             

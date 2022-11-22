@@ -402,6 +402,22 @@ PrefabInstance:
       propertyPath: configScriptable
       value: 
       objectReference: {fileID: 11400000, guid: 6a0dadb372502154ab2c76018c7c4829, type: 2}
+    - target: {fileID: 7804240743405866441, guid: d4c05a7adb4a3d4488268bfad5a041c0, type: 3}
+      propertyPath: EditionScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: a86d0443ef0906d41931e39e7f15d415, type: 2}
+    - target: {fileID: 7804240743405866441, guid: d4c05a7adb4a3d4488268bfad5a041c0, type: 3}
+      propertyPath: editionScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: a86d0443ef0906d41931e39e7f15d415, type: 2}
+    - target: {fileID: 7804240743405866441, guid: d4c05a7adb4a3d4488268bfad5a041c0, type: 3}
+      propertyPath: recoverScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: 1325e216120bd09469615792793e5045, type: 2}
+    - target: {fileID: 7804240743405866441, guid: d4c05a7adb4a3d4488268bfad5a041c0, type: 3}
+      propertyPath: technicalScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a0dadb372502154ab2c76018c7c4829, type: 2}
     - target: {fileID: 7804240743405866446, guid: d4c05a7adb4a3d4488268bfad5a041c0, type: 3}
       propertyPath: m_RootOrder
       value: 4

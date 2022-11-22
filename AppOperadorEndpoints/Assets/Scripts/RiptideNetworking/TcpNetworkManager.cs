@@ -110,24 +110,25 @@ public class TcpNetworkManager : MonoBehaviour
             if (sceneID != 0)
                 GameManager.instance.sceneId = sceneID;
             raffleType.SetStateCanChangeScene(isActive);
-            GameManager.instance.configScriptable.UpdateConfig(
+            GameManager.instance.technicalScriptable.UpdateConfig(
                       GameManager.instance.sceneId,
                       GameManager.instance.globeRaffleScriptable.bolasSorteadas,
                       GameManager.instance.globeScriptable.sorteioOrdem,
-                      GameManager.instance.hasVisibleRaffle
+                      GameManager.instance.canHideRaffle
                       );
         }
     }
 
     [MessageHandler((ushort)ClientToServerId.messageCheckVisibilityScreen)]
-    private static void RecieveMessageFromClientCheckSceneActive(ClientToServerId id, Message message)
+    private static void RecieveMessageFromClientCheckSVisibilityRaffle(ClientToServerId id, Message message)
     {
         if (!GameManager.instance.isbackup)
         {
             UIChangeRaffleType raffleType = FindObjectOfType<UIChangeRaffleType>();
             bool isActive = message.GetBool();
 
-            raffleType.SetStateButtonVisibilityRaffle(isActive);
+            //GameManager.instance
+            //raffleType.SetStateVisibilityOfRaffle();
         }
     }
 
@@ -141,11 +142,11 @@ public class TcpNetworkManager : MonoBehaviour
             if (sceneID != 0)
                 GameManager.instance.sceneId = sceneID;
             raffleType.SelectPanelForActivate(sceneID);
-            GameManager.instance.configScriptable.UpdateConfig(
+            GameManager.instance.technicalScriptable.UpdateConfig(
                       GameManager.instance.sceneId,
                       GameManager.instance.globeRaffleScriptable.bolasSorteadas,
                       GameManager.instance.globeScriptable.sorteioOrdem,
-                      GameManager.instance.hasVisibleRaffle
+                      GameManager.instance.canHideRaffle
                       );
         }
     }

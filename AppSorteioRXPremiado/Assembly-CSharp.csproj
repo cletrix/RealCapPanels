@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5A8309C5-F1D6-E872-0312-9AC7A06CC0E2}</ProjectGuid>
+    <ProjectGuid>{B6C04C6E-F3F2-7AED-FA9A-FC9A0C1C6378}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -352,13 +352,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="zxing.unity">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Assets/_Core/ExternalAssets/Plugins/zxing.unity.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/_Core/ExternalAssets/Plugins/zxing.unity.dll</HintPath>
     </Reference>
     <Reference Include="RiptideNetworking">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Assets/Plugins/RiptideNetwork/RiptideNetworking.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/RiptideNetwork/RiptideNetworking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -715,56 +715,56 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Recorder.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Recorder.Base">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/Unity.Recorder.Base.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/Unity.Recorder.Base.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Recorder">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{8F7859C5-3980-B158-C083-746DEA0592CA}</Project>
+      <Project>{4F7B16BF-C2D6-627D-8F43-FC81C59EF9B9}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="FFmpegOut.Editor.csproj">
-      <Project>{5F45F00C-F08C-45FA-C04C-B2D027707416}</Project>
+      <Project>{EB30E916-9EF4-1F68-CD67-22D65D37C63E}</Project>
       <Name>FFmpegOut.Editor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="FFmpegOut.csproj">
-      <Project>{D6A12FE0-65CA-7A0F-0F84-24B2FC29607E}</Project>
+      <Project>{F65CA565-E954-60A1-D19A-FD1A4E32C030}</Project>
       <Name>FFmpegOut</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="IngameDebugConsole.Editor.csproj">
-      <Project>{D77B62D8-CD45-0174-F980-982EF89C5AF3}</Project>
+      <Project>{5F2CE0B1-E902-9A6C-AA03-6A6D3C62586C}</Project>
       <Name>IngameDebugConsole.Editor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="IngameDebugConsole.Runtime.csproj">
-      <Project>{F56AFFBB-82E8-8803-B412-F991CA4CB187}</Project>
+      <Project>{ECE98077-8D29-C162-D4B1-A360913F1E31}</Project>
       <Name>IngameDebugConsole.Runtime</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

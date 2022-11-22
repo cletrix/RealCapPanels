@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Config", menuName = "Settings/Config")]
+[CreateAssetMenu(fileName = "Technical", menuName = "Settings/Technical")]
 
-public class ConfigScriptable : ScriptableObject
+public class technicalScriptable : ScriptableObject
 {
     public int currentSceneID;
     public List<string> globeRaffle;
     public int globeOrder;
     public int spinOrder;
-    public bool hasRaffleVisibility;
+    public bool canHideRaffle;
     public List<string> spinsNumberTickets;
 
     public void UpdateConfig(int sceneId, List<string> _globeRaffle, int globe, bool raffleVisibility)
@@ -20,7 +20,7 @@ public class ConfigScriptable : ScriptableObject
             currentSceneID = sceneId;
             globeRaffle = _globeRaffle;
             globeOrder = globe;
-            hasRaffleVisibility = !raffleVisibility;
+            canHideRaffle = !raffleVisibility;
 
             RestNetworkManager.instance.CallWriteMemory();
         }
@@ -36,7 +36,7 @@ public class ConfigScriptable : ScriptableObject
     }
     public void PopulateConfig()
     {
-        GameManager.instance.isbackup = false;
+
 
         GameManager.instance.sceneId = currentSceneID;
         GameManager.instance.globeRaffleScriptable.bolasSorteadas = globeRaffle;
@@ -47,24 +47,6 @@ public class ConfigScriptable : ScriptableObject
             spin.SetIndexSpin(spinOrder);
             spin.PopulateSpinsFields(spinsNumberTickets);
         }
-        // RestNetworkManager.instance.CallReadMemory();
 
     }
-
-    //public void AddSaveSpins(string _numberSpin, string _numberticket, string _numberPrize)
-    //{
-    //    SaveSpinsRaffle save = new SaveSpinsRaffle();
-    //    save.numberSpin = _numberSpin;
-    //    save.numberTicket = _numberticket;
-    //    save.numberPrize = _numberPrize;
-
-    //    //saveSpinsRaffles.Add(save);
-    //}
-    //[System.Serializable]
-    //public class SaveSpinsRaffle
-    //{
-    //    public string numberSpin;
-    //    public string numberTicket;
-    //    public string numberPrize;
-    //}
 }

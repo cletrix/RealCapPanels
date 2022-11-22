@@ -28,22 +28,23 @@ public class GameManager : MonoBehaviour
 
     public static event Action OnPopulateRaffles;
 
+    public RecoveryScriptable recoverScriptable;
     [Space]
-    [SerializeField] public GlobalScriptable globalScriptable;
-    [SerializeField] public ConfigScriptable configScriptable;
+    public EditionInfosScriptable editionScriptable;
+    public technicalScriptable technicalScriptable;
     [Space]
-    [SerializeField] public LotteryScriptable lotteryScriptable;
-    [SerializeField] public LotteryResultScriptable lotteryResultScriptable;
+    public LotteryScriptable lotteryScriptable;
+    public LotteryResultScriptable lotteryResultScriptable;
     [Space]
-    [SerializeField] public GlobeScriptable globeScriptable;
-    [SerializeField] public GlobeRaffleScriptable globeRaffleScriptable;
+    public GlobeScriptable globeScriptable;
+    public GlobeRaffleScriptable globeRaffleScriptable;
     [Space]
-    [SerializeField] public SpinScriptable spinScriptable;
-    [SerializeField] public SpinResultScriptable spinResultScriptable;
+    public SpinScriptable spinScriptable;
+    public SpinResultScriptable spinResultScriptable;
 
     [Header("Settings")]
     public bool isConnected = false;
-    public bool hasVisibleRaffle = false;
+    public bool canHideRaffle = false;
     public int EditionIndex { get; private set; }
 
     public void SetEditionIndex(int value)
@@ -57,8 +58,8 @@ public class GameManager : MonoBehaviour
     }
     public void RecoveryScreen()
     {
-        configScriptable.PopulateConfig();
-    
+        technicalScriptable.PopulateConfig();
+
         UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
         uIChangeRaffle.SelectPanelForActivate(sceneId);
 
@@ -67,9 +68,9 @@ public class GameManager : MonoBehaviour
         globeController.UpdateStateVisibilityButtonsTicket(false);
 
         RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem, true);
-        uIChangeRaffle.DefineModalyties(GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].modalidades);
+        uIChangeRaffle.RaffleTypeScene(GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].modalidades);
     }
- 
+
     public void LoadSceneGame(string map)
     {
         StartCoroutine(ChangeScene(map));
@@ -94,48 +95,7 @@ public class GameManager : MonoBehaviour
         isConnected = true;
         OnPopulateRaffles?.Invoke();
     }
-    //private void LoadLotteryInfos()
-    //{
-    //    //StartCoroutine(GetLotteryInfos(baseUrl1 + RestNetworkManager.instance.urlInfoLottery));
-    //    //StartCoroutine(GetLotteryInfos(baseUrl2 + RestNetworkManager.instance.urlInfoLottery));
-
-    //}
-    //private IEnumerator GetLotteryResult(string uri)
-    //{
-
-    //    using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-    //    {
-    //        yield return webRequest.SendWebRequest();
-
-    //        string[] pages = uri.Split('/');
-    //        int page = pages.Length - 1;
-
-    //        switch (webRequest.result)
-    //        {
-    //            case UnityWebRequest.Result.ConnectionError:
-    //            case UnityWebRequest.Result.DataProcessingError:
-    //                Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-    //                break;
-    //            case UnityWebRequest.Result.ProtocolError:
-    //                Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-    //                break;
-    //            case UnityWebRequest.Result.Success:
-    //                {
-    //                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-    //                    string json = webRequest.downloadHandler.text;
-    //                    JsonUtility.FromJsonOverwrite(json, lotteryResultScriptable);
-    //                }
-    //                break;
-    //        }
-    //    }
-    //}
-    //private void LoadLotteryResult()
-    //{
-    //    //// StartCoroutine(GetLotteryResult(baseUrl1 + RestNetworkManager.instance.urlResultLottery));
-    //    //StartCoroutine(GetLotteryResult(baseUrl2 + RestNetworkManager.instance.urlResultLottery));
-
-    //}
-
+  
     #region GLOBE FUNCTIONS
     public void SetNewBall(string newBall)
     {
@@ -195,7 +155,7 @@ public class GameManager : MonoBehaviour
     {
         globeRaffleScriptable.bolasSorteadas.Clear();
         globeRaffleScriptable.porUmaBolas.Clear();
-        globeRaffleScriptable.porDuasBolas=0;
+        globeRaffleScriptable.porDuasBolas = 0;
         globeRaffleScriptable.ganhadorContemplado = new TicketInfos[0];
     }
     #endregion

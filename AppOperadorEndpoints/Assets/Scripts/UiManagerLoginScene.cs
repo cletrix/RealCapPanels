@@ -73,7 +73,7 @@ public class UiManagerLoginScene : MonoBehaviour
                     {
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.globalScriptable);
+                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.editionScriptable);
                         GameManager.instance.CallEventLogin();
                         panelSelectEdition.SetActive(true);
                         panelLogin.SetActive(false);
@@ -89,9 +89,9 @@ public class UiManagerLoginScene : MonoBehaviour
         dropdown.ClearOptions();
         List<string> newOptions = new List<string>();
 
-        for (int i = 0; i < GameManager.instance.globalScriptable.edicaoInfos.Count; i++)
+        for (int i = 0; i < GameManager.instance.editionScriptable.edicaoInfos.Count; i++)
         {
-            string option = $"{GameManager.instance.globalScriptable.edicaoInfos[i].numero} - {GameManager.instance.globalScriptable.edicaoInfos[i].nome} - {GameManager.instance.globalScriptable.edicaoInfos[i].dataRealizacao}";
+            string option = $"{GameManager.instance.editionScriptable.edicaoInfos[i].numero} - {GameManager.instance.editionScriptable.edicaoInfos[i].nome} - {GameManager.instance.editionScriptable.edicaoInfos[i].dataRealizacao}";
             newOptions.Add(option);
         }
         dropdown.AddOptions(newOptions);

@@ -60,6 +60,7 @@ public class GlobeController : MonoBehaviour
 
     private void InitializeVariables()
     {
+        
         balls = new List<Ball>();
         balls.AddRange(panelGridBalls.GetComponentsInChildren<Ball>());
         ticketController = FindObjectOfType<TicketController>();
@@ -74,7 +75,7 @@ public class GlobeController : MonoBehaviour
             UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
             uIChangeRaffle.DisableAllButtons();
         }
-       
+        GameManager.instance.RecoveryScreen();
     }
 
     public void UpdateStateVisibilityButtonsTicket(bool isActive)
@@ -322,11 +323,11 @@ public class GlobeController : MonoBehaviour
     }
     private void WriteInfos()
     {
-        GameManager.instance.configScriptable.UpdateConfig(
+        GameManager.instance.technicalScriptable.UpdateConfig(
                 GameManager.instance.sceneId,
                 GameManager.instance.globeRaffleScriptable.bolasSorteadas,
                 GameManager.instance.globeScriptable.sorteioOrdem,
-                GameManager.instance.hasVisibleRaffle
+                GameManager.instance.canHideRaffle
                 );
     }
     public void ConfirmBallSelected()
@@ -370,7 +371,7 @@ public class GlobeController : MonoBehaviour
     {
         UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
-        uIChangeRaffle.SetStateVisibilityOfRaffle();
+        uIChangeRaffle.CheckStateVisibilityRaffle();
         GameManager.instance.globeScriptable.sorteioOrdem++;
         GameManager.instance.ResetScreenGlobe();
         yield return new WaitForSeconds(1);
@@ -388,9 +389,9 @@ public class GlobeController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         UpdateScreen();
         uIChangeRaffle.SendMessageGlobeInfos(
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-           GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
            GameManager.instance.globeScriptable.sorteioOrdem,
            GameManager.instance.globeScriptable.sorteioDescricao,
            GameManager.instance.globeScriptable.sorteioValor);
@@ -410,7 +411,7 @@ public class GlobeController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(GameManager.instance.hasVisibleRaffle)
+        if(GameManager.instance.canHideRaffle)
         {
             SetDisableAll();
         }
@@ -443,7 +444,7 @@ public class GlobeController : MonoBehaviour
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].cep,
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].estado,
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].dataSorteio,
-            GameManager.instance.globalScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].valor,
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].PDV,
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].bairoPDV,

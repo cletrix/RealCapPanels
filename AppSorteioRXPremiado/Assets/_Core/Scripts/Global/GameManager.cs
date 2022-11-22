@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
     public Camera cameraActive;
     private void Start()
     {
-
         InitializeVariables();
     }
     private void InitializeVariables()

@@ -21071,7 +21071,7 @@ GameObject:
   - component: {fileID: 1293479481}
   - component: {fileID: 1293479484}
   m_Layer: 5
-  m_Name: PanelRaffleInfos
+  m_Name: PanelRaffleGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29912,9 +29912,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btRecovery: {fileID: 134799525}
   infosRaffle: {fileID: 1293479484}
-  panelRaffleLottery: {fileID: 0}
-  panelRaffleGlobe: {fileID: 0}
-  panelRaffleSpin: {fileID: 0}
+  panelRaffleLottery: {fileID: 782738951}
+  panelRaffleGlobe: {fileID: 1179880962}
+  panelRaffleSpin: {fileID: 630970575}
   btRaffleLottery: {fileID: 1177021837}
   btRaffleGlobe: {fileID: 561351718}
   btRaffleSpin: {fileID: 29949753}

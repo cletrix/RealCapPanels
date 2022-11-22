@@ -72,7 +72,7 @@ public class Ball : MonoBehaviour
     }
     public void SetSize(float size = 1.4f, float _delay = 0.5f)
     {
-        RotateLoop(360, 0.5f, delay: _delay, 1);
+        //RotateLoop(360, 0.5f, delay: _delay, 1);
         ballTransform.DOScale(size, 0.5f).SetDelay(_delay);
     }
     public void RotateLoop(float rotZ, float rotSpeed = 0.5f, float delay = 0f, int loop = 2)

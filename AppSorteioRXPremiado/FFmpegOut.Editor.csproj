@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5F45F00C-F08C-45FA-C04C-B2D027707416}</ProjectGuid>
+    <ProjectGuid>{EB30E916-9EF4-1F68-CD67-22D65D37C63E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>FFmpegOut.Editor</AssemblyName>
@@ -303,16 +303,16 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenEditor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="zxing.unity">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Assets/_Core/ExternalAssets/Plugins/zxing.unity.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/_Core/ExternalAssets/Plugins/zxing.unity.dll</HintPath>
     </Reference>
     <Reference Include="RiptideNetworking">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Assets/Plugins/RiptideNetwork/RiptideNetworking.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/RiptideNetwork/RiptideNetworking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -669,15 +669,15 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/Unity Projects/AppSorteioRealXPremiado/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="FFmpegOut.csproj">
-      <Project>{D6A12FE0-65CA-7A0F-0F84-24B2FC29607E}</Project>
+      <Project>{F65CA565-E954-60A1-D19A-FD1A4E32C030}</Project>
       <Name>FFmpegOut</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

@@ -63,15 +63,49 @@ public class RestNetworkManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnPopulateRaffles += GetRaffleInfos;
+        
     }
     private void OnDisable()
     {
         GameManager.OnPopulateRaffles -= GetRaffleInfos;
     }
+    private void Start()
+    {
+       // StartCoroutine(PostConfig(baseUrl1 + urlWriteMemory));
+    }
+    public IEnumerator GetInfosServer(string uri)
+    {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            yield return webRequest.SendWebRequest();
 
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    {
+                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                        string json = webRequest.downloadHandler.text;
+                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoverScriptable);
+
+                       // GameManager.instance.RecoveryScreen();
+                    }
+                    break;
+            }
+        }
+    }
     private IEnumerator PostConfig(string uri)
     {
-        ConfigScriptable config = GameManager.instance.configScriptable;
+        technicalScriptable config = GameManager.instance.technicalScriptable;
         string json = JsonUtility.ToJson(config);
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
         {
@@ -149,10 +183,10 @@ public class RestNetworkManager : MonoBehaviour
                         char[] charsToTrim = { 'b', '\'' };
                         string json = webRequest.downloadHandler.text;
                         string newj = json.Trim(charsToTrim);
-                        print("newjson                " + newj);
-                        JsonUtility.FromJsonOverwrite(newj, GameManager.instance.configScriptable);
+                        print("newjson-------------------" + newj);
+                        JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
 
-                        GameManager.instance.RecoveryScreen();
+                       
                     }
                     break;
             }
@@ -161,14 +195,15 @@ public class RestNetworkManager : MonoBehaviour
     public void GetRaffleInfos()
     {
        
+       // StartCoroutine(GetInfosServer(baseUrl1));
+       
         StartCoroutine(GetLotteryInfos(baseUrl1 + urlInfoLottery));
-        // StartCoroutine(GetLotteryInfos(baseUrl2 + urlInfoLottery));
-        //
+        
+        StartCoroutine(GetConfig(baseUrl1 + urlReadMemory));
+        
         StartCoroutine(GetGlobeInfos(baseUrl1 + urlGlobeInfos));
-        // StartCoroutine(GetGlobeInfos(baseUrl2 + urlGlobeInfos));
 
         StartCoroutine(GetSpinInfos(baseUrl1 + urlSpin));
-        // StartCoroutine(GetSpinInfos(baseUrl2 + urlSpin));
 
     }
     private IEnumerator GetLotteryInfos(string uri)
@@ -281,15 +316,7 @@ public class RestNetworkManager : MonoBehaviour
                             {
                                 globeController.PopulatePossibleWinners();
                                 globeController.SendBallsRaffledToScreen();
-                                //if (hasUpdateScreen)
-                                //{
-                                //    globeController.PopulatePossibleWinners();
-                                //    globeController.UpdateScreen();
-                                //}
-                                //else
-                                //{
-                                    
-                                //}
+                               
                             }
                         }
                         else
@@ -373,7 +400,7 @@ public class RestNetworkManager : MonoBehaviour
                         JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.spinResultScriptable);
                         SpinController spinController = FindObjectOfType<SpinController>();
                         spinController.ShowNumberLuckySpin();
-                        GameManager.instance.configScriptable.AddSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado, GameManager.instance.spinResultScriptable.sorteioOrdem);
+                        GameManager.instance.technicalScriptable.AddSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado, GameManager.instance.spinResultScriptable.sorteioOrdem);
                     }
                     break;
             }

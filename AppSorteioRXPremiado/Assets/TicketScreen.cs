@@ -20,7 +20,8 @@ public class TicketScreen : MonoBehaviour
 
     [Header("WINNER INFOS")]
     [SerializeField] private TextMeshProUGUI prizeName;
-    [SerializeField] private TextMeshProUGUI txtRaffleRound;
+    [SerializeField] private TextMeshProUGUI txtGlobeRound;
+    [SerializeField] private TextMeshProUGUI txtSpinRound;
     [Space]
     [SerializeField] private TextMeshProUGUI nameWinner;
     [SerializeField] private TextMeshProUGUI cpf;
@@ -137,7 +138,7 @@ public class TicketScreen : MonoBehaviour
             imgTicket.sprite = bgticketGlobe;
             globeSuperior.SetActive(true);
             spinSuperior.SetActive(false);
-            txtRaffleRound.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
+            txtGlobeRound.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
 
         }
         else
@@ -146,7 +147,7 @@ public class TicketScreen : MonoBehaviour
             spinSuperior.SetActive(true);
             globeSuperior.SetActive(false);
             SetResult(infosWinner[21]);
-            txtRaffleRound.text = $"{GameManager.instance.luckySpinScriptable.currentSpinID}º Sorteio";
+            txtSpinRound.text = $"{GameManager.instance.luckySpinScriptable.currentSpinID}º Sorteio";
 
         }
         PopulateTicketInfos(
