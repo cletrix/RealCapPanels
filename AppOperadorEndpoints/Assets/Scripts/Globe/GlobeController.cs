@@ -66,7 +66,7 @@ public class GlobeController : MonoBehaviour
         ticketController = FindObjectOfType<TicketController>();
         PopulateBalls();
         btNextRaffle.interactable = false;
-        //UpdateScreen();
+        UpdateScreen();
         UpdateStateVisibilityButtonsTicket(false);
 
         if (GameManager.instance.isbackup)

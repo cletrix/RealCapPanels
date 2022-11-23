@@ -58,15 +58,18 @@ public class GameManager : MonoBehaviour
     }
     public void RecoveryScreen()
     {
-        globeRaffleScriptable.bolasSorteadas.Clear();
-        foreach (var item in recoveryScriptable.globe_balls)
-        {
-            globeRaffleScriptable.bolasSorteadas.Add(item.ToString());
-        }
+        //globeRaffleScriptable.bolasSorteadas.Clear();
+        //foreach (var item in recoveryScriptable.globe_balls)
+        //{
+        //    globeRaffleScriptable.bolasSorteadas.Add(item.ToString());
+        //}
 
-        GlobeController globeController = FindObjectOfType<GlobeController>();
-        if (globeController != null)
-            globeController.UpdateScreen();
+        if (isbackup)
+        {
+            GlobeController globeController = FindObjectOfType<GlobeController>();
+            if (globeController != null)
+                globeController.UpdateScreen();
+        }
     }
 
     public void LoadSceneGame(string map)
@@ -101,7 +104,7 @@ public class GameManager : MonoBehaviour
         {
             globeRaffleScriptable.SetNewBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem);
-            WriteInfos();
+            WriteInfosGlobe();
         }
     }
     public List<String> GetBallsRaffled()
@@ -114,7 +117,7 @@ public class GameManager : MonoBehaviour
         {
             globeRaffleScriptable.RevokeBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem);
-            WriteInfos();
+            WriteInfosGlobe();
         }
     }
     public List<string> GetForOneBalls()
@@ -157,18 +160,13 @@ public class GameManager : MonoBehaviour
         globeRaffleScriptable.porUmaBolas.Clear();
         globeRaffleScriptable.porDuasBolas = 0;
         globeRaffleScriptable.ganhadorContemplado = new TicketInfos[0];
-        WriteInfos();
+        WriteInfosGlobe();
     }
     #endregion
 
-    public void WriteInfos()
+    public void WriteInfosGlobe()
     {
-        GameManager.instance.technicalScriptable.UpdateConfig(
-                GameManager.instance.sceneId,
-                GameManager.instance.globeRaffleScriptable.bolasSorteadas,
-                GameManager.instance.globeScriptable.sorteioOrdem,
-                GameManager.instance.isVisibleRaffle
-                );
+        technicalScriptable.UpdateConfig(sceneId, isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas);
     }
     private void Update()
     {

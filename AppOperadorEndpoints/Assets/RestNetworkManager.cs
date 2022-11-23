@@ -116,7 +116,7 @@ public class RestNetworkManager : MonoBehaviour
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoveryScriptable);
-                        GameManager.instance.RecoveryScreen();
+                        GameManager.instance.recoveryScriptable.UpdateInfos();
                     }
                     break;
             }
@@ -405,7 +405,6 @@ public class RestNetworkManager : MonoBehaviour
                         JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.spinResultScriptable);
                         SpinController spinController = FindObjectOfType<SpinController>();
                         spinController.ShowNumberLuckySpin();
-                        GameManager.instance.technicalScriptable.AddSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado, GameManager.instance.spinResultScriptable.sorteioOrdem);
                     }
                     break;
             }

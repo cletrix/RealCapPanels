@@ -13,11 +13,54 @@ MonoBehaviour:
   m_Name: GlobeRaffleSettings
   m_EditorClassIdentifier: 
   bolasSorteadas:
+  - 1
+  - 2
+  - 3
+  - 4
   - 5
-  - 29
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 15
+  - 16
+  - 17
+  - 14
+  - 20
+  - 22
+  - 24
+  - 25
+  - 26
+  - 27
+  - 30
   - 31
-  - 21
-  porDuasBolas: 0
-  porUmaBolas: []
+  - 32
+  - 33
+  - 40
+  - 41
+  - 39
+  - 45
+  - 47
+  - 48
+  - 50
+  - 51
+  - 52
+  - 53
+  - 60
+  - 56
+  - 59
+  porDuasBolas: 14
+  porUmaBolas:
+  - numeroTitulo: 0000395
+    numeroChance: "1\xB0 Chance"
+    numeroBola: 35
+  - numeroTitulo: 0009818
+    numeroChance: "1\xB0 Chance"
+    numeroBola: 18
+  - numeroTitulo: 0041069
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 58
   valorPremio: 2000
   ganhadorContemplado: []

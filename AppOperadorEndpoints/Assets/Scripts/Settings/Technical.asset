@@ -13,19 +13,6 @@ MonoBehaviour:
   m_Name: Technical
   m_EditorClassIdentifier: 
   currentSceneID: 2
-  globeRaffle:
-  - 5
-  - 19
-  - 29
-  - 32
-  - 22
-  - 46
-  - 42
-  - 27
-  - 43
-  - 57
-  - 35
-  globeOrder: 1
-  spinOrder: 1
-  isVisibleRaffle: 0
-  spinsNumberTickets: []
+  isVisibleRaffle: 1
+  forTwoBalls: 0
+  forOneBalls: []

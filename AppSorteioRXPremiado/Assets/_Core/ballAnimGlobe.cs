@@ -43,16 +43,15 @@ public class ballAnimGlobe : MonoBehaviour
         Physics.IgnoreCollision(this.myCollider, objectIgnore);
         transform.DOMove(pos1.position, 0.1f).OnComplete(() =>
         {   
-            transform.DOMove(pos2.position, 0.3f).OnComplete(() =>
+            transform.DOMove(pos2.position, 0.2f).OnComplete(() =>
             {
                 animGlobeController.isFinishMovement = true;
                
                 gameObject.SetActive(false);
-                transform.DOMove(pos3.position, 0.2f).OnComplete(() =>
+                transform.DOMove(pos3.position, 0.1f).OnComplete(() =>
                 {
                     rigidBody.isKinematic = true;
                     animGlobeController.isFinishMovement = false;
-
                 });
             });
         });

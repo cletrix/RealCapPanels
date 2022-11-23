@@ -86,14 +86,14 @@ public class UIChangeRaffleType : MonoBehaviour
     private void SetButtonsEvent()
     {
         btRaffleLottery.onClick.AddListener(SetRaffleLottery);
-        btRaffleLottery.onClick.AddListener(GameManager.instance.WriteInfos);
+        btRaffleLottery.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
         btRaffleGlobe.onClick.AddListener(SetRaffleGlobe);
-        btRaffleGlobe.onClick.AddListener(GameManager.instance.WriteInfos);
+        btRaffleGlobe.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
         btRaffleSpin.onClick.AddListener(SetRaffleSpin);
-        btRaffleSpin.onClick.AddListener(GameManager.instance.WriteInfos);
+        btRaffleSpin.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
         btVisibilityRaffle.onClick.AddListener(SetStateHasRaffleVisibility);
         btVisibilityRaffle.onClick.AddListener(SendMessageVisibilityRaffle);
-        btVisibilityRaffle.onClick.AddListener(GameManager.instance.WriteInfos);
+        btVisibilityRaffle.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
 
     }
 
