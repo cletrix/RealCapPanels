@@ -28,8 +28,8 @@ public class RecoveryScriptable : ScriptableObject
         {
             GameManager.instance.globeRaffleScriptable.bolasSorteadas.Add(item.ToString());
         }
-        GameManager.instance.RecoveryScreen();
-       // RestNetworkManager.instance.CallReadMemory();
+        
+       
 
 
 

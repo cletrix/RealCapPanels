@@ -9,7 +9,7 @@ public class technicalScriptable : ScriptableObject
     public int currentSceneID;
     public bool isVisibleRaffle;
     public int forTwoBalls;
-    public List<GlobeRaffleScriptable.porUmaBola> forOneBalls;
+    public List<GlobeRaffleScriptable.porUmaBola> forOneBalls = new List<GlobeRaffleScriptable.porUmaBola>();
 
     public void UpdateConfig(int sceneId, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall)
     {
@@ -28,6 +28,13 @@ public class technicalScriptable : ScriptableObject
     {
         GameManager.instance.sceneId = currentSceneID;
         GameManager.instance.isVisibleRaffle = isVisibleRaffle;
+        GameManager.instance.globeRaffleScriptable.porDuasBolas = forTwoBalls;
+        GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();
+        GameManager.instance.globeRaffleScriptable.porUmaBolas.AddRange(forOneBalls);
+        GameManager.instance.RecoveryScreen();
+        
+
+
     }
 
 }

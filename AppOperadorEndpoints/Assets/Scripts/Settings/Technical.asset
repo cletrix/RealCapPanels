@@ -10,9 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7553c0730aac7bb4eb3ed4b69faab2e6, type: 3}
-  m_Name: Technical
+  m_Name: 
   m_EditorClassIdentifier: 
   currentSceneID: 2
   isVisibleRaffle: 1
-  forTwoBalls: 0
-  forOneBalls: []
+  forTwoBalls: 43
+  forOneBalls:
+  - numeroTitulo: 0061052
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 45
+  - numeroTitulo: 0130080
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 52
+  - numeroTitulo: 0130107
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 50
+  - numeroTitulo: 0070392
+    numeroChance: "3\xB0 Chance"
+    numeroBola: 59

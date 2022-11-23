@@ -128,6 +128,7 @@ public class GameManager : MonoBehaviour
         {
             forOneBalls.Add($"{globeRaffleScriptable.porUmaBolas[i].numeroBola} - {globeRaffleScriptable.porUmaBolas[i].numeroChance} - {globeRaffleScriptable.porUmaBolas[i].numeroTitulo}");
         }
+        WriteInfosGlobe();
         return forOneBalls;
     }
 
@@ -139,6 +140,7 @@ public class GameManager : MonoBehaviour
         {
             winners.Add($"{globeRaffleScriptable.ganhadorContemplado[i].numeroTitulo} - {globeRaffleScriptable.ganhadorContemplado[i].chance} ");
         }
+        WriteInfosGlobe();
         return winners;
     }
     public string GetForTwoBalls()

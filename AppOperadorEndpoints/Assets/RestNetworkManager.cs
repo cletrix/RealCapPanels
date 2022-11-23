@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
 using static GameManager;
@@ -93,6 +95,7 @@ public class RestNetworkManager : MonoBehaviour
             StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
         }
     }
+
     private IEnumerator GetInfosServer(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -117,24 +120,14 @@ public class RestNetworkManager : MonoBehaviour
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoveryScriptable);
                         GameManager.instance.recoveryScriptable.UpdateInfos();
+                        CallReadMemory();
                     }
                     break;
             }
             Invoke("CallGetInfoServer", 2f);
         }
     }
-    public string GetLocalIPAddress()
-    {
-        var host = Dns.GetHostEntry(Dns.GetHostName());
-        foreach (var ip in host.AddressList)
-        {
-            if (ip.AddressFamily == AddressFamily.InterNetwork)
-            {
-                return ip.ToString();
-            }
-        }
-        throw new System.Exception("No network adapters with an IPv4 address in the system!");
-    }
+
     public void CallWriteMemory()
     {
         if (!GameManager.instance.isbackup)
@@ -148,12 +141,17 @@ public class RestNetworkManager : MonoBehaviour
     private IEnumerator PostConfig(string uri)
     {
         technicalScriptable config = GameManager.instance.technicalScriptable;
+
+        for (int i = 0; i < config.forOneBalls.Count; i++)
+        {
+            config.forOneBalls[i].numeroChance = config.forOneBalls[i].numeroChance.Replace("°", "");
+        }
         string json = JsonUtility.ToJson(config);
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
         {
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
-            webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
-            webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+            webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
+            webRequest.downloadHandler = new DownloadHandlerBuffer();
             webRequest.SetRequestHeader("Content-Type", "application/json");
             yield return webRequest.SendWebRequest();
 
@@ -203,8 +201,17 @@ public class RestNetworkManager : MonoBehaviour
                         char[] charsToTrim = { 'b', '\'' };
                         string json = webRequest.downloadHandler.text;
                         string newj = json.Trim(charsToTrim);
-                        print("newjson-------------------" + newj);
-                        JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
+                        print("newjson--" + newj);
+
+                        technicalScriptable technical = new technicalScriptable();
+
+                        JsonUtility.FromJsonOverwrite(newj, technical);
+
+                        for (int i = 0; i < technical.forOneBalls.Count; i++)
+                        {
+                            GameManager.instance.technicalScriptable.forOneBalls[i].numeroChance = technical.forOneBalls[i].numeroChance.Insert(1,"°");
+                        }
+                        GameManager.instance.technicalScriptable.PopulateConfig();
                     }
                     break;
             }
