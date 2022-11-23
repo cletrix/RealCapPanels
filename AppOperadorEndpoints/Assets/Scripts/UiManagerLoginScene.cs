@@ -36,13 +36,11 @@ public class UiManagerLoginScene : MonoBehaviour
         {
             GameManager.instance.isbackup = false;
             btSelectBackup.image.color = Color.white;
-            //btSelectBackup.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
         }
         else
         {
             GameManager.instance.isbackup = true;
             btSelectBackup.image.color = Color.green;
-           // btSelectBackup.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
         }
     }
     public void Login()

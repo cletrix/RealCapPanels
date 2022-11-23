@@ -44,8 +44,9 @@ public class RestNetworkManager : MonoBehaviour
     [Header("BASE URL")]
 
     public string baseUrl1 = "45.235.54.188:43212";
-    public string urlWriteMemory = "writeMemory";
-    public string urlReadMemory = "readMemory";
+    public string payloadWrite = "writeMemory";
+    public string payloadRead = "readMemory";
+    public string payloadInfo = "info";
     [Header("PAYLOADS")]
     public string urlLogin;
     [Space]
@@ -60,6 +61,11 @@ public class RestNetworkManager : MonoBehaviour
 
 
     #region REQUESTS
+
+    private void Start()
+    {
+        //StartCoroutine(PostConfig(baseUrl1 + urlWriteMemory));
+    }
     private void OnEnable()
     {
         GameManager.OnPopulateRaffles += GetRaffleInfos;
@@ -69,11 +75,25 @@ public class RestNetworkManager : MonoBehaviour
     {
         GameManager.OnPopulateRaffles -= GetRaffleInfos;
     }
-    private void Start()
+
+    public void GetRaffleInfos()
     {
-       //StartCoroutine(PostConfig(baseUrl1 + urlWriteMemory));
+        CallGetInfoServer();
+        StartCoroutine(GetLotteryInfos(baseUrl1 + urlInfoLottery));
+
+        StartCoroutine(GetGlobeInfos(baseUrl1 + urlGlobeInfos));
+
+        StartCoroutine(GetSpinInfos(baseUrl1 + urlSpin));
+
     }
-    public IEnumerator GetInfosServer(string uri)
+    public void CallGetInfoServer()
+    {
+        if (GameManager.instance.isbackup)
+        {
+            StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
+        }
+    }
+    private IEnumerator GetInfosServer(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
@@ -95,12 +115,12 @@ public class RestNetworkManager : MonoBehaviour
                     {
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoverScriptable);
-
-                        // GameManager.instance.RecoveryScreen();
+                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoveryScriptable);
+                        GameManager.instance.RecoveryScreen();
                     }
                     break;
             }
+            Invoke("CallGetInfoServer", 2f);
         }
     }
     public string GetLocalIPAddress()
@@ -118,12 +138,12 @@ public class RestNetworkManager : MonoBehaviour
     public void CallWriteMemory()
     {
         if (!GameManager.instance.isbackup)
-            StartCoroutine(PostConfig(baseUrl1 + urlWriteMemory));
+            StartCoroutine(PostConfig(baseUrl1 + payloadWrite));
     }
 
     public void CallReadMemory()
     {
-        StartCoroutine(GetConfig(baseUrl1 + urlReadMemory));
+        StartCoroutine(GetConfig(baseUrl1 + payloadRead));
     }
     private IEnumerator PostConfig(string uri)
     {
@@ -185,27 +205,12 @@ public class RestNetworkManager : MonoBehaviour
                         string newj = json.Trim(charsToTrim);
                         print("newjson-------------------" + newj);
                         JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
-
-
                     }
                     break;
             }
         }
     }
-    public void GetRaffleInfos()
-    {
 
-        // StartCoroutine(GetInfosServer(baseUrl1));
-
-        StartCoroutine(GetConfig(baseUrl1 + urlReadMemory));
-        StartCoroutine(GetLotteryInfos(baseUrl1 + urlInfoLottery));
-
-
-        StartCoroutine(GetGlobeInfos(baseUrl1 + urlGlobeInfos));
-
-        StartCoroutine(GetSpinInfos(baseUrl1 + urlSpin));
-
-    }
     private IEnumerator GetLotteryInfos(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))

@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public static event Action OnPopulateRaffles;
 
-    public RecoveryScriptable recoverScriptable;
+    public RecoveryScriptable recoveryScriptable;
     [Space]
     public EditionInfosScriptable editionScriptable;
     public technicalScriptable technicalScriptable;
@@ -59,10 +59,14 @@ public class GameManager : MonoBehaviour
     public void RecoveryScreen()
     {
         globeRaffleScriptable.bolasSorteadas.Clear();
-        globeRaffleScriptable.bolasSorteadas.AddRange(technicalScriptable.globeRaffle);
+        foreach (var item in recoveryScriptable.globe_balls)
+        {
+            globeRaffleScriptable.bolasSorteadas.Add(item.ToString());
+        }
 
         GlobeController globeController = FindObjectOfType<GlobeController>();
-        globeController.UpdateScreen();
+        if (globeController != null)
+            globeController.UpdateScreen();
     }
 
     public void LoadSceneGame(string map)

@@ -15,4 +15,6 @@ public class RecoveryScriptable : ScriptableObject
     public List<List<int>> card_winner_globe;
     public List<List<string>> titulo_winner_giro;
     public List<List<string>> number_winner_giro;
+
+    public List<List<int>> winner_globo_balls;
 }

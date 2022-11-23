@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf97fc626a479643a778fba5d915cd5, type: 3}
   m_Name: RecoveryInfosServer
   m_EditorClassIdentifier: 
-  limit_globo: 0
-  limit_spin: 0
-  sorteio_tipo: 
-  sorteio_globo_numero: 0
+  limit_globo: 5
+  limit_spin: 20
+  sorteio_tipo: Globe
+  sorteio_globo_numero: 1
   sorteio_spin_numero: 0
-  globe_balls: 00000000
-  globe_partial_result: 00000000
+  globe_balls: 120000001f000000210000001700000028000000370000003b000000240000000f000000070000000a000000260000001c0000002c00000023000000
+  globe_partial_result: 000000000000000000000000
