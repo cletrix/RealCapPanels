@@ -13,60 +13,58 @@ MonoBehaviour:
   m_Name: GlobeRaffleSettings
   m_EditorClassIdentifier: 
   bolasSorteadas:
-  - 1
-  - 2
   - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 8
-  - 9
-  - 10
-  - 11
-  - 12
-  - 13
-  - 14
-  - 15
-  - 16
-  - 17
   - 18
-  - 19
   - 20
-  - 21
-  - 22
-  - 23
-  - 24
-  - 25
-  - 26
-  - 27
-  - 28
-  - 29
-  - 30
-  - 31
-  - 32
-  - 33
-  - 34
   - 35
-  - 36
-  - 37
-  - 38
+  - 29
+  - 43
   - 39
+  - 46
+  - 10
+  - 12
+  - 36
+  - 60
+  - 45
+  - 53
+  - 13
+  - 21
+  - 42
+  - 22
+  - 31
+  - 5
+  - 56
+  - 34
+  - 27
+  - 7
+  - 59
+  - 49
+  - 16
+  - 52
+  - 55
+  - 25
+  - 38
   - 40
-  - 41
-  porDuasBolas: 43
+  - 48
+  - 2
+  - 9
+  - 44
+  - 24
+  - 26
+  - 51
+  porDuasBolas: 37
   porUmaBolas:
-  - numeroTitulo: 0061052
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 45
-  - numeroTitulo: 0130080
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 52
-  - numeroTitulo: 0130107
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 50
-  - numeroTitulo: 0070392
-    numeroChance: "3\xB0 Chance"
-    numeroBola: 59
-  valorPremio: 0
+  - numeroTitulo: 0084439
+    numeroChance: 1 Chance
+    numeroBola: 14
+  - numeroTitulo: 0077901
+    numeroChance: 2 Chance
+    numeroBola: 15
+  - numeroTitulo: 0124023
+    numeroChance: 3 Chance
+    numeroBola: 19
+  - numeroTitulo: 0026016
+    numeroChance: 3 Chance
+    numeroBola: 19
+  valorPremio: 2000
   ganhadorContemplado: []

@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -31,7 +29,7 @@ public class GameManager : MonoBehaviour
     public RecoveryScriptable recoveryScriptable;
     [Space]
     public EditionInfosScriptable editionScriptable;
-    public technicalScriptable technicalScriptable;
+    public TechnicalScriptable technicalScriptable;
     [Space]
     public LotteryScriptable lotteryScriptable;
     public LotteryResultScriptable lotteryResultScriptable;
@@ -45,6 +43,7 @@ public class GameManager : MonoBehaviour
     [Header("Settings")]
     public bool isConnected = false;
     public bool isVisibleRaffle = false;
+    public bool isWinner = false;
     public int EditionIndex { get; private set; }
 
     public void SetEditionIndex(int value)
@@ -55,19 +54,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         globeRaffleScriptable.ResetInfos();
+        technicalScriptable.ResetInfos();
     }
     public void RecoveryScreen()
     {
-        //globeRaffleScriptable.bolasSorteadas.Clear();
-        //foreach (var item in recoveryScriptable.globe_balls)
-        //{
-        //    globeRaffleScriptable.bolasSorteadas.Add(item.ToString());
-        //}
-
         if (isbackup)
         {
             GlobeController globeController = FindObjectOfType<GlobeController>();
-            if (globeController != null)
+            if (globeController != null && isWinner == false)
                 globeController.UpdateScreen();
         }
     }
@@ -104,7 +98,6 @@ public class GameManager : MonoBehaviour
         {
             globeRaffleScriptable.SetNewBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem);
-            WriteInfosGlobe();
         }
     }
     public List<String> GetBallsRaffled()
@@ -117,7 +110,6 @@ public class GameManager : MonoBehaviour
         {
             globeRaffleScriptable.RevokeBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem);
-            WriteInfosGlobe();
         }
     }
     public List<string> GetForOneBalls()
@@ -128,7 +120,6 @@ public class GameManager : MonoBehaviour
         {
             forOneBalls.Add($"{globeRaffleScriptable.porUmaBolas[i].numeroBola} - {globeRaffleScriptable.porUmaBolas[i].numeroChance} - {globeRaffleScriptable.porUmaBolas[i].numeroTitulo}");
         }
-        WriteInfosGlobe();
         return forOneBalls;
     }
 
@@ -140,7 +131,6 @@ public class GameManager : MonoBehaviour
         {
             winners.Add($"{globeRaffleScriptable.ganhadorContemplado[i].numeroTitulo} - {globeRaffleScriptable.ganhadorContemplado[i].chance} ");
         }
-        WriteInfosGlobe();
         return winners;
     }
     public string GetForTwoBalls()
@@ -162,6 +152,7 @@ public class GameManager : MonoBehaviour
         globeRaffleScriptable.porUmaBolas.Clear();
         globeRaffleScriptable.porDuasBolas = 0;
         globeRaffleScriptable.ganhadorContemplado = new TicketInfos[0];
+
         WriteInfosGlobe();
     }
     #endregion
@@ -170,7 +161,7 @@ public class GameManager : MonoBehaviour
     {
         technicalScriptable.UpdateConfig(sceneId, isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas);
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -179,6 +170,16 @@ public class GameManager : MonoBehaviour
                 Application.Quit();
             }
         }
+
+        if (globeRaffleScriptable.ganhadorContemplado.Length > 0)
+        {
+            isWinner = true;
+        }
+        else
+        {
+            isWinner = false;
+        }
+        print(isWinner);
     }
 
     [Serializable]

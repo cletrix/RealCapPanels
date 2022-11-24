@@ -60,7 +60,7 @@
     <Compile Include="Assets\Scripts\Spin\SpinScriptable.cs" />
     <Compile Include="Assets\Scripts\Spin\SpinRaffleData.cs" />
     <Compile Include="Assets\Scripts\Settings\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Settings\technicalScriptable.cs" />
+    <Compile Include="Assets\Scripts\Settings\TechnicalScriptable.cs" />
     <Compile Include="Assets\Scripts\Globe\FadeController.cs" />
     <Compile Include="Assets\Scripts\Globe\GlobeScriptable.cs" />
     <Compile Include="Assets\Scripts\Lottery\LotteryScriptable.cs" />

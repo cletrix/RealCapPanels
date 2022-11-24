@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using RiptideNetworking;
 using System.Collections;
+using System.Linq;
 
 public class GlobeController : MonoBehaviour
 {
@@ -197,7 +198,6 @@ public class GlobeController : MonoBehaviour
         {
             indexBalls.Add(int.Parse(GameManager.instance.globeRaffleScriptable.bolasSorteadas[i]) - 1);
 
-            //balls[int.Parse(GameManager.instance.globeRaffleScriptable.bolasSorteadas[i]) - 1].SetHasSelected(false);
             balls[int.Parse(GameManager.instance.globeRaffleScriptable.bolasSorteadas[i]) - 1].SetHasRaffled(true);
         }
         CheckStateBalls();
@@ -274,6 +274,7 @@ public class GlobeController : MonoBehaviour
 
             btNextRaffle.interactable = true;
             SetDisableAllNotRevoke();
+
         }
         else
         {
@@ -295,6 +296,7 @@ public class GlobeController : MonoBehaviour
             isWinner = false;
         }
         txtForTwoBalls.text = GameManager.instance.GetForTwoBalls();
+        GameManager.instance.technicalScriptable.UpdateTicketInfo(GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList());
 
         for (int i = 0; i < infos.Count; i++)
         {
@@ -306,6 +308,7 @@ public class GlobeController : MonoBehaviour
             possiblesWinners[i] = inst;
         }
         SetInteractablePossiblesWinners(isWinner);
+        GameManager.instance.WriteInfosGlobe();
     }
     public void SetInteractablePossiblesWinners(bool _isActive)
     {
@@ -391,15 +394,12 @@ public class GlobeController : MonoBehaviour
             GameManager.instance.globeScriptable.sorteioValor);
 
         btNextRaffle.interactable = false;
-       
     }
 
     public void SetInteractableBtNextRaffle(bool isActive)
     {
         btNextRaffle.interactable = isActive;
     }
-
-
     public void ShowTicketGlobe()
     {
         foreach (var item in possiblesWinners)

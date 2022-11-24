@@ -90,10 +90,7 @@ public class RestNetworkManager : MonoBehaviour
     }
     public void CallGetInfoServer()
     {
-        if (GameManager.instance.isbackup)
-        {
-            StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
-        }
+        StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
     }
 
     private IEnumerator GetInfosServer(string uri)
@@ -124,7 +121,10 @@ public class RestNetworkManager : MonoBehaviour
                     }
                     break;
             }
-            Invoke("CallGetInfoServer", 2f);
+            if (GameManager.instance.isbackup )
+            {
+                Invoke("CallGetInfoServer", 2f);
+            }
         }
     }
 
@@ -140,7 +140,7 @@ public class RestNetworkManager : MonoBehaviour
     }
     private IEnumerator PostConfig(string uri)
     {
-        technicalScriptable config = GameManager.instance.technicalScriptable;
+        TechnicalScriptable config = GameManager.instance.technicalScriptable;
 
         for (int i = 0; i < config.forOneBalls.Count; i++)
         {
@@ -202,15 +202,7 @@ public class RestNetworkManager : MonoBehaviour
                         string json = webRequest.downloadHandler.text;
                         string newj = json.Trim(charsToTrim);
                         print("newjson--" + newj);
-
-                        technicalScriptable technical = new technicalScriptable();
-
-                        JsonUtility.FromJsonOverwrite(newj, technical);
-
-                        for (int i = 0; i < technical.forOneBalls.Count; i++)
-                        {
-                            GameManager.instance.technicalScriptable.forOneBalls[i].numeroChance = technical.forOneBalls[i].numeroChance.Insert(1,"°");
-                        }
+                        JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
                         GameManager.instance.technicalScriptable.PopulateConfig();
                     }
                     break;
@@ -281,7 +273,7 @@ public class RestNetworkManager : MonoBehaviour
     }
     private IEnumerator PostGlobeRaffle(string uri, int index, bool hasUpdateScreen = false)
     {
-        GameManager.RequestBallsRaffled ballsRaffled = new GameManager.RequestBallsRaffled();
+        RequestBallsRaffled ballsRaffled = new RequestBallsRaffled();
         ballsRaffled.balls = new List<int>();
         for (int i = 0; i < GameManager.instance.globeRaffleScriptable.bolasSorteadas.Count; i++)
         {
@@ -293,8 +285,8 @@ public class RestNetworkManager : MonoBehaviour
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
         {
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
-            webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
-            webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+            webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
+            webRequest.downloadHandler = new DownloadHandlerBuffer();
             webRequest.SetRequestHeader("Content-Type", "application/json");
             yield return webRequest.SendWebRequest();
 
