@@ -267,11 +267,11 @@ public class RestNetworkManager : MonoBehaviour
         }
     }
 
-    public void SendBallsRaffledFromServer(int orderIndex, bool hasUpdateScreen = false)
+    public void SendBallsRaffledFromServer(int orderIndex)
     {
-        StartCoroutine(PostGlobeRaffle(baseUrl1 + urlRaffleGlobe, orderIndex, hasUpdateScreen));
+        StartCoroutine(PostGlobeRaffle(baseUrl1 + urlRaffleGlobe, orderIndex));
     }
-    private IEnumerator PostGlobeRaffle(string uri, int index, bool hasUpdateScreen = false)
+    private IEnumerator PostGlobeRaffle(string uri, int index)
     {
         RequestBallsRaffled ballsRaffled = new RequestBallsRaffled();
         ballsRaffled.balls = new List<int>();

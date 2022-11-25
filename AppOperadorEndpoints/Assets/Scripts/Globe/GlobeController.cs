@@ -176,6 +176,23 @@ public class GlobeController : MonoBehaviour
         SetTxtViewBall(balls[indexBallSelected].GetNumberBall());
         CheckStateBalls();
     }
+    public void ConfirmBallSelected()
+    {
+        GameManager.instance.SetNewBall(balls[indexBallSelected].GetNumberBall());
+        hasRevoked = false;
+
+    }
+    public void RevokeBallSelected()
+    {
+        indexBalls.Remove(indexBalls[indexBalls.Count - 1]);
+        GameManager.instance.SetRemoveBall(balls[indexBallSelected].GetNumberBall());
+        lastBallRaffled.SetHasSelected(true);
+        lastBallRaffled.SetHasRaffled(false);
+        lastBallRaffled.SetHasCanRevoked(false);
+
+        hasRevoked = true;
+
+    }
     public void ClosePanelConfirmBall()
     {
         panelConfirmBall.SetActive(false);
@@ -203,10 +220,7 @@ public class GlobeController : MonoBehaviour
         CheckStateBalls();
         ValidateBall();
     }
-    public void GetInfosFromServer()
-    {
-        RestNetworkManager.instance.SendBallsRaffledFromServer(GameManager.instance.globeScriptable.sorteioOrdem, true);
-    }
+   
     public void SendBallsRaffledToScreen()
     {
         UpdateScreen();
@@ -325,23 +339,6 @@ public class GlobeController : MonoBehaviour
         }
     }
   
-    public void ConfirmBallSelected()
-    {
-        GameManager.instance.SetNewBall(balls[indexBallSelected].GetNumberBall());
-        hasRevoked = false;
-       
-    }
-    public void RevokeBallSelected()
-    {
-        indexBalls.Remove(indexBalls[indexBalls.Count - 1]);
-        GameManager.instance.SetRemoveBall(balls[indexBallSelected].GetNumberBall());
-        lastBallRaffled.SetHasSelected(true);
-        lastBallRaffled.SetHasRaffled(false);
-        lastBallRaffled.SetHasCanRevoked(false);
-
-        hasRevoked = true;
-
-    }
     public void ValidateBall()
     {
         PopulatePossibleWinners();
@@ -394,6 +391,9 @@ public class GlobeController : MonoBehaviour
             GameManager.instance.globeScriptable.sorteioValor);
 
         btNextRaffle.interactable = false;
+        RestNetworkManager.instance.SendBallsRaffledFromServer(GameManager.instance.globeScriptable.sorteioOrdem);
+
+
     }
 
     public void SetInteractableBtNextRaffle(bool isActive)
