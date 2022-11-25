@@ -126,7 +126,6 @@ public class UIChangeRaffleType : MonoBehaviour
     {
         SelectPanelForActivate(3);
         infosRaffle.PopulateRaffleInfos(GameManager.instance.spinScriptable.sorteioOrdem.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
-
         SendMessageToClientChangeRaffle("SceneSpin");
     }
 
@@ -141,6 +140,8 @@ public class UIChangeRaffleType : MonoBehaviour
                     panelRaffleGlobe.SetActive(false);
                     panelRaffleSpin.SetActive(false);
                     btRaffleLottery.image.color = selectedColor;
+                    infosRaffle.PopulateRaffleInfos(GameManager.instance.lotteryScriptable.sorteioOrdem.ToString(), GameManager.instance.lotteryScriptable.sorteioDescricao, GameManager.instance.lotteryScriptable.sorteioValor);
+
                     break;
                 }
             case 2:
@@ -150,6 +151,7 @@ public class UIChangeRaffleType : MonoBehaviour
                     panelRaffleGlobe.SetActive(true);
                     panelRaffleSpin.SetActive(false);
                     btRaffleGlobe.image.color = selectedColor;
+                    infosRaffle.PopulateRaffleInfos(GameManager.instance.globeScriptable.sorteioOrdem.ToString(), GameManager.instance.globeScriptable.sorteioDescricao, GameManager.instance.globeScriptable.sorteioValor);
                     break;
                 }
             case 3:
@@ -159,6 +161,7 @@ public class UIChangeRaffleType : MonoBehaviour
                     panelRaffleGlobe.SetActive(false);
                     panelRaffleSpin.SetActive(true);
                     btRaffleSpin.image.color = selectedColor;
+                    infosRaffle.PopulateRaffleInfos(GameManager.instance.spinScriptable.sorteioOrdem.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
                     break;
                 }
             default:
