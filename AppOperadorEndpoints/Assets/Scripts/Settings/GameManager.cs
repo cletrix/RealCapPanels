@@ -64,6 +64,9 @@ public class GameManager : MonoBehaviour
             if (globeController != null && isWinner == false)
                 globeController.UpdateScreen();
         }
+            UIChangeRaffleType uIChangeRaffleType = FindObjectOfType<UIChangeRaffleType>();
+            if (uIChangeRaffleType != null)
+                uIChangeRaffleType.CheckStateVisibilityRaffle();
     }
 
     public void LoadSceneGame(string map)

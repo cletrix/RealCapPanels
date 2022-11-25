@@ -46,10 +46,5 @@ public class RecoveryScriptable : ScriptableObject
         GameManager.instance.spinScriptable.sorteioOrdem = sorteio_spin_numero + 1;
     }
 
-    //[System.Serializable]
-    //public class winnerBalls
-    //{
-    //    public int balls;
-    //}
-
+    
 }

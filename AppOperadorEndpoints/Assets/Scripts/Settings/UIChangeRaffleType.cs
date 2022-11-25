@@ -47,7 +47,7 @@ public class UIChangeRaffleType : MonoBehaviour
         SetButtonsEvent();
         GameManager.instance.isVisibleRaffle = GameManager.instance.technicalScriptable.isVisibleRaffle;
         GameManager.instance.RecoveryScreen();
-        CheckStateVisibilityRaffle();
+        //CheckStateVisibilityRaffle();
     }
 
     private void SetModality()

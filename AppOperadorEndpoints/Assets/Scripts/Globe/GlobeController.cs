@@ -73,7 +73,6 @@ public class GlobeController : MonoBehaviour
         if (GameManager.instance.isbackup)
         {
             SetDisableAll();
-            UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
         }
         GameManager.instance.RecoveryScreen();
     }
