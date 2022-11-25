@@ -134,7 +134,6 @@ public class UIChangeRaffleType : MonoBehaviour
     {
         switch (index)
         {
-
             case 1:
                 {
                     panelRaffleLottery.SetActive(true);
@@ -172,6 +171,7 @@ public class UIChangeRaffleType : MonoBehaviour
                 }
         }
         GameManager.instance.sceneId = index;
+        GameManager.instance.technicalScriptable.panelActive = index;
     }
     public void RaffleTypeScene(int type)
     {

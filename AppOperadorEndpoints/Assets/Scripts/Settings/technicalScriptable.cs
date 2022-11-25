@@ -7,6 +7,7 @@ using UnityEngine;
 public class TechnicalScriptable : ScriptableObject
 {
     public int currentSceneID;
+    public int panelActive;
     public bool isVisibleRaffle;
     public int forTwoBalls;
     public List<GlobeRaffleScriptable.porUmaBola> forOneBalls = new List<GlobeRaffleScriptable.porUmaBola>();
@@ -15,6 +16,7 @@ public class TechnicalScriptable : ScriptableObject
     public void ResetInfos()
     {
         currentSceneID = 0;
+        panelActive = 0;
         isVisibleRaffle = false;
         forTwoBalls = 0;
         forOneBalls.Clear();

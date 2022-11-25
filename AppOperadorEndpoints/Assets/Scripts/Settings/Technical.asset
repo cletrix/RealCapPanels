@@ -12,19 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553c0730aac7bb4eb3ed4b69faab2e6, type: 3}
   m_Name: Technical
   m_EditorClassIdentifier: 
-  currentSceneID: 2
-  isVisibleRaffle: 1
-  forTwoBalls: 37
-  forOneBalls:
-  - numeroTitulo: 0084439
-    numeroChance: 1 Chance
-    numeroBola: 14
-  - numeroTitulo: 0077901
-    numeroChance: 2 Chance
-    numeroBola: 15
-  - numeroTitulo: 0124023
-    numeroChance: 3 Chance
-    numeroBola: 19
-  - numeroTitulo: 0026016
-    numeroChance: 3 Chance
-    numeroBola: 19
+  currentSceneID: 0
+  panelActive: 0
+  isVisibleRaffle: 0
+  forTwoBalls: 0
+  forOneBalls: []
+  ticketInfos: []

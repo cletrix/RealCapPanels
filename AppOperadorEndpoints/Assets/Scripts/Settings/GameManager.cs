@@ -64,9 +64,13 @@ public class GameManager : MonoBehaviour
             if (globeController != null && isWinner == false)
                 globeController.UpdateScreen();
         }
-            UIChangeRaffleType uIChangeRaffleType = FindObjectOfType<UIChangeRaffleType>();
-            if (uIChangeRaffleType != null)
-                uIChangeRaffleType.CheckStateVisibilityRaffle();
+        UIChangeRaffleType uIChangeRaffleType = FindObjectOfType<UIChangeRaffleType>();
+        if (uIChangeRaffleType != null)
+        {
+            uIChangeRaffleType.CheckStateVisibilityRaffle();
+            uIChangeRaffleType.SelectPanelForActivate(technicalScriptable.panelActive);
+        }
+
     }
 
     public void LoadSceneGame(string map)
@@ -182,7 +186,7 @@ public class GameManager : MonoBehaviour
         {
             isWinner = false;
         }
-        print(isWinner);
+
     }
 
     [Serializable]
