@@ -44,6 +44,7 @@ public class GlobeController : MonoBehaviour
         {
             lastBallRaffle.PlayAnimationHeart(false);
         }
+        GameManager.instance.SetCamActiveInCanvas(Camera.main);
     }
     private void OnEnable()
     {

@@ -25,8 +25,10 @@ public class LuckySpinController : MonoBehaviour
         uiLuckySpinController = FindObjectOfType<UiLuckySpinController>();
         GameManager.instance.luckySpinScriptable.Reset();
         GameManager.instance.globeScriptable.ResetRaffle();
+        GameManager.instance.SetCamActiveInCanvas(Camera.main);
+
     }
- 
+
     public void SetResult(string _raffleLuckyNumber)
     {
         GameManager.instance.luckySpinScriptable.currentResult = _raffleLuckyNumber;

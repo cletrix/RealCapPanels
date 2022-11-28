@@ -55,10 +55,19 @@ public class GameManager : MonoBehaviour
     {
         NetworkManager.instance.Connect();
     }
+    public void SetCamActiveInCanvas(Camera main)
+    {
+        WinnersScreen winners = FindObjectOfType<WinnersScreen>();
+        winners.GetComponent<Canvas>().worldCamera = main;
+
+        TicketScreen ticket = FindObjectOfType<TicketScreen>();
+        ticket.GetComponent<Canvas>().worldCamera = main;
+    }
     public void ResetScene()
     {
         globeScriptable.ResetRaffle();
         SceneManager.LoadScene(currentSceneName);
+
     }
     public void CallChangeSceneRaffle(string sceneName)
     {
@@ -83,13 +92,8 @@ public class GameManager : MonoBehaviour
             }
             yield return new WaitForSeconds(0.5f);
             sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            cameraActive = Camera.main;
 
-            WinnersScreen winners = FindObjectOfType<WinnersScreen>();
-            winners.GetComponent<Canvas>().worldCamera = cameraActive;
-
-            TicketScreen ticket = FindObjectOfType<TicketScreen>();
-            ticket.GetComponent<Canvas>().worldCamera = cameraActive;
+           
 
             SendMessageToServerConfirmChange(true, sceneIndex);
         }
