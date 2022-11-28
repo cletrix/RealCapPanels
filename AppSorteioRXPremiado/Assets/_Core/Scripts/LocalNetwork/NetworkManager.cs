@@ -51,11 +51,11 @@ public class NetworkManager : MonoBehaviour
     }
 
     [SerializeField] private string ip;
-    //[SerializeField] private string ip2;
+    [SerializeField] private string ip2;
     [SerializeField] private ushort port;
 
     public static Client Client { get; private set; }
-    //public static Client Client2 { get; private set; }
+    public static Client Client2 { get; private set; }
 
     private void Awake()
     {
@@ -80,11 +80,11 @@ public class NetworkManager : MonoBehaviour
         Client.Disconnected += DidDisconnect;
         Client.ClientDisconnected += DidClientDisconnect;
 
-        //Client2 = new Client();
-        //Client2.Connected += DidConnect;
-        //Client2.ConnectionFailed += FailedToConnect;
-        //Client2.Disconnected += DidDisconnect;
-        //Client2.ClientDisconnected += DidClientDisconnect;
+        Client2 = new Client();
+        Client2.Connected += DidConnect;
+        Client2.ConnectionFailed += FailedToConnect;
+        Client2.Disconnected += DidDisconnect;
+        Client2.ClientDisconnected += DidClientDisconnect;
 
     }
     public void Connect()
@@ -93,10 +93,10 @@ public class NetworkManager : MonoBehaviour
         {
             Client.Connect($"{ip}:{port}");
         }
-        //if (Client2.IsNotConnected)
-        //{
-        //    Client2.Connect($"{ip2}:{port}");
-        //}
+        if (Client2.IsNotConnected)
+        {
+            Client2.Connect($"{ip2}:{port}");
+        }
     }
     private void OnApplicationQuit()
     {
@@ -107,12 +107,12 @@ public class NetworkManager : MonoBehaviour
         Client.Disconnected -= DidDisconnect;
         Client.ClientDisconnected -= DidClientDisconnect;
 
-        //Client2.Disconnect();
+        Client2.Disconnect();
 
-        //Client2.Connected -= DidConnect;
-        //Client2.ConnectionFailed -= FailedToConnect;
-        //Client2.Disconnected -= DidDisconnect;
-        //Client2.ClientDisconnected -= DidClientDisconnect;
+        Client2.Connected -= DidConnect;
+        Client2.ConnectionFailed -= FailedToConnect;
+        Client2.Disconnected -= DidDisconnect;
+        Client2.ClientDisconnected -= DidClientDisconnect;
 
     }
 
@@ -135,7 +135,7 @@ public class NetworkManager : MonoBehaviour
     private void FixedUpdate()
     {
         Client.Tick();
-        //Client2.Tick();
+        Client2.Tick();
     }
 
     #region Messages

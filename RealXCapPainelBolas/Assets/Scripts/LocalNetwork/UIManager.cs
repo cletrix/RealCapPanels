@@ -26,7 +26,8 @@ public class UIManager : MonoBehaviour
     public BallController ballController;
     public PanelScriptable panelScriptable;
 
-    public float timeToSpawn = 3f;
+    [SerializeField] private float timeToSpawn ;
+    public float maxTimetoSpawn = 4f;
     public bool canRaffleBall = true;
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
     {
         Invoke("Connect", 1f);
         panelScriptable.ResetVariables();
+        timeToSpawn = maxTimetoSpawn;
 
     }
     public void Connect()
@@ -57,7 +59,6 @@ public class UIManager : MonoBehaviour
     }
     public void RecieveBalls(List<int> ballsRaffled)
     {
-        print("RecieveBalls =  " + ballsRaffled.Count);
         if (ballsRaffled.Count > panelScriptable.Balls.Count)
         {
             panelScriptable.Balls.Clear();
@@ -82,14 +83,15 @@ public class UIManager : MonoBehaviour
                 {
                     if (panelScriptable.Balls.Count <= 60)
                     {
-                        ShowBall();
-                        timeToSpawn = 3f;
+                        Invoke("ShowBall", 1f);
+                        timeToSpawn = maxTimetoSpawn;
                         canRaffleBall = false;
                     }
                 }
             }
         Invoke("VerifyBalls", 0.5f);
     }
+
     private void FixedUpdate()
     {
         if (timeToSpawn > 0)

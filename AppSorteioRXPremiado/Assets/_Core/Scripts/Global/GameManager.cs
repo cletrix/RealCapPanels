@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
     }
     private void InitializeVariables()
     {
-        // fade = FindObjectOfType<FadeController>();
         Invoke("ConnectServer", 1f);
         Application.targetFrameRate = 60;
         globeScriptable.ResetRaffle();
@@ -102,6 +101,7 @@ public class GameManager : MonoBehaviour
         message.AddBool(_state);
 
         NetworkManager.Client.Send(message);
+        NetworkManager.Client2.Send(message);
     }
     public void SendMessageToServerGetActiveScene(int index)
     {
@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
         message.AddInt(index);
 
         NetworkManager.Client.Send(message);
+        NetworkManager.Client2.Send(message);
     }
     public void SendMessageToServerConfirmChange(bool _state, int _scene)
     {
@@ -117,6 +118,7 @@ public class GameManager : MonoBehaviour
         message.AddInt(_scene);
 
         NetworkManager.Client.Send(message);
+        NetworkManager.Client2.Send(message);
     }
     public int GetSceneIndex()
     {
