@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using RiptideNetworking;
 using System;
-using UnityEngine.SocialPlatforms;
 using System.Globalization;
 
 public class TicketController : MonoBehaviour
@@ -63,11 +62,11 @@ public class TicketController : MonoBehaviour
     {
         btBackTicket.onClick.AddListener(action);
     }
-    public void SetNumberRaffleTicket(string _number)
-    {
-        // ticketInfos.ticketNumber = _number;
-        // txtNumberTicket.text = ticketInfos.ticketNumber;
-    }
+    //public void SetNumberRaffleTicket(string _number)
+    //{
+    //    // ticketInfos.ticketNumber = _number;
+    //    // txtNumberTicket.text = ticketInfos.ticketNumber;
+    //}
 
     public void SetVisibilityTicket()
     {
@@ -75,9 +74,10 @@ public class TicketController : MonoBehaviour
         {
             bgTicket.SetActive(false);
             isTicketVisible = false;
-            SendMessageToClientHideTicket(isTicketVisible);
-            SpinController spin = FindObjectOfType<SpinController>();
 
+            SendMessageToClientHideTicket(isTicketVisible);
+            
+            SpinController spin = FindObjectOfType<SpinController>();
             if(spin!=null)
             {
                 spin.ActiveButtonNewRaffleSpin();
@@ -90,19 +90,19 @@ public class TicketController : MonoBehaviour
         }
 
     }
-    public void SetVisibilityPrize()
-    {
-        if (canShowPrize)
-        {
-            canShowPrize = false;
-        }
-        else
-        {
-            canShowPrize = true;
-        }
-        SendMessageToClientVisibilityPrize(canShowPrize);
+    //public void SetVisibilityPrize()
+    //{
+    //    if (canShowPrize)
+    //    {
+    //        canShowPrize = false;
+    //    }
+    //    else
+    //    {
+    //        canShowPrize = true;
+    //    }
+    //    SendMessageToClientVisibilityPrize(canShowPrize);
 
-    }
+    //}
     private string RevertDate(string date)
     {
         DateTime dateTime = System.DateTime.Parse(date);

@@ -10,6 +10,7 @@ public class GlobeRaffleScriptable : ScriptableObject
     public int valorPremio;
     [Header("Ticket Winner")]
     public TicketInfos[] ganhadorContemplado;
+    public bool[] ticketListVisible;
     public void SetNewBall(string ball)
     {
         bolasSorteadas.Add(ball);
@@ -25,6 +26,7 @@ public class GlobeRaffleScriptable : ScriptableObject
         bolasSorteadas.Clear();
         porUmaBolas.Clear();
         ganhadorContemplado = new TicketInfos[0];
+        ticketListVisible = new bool[0];
         valorPremio = 0;
         porDuasBolas = 0;
     }

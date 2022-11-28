@@ -12,59 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7778f46e0283c8458b1ea9689352121, type: 3}
   m_Name: GlobeRaffleSettings
   m_EditorClassIdentifier: 
-  bolasSorteadas:
-  - 3
-  - 18
-  - 20
-  - 35
-  - 29
-  - 43
-  - 39
-  - 46
-  - 10
-  - 12
-  - 36
-  - 60
-  - 45
-  - 53
-  - 13
-  - 21
-  - 42
-  - 22
-  - 31
-  - 5
-  - 56
-  - 34
-  - 27
-  - 7
-  - 59
-  - 49
-  - 16
-  - 52
-  - 55
-  - 25
-  - 38
-  - 40
-  - 48
-  - 2
-  - 9
-  - 44
-  - 24
-  - 26
-  - 51
-  porDuasBolas: 37
-  porUmaBolas:
-  - numeroTitulo: 0084439
-    numeroChance: 1 Chance
-    numeroBola: 14
-  - numeroTitulo: 0077901
-    numeroChance: 2 Chance
-    numeroBola: 15
-  - numeroTitulo: 0124023
-    numeroChance: 3 Chance
-    numeroBola: 19
-  - numeroTitulo: 0026016
-    numeroChance: 3 Chance
-    numeroBola: 19
+  bolasSorteadas: []
+  porDuasBolas: 0
+  porUmaBolas: []
   valorPremio: 2000
   ganhadorContemplado: []
+  ticketListVisible: 

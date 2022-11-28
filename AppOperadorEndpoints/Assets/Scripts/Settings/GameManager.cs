@@ -119,6 +119,33 @@ public class GameManager : MonoBehaviour
             RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem);
         }
     }
+    public void PopulateListOfVisibleTicket()
+    {
+        globeRaffleScriptable.ticketListVisible = new bool[globeRaffleScriptable.ganhadorContemplado.Length];
+    }
+    public void SetIsVisibleTicketList(int index)
+    {
+        globeRaffleScriptable.ticketListVisible[index] = true;
+    }
+    public bool GetAllTicketsVisible()
+    {
+        int index = 0;
+        for (int i = 0; i < globeRaffleScriptable.ticketListVisible.Length; i++)
+        {
+            if(globeRaffleScriptable.ticketListVisible[i]==true)
+            {
+                index++;
+            }
+        }
+        if(index>= globeRaffleScriptable.ticketListVisible.Length)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public List<string> GetForOneBalls()
     {
         List<string> forOneBalls = new List<string>();

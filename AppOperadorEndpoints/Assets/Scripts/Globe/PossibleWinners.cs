@@ -35,7 +35,6 @@ public class PossibleWinners : MonoBehaviour
         globe.ResetPossiblesWinners();
         globe.UpdateStateVisibilityButtonsTicket(true);
         button.image.color = selectedColor;
-
         isSelected = true;
     }
     public void SetInteractableButton(bool _isActive)

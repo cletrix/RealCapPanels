@@ -35,8 +35,6 @@ public class UIChangeRaffleType : MonoBehaviour
     [SerializeField] private bool hasActiveGlobe = true;
     [SerializeField] private bool hasActiveSpin = true;
 
-
-
     void Start()
     {
         InitializeVariables();
@@ -47,7 +45,7 @@ public class UIChangeRaffleType : MonoBehaviour
         SetButtonsEvent();
         GameManager.instance.isVisibleRaffle = GameManager.instance.technicalScriptable.isVisibleRaffle;
         GameManager.instance.RecoveryScreen();
-        //CheckStateVisibilityRaffle();
+        SetStateRecoveryButton();
     }
 
     private void SetModality()
@@ -94,7 +92,6 @@ public class UIChangeRaffleType : MonoBehaviour
         btVisibilityRaffle.onClick.AddListener(SetStateHasRaffleVisibility);
         btVisibilityRaffle.onClick.AddListener(SendMessageVisibilityRaffle);
         btVisibilityRaffle.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
-
     }
 
 
@@ -204,9 +201,32 @@ public class UIChangeRaffleType : MonoBehaviour
 
     public void SetRecoveryConfig()
     {
-        RestNetworkManager.instance.CallReadMemory();
+        if (GameManager.instance.isbackup)
+        {
+            RestNetworkManager.instance.DisableInvokInfosServer();
+            GameManager.instance.isbackup = false;
+        }
+        else
+        {
+            RestNetworkManager.instance.CallGetInfoServer();
+            GameManager.instance.isbackup = true;
+        }
+        SetStateRecoveryButton();
+        // fazer codigo pra mudar se é principal ou backup
     }
-
+    private void SetStateRecoveryButton()
+    {
+        if (GameManager.instance.isbackup)
+        {
+            btRecovery.GetComponentInChildren<TextMeshProUGUI>().text = "Backup";
+            btRecovery.image.color = Color.red;
+        }
+        else
+        {
+            btRecovery.GetComponentInChildren<TextMeshProUGUI>().text = "Principal";
+            btRecovery.image.color = Color.green;
+        }
+    }
     private void SetStateButtonsRaffle(bool isActive)
     {
         if (hasActiveLottery)

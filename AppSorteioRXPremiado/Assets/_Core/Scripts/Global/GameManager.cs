@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
         Invoke("ConnectServer", 1f);
         Application.targetFrameRate = 60;
         globeScriptable.ResetRaffle();
+        WinnersScreen.instance.SetWinnersScreenVisibility(false, 0.1f);
+        TicketScreen.instance.SetTicketVisibility(false, 0.1f);
     }
     public void ConnectServer()
     {

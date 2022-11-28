@@ -78,6 +78,10 @@ public class RestNetworkManager : MonoBehaviour
         GameManager.OnPopulateRaffles -= GetRaffleInfos;
     }
 
+    public void DisableInvokInfosServer()
+    {
+        CancelInvoke("CallGetInfoServer");
+    }
     public void GetRaffleInfos()
     {
         CallGetInfoServer();
@@ -201,7 +205,6 @@ public class RestNetworkManager : MonoBehaviour
                         char[] charsToTrim = { 'b', '\'' };
                         string json = webRequest.downloadHandler.text;
                         string newj = json.Trim(charsToTrim);
-                        print("newjson--" + newj);
                         JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
                         GameManager.instance.technicalScriptable.PopulateConfig();
                     }
@@ -315,7 +318,7 @@ public class RestNetworkManager : MonoBehaviour
                         if (jsonResponse != "EOF Globe")
                         {
                             JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeRaffleScriptable);
-
+                            GameManager.instance.PopulateListOfVisibleTicket();
                             if (globeController != null)
                             {
                                 globeController.PopulatePossibleWinners();
@@ -323,11 +326,6 @@ public class RestNetworkManager : MonoBehaviour
 
                             }
                         }
-                        else
-                        {
-                            globeController.SetInteractableBtNextRaffle(true);
-                        }
-
                     }
                     break;
             }
@@ -371,7 +369,6 @@ public class RestNetworkManager : MonoBehaviour
     }
     private IEnumerator PostResultSpin(string uri, int index)
     {
-        print(index);
         RequestSpin requestSpin = new RequestSpin();
         requestSpin.sorteioOrdem = index;
 

@@ -8,11 +8,10 @@ using System.Linq;
 
 public class GlobeController : MonoBehaviour
 {
-    [Header("REFERENCES")]
+    [SerializeField] public Button btNextRaffle;
+    [Header("TICKET INFOS")]
     [SerializeField] private TicketController ticketController;
     [SerializeField] public Button btTicketVisibility;
-    [SerializeField] public Button btPrizeVisibility;
-    [SerializeField] public Button btNextRaffle;
     [Header("GRID BALLS")]
     [SerializeField] private List<Ball> balls;
     [SerializeField] private GameObject panelGridBalls;
@@ -61,7 +60,6 @@ public class GlobeController : MonoBehaviour
 
     private void InitializeVariables()
     {
-
         balls = new List<Ball>();
         balls.AddRange(panelGridBalls.GetComponentsInChildren<Ball>());
         ticketController = FindObjectOfType<TicketController>();
@@ -76,11 +74,9 @@ public class GlobeController : MonoBehaviour
         }
         GameManager.instance.RecoveryScreen();
     }
-
     public void UpdateStateVisibilityButtonsTicket(bool isActive)
     {
         btTicketVisibility.interactable = isActive;
-        btPrizeVisibility.interactable = isActive;
     }
     #region BALLS 
     private void PopulateBalls()
@@ -283,9 +279,7 @@ public class GlobeController : MonoBehaviour
                 txtInfosTitle.text = "GANHADORES";
             txtWinners.text = infos.Count.ToString();
             isWinner = true;
-            UpdateStateVisibilityButtonsTicket(true);
 
-            btNextRaffle.interactable = true;
             SetDisableAllNotRevoke();
 
         }
@@ -391,14 +385,12 @@ public class GlobeController : MonoBehaviour
 
         btNextRaffle.interactable = false;
         RestNetworkManager.instance.SendBallsRaffledFromServer(GameManager.instance.globeScriptable.sorteioOrdem);
-
-
     }
 
-    public void SetInteractableBtNextRaffle(bool isActive)
-    {
-        btNextRaffle.interactable = isActive;
-    }
+    //public void SetInteractableBtNextRaffle(bool isActive)
+    //{
+    //    btNextRaffle.interactable = isActive;
+    //}
     public void ShowTicketGlobe()
     {
         foreach (var item in possiblesWinners)
@@ -406,8 +398,10 @@ public class GlobeController : MonoBehaviour
             if (item.GetIsSelected() == true)
             {
                 indexWinner = item.GetIndex();
+                GameManager.instance.SetIsVisibleTicketList(item.GetIndex());
             }
         }
+        btNextRaffle.interactable = GameManager.instance.GetAllTicketsVisible();
 
         ticketController.PopulateTicketInfos(
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].nome,
@@ -436,7 +430,6 @@ public class GlobeController : MonoBehaviour
             true,
             2);
     }
-
 
     #region MESSAGES
     public void SendMessageBallsRaffled()
@@ -481,14 +474,5 @@ public class GlobeController : MonoBehaviour
     }
 
     #endregion
-
-
-
-
-    //private void FixedUpdate()
-    //{
-        
-    //}
-
 }
 

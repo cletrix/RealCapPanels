@@ -103,7 +103,7 @@ public class TicketScreen : MonoBehaviour
             spins[i].ShowNumberNow();
         }
     }
-    public void SetTicketVisibility(bool isActive)
+    public void SetTicketVisibility(bool isActive, float timeAnim = 1f)
     {
         if (isActive)
         {
@@ -119,14 +119,14 @@ public class TicketScreen : MonoBehaviour
                 prizeName.text = GameManager.instance.globeScriptable.description;
             }
             WinnersScreen.instance.SetWinnersScreenVisibility(false);
-            bgTicket.transform.DOLocalMoveY(-250, 1f);
-            bgSuperior.transform.DOLocalMoveY(250, 1f);
+            bgTicket.transform.DOLocalMoveY(-250, timeAnim);
+            bgSuperior.transform.DOLocalMoveY(250, timeAnim);
         }
         else
         {
             SetBgBlackVisibility(false);
-            bgTicket.transform.DOLocalMoveY(-1000, 1f);
-            bgSuperior.transform.DOLocalMoveY(1000, 1f);
+            bgTicket.transform.DOLocalMoveY(-1000, timeAnim);
+            bgSuperior.transform.DOLocalMoveY(1000, timeAnim);
         }
     }
 
