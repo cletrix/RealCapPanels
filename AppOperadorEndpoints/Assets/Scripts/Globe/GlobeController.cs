@@ -310,6 +310,7 @@ public class GlobeController : MonoBehaviour
             PossibleWinners inst = Instantiate(possibleWinnerGO);
             inst.PopulateInfos(infos[i]);
             inst.SetIndex(i);
+           
             inst.transform.SetParent(contentParent.transform);
             inst.transform.localScale = new Vector2(1, 1);
             possiblesWinners[i] = inst;
@@ -399,6 +400,7 @@ public class GlobeController : MonoBehaviour
             {
                 indexWinner = item.GetIndex();
                 GameManager.instance.SetIsVisibleTicketList(item.GetIndex());
+                item.SetIsFinished(true);
             }
         }
         btNextRaffle.interactable = GameManager.instance.GetAllTicketsVisible();

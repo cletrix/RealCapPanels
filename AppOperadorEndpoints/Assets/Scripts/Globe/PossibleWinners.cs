@@ -9,11 +9,13 @@ public class PossibleWinners : MonoBehaviour
 {
     [SerializeField] private string infos;
     private TextMeshProUGUI textInfo;
-    [SerializeField]private Button button;
+    [SerializeField] private Button button;
 
     [SerializeField] private Color selectedColor;
     [SerializeField] private Color normalColor;
+    [SerializeField] private Color finishedColor;
     [SerializeField] private bool isSelected = false;
+    [SerializeField] private bool isFinished = false;
     [SerializeField] private int index;
     void Start()
     {
@@ -54,10 +56,22 @@ public class PossibleWinners : MonoBehaviour
     {
         return isSelected;
     }
+    public void SetIsFinished(bool _isActive)
+    {
+        isFinished = _isActive;
+        isSelected = false;
+    }
     public void DesactiveIsSelect()
     {
+        if (isFinished)
+        {
+            button.image.color = finishedColor;
+        }
+        else
+        {
+            button.image.color = normalColor;
+        }
         isSelected = false;
-        button.image.color = normalColor;
     }
     public void PopulateInfos(string _infos)
     {

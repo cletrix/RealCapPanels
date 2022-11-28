@@ -219,11 +219,13 @@ public class UIChangeRaffleType : MonoBehaviour
         if (GameManager.instance.isbackup)
         {
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().text = "Backup";
+            btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
             btRecovery.image.color = Color.red;
         }
         else
         {
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().text = "Principal";
+            btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
             btRecovery.image.color = Color.green;
         }
     }

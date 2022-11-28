@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 7716311749426724613}
   - component: {fileID: 1961342627}
   m_Layer: 5
-  m_Name: BGTicket
+  m_Name: PossibleWinners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infos: 
+  button: {fileID: 0}
   selectedColor: {r: 0, g: 0.6415094, b: 0.16747275, a: 1}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
+  finishedColor: {r: 0.77254903, g: 0.32156864, b: 0, a: 1}
   isSelected: 0
+  isFinished: 0
   index: 0
