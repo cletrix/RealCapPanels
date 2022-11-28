@@ -66,8 +66,8 @@ public class BallController : MonoBehaviour
         inst.transform.SetParent(parentBack);
         inst.transform.localScale = Vector3.one;
         inst.SetInfoBall(numberBall);
-        yield return new WaitForSeconds(0.5f);
         SetBallWinner();
+        yield return new WaitForSeconds(0.5f);
         MovementOnSpawner(inst);
     }
     //Após mostrar as 5 primeira bolas sorteadas, essa função cria um loop para exibir seguinte bolas sorteadas.
@@ -82,8 +82,8 @@ public class BallController : MonoBehaviour
         BallsSelected[0].RotateLoop(360);
         yield return new WaitForSeconds(0.2f);
         BallsSelected.Remove(BallsSelected[0]);
-        yield return new WaitForSeconds(0.3f);
         SetBallWinner();
+        yield return new WaitForSeconds(0.3f);
         MovementOnSpawnerLoop(inst);
 
     }
