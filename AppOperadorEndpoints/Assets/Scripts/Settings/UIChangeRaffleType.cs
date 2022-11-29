@@ -45,7 +45,7 @@ public class UIChangeRaffleType : MonoBehaviour
         SetButtonsEvent();
         GameManager.instance.isVisibleRaffle = GameManager.instance.technicalScriptable.isVisibleRaffle;
         GameManager.instance.RecoveryScreen();
-        SetStateRecoveryButton();
+        SetStateSelectBackupButton();
     }
 
     private void SetModality()
@@ -93,7 +93,6 @@ public class UIChangeRaffleType : MonoBehaviour
         btVisibilityRaffle.onClick.AddListener(SendMessageVisibilityRaffle);
         btVisibilityRaffle.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
     }
-
 
     #region RAFFLES PANELS
 
@@ -197,7 +196,7 @@ public class UIChangeRaffleType : MonoBehaviour
 
     #endregion
 
-    #region HIDE RAFFLE
+    #region RECOVERY
 
     public void SetRecoveryConfig()
     {
@@ -211,10 +210,9 @@ public class UIChangeRaffleType : MonoBehaviour
             RestNetworkManager.instance.CallGetInfoServer();
             GameManager.instance.isbackup = true;
         }
-        SetStateRecoveryButton();
-        // fazer codigo pra mudar se é principal ou backup
+        SetStateSelectBackupButton();
     }
-    private void SetStateRecoveryButton()
+    private void SetStateSelectBackupButton()
     {
         if (GameManager.instance.isbackup)
         {
@@ -227,8 +225,14 @@ public class UIChangeRaffleType : MonoBehaviour
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().text = "Principal";
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
             btRecovery.image.color = Color.green;
+            globeController.UpdateScreen();
         }
     }
+    #endregion
+
+    #region VISIBILITY RAFFLE
+
+    
     private void SetStateButtonsRaffle(bool isActive)
     {
         if (hasActiveLottery)
@@ -269,8 +273,6 @@ public class UIChangeRaffleType : MonoBehaviour
         else
         {
             GameManager.instance.isVisibleRaffle = true;
-
-
         }
         CheckStateVisibilityRaffle();
     }
@@ -291,7 +293,9 @@ public class UIChangeRaffleType : MonoBehaviour
             globeController.SetDisableAll();
         }
     }
+    #endregion
 
+    #region MESSAGES
     public void SendMessageVisibilityRaffle()
     {
         if (!GameManager.instance.isVisibleRaffle)
@@ -336,11 +340,6 @@ public class UIChangeRaffleType : MonoBehaviour
 
         return message;
     }
-
-    #endregion
-
-    #region Messages
-
     public void SendMessageToClientGetActiveScene()
     {
         if (!GameManager.instance.isbackup)

@@ -101,14 +101,21 @@ public class GlobeController : MonoBehaviour
     }
     private void CheckStateBalls()
     {
-        for (int i = 0; i < balls.Count; i++)
+        if (GameManager.instance.isbackup)
         {
-            balls[i].CheckState();
+            SetDisableAll();
         }
-
-        if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
+        else
         {
-            SetDisableAllNotRevoke();
+            for (int i = 0; i < balls.Count; i++)
+            {
+                balls[i].CheckState();
+            }
+
+            if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
+            {
+                SetDisableAllNotRevoke();
+            }
         }
     }
     public void DisableHasRevokedAll()
@@ -147,7 +154,7 @@ public class GlobeController : MonoBehaviour
     public void SetEnableAll()
     {
         for (int i = 0; i < balls.Count; i++)
-        {   
+        {
             balls[i].EnableInteractable();
         }
         CheckStateBalls();
@@ -215,7 +222,7 @@ public class GlobeController : MonoBehaviour
         CheckStateBalls();
         ValidateBall();
     }
-   
+
     public void SendBallsRaffledToScreen()
     {
         UpdateScreen();
@@ -310,7 +317,7 @@ public class GlobeController : MonoBehaviour
             PossibleWinners inst = Instantiate(possibleWinnerGO);
             inst.PopulateInfos(infos[i]);
             inst.SetIndex(i);
-           
+
             inst.transform.SetParent(contentParent.transform);
             inst.transform.localScale = new Vector2(1, 1);
             possiblesWinners[i] = inst;
@@ -332,7 +339,7 @@ public class GlobeController : MonoBehaviour
             item.DesactiveIsSelect();
         }
     }
-  
+
     public void ValidateBall()
     {
         PopulatePossibleWinners();
