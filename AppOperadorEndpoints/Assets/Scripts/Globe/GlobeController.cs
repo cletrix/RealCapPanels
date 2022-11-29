@@ -107,14 +107,22 @@ public class GlobeController : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < balls.Count; i++)
+            if (GameManager.instance.isVisibleRaffle)
             {
-                balls[i].CheckState();
-            }
+                for (int i = 0; i < balls.Count; i++)
+                {
+                    balls[i].CheckState();
+                }
 
-            if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
+                if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
+                {
+                    SetDisableAllNotRevoke();
+                }
+
+            }
+            else
             {
-                SetDisableAllNotRevoke();
+                SetDisableAll();
             }
         }
     }
@@ -153,6 +161,7 @@ public class GlobeController : MonoBehaviour
     }
     public void SetEnableAll()
     {
+
         for (int i = 0; i < balls.Count; i++)
         {
             balls[i].EnableInteractable();
