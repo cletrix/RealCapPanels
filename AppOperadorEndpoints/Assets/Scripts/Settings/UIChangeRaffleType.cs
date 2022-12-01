@@ -210,7 +210,6 @@ public class UIChangeRaffleType : MonoBehaviour
             RestNetworkManager.instance.CallGetInfoServer();
             GameManager.instance.isbackup = true;
         }
-        CheckStateVisibilityRaffle();
         SetStateSelectBackupButton();
     }
     private void SetStateSelectBackupButton()
@@ -233,53 +232,43 @@ public class UIChangeRaffleType : MonoBehaviour
 
     #region VISIBILITY RAFFLE
 
+    
     private void SetStateButtonsRaffle(bool isActive)
     {
-        if (GameManager.instance.isbackup)
+        if (hasActiveLottery)
         {
-
-            btRaffleLottery.interactable = false;
-            btRaffleGlobe.interactable = false;
-            btRaffleSpin.interactable = false;
-            btVisibilityRaffle.interactable = false;
+            btRaffleLottery.interactable = isActive;
         }
         else
         {
-            if (hasActiveLottery)
-            {
-                btRaffleLottery.interactable = isActive;
-            }
-            else
-            {
-                btRaffleLottery.interactable = false;
-            }
-
-            if (hasActiveGlobe)
-            {
-                btRaffleGlobe.interactable = isActive;
-            }
-            else
-            {
-                btRaffleGlobe.interactable = false;
-            }
-
-            if (hasActiveSpin)
-            {
-                btRaffleSpin.interactable = isActive;
-            }
-            else
-            {
-                btRaffleSpin.interactable = false;
-            }
-            btVisibilityRaffle.interactable = true;
+            btRaffleLottery.interactable = false;
         }
 
+        if (hasActiveGlobe)
+        {
+            btRaffleGlobe.interactable = isActive;
+        }
+        else
+        {
+            btRaffleGlobe.interactable = false;
+        }
+
+        if (hasActiveSpin)
+        {
+            btRaffleSpin.interactable = isActive;
+        }
+        else
+        {
+            btRaffleSpin.interactable = false;
+        }
     }
     public void SetStateHasRaffleVisibility()
     {
         if (GameManager.instance.isVisibleRaffle)
         {
             GameManager.instance.isVisibleRaffle = false;
+
+
         }
         else
         {
