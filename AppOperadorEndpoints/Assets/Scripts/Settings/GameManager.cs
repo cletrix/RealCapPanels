@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         globeRaffleScriptable.ResetInfos();
         technicalScriptable.ResetInfos();
+        recoveryScriptable.ResetInfos();
     }
     public void RecoveryScreen()
     {

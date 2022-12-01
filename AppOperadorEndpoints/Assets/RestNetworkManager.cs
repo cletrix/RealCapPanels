@@ -70,12 +70,11 @@ public class RestNetworkManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameManager.OnPopulateRaffles += GetRaffleInfos;
-
+        OnPopulateRaffles += GetRaffleInfos;
     }
     private void OnDisable()
     {
-        GameManager.OnPopulateRaffles -= GetRaffleInfos;
+        OnPopulateRaffles -= GetRaffleInfos;
     }
 
     public void DisableInvokInfosServer()
@@ -84,7 +83,10 @@ public class RestNetworkManager : MonoBehaviour
     }
     public void GetRaffleInfos()
     {
-        CallGetInfoServer();
+        if (GameManager.instance.isBackup)
+        {
+            CallGetInfoServer();
+        }
         StartCoroutine(GetLotteryInfos(baseUrl1 + urlInfoLottery));
 
         StartCoroutine(GetGlobeInfos(baseUrl1 + urlGlobeInfos));
@@ -125,7 +127,7 @@ public class RestNetworkManager : MonoBehaviour
                     }
                     break;
             }
-            if (GameManager.instance.isBackup )
+            if (GameManager.instance.isBackup)
             {
                 Invoke("CallGetInfoServer", 2f);
             }

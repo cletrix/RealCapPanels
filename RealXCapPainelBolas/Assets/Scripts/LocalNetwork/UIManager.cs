@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
                 {
                     if (panelScriptable.Balls.Count <= 60)
                     {
-                        Invoke("ShowBall", 1f);
+                        Invoke("ShowBall", 0.5f);
                         timeToSpawn = maxTimetoSpawn;
                         canRaffleBall = false;
                     }

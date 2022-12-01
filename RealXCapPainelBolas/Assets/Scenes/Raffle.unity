@@ -184,8 +184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballController: {fileID: 684171388}
   panelScriptable: {fileID: 11400000, guid: 43f9269cf21afab4d9f4f75ee351b8a8, type: 2}
-  timeToSpawn: 5
-  maxTimetoSpawn: 4
+  timeToSpawn: 1.5
+  maxTimetoSpawn: 1.5
   canRaffleBall: 1
 --- !u!114 &26432598 stripped
 MonoBehaviour:
