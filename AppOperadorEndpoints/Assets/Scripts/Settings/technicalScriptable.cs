@@ -7,6 +7,7 @@ using UnityEngine;
 public class TechnicalScriptable : ScriptableObject
 {
     public int currentSceneID;
+    public int currentRaffle;
     public int panelActive;
     public bool isVisibleRaffle;
     public int forTwoBalls;
@@ -16,16 +17,18 @@ public class TechnicalScriptable : ScriptableObject
     public void ResetInfos()
     {
         currentSceneID = 0;
+        currentSceneID = 1;
         panelActive = 0;
         isVisibleRaffle = false;
         forTwoBalls = 0;
         forOneBalls.Clear();
         ticketInfos.Clear();
     }
-    public void UpdateConfig(int sceneId, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall)
+    public void UpdateConfig(int sceneId, int _currentRaffle, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall)
     {
         if (!GameManager.instance.isBackup)
         {
+            currentRaffle = _currentRaffle;
             currentSceneID = sceneId;
             isVisibleRaffle = raffleVisibility;
             forTwoBalls = _forTwoBalls;
@@ -50,6 +53,7 @@ public class TechnicalScriptable : ScriptableObject
             forOneBalls[i].numeroChance = forOneBalls[i].numeroChance.Insert(1, "°");
         }
         GameManager.instance.sceneId = currentSceneID;
+        GameManager.instance.globeScriptable.sorteioOrdem = currentRaffle;
         GameManager.instance.isVisibleRaffle = isVisibleRaffle;
         GameManager.instance.globeRaffleScriptable.porDuasBolas = forTwoBalls;
         GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();

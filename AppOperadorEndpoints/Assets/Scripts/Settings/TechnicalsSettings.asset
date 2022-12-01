@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553c0730aac7bb4eb3ed4b69faab2e6, type: 3}
   m_Name: TechnicalsSettings
   m_EditorClassIdentifier: 
-  currentSceneID: 0
-  panelActive: 0
-  isVisibleRaffle: 0
-  forTwoBalls: 0
+  currentSceneID: 2
+  currentRaffle: 1
+  panelActive: 2
+  isVisibleRaffle: 1
+  forTwoBalls: 83
   forOneBalls: []
   ticketInfos: []

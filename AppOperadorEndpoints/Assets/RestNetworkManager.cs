@@ -66,7 +66,7 @@ public class RestNetworkManager : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine(PostConfig(baseUrl1 + urlWriteMemory));
+        //StartCoroutine(PostConfig(baseUrl1 + payloadWrite));
     }
     private void OnEnable()
     {
@@ -323,7 +323,7 @@ public class RestNetworkManager : MonoBehaviour
                             GameManager.instance.PopulateListOfVisibleTicket();
                             if (globeController != null)
                             {
-                                globeController.PopulatePossibleWinners();
+                                globeController.CheckWinners();
                                 globeController.SendBallsRaffledToScreen();
 
                             }

@@ -508,12 +508,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 40
+  m_fontSizeMax: 35
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -26837,10 +26837,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0c138e798b86641932e0936ea142e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btNextRaffle: {fileID: 1525606923}
   ticketController: {fileID: 0}
   btTicketVisibility: {fileID: 1090824886}
-  btPrizeVisibility: {fileID: 406304525}
-  btNextRaffle: {fileID: 1525606923}
   balls: []
   panelGridBalls: {fileID: 1167618308}
   indexBallSelected: 0
@@ -26865,7 +26864,6 @@ MonoBehaviour:
   btRevoke: {fileID: 632093729}
   panelRevokeBall: {fileID: 414648221}
   txtViewNumberBallRevoke: {fileID: 162405185}
-  isWinner: 0
   hasRevoked: 0
 --- !u!1 &1609435066
 GameObject:
@@ -29922,7 +29920,6 @@ MonoBehaviour:
   selectedColor: {r: 0, g: 0.4039216, b: 0.058823533, a: 1}
   normalColor: {r: 0, g: 0.3529412, b: 0.8235295, a: 1}
   btVisibilityRaffle: {fileID: 536097971}
-  canChangeScene: 0
   hasActiveLottery: 0
   hasActiveGlobe: 1
   hasActiveSpin: 1

@@ -16,7 +16,6 @@ public class GlobeController : MonoBehaviour
     [SerializeField] private List<Ball> balls;
     [SerializeField] private GameObject panelGridBalls;
     [SerializeField] private int indexBallSelected;
-    [SerializeField] private int indexOrder;
 
     [Header("GRID RAFFLED BALLS")]
     [SerializeField] private Ball[] ballsRaffled;
@@ -256,10 +255,9 @@ public class GlobeController : MonoBehaviour
         orderBalls.text = $"Dezenas Sorteadas: {ballsRaffled.Length}";
     }
     #endregion
-    public void PopulatePossibleWinners()
-    {
-        List<string> infos = new List<string>();
 
+    private void ResetPanelPossibleWinners()
+    {
         if (possiblesWinners.Length > 0)
         {
             for (int i = 0; i < possiblesWinners.Length; i++)
@@ -267,42 +265,22 @@ public class GlobeController : MonoBehaviour
                 Destroy(possiblesWinners[i].gameObject);
             }
         }
+    }
+    public void PopulateWinners()
+    {
+        List<string> infos = new List<string>();
 
-        if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
-        {
-            txtInfosTitle.text = "GANHADOR";
-            GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();
-            infos = GameManager.instance.GetWinners();
-            possiblesWinners = new PossibleWinners[infos.Count];
-            if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 1)
-                txtInfosTitle.text = "GANHADORES";
-            txtWinners.text = infos.Count.ToString();
-            GameManager.instance.isWinner = true;
 
-            SetDisableAllNotRevoke();
+        txtInfosTitle.text = "GANHADOR";
+        GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();
+        infos = GameManager.instance.GetWinners();
+        possiblesWinners = new PossibleWinners[infos.Count];
+        if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 1)
+            txtInfosTitle.text = "GANHADORES";
+        txtWinners.text = infos.Count.ToString();
+        GameManager.instance.isWinner = true;
 
-        }
-        else
-        {
-            UpdateStateVisibilityButtonsTicket(false);
-
-            possiblesWinners = new PossibleWinners[0];
-            infos = GameManager.instance.GetForOneBalls();
-            possiblesWinners = new PossibleWinners[infos.Count];
-            txtForOneBall.text = infos.Count.ToString();
-            txtWinners.text = "0";
-            if (infos.Count > 0)
-            {
-                txtInfosTitle.text = "POR UMA BOLA";
-            }
-            else
-            {
-                txtInfosTitle.text = "INFORMAÇÕES";
-            }
-            GameManager.instance.isWinner = false;
-        }
-        txtForTwoBalls.text = GameManager.instance.GetForTwoBalls();
-        GameManager.instance.technicalScriptable.UpdateTicketInfo(GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList());
+        SetDisableAllNotRevoke();
 
         for (int i = 0; i < infos.Count; i++)
         {
@@ -314,6 +292,53 @@ public class GlobeController : MonoBehaviour
             inst.transform.localScale = new Vector2(1, 1);
             possiblesWinners[i] = inst;
         }
+    }
+    private void PopulatePossibleWinners()
+    {
+        List<string> infos = new List<string>();
+
+        UpdateStateVisibilityButtonsTicket(false);
+
+        possiblesWinners = new PossibleWinners[0];
+        infos = GameManager.instance.GetForOneBalls();
+        possiblesWinners = new PossibleWinners[infos.Count];
+        txtForOneBall.text = infos.Count.ToString();
+        txtWinners.text = "0";
+        if (infos.Count > 0)
+        {
+            txtInfosTitle.text = "POR UMA BOLA";
+        }
+        else
+        {
+            txtInfosTitle.text = "INFORMAÇÕES";
+        }
+
+        for (int i = 0; i < infos.Count; i++)
+        {
+            PossibleWinners inst = Instantiate(possibleWinnerGO);
+            inst.PopulateInfos(infos[i]);
+            inst.SetIndex(i);
+
+            inst.transform.SetParent(contentParent.transform);
+            inst.transform.localScale = new Vector2(1, 1);
+            possiblesWinners[i] = inst;
+        }
+        GameManager.instance.isWinner = false;
+    }
+    public void CheckWinners()
+    {
+        ResetPanelPossibleWinners();
+        if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
+        {
+            PopulateWinners();
+        }
+        else
+        {
+            PopulatePossibleWinners();
+        }
+        txtForTwoBalls.text = GameManager.instance.GetForTwoBalls();
+        GameManager.instance.technicalScriptable.UpdateTicketInfo(GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList());
+
         SetInteractablePossiblesWinners(GameManager.instance.isWinner);
         GameManager.instance.WriteInfosGlobe();
     }
@@ -334,7 +359,7 @@ public class GlobeController : MonoBehaviour
 
     public void ValidateBall()
     {
-        PopulatePossibleWinners();
+        CheckWinners();
         if (indexBalls.Count > 0)
         {
             lastBallRaffled = balls[indexBalls[indexBalls.Count - 1]];
@@ -354,7 +379,7 @@ public class GlobeController : MonoBehaviour
         UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
         uIChangeRaffle.CheckStateVisibilityRaffle();
-        GameManager.instance.globeScriptable.sorteioOrdem++;
+       GameManager.instance.globeScriptable.sorteioOrdem++;
         GameManager.instance.ResetScreenGlobe();
         yield return new WaitForSeconds(1);
         SendMesageNextRaffle();
@@ -387,10 +412,6 @@ public class GlobeController : MonoBehaviour
         RestNetworkManager.instance.SendBallsRaffledFromServer(GameManager.instance.globeScriptable.sorteioOrdem);
     }
 
-    //public void SetInteractableBtNextRaffle(bool isActive)
-    //{
-    //    btNextRaffle.interactable = isActive;
-    //}
     public void ShowTicketGlobe()
     {
         foreach (var item in possiblesWinners)

@@ -45,6 +45,7 @@ public class UIChangeRaffleType : MonoBehaviour
         GameManager.instance.isVisibleRaffle = GameManager.instance.technicalScriptable.isVisibleRaffle;
         GameManager.instance.RecoveryScreen();
         SetStateSelectBackupButton();
+        RestNetworkManager.instance.CallWriteMemory();
     }
 
     private void SetModality()

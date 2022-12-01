@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
 
     public void WriteInfosGlobe()
     {
-        technicalScriptable.UpdateConfig(sceneId, isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas);
+        technicalScriptable.UpdateConfig(sceneId, globeScriptable.sorteioOrdem, isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas);
     }
     private void FixedUpdate()
     {

@@ -76,6 +76,7 @@ public class UiManagerLoginScene : MonoBehaviour
                         panelSelectEdition.SetActive(true);
                         panelLogin.SetActive(false);
                         PopulateDropdownEditions();
+                        GameManager.instance.editionScriptable.SetInfosTecnical(inputUsername.text,"XXX.XXX.XXX-XX");
                     }
                     break;
             }
