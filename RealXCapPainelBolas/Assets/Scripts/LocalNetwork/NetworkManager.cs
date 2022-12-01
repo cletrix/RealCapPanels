@@ -124,6 +124,13 @@ public class NetworkManager : MonoBehaviour
     {
         UIManager.instance.ResetRaffle();
     }
+
+    [MessageHandler((ushort)ServerToClientId.messageVisibilityRaffle)]
+    private static void ReceiveMessageVisibilityRaffle(Message message)
+    {
+        bool isActive = message.GetBool();
+        StandyByScreen.instance.SetManualVisibilityScreen(isActive);
+    }
     #endregion
 
     private void OnApplicationQuit()

@@ -140,7 +140,6 @@ public class NetworkManager : MonoBehaviour
 
     #region Messages
 
-
     [MessageHandler((ushort)ServerToClientId.messageVisibilityRaffle)]
     private static void ReceiveMessageVisibilityRaffle(Message message)
     {

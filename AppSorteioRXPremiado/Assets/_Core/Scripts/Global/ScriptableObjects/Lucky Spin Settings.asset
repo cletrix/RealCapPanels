@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d7aeacd01a18274891a8ba3c9c33464, type: 3}
-  m_Name: 
+  m_Name: Lucky Spin Settings
   m_EditorClassIdentifier: 
   currentSpinID: 6
   currentResult: 516359
