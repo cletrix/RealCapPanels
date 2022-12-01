@@ -125,7 +125,7 @@ public class RestNetworkManager : MonoBehaviour
                     }
                     break;
             }
-            if (GameManager.instance.isbackup )
+            if (GameManager.instance.isBackup )
             {
                 Invoke("CallGetInfoServer", 2f);
             }
@@ -134,7 +134,7 @@ public class RestNetworkManager : MonoBehaviour
 
     public void CallWriteMemory()
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
             StartCoroutine(PostConfig(baseUrl1 + payloadWrite));
     }
 

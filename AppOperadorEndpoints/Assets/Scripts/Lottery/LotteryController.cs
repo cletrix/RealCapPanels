@@ -34,7 +34,6 @@ public class LotteryController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtFifthRaffle;
     [SerializeField] private TextMeshProUGUI txtSixthRaffle;
 
-    private bool isVisibilityPanelLotteryRaffle = true;
 
     private const int numberUnlock = 5;
     void Start()

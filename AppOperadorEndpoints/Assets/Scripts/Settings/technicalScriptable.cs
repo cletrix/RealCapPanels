@@ -24,7 +24,7 @@ public class TechnicalScriptable : ScriptableObject
     }
     public void UpdateConfig(int sceneId, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall)
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
         {
             currentSceneID = sceneId;
             isVisibleRaffle = raffleVisibility;
@@ -36,7 +36,7 @@ public class TechnicalScriptable : ScriptableObject
     }
     public void UpdateTicketInfo(List<TicketInfos> _tickets)
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
         {
             ticketInfos.Clear();
             ticketInfos.AddRange(_tickets);

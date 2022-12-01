@@ -29,7 +29,6 @@ public class UIChangeRaffleType : MonoBehaviour
 
     [Header("HIDE RAFFLE SYSTEM")]
     [SerializeField] private Button btVisibilityRaffle;
-    [SerializeField] private bool canChangeScene = false;
 
     [SerializeField] private bool hasActiveLottery = true;
     [SerializeField] private bool hasActiveGlobe = true;
@@ -200,21 +199,21 @@ public class UIChangeRaffleType : MonoBehaviour
 
     public void SetRecoveryConfig()
     {
-        if (GameManager.instance.isbackup)
+        if (GameManager.instance.isBackup)
         {
             RestNetworkManager.instance.DisableInvokInfosServer();
-            GameManager.instance.isbackup = false;
+            GameManager.instance.isBackup = false;
         }
         else
         {
             RestNetworkManager.instance.CallGetInfoServer();
-            GameManager.instance.isbackup = true;
+            GameManager.instance.isBackup = true;
         }
         SetStateSelectBackupButton();
     }
     private void SetStateSelectBackupButton()
     {
-        if (GameManager.instance.isbackup)
+        if (GameManager.instance.isBackup)
         {
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().text = "Backup";
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
@@ -342,7 +341,7 @@ public class UIChangeRaffleType : MonoBehaviour
     }
     public void SendMessageToClientGetActiveScene()
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
         {
             TcpNetworkManager.instance.Server.SendToAll(GetMessage(Message.Create(MessageSendMode.reliable, ServerToClientId.messageCheckSceneActive)));
 
@@ -350,26 +349,26 @@ public class UIChangeRaffleType : MonoBehaviour
     }
     public void SendMessageToClientChangeRaffle(string _messageString)
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
         {
             TcpNetworkManager.instance.Server.SendToAll(GetMessageString(Message.Create(MessageSendMode.reliable, ServerToClientId.messageTypeRaffle), _messageString));
         }
     }
     public void SendMessageLotteryInfos(string _editionNumber, string __competitionNumber, string _dateRaffle, string _dateCompetition, int _ordem, string _description, string _value)
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
         {
             TcpNetworkManager.instance.Server.SendToAll(GetMessageLotteryInfos(Message.Create(MessageSendMode.reliable, ServerToClientId.messageInfosLottery), _editionNumber, __competitionNumber, _dateRaffle, _dateCompetition, _ordem, _description, _value));
         }
     }
     public void SendMessageGlobeInfos(string _editionName, string _editionNumber, string _date, int _ordem, string _description, string _value)
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
             TcpNetworkManager.instance.Server.SendToAll(GetMessageGlobeInfos(Message.Create(MessageSendMode.reliable, ServerToClientId.messageInfosGlobe), _editionName, _editionNumber, _date, _ordem, _description, _value));
     }
     public void SendMessageSpinInfos(string _editionName, string _editionNumber, string _date, int _ordem, string _description, string _value)
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
             TcpNetworkManager.instance.Server.SendToAll(GetMessageSpinInfos(Message.Create(MessageSendMode.reliable, ServerToClientId.messageInfosSpin), _editionName, _editionNumber, _date, _ordem, _description, _value));
     }
     private Message GetMessageString(Message message, string _textMessage)

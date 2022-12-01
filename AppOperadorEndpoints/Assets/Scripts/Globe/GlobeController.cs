@@ -49,7 +49,6 @@ public class GlobeController : MonoBehaviour
     [SerializeField] private GameObject panelRevokeBall;
     [SerializeField] private TextMeshProUGUI txtViewNumberBallRevoke;
 
-    [SerializeField] private bool isWinner = false;
     [SerializeField] private bool hasRevoked = false;
 
 
@@ -68,7 +67,7 @@ public class GlobeController : MonoBehaviour
         UpdateScreen();
         UpdateStateVisibilityButtonsTicket(false);
 
-        if (GameManager.instance.isbackup)
+        if (GameManager.instance.isBackup)
         {
             SetDisableAll();
         }
@@ -101,21 +100,14 @@ public class GlobeController : MonoBehaviour
     }
     private void CheckStateBalls()
     {
-        if (GameManager.instance.isbackup)
+        for (int i = 0; i < balls.Count; i++)
         {
-            SetDisableAll();
+            balls[i].CheckState();
         }
-        else
-        {
-            for (int i = 0; i < balls.Count; i++)
-            {
-                balls[i].CheckState();
-            }
 
-            if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
-            {
-                SetDisableAllNotRevoke();
-            }
+        if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
+        {
+            SetDisableAllNotRevoke();
         }
     }
     public void DisableHasRevokedAll()
@@ -170,7 +162,7 @@ public class GlobeController : MonoBehaviour
         else
         {
             balls[indexBallSelected].SetHasSelected(true);
-            if (!isWinner)
+            if (!GameManager.instance.isWinner)
             {
                 panelConfirmBall.SetActive(true);
             }
@@ -285,7 +277,7 @@ public class GlobeController : MonoBehaviour
             if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 1)
                 txtInfosTitle.text = "GANHADORES";
             txtWinners.text = infos.Count.ToString();
-            isWinner = true;
+            GameManager.instance.isWinner = true;
 
             SetDisableAllNotRevoke();
 
@@ -307,7 +299,7 @@ public class GlobeController : MonoBehaviour
             {
                 txtInfosTitle.text = "INFORMAÇÕES";
             }
-            isWinner = false;
+            GameManager.instance.isWinner = false;
         }
         txtForTwoBalls.text = GameManager.instance.GetForTwoBalls();
         GameManager.instance.technicalScriptable.UpdateTicketInfo(GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList());
@@ -322,7 +314,7 @@ public class GlobeController : MonoBehaviour
             inst.transform.localScale = new Vector2(1, 1);
             possiblesWinners[i] = inst;
         }
-        SetInteractablePossiblesWinners(isWinner);
+        SetInteractablePossiblesWinners(GameManager.instance.isWinner);
         GameManager.instance.WriteInfosGlobe();
     }
     public void SetInteractablePossiblesWinners(bool _isActive)
@@ -443,18 +435,18 @@ public class GlobeController : MonoBehaviour
     #region MESSAGES
     public void SendMessageBallsRaffled()
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
             TcpNetworkManager.instance.Server.SendToAll(GetMessageString(Message.Create(MessageSendMode.reliable, ServerToClientId.messageBall), GameManager.instance.GetBallsRaffled().ToArray(), GameManager.instance.globeRaffleScriptable.porUmaBolas.Count, GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length, GameManager.instance.globeRaffleScriptable.valorPremio.ToString()));
     }
     public void SendMessageBallRevoked()
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
             TcpNetworkManager.instance.Server.SendToAll(GetMessageBallRevoked(Message.Create(MessageSendMode.reliable, ServerToClientId.messageBallRevoked), GameManager.instance.GetBallsRaffled().ToArray(), GameManager.instance.globeRaffleScriptable.porUmaBolas.Count, GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length, GameManager.instance.globeRaffleScriptable.valorPremio.ToString()));
     }
 
     public void SendMesageNextRaffle()
     {
-        if (!GameManager.instance.isbackup)
+        if (!GameManager.instance.isBackup)
             TcpNetworkManager.instance.Server.SendToAll(GetMessage(Message.Create(MessageSendMode.reliable, ServerToClientId.messageNextRaffleGlobe)));
     }
 

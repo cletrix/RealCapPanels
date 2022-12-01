@@ -421,7 +421,7 @@ PrefabInstance:
     - target: {fileID: 7804240743405866441, guid: d4c05a7adb4a3d4488268bfad5a041c0, type: 3}
       propertyPath: technicalScriptable
       value: 
-      objectReference: {fileID: 11400000, guid: 6a0dadb372502154ab2c76018c7c4829, type: 2}
+      objectReference: {fileID: 11400000, guid: f880b938d1499a64087e636c24f5f7ad, type: 2}
     - target: {fileID: 7804240743405866446, guid: d4c05a7adb4a3d4488268bfad5a041c0, type: 3}
       propertyPath: m_RootOrder
       value: 4

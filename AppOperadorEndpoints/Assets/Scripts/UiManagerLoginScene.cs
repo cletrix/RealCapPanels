@@ -32,14 +32,14 @@ public class UiManagerLoginScene : MonoBehaviour
     }
     public void SelectBackup()
     {
-        if (GameManager.instance.isbackup)
+        if (GameManager.instance.isBackup)
         {
-            GameManager.instance.isbackup = false;
+            GameManager.instance.isBackup = false;
             btSelectBackup.image.color = Color.white;
         }
         else
         {
-            GameManager.instance.isbackup = true;
+            GameManager.instance.isBackup = true;
             btSelectBackup.image.color = Color.green;
         }
     }

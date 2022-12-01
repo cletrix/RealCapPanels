@@ -37,9 +37,18 @@ public class Ball : MonoBehaviour
     }
     public void SetActionButton()
     {
-        //SetSelectedColor();
         GlobeController globeController = FindObjectOfType<GlobeController>();
         globeController.OpenPanelBall(numberBall);
+    }
+    public void SetStateButton(bool _isActive)
+    {
+        if (GameManager.instance.isBackup)
+            btBall.interactable = false;
+        else
+        {
+            btBall.interactable = _isActive;
+        }
+
     }
     public void CheckState()
     {
@@ -47,13 +56,13 @@ public class Ball : MonoBehaviour
         {
             if (hasCanRevoked)
             {
-                btBall.interactable = true;
+                SetStateButton(true);
                 SetCanRevokebleColor();
                 SetHasSelected(false);
             }
             else
             {
-                btBall.interactable = false;
+                SetStateButton(false);
                 SetConfirmedColor();
             }
         }
@@ -62,32 +71,29 @@ public class Ball : MonoBehaviour
             if (hasSelected)
             {
                 SetSelectedColor();
-                btBall.interactable = false;
+                SetStateButton(false);
             }
             else
             {
-                btBall.interactable = true;
+                SetStateButton(true);
                 SetNormalColor();
-
             }
         }
     }
     public void DisableInteractable()
     {
-        btBall.interactable = false;
+        SetStateButton(false);
         txtBall.color = new Color(txtBall.color.r, txtBall.color.g, txtBall.color.b, 0.5f);
     }
     public void EnableInteractable()
     {
-        btBall.interactable = true;
+        SetStateButton(true);
         txtBall.color = new Color(txtBall.color.r, txtBall.color.g, txtBall.color.b, 1f);
-
     }
     public void SetNormalColor()
     {
         btBall.image.color = normalColor;
         txtBall.color = new Color(txtBall.color.r, txtBall.color.g, txtBall.color.b, 1f);
-        btBall.interactable = true;
     }
     public void SetSelectedColor()
     {
@@ -96,13 +102,11 @@ public class Ball : MonoBehaviour
     public void SetConfirmedColor()
     {
         btBall.image.color = confirmedColor;
-        btBall.interactable = false;
         txtBall.color = new Color(txtBall.color.r, txtBall.color.g, txtBall.color.b, 1f);
     }
     public void SetCanRevokebleColor()
     {
         btBall.image.color = revokebleColor;
-        btBall.interactable = true;
         txtBall.color = new Color(txtBall.color.r, txtBall.color.g, txtBall.color.b, 1f);
     }
     public void SetHasRaffled(bool state)

@@ -21,9 +21,6 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-    public bool isbackup;
-
-
     public static event Action OnPopulateRaffles;
 
     public RecoveryScriptable recoveryScriptable;
@@ -41,6 +38,7 @@ public class GameManager : MonoBehaviour
     public SpinResultScriptable spinResultScriptable;
 
     [Header("Settings")]
+    public bool isBackup=false;
     public bool isConnected = false;
     public bool isVisibleRaffle = false;
     public bool isWinner = false;
@@ -58,7 +56,7 @@ public class GameManager : MonoBehaviour
     }
     public void RecoveryScreen()
     {
-        if (isbackup)
+        if (isBackup)
         {
             GlobeController globeController = FindObjectOfType<GlobeController>();
             if (globeController != null && isWinner == false)
