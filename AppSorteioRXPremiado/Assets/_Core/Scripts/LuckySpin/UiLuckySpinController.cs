@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System;
 public class UiLuckySpinController : MonoBehaviour
 {
-    
+
     public TextMeshProUGUI txtRoundRaffle;
     public TextMeshProUGUI txtLiquidPrize;
     public TextMeshProUGUI txtDateRaffle;
@@ -20,7 +20,7 @@ public class UiLuckySpinController : MonoBehaviour
 
     public void PopulateSpinInfos(string _value, string _edition)
     {
-        txtLiquidPrize.text = $"R$ {_value}";
+        txtLiquidPrize.text = GameManager.instance.FormatMoneyInfo(int.Parse(_value), 2);
         txtEdition.text = $"EDIÇÃO N° {_edition}";
     }
 

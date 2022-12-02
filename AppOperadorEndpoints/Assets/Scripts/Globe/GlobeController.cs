@@ -381,7 +381,7 @@ public class GlobeController : MonoBehaviour
         UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
         uIChangeRaffle.CheckStateVisibilityRaffle();
-       GameManager.instance.globeScriptable.sorteioOrdem++;
+        GameManager.instance.globeScriptable.sorteioOrdem++;
         GameManager.instance.ResetScreenGlobe();
         yield return new WaitForSeconds(1);
         SendMesageNextRaffle();
@@ -425,7 +425,8 @@ public class GlobeController : MonoBehaviour
                 item.SetIsFinished(true);
             }
         }
-        btNextRaffle.interactable = GameManager.instance.GetAllTicketsVisible();
+        if (GameManager.instance.globeScriptable.sorteioOrdem + 1 < GameManager.instance.recoveryScriptable.limit_globo)
+            btNextRaffle.interactable = GameManager.instance.GetAllTicketsVisible();
 
         ticketController.PopulateTicketInfos(
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].nome,

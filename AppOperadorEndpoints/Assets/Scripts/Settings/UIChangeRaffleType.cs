@@ -296,8 +296,7 @@ public class UIChangeRaffleType : MonoBehaviour
     #region MESSAGES
     public void SendMessageVisibilityRaffle()
     {
-        if (!GameManager.instance.isVisibleRaffle)
-        {
+        
             if (panelRaffleLottery.activeSelf == true)
             {
                 SendMessageLotteryInfos(
@@ -329,13 +328,13 @@ public class UIChangeRaffleType : MonoBehaviour
            GameManager.instance.spinScriptable.sorteioDescricao,
            GameManager.instance.spinScriptable.sorteioValor);
             }
-        }
-        TcpNetworkManager.instance.Server.SendToAll(GetMessageBool(Message.Create(MessageSendMode.unreliable, ServerToClientId.messageVisibilityRaffle), GameManager.instance.isVisibleRaffle));
+        
+        TcpNetworkManager.instance.Server.SendToAll(GetMessageVisibilityRaffle(Message.Create(MessageSendMode.unreliable, ServerToClientId.messageVisibilityRaffle), GameManager.instance.isVisibleRaffle, GameManager.instance.sceneId));
     }
-    private Message GetMessageBool(Message message, bool isActive)
+    private Message GetMessageVisibilityRaffle(Message message, bool isActive, int typeRaffle)
     {
         message.AddBool(isActive);
-
+        message.AddInt(typeRaffle);
         return message;
     }
     public void SendMessageToClientGetActiveScene()
@@ -343,7 +342,6 @@ public class UIChangeRaffleType : MonoBehaviour
         if (!GameManager.instance.isBackup)
         {
             TcpNetworkManager.instance.Server.SendToAll(GetMessage(Message.Create(MessageSendMode.reliable, ServerToClientId.messageCheckSceneActive)));
-
         }
     }
     public void SendMessageToClientChangeRaffle(string _messageString)

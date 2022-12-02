@@ -23,7 +23,6 @@ public enum ServerToClientId : ushort
     messageCheckSceneActive = 15,
     messageVisibilityPrize = 16,
     messageNextRaffleGlobe = 17
-
 }
 public enum ClientToServerId : ushort
 {
@@ -32,8 +31,6 @@ public enum ClientToServerId : ushort
     messageCheckVisibilityScreen = 3,
     messageGetActiveScene = 4
 }
-
-
 public class NetworkManager : MonoBehaviour
 {
     private static NetworkManager _singleton;
@@ -51,22 +48,17 @@ public class NetworkManager : MonoBehaviour
             }
         }
     }
-
     [SerializeField] private string ip;
     [SerializeField] private string ip2;
     [SerializeField] private ushort port;
 
-
     public static Client Client { get; private set; }
     public static Client Client2 { get; private set; }
-
-
 
     private void Awake()
     {
         Singleton = this;
     }
-
     private void Start()
     {
         RiptideLogger.Initialize(Debug.Log, Debug.Log, Debug.LogWarning, Debug.LogError, false);
@@ -91,47 +83,6 @@ public class NetworkManager : MonoBehaviour
         Client.Tick();
         Client2.Tick();
     }
-    #region Messages
-
-    [MessageHandler((ushort)ServerToClientId.messageBall)]
-    private static void ReceiveMessage(Message message)
-    {
-        string[] ballsRaffled = message.GetStrings();
-        int[] newBalls = new int[ballsRaffled.Length];
-       
-        for (int i = 0; i < ballsRaffled.Length; i++)
-        {
-            newBalls[i] = int.Parse(ballsRaffled[i].ToString());
-        }
-        UIManager.instance.RecieveBalls(newBalls.ToList());
-    }
-    [MessageHandler((ushort)ServerToClientId.messageBallRevoked)]
-    private static void ReceiveMessageBallRevoked(Message message)
-    {
-        string[] ballsRaffled = message.GetStrings();
-        int[] newBalls = new int[ballsRaffled.Length];
-
-        for (int i = 0; i < ballsRaffled.Length; i++)
-        {
-            newBalls[i] = int.Parse(ballsRaffled[i].ToString());
-        }
-        UIManager.instance.RecieveBalls(newBalls.ToList());
-
-    }
-
-    [MessageHandler((ushort)ServerToClientId.messageNextRaffleGlobe)]
-    private static void ReceiveMessageNextRaffleGlobe(Message message)
-    {
-        UIManager.instance.ResetRaffle();
-    }
-
-    [MessageHandler((ushort)ServerToClientId.messageVisibilityRaffle)]
-    private static void ReceiveMessageVisibilityRaffle(Message message)
-    {
-        bool isActive = message.GetBool();
-        StandyByScreen.instance.SetManualVisibilityScreen(isActive);
-    }
-    #endregion
 
     private void OnApplicationQuit()
     {
@@ -178,5 +129,51 @@ public class NetworkManager : MonoBehaviour
     {
         Connect();
     }
+
+    #region Messages
+
+    [MessageHandler((ushort)ServerToClientId.messageBall)]
+    private static void ReceiveMessage(Message message)
+    {
+        string[] ballsRaffled = message.GetStrings();
+        int[] newBalls = new int[ballsRaffled.Length];
+
+        for (int i = 0; i < ballsRaffled.Length; i++)
+        {
+            newBalls[i] = int.Parse(ballsRaffled[i].ToString());
+        }
+        UIManager.instance.RecieveBalls(newBalls.ToList());
+    }
+    [MessageHandler((ushort)ServerToClientId.messageBallRevoked)]
+    private static void ReceiveMessageBallRevoked(Message message)
+    {
+        string[] ballsRaffled = message.GetStrings();
+        int[] newBalls = new int[ballsRaffled.Length];
+
+        for (int i = 0; i < ballsRaffled.Length; i++)
+        {
+            newBalls[i] = int.Parse(ballsRaffled[i].ToString());
+        }
+        UIManager.instance.RecieveBalls(newBalls.ToList());
+    }
+
+    [MessageHandler((ushort)ServerToClientId.messageNextRaffleGlobe)]
+    private static void ReceiveMessageNextRaffleGlobe(Message message)
+    {
+        UIManager.instance.ResetRaffle();
+    }
+
+    [MessageHandler((ushort)ServerToClientId.messageVisibilityRaffle)]
+    private static void ReceiveMessageVisibilityRaffle(Message message)
+    {
+        bool isActive = message.GetBool();
+        int sceneActive = message.GetInt();
+        print(sceneActive);
+        if (sceneActive == 2)
+        {
+            StandyByScreen.instance.SetManualVisibilityScreen(isActive);
+        }
+    }
+    #endregion
 }
 

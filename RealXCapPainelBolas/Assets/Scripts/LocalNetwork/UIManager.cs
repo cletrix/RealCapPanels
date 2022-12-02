@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
         Invoke("Connect", 1f);
         panelScriptable.ResetVariables();
         timeToSpawn = maxTimetoSpawn;
-
     }
     public void Connect()
     {

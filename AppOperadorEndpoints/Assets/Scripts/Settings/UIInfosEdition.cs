@@ -38,7 +38,6 @@ public class UIInfosEdition : MonoBehaviour
         editionTypeSizeSerie.text= $"Tamanho Serie\n\n {_tipoTamanhoSerie}";
         editionModalities.text= $"Modalidades\n\n {_modalidades}";
         editionTypeAmountChances.text = $"chances\n\n {_tipoQuantidadeChances}";
-        editionValue.text = $"Valor\n R${_valor}";
+        editionValue.text = $"Valor\n{GameManager.instance.FormatMoneyInfo(int.Parse(_valor), 2)}";
     }
-
 }

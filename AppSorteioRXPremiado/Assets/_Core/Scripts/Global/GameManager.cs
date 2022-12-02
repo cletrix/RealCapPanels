@@ -5,6 +5,7 @@ using UnityEngine;
 using RiptideNetworking;
 using UnityEngine.SceneManagement;
 using System.Reflection;
+using System.Globalization;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,6 +43,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         InitializeVariables();
+    }
+    public string FormatMoneyInfo(int value, int decimalHouse=2)
+    {
+        string prizeFormated = string.Format(CultureInfo.CurrentCulture, value.ToString($"C{decimalHouse}"));
+        return prizeFormated;
     }
     private void InitializeVariables()
     {

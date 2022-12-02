@@ -48,9 +48,10 @@ public class UiGlobeManager : MonoBehaviour
         globeController.PopulateInfosGlobe(_editionName, _editionNumber, _date, _order, _description, _value);
 
         txtRoundRaffle.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
+        txtEditionInfo.text = $"EDIÇÃO N° {GameManager.instance.globeScriptable.editionNumber}";
 
         txtPrizeName.text = $"{GameManager.instance.globeScriptable.description}";
-        txtPrizeValue.text = $"Valor Líquido R${GameManager.instance.globeScriptable.value}";
+        txtPrizeValue.text = $"Valor Líquido {GameManager.instance.FormatMoneyInfo(int.Parse(GameManager.instance.globeScriptable.value),2)}";
         StartCoroutine(ActiveRaffle());
 
     }

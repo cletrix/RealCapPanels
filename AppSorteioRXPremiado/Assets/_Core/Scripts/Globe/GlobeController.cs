@@ -79,7 +79,6 @@ public class GlobeController : MonoBehaviour
        
         if (GameManager.instance.globeScriptable.numberBalls.Count < _ballsRaffled.Length)
         {
-            //CancelInvoke("VerifyBalls");
             VerifyBalls();
             GameManager.instance.globeScriptable.numberBalls.Clear();
             GameManager.instance.globeScriptable.numberBalls.AddRange(_ballsRaffled.ToList());

@@ -82,12 +82,7 @@ public class TcpNetworkManager : MonoBehaviour
         Server.Start(port, maxClientCount);
 
     }
-    private void InvokeScreen()
-    {
-
-    }
-
-
+  
     [MessageHandler((ushort)ClientToServerId.messageConfirmBall)]
     private static void RecieveMessageFromClientConfirmBall(ClientToServerId id, Message message)
     {
