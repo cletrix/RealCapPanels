@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using RiptideNetworking;
 using System;
 using System.Globalization;
+using System.Linq;
 
 public class TicketController : MonoBehaviour
 {
@@ -44,7 +45,6 @@ public class TicketController : MonoBehaviour
     [SerializeField] private Button btBackTicket;
     [SerializeField] private GameObject bgTicket;
 
-    [SerializeField] public bool isTicketVisible = false;
     [SerializeField] public bool canShowPrize = false;
 
     private void Start()
@@ -67,42 +67,40 @@ public class TicketController : MonoBehaviour
     //    // ticketInfos.ticketNumber = _number;
     //    // txtNumberTicket.text = ticketInfos.ticketNumber;
     //}
-
-    public void SetVisibilityTicket()
+    public void SetTicketVisibility()
     {
-        if (isTicketVisible)
+        if (GameManager.instance.isTicketVisible)
         {
-            bgTicket.SetActive(false);
-            isTicketVisible = false;
-
-            SendMessageToClientHideTicket(isTicketVisible);
-            
-            SpinController spin = FindObjectOfType<SpinController>();
-            if(spin!=null)
-            {
-                spin.ActiveButtonNewRaffleSpin();
-            }
+            GameManager.instance.isTicketVisible = false;
         }
         else
         {
-            bgTicket.SetActive(true);
-            isTicketVisible = true;
+            GameManager.instance.isTicketVisible = true;
         }
-
+        GameManager.instance.technicalScriptable.UpdateTicketInfo(
+        GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList(),
+        GameManager.instance.globeRaffleScriptable.ticketListVisible.ToList(),
+        GameManager.instance.ticketWinnerIndex, GameManager.instance.isTicketVisible);
+        CheckStateVisibility();
     }
-    //public void SetVisibilityPrize()
-    //{
-    //    if (canShowPrize)
-    //    {
-    //        canShowPrize = false;
-    //    }
-    //    else
-    //    {
-    //        canShowPrize = true;
-    //    }
-    //    SendMessageToClientVisibilityPrize(canShowPrize);
-
-    //}
+    public void CheckStateVisibility()
+    {
+        if (GameManager.instance.isTicketVisible)
+        {
+            bgTicket.SetActive(true);
+        }
+        else
+        {
+            bgTicket.SetActive(false);
+            SpinController spin = FindObjectOfType<SpinController>();
+            if (spin != null)
+            {
+                spin.ActiveButtonNewRaffleSpin();
+            }
+            SendMessageToClientHideTicket(GameManager.instance.isTicketVisible);
+        }
+    }
+    
     private string RevertDate(string date)
     {
         DateTime dateTime = System.DateTime.Parse(date);
@@ -249,8 +247,11 @@ public class TicketController : MonoBehaviour
         _ticketInfos[20] = CheckIsNullInfo(_chance);
         _ticketInfos[21] = CheckIsNullInfo(_luckyNumber);
 
-        SetVisibilityTicket();
-        SendMessageToClientShowTicket(isTicketVisible, _ticketInfos, _numbersCard.ToArray(), _isCard, _typeRaffle);
+        if (!GameManager.instance.isBackup)
+        {
+           
+            SendMessageToClientShowTicket(GameManager.instance.isTicketVisible, _ticketInfos, _numbersCard.ToArray(), _isCard, _typeRaffle);
+        }
     }
     #region Messages
     public void SendMessageToClientShowTicket(bool _canShowTicket, string[] _ticketInfos, int[] _numbersCard, bool _isCard, int _typeRaffle)

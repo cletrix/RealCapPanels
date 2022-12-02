@@ -35,7 +35,6 @@ public class GlobeController : MonoBehaviour
     [SerializeField] private GameObject contentParent;
     [SerializeField] private PossibleWinners[] possiblesWinners;
     [SerializeField] private PossibleWinners possibleWinnerGO;
-    [SerializeField] private int indexWinner = 0;
 
     [Header("COMPONENTS")]
     [SerializeField] private TextMeshProUGUI orderBalls;
@@ -331,15 +330,17 @@ public class GlobeController : MonoBehaviour
         if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
         {
             PopulateWinners(infos);
-            print("Winner");
         }
         else
         {
             PopulatePossibleWinners(infos);
-            print("NotWinner");
         }
         txtForTwoBalls.text = GameManager.instance.GetForTwoBalls();
-        GameManager.instance.technicalScriptable.UpdateTicketInfo(GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList());
+
+        GameManager.instance.technicalScriptable.UpdateTicketInfo(
+            GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList(),
+            GameManager.instance.globeRaffleScriptable.ticketListVisible.ToList(),
+            GameManager.instance.ticketWinnerIndex, GameManager.instance.isTicketVisible);
 
         SetInteractablePossiblesWinners(GameManager.instance.isWinner);
         GameManager.instance.WriteInfosGlobe();
@@ -420,40 +421,45 @@ public class GlobeController : MonoBehaviour
         {
             if (item.GetIsSelected() == true)
             {
-                indexWinner = item.GetIndex();
+                GameManager.instance.ticketWinnerIndex = item.GetIndex();
                 GameManager.instance.SetIsVisibleTicketList(item.GetIndex());
                 item.SetIsFinished(true);
             }
         }
         if (GameManager.instance.globeScriptable.sorteioOrdem + 1 < GameManager.instance.recoveryScriptable.limit_globo)
             btNextRaffle.interactable = GameManager.instance.GetAllTicketsVisible();
+        ticketController.SetTicketVisibility();
+        PopulateTicketGlobe();
+    }
 
+    public void PopulateTicketGlobe()
+    {
         ticketController.PopulateTicketInfos(
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].nome,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].cpf,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].dataNascimento,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].telefone,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].email,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].endereco,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].numero,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].complemento,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].bairro,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].municipio,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].cep,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].estado,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].dataSorteio,
-            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].valor,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].PDV,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].bairoPDV,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].dataCompra,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].horaCompra,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].numeroTitulo,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].chance,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].numeroCartela,
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[indexWinner].numeroSorte,
-            true,
-            2);
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].nome,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].cpf,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataNascimento,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].telefone,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].email,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].endereco,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numero,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].complemento,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].bairro,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].municipio,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].cep,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].estado,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataSorteio,
+           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].valor,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].PDV,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].bairoPDV,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataCompra,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].horaCompra,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroTitulo,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].chance,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroCartela,
+           GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroSorte,
+           true,
+           2);
     }
 
     #region MESSAGES

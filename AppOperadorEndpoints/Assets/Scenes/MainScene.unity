@@ -12312,6 +12312,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1537036756}
     m_Modifications:
+    - target: {fileID: 3021835444454497141, guid: e61ca721ed945c44b86ea1d781fd2415, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTicketVisibility
+      objectReference: {fileID: 0}
     - target: {fileID: 3021835446366806930, guid: e61ca721ed945c44b86ea1d781fd2415, type: 3}
       propertyPath: m_Name
       value: PanelTicket
@@ -26855,7 +26859,6 @@ MonoBehaviour:
   contentParent: {fileID: 1081407679}
   possiblesWinners: []
   possibleWinnerGO: {fileID: 1961342627, guid: 0f9116adadb6cff46abb535e9b455a41, type: 3}
-  indexWinner: 0
   orderBalls: {fileID: 1861844572}
   btConfirm: {fileID: 450092948}
   panelConfirmBall: {fileID: 110992137}

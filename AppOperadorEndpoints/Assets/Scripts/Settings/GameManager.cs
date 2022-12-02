@@ -39,10 +39,12 @@ public class GameManager : MonoBehaviour
     public SpinResultScriptable spinResultScriptable;
 
     [Header("Settings")]
-    public bool isBackup=false;
+    public bool isBackup = false;
     public bool isConnected = false;
     public bool isVisibleRaffle = false;
     public bool isWinner = false;
+    public bool isTicketVisible = false;
+    public int ticketWinnerIndex = 0;
     public int EditionIndex { get; private set; }
 
     public void SetEditionIndex(int value)
@@ -60,9 +62,22 @@ public class GameManager : MonoBehaviour
     {
         if (isBackup)
         {
+            TicketController ticket = FindObjectOfType<TicketController>();
             GlobeController globeController = FindObjectOfType<GlobeController>();
             if (globeController != null && isWinner == false)
+            {
                 globeController.UpdateScreen();
+            }
+            else if (ticket != null && isWinner == true)
+            {
+
+                if (globeController != null)
+                {
+                    globeController.PopulateTicketGlobe();
+                }
+
+                ticket.CheckStateVisibility();
+            }
         }
         UIChangeRaffleType uIChangeRaffleType = FindObjectOfType<UIChangeRaffleType>();
         if (uIChangeRaffleType != null)
@@ -137,12 +152,12 @@ public class GameManager : MonoBehaviour
         int index = 0;
         for (int i = 0; i < globeRaffleScriptable.ticketListVisible.Length; i++)
         {
-            if(globeRaffleScriptable.ticketListVisible[i]==true)
+            if (globeRaffleScriptable.ticketListVisible[i] == true)
             {
                 index++;
             }
         }
-        if(index>= globeRaffleScriptable.ticketListVisible.Length)
+        if (index >= globeRaffleScriptable.ticketListVisible.Length)
         {
             return true;
         }

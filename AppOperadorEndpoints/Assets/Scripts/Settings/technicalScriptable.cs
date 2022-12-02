@@ -14,6 +14,10 @@ public class TechnicalScriptable : ScriptableObject
     public List<GlobeRaffleScriptable.porUmaBola> forOneBalls = new List<GlobeRaffleScriptable.porUmaBola>();
     public List<TicketInfos> ticketInfos;
 
+    public List<bool> ticketsShown;
+    public int currentTicketIndex;
+    public bool isTicketVisible;
+
     public void ResetInfos()
     {
         currentSceneID = 0;
@@ -37,12 +41,16 @@ public class TechnicalScriptable : ScriptableObject
             RestNetworkManager.instance.CallWriteMemory();
         }
     }
-    public void UpdateTicketInfo(List<TicketInfos> _tickets)
+    public void UpdateTicketInfo(List<TicketInfos> _tickets, List<bool> _ticketsShown, int _currentTicketIndex, bool _isTicketVisible)
     {
         if (!GameManager.instance.isBackup)
         {
             ticketInfos.Clear();
             ticketInfos.AddRange(_tickets);
+            ticketsShown.Clear();
+            ticketsShown.AddRange(_ticketsShown);
+            currentTicketIndex = _currentTicketIndex;
+            isTicketVisible = _isTicketVisible;
             RestNetworkManager.instance.CallWriteMemory();
         }
     }
@@ -59,15 +67,15 @@ public class TechnicalScriptable : ScriptableObject
         GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();
         GameManager.instance.globeRaffleScriptable.porUmaBolas.AddRange(forOneBalls);
         GameManager.instance.globeRaffleScriptable.ganhadorContemplado = new TicketInfos[ticketInfos.Count];
+        GameManager.instance.globeRaffleScriptable.ticketListVisible = new bool[ticketInfos.Count];
+        GameManager.instance.isTicketVisible = isTicketVisible;
+
         for (int i = 0; i < ticketInfos.Count; i++)
         {
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[i] = ticketInfos[i];
+            GameManager.instance.globeRaffleScriptable.ticketListVisible[i] = ticketsShown[i];
         }
-
         GameManager.instance.RecoveryScreen();
-
-
-
     }
 
 }
