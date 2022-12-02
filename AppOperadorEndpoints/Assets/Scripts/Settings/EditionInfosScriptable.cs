@@ -13,8 +13,8 @@ public class EditionInfosScriptable : ScriptableObject
 
     public void SetInfosTecnical(string _tecnicoName, string _tecnicoCPF)
     {
-        tecnicoNome = $"Tecnico: {_tecnicoName}";
-        tecnicoCPF = $"Tecnico: {_tecnicoCPF}";
+        tecnicoNome = $"{_tecnicoName}";
+        tecnicoCPF = $"{_tecnicoCPF}";
     }
 
     [System.Serializable]

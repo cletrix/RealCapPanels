@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -144,15 +145,27 @@ public class RestNetworkManager : MonoBehaviour
     {
         StartCoroutine(GetConfig(baseUrl1 + payloadRead));
     }
-    private IEnumerator PostConfig(string uri)
+    public string RemoveAccents(string text)
     {
+        StringBuilder sbReturn = new StringBuilder();
+        var arrayText = text.Normalize(NormalizationForm.FormD).ToCharArray();
+        foreach (char letter in arrayText)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(letter) != UnicodeCategory.NonSpacingMark)
+                sbReturn.Append(letter);
+        }
+        return sbReturn.ToString();
+    }
+    private IEnumerator PostConfig(string uri)
+    {   
         TechnicalScriptable config = GameManager.instance.technicalScriptable;
 
         for (int i = 0; i < config.forOneBalls.Count; i++)
         {
             config.forOneBalls[i].numeroChance = config.forOneBalls[i].numeroChance.Replace("°", "");
         }
-        string json = JsonUtility.ToJson(config);
+        string json = RemoveAccents(JsonUtility.ToJson(config));
+
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
         {
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
@@ -183,6 +196,7 @@ public class RestNetworkManager : MonoBehaviour
         }
     }
 
+    
     public IEnumerator GetConfig(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -205,9 +219,10 @@ public class RestNetworkManager : MonoBehaviour
                     {
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         char[] charsToTrim = { 'b', '\'' };
-                        string json = webRequest.downloadHandler.text;
+                        string json = Encoding.GetEncoding("UTF-8").GetString(webRequest.downloadHandler.data); 
                         string newj = json.Trim(charsToTrim);
-                        JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
+                        
+                        JsonUtility.FromJsonOverwrite( newj, GameManager.instance.technicalScriptable);
                         GameManager.instance.technicalScriptable.PopulateConfig();
                     }
                     break;

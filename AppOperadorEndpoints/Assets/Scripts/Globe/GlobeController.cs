@@ -258,6 +258,7 @@ public class GlobeController : MonoBehaviour
 
     private void ResetPanelPossibleWinners()
     {
+        print("PossiblesWinners" + possiblesWinners.Length);
         if (possiblesWinners.Length > 0)
         {
             for (int i = 0; i < possiblesWinners.Length; i++)
@@ -266,26 +267,24 @@ public class GlobeController : MonoBehaviour
             }
         }
     }
-    public void PopulateWinners()
+    public void PopulateWinners(List<string> _infos)
     {
-        List<string> infos = new List<string>();
-
 
         txtInfosTitle.text = "GANHADOR";
         GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();
-        infos = GameManager.instance.GetWinners();
-        possiblesWinners = new PossibleWinners[infos.Count];
+        _infos = GameManager.instance.GetWinners();
+        possiblesWinners = new PossibleWinners[_infos.Count];
         if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 1)
             txtInfosTitle.text = "GANHADORES";
-        txtWinners.text = infos.Count.ToString();
+        txtWinners.text = _infos.Count.ToString();
         GameManager.instance.isWinner = true;
-
+        txtForOneBall.text = "0";
         SetDisableAllNotRevoke();
 
-        for (int i = 0; i < infos.Count; i++)
+        for (int i = 0; i < _infos.Count; i++)
         {
             PossibleWinners inst = Instantiate(possibleWinnerGO);
-            inst.PopulateInfos(infos[i]);
+            inst.PopulateInfos(_infos[i]);
             inst.SetIndex(i);
 
             inst.transform.SetParent(contentParent.transform);
@@ -293,18 +292,17 @@ public class GlobeController : MonoBehaviour
             possiblesWinners[i] = inst;
         }
     }
-    private void PopulatePossibleWinners()
+    private void PopulatePossibleWinners(List<string> _infos)
     {
-        List<string> infos = new List<string>();
 
         UpdateStateVisibilityButtonsTicket(false);
 
         possiblesWinners = new PossibleWinners[0];
-        infos = GameManager.instance.GetForOneBalls();
-        possiblesWinners = new PossibleWinners[infos.Count];
-        txtForOneBall.text = infos.Count.ToString();
+        _infos = GameManager.instance.GetForOneBalls();
+        possiblesWinners = new PossibleWinners[_infos.Count];
+        txtForOneBall.text = _infos.Count.ToString();
         txtWinners.text = "0";
-        if (infos.Count > 0)
+        if (_infos.Count > 0)
         {
             txtInfosTitle.text = "POR UMA BOLA";
         }
@@ -313,10 +311,10 @@ public class GlobeController : MonoBehaviour
             txtInfosTitle.text = "INFORMAÇÕES";
         }
 
-        for (int i = 0; i < infos.Count; i++)
+        for (int i = 0; i < _infos.Count; i++)
         {
             PossibleWinners inst = Instantiate(possibleWinnerGO);
-            inst.PopulateInfos(infos[i]);
+            inst.PopulateInfos(_infos[i]);
             inst.SetIndex(i);
 
             inst.transform.SetParent(contentParent.transform);
@@ -327,14 +325,18 @@ public class GlobeController : MonoBehaviour
     }
     public void CheckWinners()
     {
+        List<string> infos = new List<string>();
+
         ResetPanelPossibleWinners();
         if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 0)
         {
-            PopulateWinners();
+            PopulateWinners(infos);
+            print("Winner");
         }
         else
         {
-            PopulatePossibleWinners();
+            PopulatePossibleWinners(infos);
+            print("NotWinner");
         }
         txtForTwoBalls.text = GameManager.instance.GetForTwoBalls();
         GameManager.instance.technicalScriptable.UpdateTicketInfo(GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList());

@@ -3,10 +3,8 @@ using TMPro;
 using UnityEngine.UI;
 using RiptideNetworking;
 
-
 public class UIChangeRaffleType : MonoBehaviour
 {
-
     [Header("CONTROLLERS")]
     [SerializeField] GlobeController globeController;
 
