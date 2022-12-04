@@ -23,12 +23,15 @@ public class TechnicalScriptable : ScriptableObject
         currentSceneID = 0;
         currentSceneID = 1;
         panelActive = 0;
-        isVisibleRaffle = false;
+        currentTicketIndex = 0;
         forTwoBalls = 0;
+        isVisibleRaffle = false;
+        isTicketVisible = false;
         forOneBalls.Clear();
         ticketInfos.Clear();
     }
-    public void UpdateConfig(int sceneId, int _currentRaffle, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall)
+    public void UpdateConfig(int sceneId, int _currentRaffle, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall,
+        List<TicketInfos> _tickets, List<bool> _ticketsShown, int _currentTicketIndex, bool _isTicketVisible)
     {
         if (!GameManager.instance.isBackup)
         {
@@ -38,19 +41,13 @@ public class TechnicalScriptable : ScriptableObject
             forTwoBalls = _forTwoBalls;
             forOneBalls = _forOneBall;
 
-            RestNetworkManager.instance.CallWriteMemory();
-        }
-    }
-    public void UpdateTicketInfo(List<TicketInfos> _tickets, List<bool> _ticketsShown, int _currentTicketIndex, bool _isTicketVisible)
-    {
-        if (!GameManager.instance.isBackup)
-        {
             ticketInfos.Clear();
             ticketInfos.AddRange(_tickets);
             ticketsShown.Clear();
             ticketsShown.AddRange(_ticketsShown);
             currentTicketIndex = _currentTicketIndex;
             isTicketVisible = _isTicketVisible;
+
             RestNetworkManager.instance.CallWriteMemory();
         }
     }
@@ -69,6 +66,7 @@ public class TechnicalScriptable : ScriptableObject
         GameManager.instance.globeRaffleScriptable.ganhadorContemplado = new TicketInfos[ticketInfos.Count];
         GameManager.instance.globeRaffleScriptable.ticketListVisible = new bool[ticketInfos.Count];
         GameManager.instance.isTicketVisible = isTicketVisible;
+        GameManager.instance.ticketWinnerIndex = currentTicketIndex;
 
         for (int i = 0; i < ticketInfos.Count; i++)
         {

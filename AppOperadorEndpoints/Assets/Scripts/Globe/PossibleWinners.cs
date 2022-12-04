@@ -36,12 +36,18 @@ public class PossibleWinners : MonoBehaviour
         GlobeController globe = FindObjectOfType<GlobeController>();
         globe.ResetPossiblesWinners();
         globe.UpdateStateVisibilityButtonsTicket(true);
+        GameManager.instance.ticketWinnerIndex = index;
         button.image.color = selectedColor;
         isSelected = true;
+        GameManager.instance.WriteInfosGlobe();
+
     }
     public void SetInteractableButton(bool _isActive)
     {
         button.interactable = _isActive;
+    }
+    public void SetNormalColor()
+    {
         button.image.color = normalColor;
     }
     public void SetIndex(int _index)

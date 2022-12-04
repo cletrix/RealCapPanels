@@ -73,7 +73,14 @@ public class GlobeController : MonoBehaviour
     }
     public void UpdateStateVisibilityButtonsTicket(bool isActive)
     {
-        btTicketVisibility.interactable = isActive;
+        if (GameManager.instance.isBackup)
+        {
+            btTicketVisibility.interactable = false;
+        }
+        else
+        {
+            btTicketVisibility.interactable = isActive;
+        }
     }
     #region BALLS 
     private void PopulateBalls()
@@ -211,6 +218,8 @@ public class GlobeController : MonoBehaviour
         }
         CheckStateBalls();
         ValidateBall();
+        if(GameManager.instance.technicalScriptable.ticketsShown.Count>0)
+        CheckWinnerButtonState(GameManager.instance.technicalScriptable.ticketsShown, GameManager.instance.technicalScriptable.currentTicketIndex);
     }
 
     public void SendBallsRaffledToScreen()
@@ -257,8 +266,7 @@ public class GlobeController : MonoBehaviour
 
     private void ResetPanelPossibleWinners()
     {
-        print("PossiblesWinners" + possiblesWinners.Length);
-        if (possiblesWinners.Length > 0)
+        if (possiblesWinners.Length > 0 )
         {
             for (int i = 0; i < possiblesWinners.Length; i++)
             {
@@ -268,7 +276,6 @@ public class GlobeController : MonoBehaviour
     }
     public void PopulateWinners(List<string> _infos)
     {
-
         txtInfosTitle.text = "GANHADOR";
         GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();
         _infos = GameManager.instance.GetWinners();
@@ -290,6 +297,7 @@ public class GlobeController : MonoBehaviour
             inst.transform.localScale = new Vector2(1, 1);
             possiblesWinners[i] = inst;
         }
+        possiblesWinners[0].SelectWinner();
     }
     private void PopulatePossibleWinners(List<string> _infos)
     {
@@ -337,11 +345,6 @@ public class GlobeController : MonoBehaviour
         }
         txtForTwoBalls.text = GameManager.instance.GetForTwoBalls();
 
-        GameManager.instance.technicalScriptable.UpdateTicketInfo(
-            GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList(),
-            GameManager.instance.globeRaffleScriptable.ticketListVisible.ToList(),
-            GameManager.instance.ticketWinnerIndex, GameManager.instance.isTicketVisible);
-
         SetInteractablePossiblesWinners(GameManager.instance.isWinner);
         GameManager.instance.WriteInfosGlobe();
     }
@@ -349,7 +352,15 @@ public class GlobeController : MonoBehaviour
     {
         for (int i = 0; i < possiblesWinners.Length; i++)
         {
-            possiblesWinners[i].SetInteractableButton(_isActive);
+            if (GameManager.instance.isBackup)
+            {
+                possiblesWinners[i].SetInteractableButton(false);
+            }
+            else
+            {
+                possiblesWinners[i].SetInteractableButton(_isActive);
+                possiblesWinners[i].SetNormalColor();
+            }
         }
     }
     public void ResetPossiblesWinners()
@@ -415,6 +426,18 @@ public class GlobeController : MonoBehaviour
         RestNetworkManager.instance.SendBallsRaffledFromServer(GameManager.instance.globeScriptable.sorteioOrdem);
     }
 
+    public void CheckWinnerButtonState(List<bool> _ticketsShown, int index)
+    {
+        for (int i = 0; i < _ticketsShown.Count; i++)
+        {
+            if (_ticketsShown[i] == true)
+            {  
+                possiblesWinners[i].SetIsFinished(true);
+            }
+            possiblesWinners[i].DesactiveIsSelect();
+        }
+        possiblesWinners[index].SelectWinner();
+    }
     public void ShowTicketGlobe()
     {
         foreach (var item in possiblesWinners)
@@ -423,6 +446,7 @@ public class GlobeController : MonoBehaviour
             {
                 GameManager.instance.ticketWinnerIndex = item.GetIndex();
                 GameManager.instance.SetIsVisibleTicketList(item.GetIndex());
+
                 item.SetIsFinished(true);
             }
         }

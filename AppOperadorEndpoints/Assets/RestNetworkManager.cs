@@ -130,7 +130,7 @@ public class RestNetworkManager : MonoBehaviour
             }
             if (GameManager.instance.isBackup)
             {
-                Invoke("CallGetInfoServer", 2f);
+                Invoke("CallGetInfoServer", 1f);
             }
         }
     }
@@ -157,7 +157,7 @@ public class RestNetworkManager : MonoBehaviour
         return sbReturn.ToString();
     }
     private IEnumerator PostConfig(string uri)
-    {   
+    {
         TechnicalScriptable config = GameManager.instance.technicalScriptable;
 
         for (int i = 0; i < config.forOneBalls.Count; i++)
@@ -196,7 +196,7 @@ public class RestNetworkManager : MonoBehaviour
         }
     }
 
-    
+
     public IEnumerator GetConfig(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -219,14 +219,16 @@ public class RestNetworkManager : MonoBehaviour
                     {
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         char[] charsToTrim = { 'b', '\'' };
-                        string json = Encoding.GetEncoding("UTF-8").GetString(webRequest.downloadHandler.data); 
+                        string json = Encoding.GetEncoding("UTF-8").GetString(webRequest.downloadHandler.data);
                         string newj = json.Trim(charsToTrim);
-                        
-                        JsonUtility.FromJsonOverwrite( newj, GameManager.instance.technicalScriptable);
-                        GameManager.instance.technicalScriptable.PopulateConfig();
+
+                        //GameManager.instance.technicalScriptable = new TechnicalScriptable();
+
+                        JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
+                        break;
                     }
-                    break;
             }
+            GameManager.instance.technicalScriptable.PopulateConfig();
         }
     }
 

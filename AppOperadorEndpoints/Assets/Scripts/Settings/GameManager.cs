@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -60,23 +61,21 @@ public class GameManager : MonoBehaviour
     }
     public void RecoveryScreen()
     {
-        if (isBackup)
+        GlobeController globeController = FindObjectOfType<GlobeController>();
+        if (globeController != null)
         {
-            TicketController ticket = FindObjectOfType<TicketController>();
-            GlobeController globeController = FindObjectOfType<GlobeController>();
-            if (globeController != null && isWinner == false)
+            if (isBackup)
             {
-                globeController.UpdateScreen();
-            }
-            else if (ticket != null && isWinner == true)
-            {
-
-                if (globeController != null)
+                TicketController ticket = FindObjectOfType<TicketController>();
+                if (isWinner == true)
                 {
                     globeController.PopulateTicketGlobe();
+                    ticket.CheckStateVisibility();
+                    globeController.UpdateStateVisibilityButtonsTicket(false);
+                    
                 }
+                globeController.UpdateScreen();
 
-                ticket.CheckStateVisibility();
             }
         }
         UIChangeRaffleType uIChangeRaffleType = FindObjectOfType<UIChangeRaffleType>();
@@ -86,6 +85,12 @@ public class GameManager : MonoBehaviour
             uIChangeRaffleType.SelectPanelForActivate(technicalScriptable.panelActive);
         }
 
+    }
+    public void SetStateTechnical(int _currentRaffle, int _panelActive, bool _isVisibleRaffle, int _forTwoBalls, 
+        List<GlobeRaffleScriptable.porUmaBola> _forOneBalls, List<TicketInfos> _ticketInfos, List<bool> _ticketsShown, 
+        int _currentTicketIndex, bool _isTicketVisible)
+    {
+        technicalScriptable.PopulateConfig();
     }
 
     public void LoadSceneGame(string map)
@@ -213,7 +218,10 @@ public class GameManager : MonoBehaviour
 
     public void WriteInfosGlobe()
     {
-        technicalScriptable.UpdateConfig(sceneId, globeScriptable.sorteioOrdem, isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas);
+        technicalScriptable.UpdateConfig(sceneId, globeScriptable.sorteioOrdem, isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas
+            ,globeRaffleScriptable.ganhadorContemplado.ToList(),
+            globeRaffleScriptable.ticketListVisible.ToList(),
+           ticketWinnerIndex,instance.isTicketVisible);
     }
     private void FixedUpdate()
     {

@@ -62,11 +62,7 @@ public class TicketController : MonoBehaviour
     {
         btBackTicket.onClick.AddListener(action);
     }
-    //public void SetNumberRaffleTicket(string _number)
-    //{
-    //    // ticketInfos.ticketNumber = _number;
-    //    // txtNumberTicket.text = ticketInfos.ticketNumber;
-    //}
+    
     public void SetTicketVisibility()
     {
         if (GameManager.instance.isTicketVisible)
@@ -77,10 +73,8 @@ public class TicketController : MonoBehaviour
         {
             GameManager.instance.isTicketVisible = true;
         }
-        GameManager.instance.technicalScriptable.UpdateTicketInfo(
-        GameManager.instance.globeRaffleScriptable.ganhadorContemplado.ToList(),
-        GameManager.instance.globeRaffleScriptable.ticketListVisible.ToList(),
-        GameManager.instance.ticketWinnerIndex, GameManager.instance.isTicketVisible);
+        GameManager.instance.WriteInfosGlobe();
+
         CheckStateVisibility();
     }
     public void CheckStateVisibility()
