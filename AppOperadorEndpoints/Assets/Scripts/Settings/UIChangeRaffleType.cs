@@ -224,6 +224,12 @@ public class UIChangeRaffleType : MonoBehaviour
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
             btRecovery.image.color = Color.green;
             globeController.UpdateScreen();
+
+            SpinController spinController = FindObjectOfType<SpinController>();
+            if(spinController != null)
+            {
+                spinController.ActiveLastSpin();
+            }
         }
     }
     #endregion

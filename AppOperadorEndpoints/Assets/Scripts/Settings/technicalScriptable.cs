@@ -18,6 +18,9 @@ public class TechnicalScriptable : ScriptableObject
     public int currentTicketIndex;
     public bool isTicketVisible;
 
+    public List<string> spinNumbers;
+    public int spinIndex = 0;
+
     public void ResetInfos()
     {
         currentSceneID = 0;
@@ -29,6 +32,9 @@ public class TechnicalScriptable : ScriptableObject
         isTicketVisible = false;
         forOneBalls.Clear();
         ticketInfos.Clear();
+
+        spinIndex = 0;
+        spinNumbers.Clear();
     }
     public void UpdateConfig(int sceneId, int _currentRaffle, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall,
         List<TicketInfos> _tickets, List<bool> _ticketsShown, int _currentTicketIndex, bool _isTicketVisible)
@@ -76,5 +82,20 @@ public class TechnicalScriptable : ScriptableObject
         GameManager.instance.RecoveryScreen();
     }
 
+    public void UpdateSpinConfig(int _spinIndex, string _spinNumber)
+    {
+        spinIndex = _spinIndex;
+        if (!spinNumbers.Contains(_spinNumber))
+            spinNumbers.Add(_spinNumber);
+
+        RestNetworkManager.instance.CallWriteMemory();
+
+    }
+
+    public void PopulateSpinConfig()
+    {
+        GameManager.instance.spinScriptable.sorteioOrdem = spinIndex;
+        GameManager.instance.RecoverySpin();
+    }
 }
 

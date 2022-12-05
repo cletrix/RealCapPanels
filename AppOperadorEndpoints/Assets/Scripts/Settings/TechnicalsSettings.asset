@@ -12,57 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553c0730aac7bb4eb3ed4b69faab2e6, type: 3}
   m_Name: TechnicalsSettings
   m_EditorClassIdentifier: 
-  currentSceneID: 2
+  currentSceneID: 3
   currentRaffle: 1
-  panelActive: 2
-  isVisibleRaffle: 1
-  forTwoBalls: 35
+  panelActive: 3
+  isVisibleRaffle: 0
+  forTwoBalls: 43
   forOneBalls: []
   ticketInfos:
-  - nome: DISNEY ANDRADE DA SILVA
-    cpf: 39092720372
-    dataNascimento: 1969-10-22
-    telefone: (11) 98587-9323
-    email: disneyandrade@gmail.com
+  - nome: Ariel de farias Fonseca
+    cpf: 6527156480
+    dataNascimento: 1981-11-24
+    telefone: (82) 99409-0887
+    email: arieljoao3333@gmail.com
     endereco: nan
     numero: nan
     complemento: nan
     bairro: nan
     municipio: nan
-    cep: 12243-630
+    cep: 57395-000
     estado: nan
     dataSorteio: 2022-12-09 20:30:00
     valor: 5
     PDV: Allana Costa
     bairoPDV: Influencer
     dataCompra: 29/11/2022
-    horaCompra: 10:05
-    numeroTitulo: 0117407
-    chance: Primeira Chance
-    numeroCartela: 010000000500000007000000090000000a0000001900000021000000220000002300000024000000290000002b0000002c0000002d00000031000000320000003300000034000000380000003a000000
-    numeroSorte: 117407
-  - nome: Evangivaldo Silva Moraes
-    cpf: 24755826187
-    dataNascimento: 1963-05-28
-    telefone: (61) 99976-8554
-    email: eeee.moraes@hotmail.com
-    endereco: nan
-    numero: nan
-    complemento: nan
-    bairro: nan
-    municipio: nan
-    cep: 72420-250
-    estado: nan
-    dataSorteio: 2022-12-09 20:30:00
-    valor: 5
-    PDV: nan
-    bairoPDV: nan
-    dataCompra: 29/11/2022
-    horaCompra: 18:14
-    numeroTitulo: 0167682
-    chance: Primeira Chance
-    numeroCartela: 01000000020000000300000005000000070000000b0000000c0000000d000000190000001a0000001d000000210000002b0000002c0000003200000036000000380000003a0000003b0000003c000000
-    numeroSorte: 167682
-  ticketsShown: 0101
+    horaCompra: 01:44
+    numeroTitulo: 0029766
+    chance: Segunda Chance
+    numeroCartela: 020000000300000006000000090000000b0000000d00000010000000130000001500000016000000190000001a0000001c0000001d0000001e00000023000000260000002c0000003000000036000000
+    numeroSorte: 296669
+  ticketsShown: 00
   currentTicketIndex: 0
   isTicketVisible: 0
+  spinNumbers:
+  - 264792
+  - 078262
+  - 108111
+  - 245477
+  - 357959
+  - 269159
+  spinIndex: 6

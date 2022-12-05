@@ -8,8 +8,8 @@ using UnityEngine.Events;
 public class SpinRaffleData : MonoBehaviour
 {
     [Header("VARIABLES")]
-    [SerializeField] private bool hasFinishedRaffle=false;
-     public string ticketNumber;
+    [SerializeField] private bool hasFinishedRaffle = false;
+    public string ticketNumber;
 
     [Header("TEXTS")]
     [SerializeField] private TextMeshProUGUI txtNumberSpin;
@@ -44,7 +44,7 @@ public class SpinRaffleData : MonoBehaviour
     }
     public void SetNumberSpin(int _number)
     {
-        txtNumberSpin.text = _number.ToString();  
+        txtNumberSpin.text = _number.ToString();
     }
 
     public void SetSpinPrize(string _value)
@@ -58,10 +58,17 @@ public class SpinRaffleData : MonoBehaviour
     }
     public void SetStateInteractableButton(bool _isActive)
     {
-        btShowTicket.interactable = _isActive;
+        if (GameManager.instance.isBackup)
+        {
+            btShowTicket.interactable = false;
+        }
+        else
+        {
+            btShowTicket.interactable = _isActive;
+        }
     }
 
-    public void SetEventButton( UnityAction action)
+    public void SetEventButton(UnityAction action)
     {
         btShowTicket.onClick.AddListener(action);
     }
@@ -86,14 +93,14 @@ public class SpinRaffleData : MonoBehaviour
     public void SetBtFinishedColor()
     {
         btShowTicket.image.color = finishedColor;
-        btShowTicket.interactable=false;
+        btShowTicket.interactable = false;
     }
     public void SetBgNormalColor()
     {
         foreach (var item in bgImages)
         {
 
-        item.color = BgNormalColor;
+            item.color = BgNormalColor;
         }
     }
     public void SetBgSelectedColor()

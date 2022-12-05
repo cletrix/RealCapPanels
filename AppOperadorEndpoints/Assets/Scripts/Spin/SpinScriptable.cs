@@ -9,8 +9,4 @@ public class SpinScriptable : ScriptableObject
     public string sorteioDescricao;
     public string sorteioValor;
 
-    public void SetNewOrder(int order)
-    {
-        sorteioOrdem = order;
-    }
 }

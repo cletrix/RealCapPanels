@@ -43,7 +43,7 @@ public class RecoveryScriptable : ScriptableObject
         {
             GameManager.instance.globeRaffleScriptable.bolasSorteadas.Add(item.ToString());
         }
-        GameManager.instance.spinScriptable.sorteioOrdem = sorteio_spin_numero + 1;
+        //GameManager.instance.spinScriptable.sorteioOrdem = sorteio_spin_numero + 1;
     }
 
 

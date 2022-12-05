@@ -229,6 +229,7 @@ public class RestNetworkManager : MonoBehaviour
                     }
             }
             GameManager.instance.technicalScriptable.PopulateConfig();
+            GameManager.instance.technicalScriptable.PopulateSpinConfig();
         }
     }
 

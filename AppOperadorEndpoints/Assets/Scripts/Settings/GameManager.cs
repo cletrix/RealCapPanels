@@ -72,22 +72,32 @@ public class GameManager : MonoBehaviour
                     globeController.PopulateTicketGlobe();
                     ticket.CheckStateVisibility();
                     globeController.UpdateStateVisibilityButtonsTicket(false);
-                    
+
                 }
                 globeController.UpdateScreen();
 
             }
         }
+
         UIChangeRaffleType uIChangeRaffleType = FindObjectOfType<UIChangeRaffleType>();
         if (uIChangeRaffleType != null)
         {
             uIChangeRaffleType.CheckStateVisibilityRaffle();
             uIChangeRaffleType.SelectPanelForActivate(technicalScriptable.panelActive);
         }
-
     }
-    public void SetStateTechnical(int _currentRaffle, int _panelActive, bool _isVisibleRaffle, int _forTwoBalls, 
-        List<GlobeRaffleScriptable.porUmaBola> _forOneBalls, List<TicketInfos> _ticketInfos, List<bool> _ticketsShown, 
+    public void RecoverySpin()
+    {
+        SpinController spinController = FindObjectOfType<SpinController>();
+
+        if (spinController != null)
+        {
+            spinController.PopulateSpinsFields(technicalScriptable.spinNumbers);
+        }
+    }
+
+    public void SetStateTechnical(int _currentRaffle, int _panelActive, bool _isVisibleRaffle, int _forTwoBalls,
+        List<GlobeRaffleScriptable.porUmaBola> _forOneBalls, List<TicketInfos> _ticketInfos, List<bool> _ticketsShown,
         int _currentTicketIndex, bool _isTicketVisible)
     {
         technicalScriptable.PopulateConfig();
@@ -219,9 +229,9 @@ public class GameManager : MonoBehaviour
     public void WriteInfosGlobe()
     {
         technicalScriptable.UpdateConfig(sceneId, globeScriptable.sorteioOrdem, isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas
-            ,globeRaffleScriptable.ganhadorContemplado.ToList(),
+            , globeRaffleScriptable.ganhadorContemplado.ToList(),
             globeRaffleScriptable.ticketListVisible.ToList(),
-           ticketWinnerIndex,instance.isTicketVisible);
+           ticketWinnerIndex, instance.isTicketVisible);
     }
     private void FixedUpdate()
     {
