@@ -41,8 +41,9 @@ public class UIChangeRaffleType : MonoBehaviour
         SetModality();
         SetButtonsEvent();
         GameManager.instance.isVisibleRaffle = GameManager.instance.technicalScriptable.isVisibleRaffle;
-        GameManager.instance.RecoveryScreen();
+        GameManager.instance.RecoveryGlobeScreen();
         SetStateSelectBackupButton();
+        CheckStateVisibilityRaffle();
         RestNetworkManager.instance.CallWriteMemory();
     }
 
@@ -103,7 +104,6 @@ public class UIChangeRaffleType : MonoBehaviour
     public void SetRaffleLottery()
     {
         SelectPanelForActivate(1);
-        //infosRaffle.PopulateRaffleInfos(GameManager.instance.lotteryScriptable.sorteioOrdem.ToString(), GameManager.instance.lotteryScriptable.sorteioDescricao, GameManager.instance.lotteryScriptable.sorteioValor);
         LotteryController lotteryController = FindObjectOfType<LotteryController>();
         lotteryController.ResetNumberRaffle();
         SendMessageToClientChangeRaffle("SceneLottery");
@@ -112,14 +112,12 @@ public class UIChangeRaffleType : MonoBehaviour
     public void SetRaffleGlobe()
     {
         SelectPanelForActivate(2);
-        // infosRaffle.PopulateRaffleInfos(GameManager.instance.globeScriptable.sorteioOrdem.ToString(), GameManager.instance.globeScriptable.sorteioDescricao, GameManager.instance.globeScriptable.sorteioValor);
         SendMessageToClientChangeRaffle("SceneGlobe");
 
     }
     public void SetRaffleSpin()
     {
         SelectPanelForActivate(3);
-        //infosRaffle.PopulateRaffleInfos(GameManager.instance.spinScriptable.sorteioOrdem.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
         SendMessageToClientChangeRaffle("SceneSpin");
     }
 
@@ -229,6 +227,7 @@ public class UIChangeRaffleType : MonoBehaviour
             if (spinController != null)
             {
                 spinController.ActiveLastSpin();
+                spinController.ActiveButtonNewRaffleSpin();
             }
         }
     }
@@ -236,34 +235,42 @@ public class UIChangeRaffleType : MonoBehaviour
 
     #region VISIBILITY RAFFLE
 
-
     private void SetStateButtonsRaffle(bool isActive)
     {
-        if (hasActiveLottery)
-        {
-            btRaffleLottery.interactable = isActive;
-        }
-        else
+        if (GameManager.instance.isBackup)
         {
             btRaffleLottery.interactable = false;
-        }
-
-        if (hasActiveGlobe)
-        {
-            btRaffleGlobe.interactable = isActive;
-        }
-        else
-        {
             btRaffleGlobe.interactable = false;
-        }
-
-        if (hasActiveSpin)
-        {
-            btRaffleSpin.interactable = isActive;
+            btRaffleSpin.interactable = false;
         }
         else
         {
-            btRaffleSpin.interactable = false;
+            if (hasActiveLottery)
+            {
+                btRaffleLottery.interactable = isActive;
+            }
+            else
+            {
+                btRaffleLottery.interactable = false;
+            }
+
+            if (hasActiveGlobe)
+            {
+                btRaffleGlobe.interactable = isActive;
+            }
+            else
+            {
+                btRaffleGlobe.interactable = false;
+            }
+
+            if (hasActiveSpin)
+            {
+                btRaffleSpin.interactable = isActive;
+            }
+            else
+            {
+                btRaffleSpin.interactable = false;
+            }
         }
     }
     public void SetStateHasRaffleVisibility()

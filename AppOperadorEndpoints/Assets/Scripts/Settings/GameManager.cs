@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         technicalScriptable.ResetInfos();
         recoveryScriptable.ResetInfos();
     }
-    public void RecoveryScreen()
+    public void RecoveryGlobeScreen()
     {
         GlobeController globeController = FindObjectOfType<GlobeController>();
         if (globeController != null)
@@ -84,15 +84,23 @@ public class GameManager : MonoBehaviour
             uIChangeRaffleType.SelectPanelForActivate(technicalScriptable.panelActive);
         }
     }
-    public void RecoverySpin()
+    public void RecoverySpinScreen()
     {
         SpinController spinController = FindObjectOfType<SpinController>();
-
+        TicketController ticket = FindObjectOfType<TicketController>();
         if (spinController != null)
         {
             spinController.PopulateSpinsFields(technicalScriptable.spinNumbers);
-            //spinController.SetIndexSpin(technicalScriptable.spinIndex-1);
+            spinController.PopulateTicketSpin();
+            ticket.CheckStateVisibility();
             spinController.ShowSpinOrder(technicalScriptable.spinIndex);
+        }
+
+        UIChangeRaffleType uIChangeRaffleType = FindObjectOfType<UIChangeRaffleType>();
+        if (uIChangeRaffleType != null)
+        {
+            uIChangeRaffleType.CheckStateVisibilityRaffle();
+            uIChangeRaffleType.SelectPanelForActivate(technicalScriptable.panelActive);
         }
     }
     public void LoadSceneGame(string map)

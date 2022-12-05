@@ -222,14 +222,13 @@ public class RestNetworkManager : MonoBehaviour
                         string json = Encoding.GetEncoding("UTF-8").GetString(webRequest.downloadHandler.data);
                         string newj = json.Trim(charsToTrim);
 
-                        //GameManager.instance.technicalScriptable = new TechnicalScriptable();
 
                         JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
                         break;
                     }
             }
-            GameManager.instance.technicalScriptable.PopulateConfig();
-            GameManager.instance.technicalScriptable.PopulateSpinConfig();
+           
+                GameManager.instance.technicalScriptable.PopulateConfig();
         }
     }
 

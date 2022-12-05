@@ -69,7 +69,7 @@ public class GlobeController : MonoBehaviour
         {
             SetDisableAll();
         }
-        GameManager.instance.RecoveryScreen();
+        GameManager.instance.RecoveryGlobeScreen();
     }
     public void UpdateStateVisibilityButtonsTicket(bool isActive)
     {
@@ -452,8 +452,8 @@ public class GlobeController : MonoBehaviour
         }
         if (GameManager.instance.globeScriptable.sorteioOrdem + 1 < GameManager.instance.recoveryScriptable.limit_globo)
             btNextRaffle.interactable = GameManager.instance.GetAllTicketsVisible();
-        ticketController.SetTicketVisibility();
         PopulateTicketGlobe();
+        ticketController.SetTicketVisibility();
     }
 
     public void PopulateTicketGlobe()

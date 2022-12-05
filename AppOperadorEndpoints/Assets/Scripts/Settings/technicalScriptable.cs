@@ -20,6 +20,7 @@ public class TechnicalScriptable : ScriptableObject
 
     public List<string> spinNumbers;
     public int spinIndex = 1;
+    public TicketInfos ticketSpin;
 
     public void ResetInfos()
     {
@@ -57,6 +58,15 @@ public class TechnicalScriptable : ScriptableObject
             RestNetworkManager.instance.CallWriteMemory();
         }
     }
+    public void UpdateSpinConfig(string _spinNumber, TicketInfos _ticketSpin)
+    {
+        ticketSpin = _ticketSpin;
+        if (!spinNumbers.Contains(_spinNumber))
+            spinNumbers.Add(_spinNumber);
+        spinIndex = spinNumbers.Count;
+        RestNetworkManager.instance.CallWriteMemory();
+
+    }
     public void PopulateConfig()
     {
         for (int i = 0; i < forOneBalls.Count; i++)
@@ -79,23 +89,19 @@ public class TechnicalScriptable : ScriptableObject
             GameManager.instance.globeRaffleScriptable.ganhadorContemplado[i] = ticketInfos[i];
             GameManager.instance.globeRaffleScriptable.ticketListVisible[i] = ticketsShown[i];
         }
-        GameManager.instance.RecoveryScreen();
-    }
-
-    public void UpdateSpinConfig(int _spinIndex, string _spinNumber)
-    {
-        spinIndex = _spinIndex;
-        if (!spinNumbers.Contains(_spinNumber))
-            spinNumbers.Add(_spinNumber);
-
-        RestNetworkManager.instance.CallWriteMemory();
-
-    }
-
-    public void PopulateSpinConfig()
-    {
         GameManager.instance.spinScriptable.sorteioOrdem = spinIndex;
-        GameManager.instance.RecoverySpin();
+        GameManager.instance.spinResultScriptable.ganhadorContemplado = ticketSpin;
+
+        if (currentSceneID == 2)
+        {
+            GameManager.instance.RecoveryGlobeScreen();
+        }
+        else if (currentSceneID == 3)
+        {
+            GameManager.instance.RecoverySpinScreen();
+        }
     }
+
+   
 }
 

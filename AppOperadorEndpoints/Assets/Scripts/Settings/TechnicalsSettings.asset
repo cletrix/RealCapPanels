@@ -16,10 +16,42 @@ MonoBehaviour:
   currentRaffle: 1
   panelActive: 3
   isVisibleRaffle: 0
-  forTwoBalls: 43
+  forTwoBalls: 41
   forOneBalls: []
   ticketInfos:
-  - nome: Ariel de farias Fonseca
+  - nome: Evangivaldo Silva Moraes
+    cpf: 24755826187
+    dataNascimento: 1963-05-28
+    telefone: (61) 99976-8554
+    email: eeee.moraes@hotmail.com
+    endereco: nan
+    numero: nan
+    complemento: nan
+    bairro: nan
+    municipio: nan
+    cep: 72420-250
+    estado: nan
+    dataSorteio: 2022-12-09 20:30:00
+    valor: 5
+    PDV: nan
+    bairoPDV: nan
+    dataCompra: 29/11/2022
+    horaCompra: 18:14
+    numeroTitulo: 0007625
+    chance: Segunda Chance
+    numeroCartela: 0400000005000000060000000700000008000000090000000b0000000d0000000f0000001100000012000000150000001b0000001f00000025000000260000002700000029000000360000003b000000
+    numeroSorte: 338106
+  ticketsShown: 00
+  currentTicketIndex: 0
+  isTicketVisible: 0
+  spinNumbers:
+  - 345721
+  - 329155
+  - 216921
+  - 167949
+  spinIndex: 4
+  ticketSpin:
+    nome: Ariel de farias Fonseca
     cpf: 6527156480
     dataNascimento: 1981-11-24
     telefone: (82) 99409-0887
@@ -37,18 +69,7 @@ MonoBehaviour:
     bairoPDV: Influencer
     dataCompra: 29/11/2022
     horaCompra: 01:44
-    numeroTitulo: 0029766
-    chance: Segunda Chance
-    numeroCartela: 020000000300000006000000090000000b0000000d00000010000000130000001500000016000000190000001a0000001c0000001d0000001e00000023000000260000002c0000003000000036000000
-    numeroSorte: 296669
-  ticketsShown: 00
-  currentTicketIndex: 0
-  isTicketVisible: 0
-  spinNumbers:
-  - 264792
-  - 078262
-  - 108111
-  - 245477
-  - 357959
-  - 269159
-  spinIndex: 6
+    numeroTitulo: 0167949
+    chance: Primeira Chance
+    numeroCartela: 01000000050000000600000007000000080000000b0000001000000011000000140000001b0000001d0000002100000022000000250000002b0000003000000033000000340000003b0000003c000000
+    numeroSorte: 167949
