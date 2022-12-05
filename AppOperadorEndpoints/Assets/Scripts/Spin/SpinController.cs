@@ -11,7 +11,7 @@ public class SpinController : MonoBehaviour
     [SerializeField] private List<SpinRaffleData> spinRaffleDatas = new List<SpinRaffleData>();
     [SerializeField] private List<TextMeshProUGUI> NumberRaffle = new List<TextMeshProUGUI>();
     [SerializeField] private TextMeshProUGUI txtSpinID;
-   // [SerializeField] private int indexSpin;
+    [SerializeField] private int indexSpin;
     [SerializeField] private string currentNumberRaffled;
 
     [Header("BUTTONS")]
@@ -26,7 +26,7 @@ public class SpinController : MonoBehaviour
     {
         InitializeVariables();
     }
-    
+
     private void InitializeVariables()
     {
         contentScrollView = GameObject.Find("Content");
@@ -49,12 +49,16 @@ public class SpinController : MonoBehaviour
         ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
         SetSpinPrize();
         PopulateFieldsSpinData();
-        ActiveButtonNewRaffleSpin();
     }
-    private void ShowSpinOrder(int order)
+    public void SetIndexSpin(int spinOrder)
     {
-        txtSpinID.text = $"{order}º GIRO";
+        indexSpin = spinOrder;
+    }
+    public void ShowSpinOrder(int order)
+    {
         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
+
+        txtSpinID.text = $"{order}º GIRO";
         uiInfos.PopulateRaffleInfos(order.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
     }
     private void SetSpinPrize()
@@ -62,6 +66,7 @@ public class SpinController : MonoBehaviour
         for (int i = 0; i < spinRaffleDatas.Count; i++)
         {
             spinRaffleDatas[i].SetSpinPrize(GameManager.instance.spinScriptable.sorteioValor);
+            spinRaffleDatas[i].SetStateInteractableButton(false);
         }
     }
 
@@ -69,7 +74,7 @@ public class SpinController : MonoBehaviour
     {
         for (int i = 0; i < spinRaffleDatas.Count; i++)
         {
-            if (i != GameManager.instance.spinScriptable.sorteioOrdem - 1)
+            if (i != indexSpin)
             {
                 if (spinRaffleDatas[i].GetIsFinishedRaffle())
                 {
@@ -95,9 +100,10 @@ public class SpinController : MonoBehaviour
     }
     private void SpawnNewLuckyNumber()
     {
-        GameManager.instance.spinScriptable.sorteioOrdem++;
         ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
+     
         RestNetworkManager.instance.SetPostResultSpin(GameManager.instance.spinScriptable.sorteioOrdem);
+        indexSpin = GameManager.instance.spinScriptable.sorteioOrdem - 1;
         btGenerateLuckyNumber.interactable = false;
     }
     public void ShowNumberLuckySpin()
@@ -106,7 +112,6 @@ public class SpinController : MonoBehaviour
     }
     private IEnumerator RaffleNumberLuckySpin()
     {
-        
         UpdateFieldScreen();
         SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
 
@@ -122,20 +127,22 @@ public class SpinController : MonoBehaviour
         {
             NumberRaffle[i].text = currentNumberRaffled[i].ToString();
         }
-        spinRaffleDatas[GameManager.instance.spinScriptable.sorteioOrdem - 1].SetNumberTicket(currentNumberRaffled);
         GameManager.instance.technicalScriptable.UpdateSpinConfig(GameManager.instance.spinScriptable.sorteioOrdem, currentNumberRaffled);
 
+        spinRaffleDatas[indexSpin].SetNumberTicket(currentNumberRaffled);
         yield return new WaitForSeconds(0.1f);
         SendMessageToClientSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado);
-        spinRaffleDatas[GameManager.instance.spinScriptable.sorteioOrdem - 1].SetStateInteractableButton(true);
-        spinRaffleDatas[GameManager.instance.spinScriptable.sorteioOrdem - 1].SetStateFinishedRaffle(true);
+        spinRaffleDatas[indexSpin].SetStateInteractableButton(true);
+        spinRaffleDatas[indexSpin].SetStateFinishedRaffle(true);
+        GameManager.instance.spinScriptable.sorteioOrdem++;
     }
     public void ActiveLastSpin()
     {
-        spinRaffleDatas[GameManager.instance.technicalScriptable.spinIndex-1].SetStateInteractableButton(true);
+        spinRaffleDatas[GameManager.instance.spinScriptable.sorteioOrdem-1].SetStateInteractableButton(true);
     }
     public void PopulateSpinsFields(List<string> spinNumbers)
     {
+        UpdateFieldScreen();
         for (int i = 0; i < spinNumbers.Count; i++)
         {
             spinRaffleDatas[i].SetNumberTicket(spinNumbers[i]);
@@ -159,6 +166,7 @@ public class SpinController : MonoBehaviour
 
             }
         }
+        
     }
     private void PopulateFieldsSpinData()
     {
@@ -177,8 +185,8 @@ public class SpinController : MonoBehaviour
         }
     }
     public void ActiveButtonNewRaffleSpin()
-    {   
-        if(GameManager.instance.isBackup)
+    {
+        if (GameManager.instance.isBackup)
         {
             btGenerateLuckyNumber.interactable = false;
         }
@@ -239,5 +247,10 @@ public class SpinController : MonoBehaviour
         message.AddString(_number);
         return message;
     }
+
+    //private void FixedUpdate()
+    //{
+    //    txtSpinID.text = $"{ GameManager.instance.spinScriptable.sorteioOrdem}º GIRO";
+    //}
 
 }

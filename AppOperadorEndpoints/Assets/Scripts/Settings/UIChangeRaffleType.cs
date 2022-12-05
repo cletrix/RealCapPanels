@@ -103,7 +103,7 @@ public class UIChangeRaffleType : MonoBehaviour
     public void SetRaffleLottery()
     {
         SelectPanelForActivate(1);
-        infosRaffle.PopulateRaffleInfos(GameManager.instance.lotteryScriptable.sorteioOrdem.ToString(), GameManager.instance.lotteryScriptable.sorteioDescricao, GameManager.instance.lotteryScriptable.sorteioValor);
+        //infosRaffle.PopulateRaffleInfos(GameManager.instance.lotteryScriptable.sorteioOrdem.ToString(), GameManager.instance.lotteryScriptable.sorteioDescricao, GameManager.instance.lotteryScriptable.sorteioValor);
         LotteryController lotteryController = FindObjectOfType<LotteryController>();
         lotteryController.ResetNumberRaffle();
         SendMessageToClientChangeRaffle("SceneLottery");
@@ -112,14 +112,14 @@ public class UIChangeRaffleType : MonoBehaviour
     public void SetRaffleGlobe()
     {
         SelectPanelForActivate(2);
-        infosRaffle.PopulateRaffleInfos(GameManager.instance.globeScriptable.sorteioOrdem.ToString(), GameManager.instance.globeScriptable.sorteioDescricao, GameManager.instance.globeScriptable.sorteioValor);
+        // infosRaffle.PopulateRaffleInfos(GameManager.instance.globeScriptable.sorteioOrdem.ToString(), GameManager.instance.globeScriptable.sorteioDescricao, GameManager.instance.globeScriptable.sorteioValor);
         SendMessageToClientChangeRaffle("SceneGlobe");
 
     }
     public void SetRaffleSpin()
     {
         SelectPanelForActivate(3);
-        infosRaffle.PopulateRaffleInfos(GameManager.instance.spinScriptable.sorteioOrdem.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
+        //infosRaffle.PopulateRaffleInfos(GameManager.instance.spinScriptable.sorteioOrdem.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
         SendMessageToClientChangeRaffle("SceneSpin");
     }
 
@@ -226,7 +226,7 @@ public class UIChangeRaffleType : MonoBehaviour
             globeController.UpdateScreen();
 
             SpinController spinController = FindObjectOfType<SpinController>();
-            if(spinController != null)
+            if (spinController != null)
             {
                 spinController.ActiveLastSpin();
             }
@@ -236,7 +236,7 @@ public class UIChangeRaffleType : MonoBehaviour
 
     #region VISIBILITY RAFFLE
 
-    
+
     private void SetStateButtonsRaffle(bool isActive)
     {
         if (hasActiveLottery)
@@ -302,39 +302,39 @@ public class UIChangeRaffleType : MonoBehaviour
     #region MESSAGES
     public void SendMessageVisibilityRaffle()
     {
-        
-            if (panelRaffleLottery.activeSelf == true)
-            {
-                SendMessageLotteryInfos(
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-           GameManager.instance.lotteryScriptable.resultadoLoteriaFederalNumeroConcurso,
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-           GameManager.instance.lotteryScriptable.resultadoLoteriaFederalDataConcurso,
-           GameManager.instance.lotteryScriptable.sorteioOrdem,
-           GameManager.instance.lotteryScriptable.sorteioDescricao,
-           GameManager.instance.lotteryScriptable.sorteioValor);
-            }
-            else if (panelRaffleGlobe.activeSelf == true)
-            {
-                SendMessageGlobeInfos(
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-           GameManager.instance.globeScriptable.sorteioOrdem,
-           GameManager.instance.globeScriptable.sorteioDescricao,
-           GameManager.instance.globeScriptable.sorteioValor);
-            }
-            else if (panelRaffleSpin.activeSelf == true)
-            {
-                SendMessageSpinInfos(
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-           GameManager.instance.spinScriptable.sorteioOrdem,
-           GameManager.instance.spinScriptable.sorteioDescricao,
-           GameManager.instance.spinScriptable.sorteioValor);
-            }
-        
+
+        if (panelRaffleLottery.activeSelf == true)
+        {
+            SendMessageLotteryInfos(
+       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+       GameManager.instance.lotteryScriptable.resultadoLoteriaFederalNumeroConcurso,
+       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+       GameManager.instance.lotteryScriptable.resultadoLoteriaFederalDataConcurso,
+       GameManager.instance.lotteryScriptable.sorteioOrdem,
+       GameManager.instance.lotteryScriptable.sorteioDescricao,
+       GameManager.instance.lotteryScriptable.sorteioValor);
+        }
+        else if (panelRaffleGlobe.activeSelf == true)
+        {
+            SendMessageGlobeInfos(
+       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
+       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+       GameManager.instance.globeScriptable.sorteioOrdem,
+       GameManager.instance.globeScriptable.sorteioDescricao,
+       GameManager.instance.globeScriptable.sorteioValor);
+        }
+        else if (panelRaffleSpin.activeSelf == true)
+        {
+            SendMessageSpinInfos(
+       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
+       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+       GameManager.instance.spinScriptable.sorteioOrdem,
+       GameManager.instance.spinScriptable.sorteioDescricao,
+       GameManager.instance.spinScriptable.sorteioValor);
+        }
+
         TcpNetworkManager.instance.Server.SendToAll(GetMessageVisibilityRaffle(Message.Create(MessageSendMode.unreliable, ServerToClientId.messageVisibilityRaffle), GameManager.instance.isVisibleRaffle, GameManager.instance.sceneId));
     }
     private Message GetMessageVisibilityRaffle(Message message, bool isActive, int typeRaffle)

@@ -37,13 +37,14 @@ public class RecoveryScriptable : ScriptableObject
     public void UpdateInfos()
     {
         //GLOBE RECOVERY
-       // GameManager.instance.globeScriptable.sorteioOrdem = sorteio_globo_numero + 1;
         GameManager.instance.globeRaffleScriptable.bolasSorteadas.Clear();
         foreach (var item in globe_balls)
         {
             GameManager.instance.globeRaffleScriptable.bolasSorteadas.Add(item.ToString());
         }
-        //GameManager.instance.spinScriptable.sorteioOrdem = sorteio_spin_numero + 1;
+
+        ////SPIN RECOVERY
+        //GameManager.instance.spinScriptable.sorteioOrdem = GameManager.instance.technicalScriptable.spinIndex+1;
     }
 
 

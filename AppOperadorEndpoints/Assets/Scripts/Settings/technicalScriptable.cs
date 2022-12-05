@@ -19,7 +19,7 @@ public class TechnicalScriptable : ScriptableObject
     public bool isTicketVisible;
 
     public List<string> spinNumbers;
-    public int spinIndex = 0;
+    public int spinIndex = 1;
 
     public void ResetInfos()
     {
@@ -33,7 +33,7 @@ public class TechnicalScriptable : ScriptableObject
         forOneBalls.Clear();
         ticketInfos.Clear();
 
-        spinIndex = 0;
+        spinIndex = 1;
         spinNumbers.Clear();
     }
     public void UpdateConfig(int sceneId, int _currentRaffle, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall,

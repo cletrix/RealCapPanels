@@ -72,10 +72,8 @@ public class GameManager : MonoBehaviour
                     globeController.PopulateTicketGlobe();
                     ticket.CheckStateVisibility();
                     globeController.UpdateStateVisibilityButtonsTicket(false);
-
                 }
                 globeController.UpdateScreen();
-
             }
         }
 
@@ -93,16 +91,10 @@ public class GameManager : MonoBehaviour
         if (spinController != null)
         {
             spinController.PopulateSpinsFields(technicalScriptable.spinNumbers);
+            //spinController.SetIndexSpin(technicalScriptable.spinIndex-1);
+            spinController.ShowSpinOrder(technicalScriptable.spinIndex);
         }
     }
-
-    public void SetStateTechnical(int _currentRaffle, int _panelActive, bool _isVisibleRaffle, int _forTwoBalls,
-        List<GlobeRaffleScriptable.porUmaBola> _forOneBalls, List<TicketInfos> _ticketInfos, List<bool> _ticketsShown,
-        int _currentTicketIndex, bool _isTicketVisible)
-    {
-        technicalScriptable.PopulateConfig();
-    }
-
     public void LoadSceneGame(string map)
     {
         StartCoroutine(ChangeScene(map));
