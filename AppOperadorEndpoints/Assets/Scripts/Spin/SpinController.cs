@@ -12,6 +12,7 @@ public class SpinController : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> NumberRaffle = new List<TextMeshProUGUI>();
     [SerializeField] private TextMeshProUGUI txtSpinID;
     [SerializeField] private int indexSpin;
+    [SerializeField] private string currentNumberRaffled;
 
     [Header("BUTTONS")]
     [SerializeField] private Button btGenerateLuckyNumber;
@@ -110,22 +111,22 @@ public class SpinController : MonoBehaviour
         uiInfos.PopulateRaffleInfos(GameManager.instance.spinScriptable.sorteioOrdem.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
         SendMessageRoundID(roundID);
 
-       // currentNumberRaffled = string.Empty;
+        currentNumberRaffled = string.Empty;
         foreach (var item in NumberRaffle)
         {
             item.text = "0";
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
         for (int i = 0; i < NumberRaffle.Count; i++)
         {
             NumberRaffle[i].text = GameManager.instance.spinResultScriptable.numeroSorteado[i].ToString();
-           
+            yield return new WaitForSeconds(0.1f);
         }
-        //currentNumberRaffled = GameManager.instance.spinResultScriptable.numeroSorteado;
-        spinRaffleDatas[indexSpin - 1].SetNumberTicket(GameManager.instance.spinResultScriptable.numeroSorteado);
+        currentNumberRaffled = GameManager.instance.spinResultScriptable.numeroSorteado;
+        spinRaffleDatas[indexSpin - 1].SetNumberTicket(currentNumberRaffled);
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         SendMessageToClientSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado);
         spinRaffleDatas[indexSpin - 1].SetStateInteractableButton(true);
         spinRaffleDatas[indexSpin - 1].SetStateFinishedRaffle(true);
@@ -179,11 +180,6 @@ public class SpinController : MonoBehaviour
             btGenerateLuckyNumber.interactable = true;
     }
     public void ShowTicketSpin()
-    {
-        ticketController.SetTicketVisibility();
-        PopulateTicketSpin();
-    }
-    public void PopulateTicketSpin()
     {
         ticketController.PopulateTicketInfos(
             GameManager.instance.spinResultScriptable.ganhadorContemplado.nome,
