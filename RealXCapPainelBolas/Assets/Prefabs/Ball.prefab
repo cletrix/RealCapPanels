@@ -227,14 +227,15 @@ MonoBehaviour:
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
   noSelectedColor: {r: 0, g: 0, b: 0, a: 1}
   finishedColor: {r: 0.4509804, g: 0.4509804, b: 0.4509804, a: 0.5019608}
+  winnerColor: {r: 1, g: 1, b: 0, a: 1}
   textNumber: {fileID: 3979593427699497470}
   numberBall: 0
   imageBall: {fileID: 3858816405945078656}
   ballBorder: {fileID: 7313500816639331717}
   animBorder: {fileID: 3858816407511122940}
   isActive: 0
-  isBlink: 0
   isFinishRaffle: 0
+  hasRaffled: 0
   ballTransform: {fileID: 0}
 --- !u!1 &7313500816639331717
 GameObject:

@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     public PanelScriptable panelScriptable;
 
     [SerializeField] private float timeToSpawn ;
-    public float maxTimetoSpawn = 4f;
+    public float maxTimetoSpawn = 1.5f;
     public bool canRaffleBall = true;
     private void Awake()
     {
@@ -56,8 +56,9 @@ public class UIManager : MonoBehaviour
         ballController.DisableAll();
         panelScriptable.ResetVariables();
     }
-    public void RecieveBalls(List<int> ballsRaffled)
+    public void RecieveBalls(List<int> ballsRaffled, int _winnersCount)
     {
+        panelScriptable.winnersCount = _winnersCount;
         if (ballsRaffled.Count > panelScriptable.Balls.Count)
         {
             panelScriptable.Balls.Clear();

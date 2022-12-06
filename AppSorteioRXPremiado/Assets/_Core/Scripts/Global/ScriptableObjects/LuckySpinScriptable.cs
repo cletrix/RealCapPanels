@@ -8,7 +8,8 @@ public class LuckySpinScriptable : ScriptableObject
 {
     public int currentSpinID;
     public string currentResult;
-
+    public string prizeDescription;
+    public string prizeValue;
     public List<string> allSpinsResult;
 
 

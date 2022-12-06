@@ -46,6 +46,7 @@ public class TicketController : MonoBehaviour
     [SerializeField] private GameObject bgTicket;
 
     [SerializeField] public bool canShowPrize = false;
+    public Infosticket infosTicket = new Infosticket();
 
     private void Start()
     {
@@ -62,20 +63,22 @@ public class TicketController : MonoBehaviour
     {
         btBackTicket.onClick.AddListener(action);
     }
-    
+
     public void SetTicketVisibility()
     {
         if (GameManager.instance.isTicketVisible)
         {
             GameManager.instance.isTicketVisible = false;
+            SendMessageToClientHideTicket(GameManager.instance.isTicketVisible);
         }
         else
         {
             GameManager.instance.isTicketVisible = true;
+            SendMessageToClientShowTicket(GameManager.instance.isTicketVisible, infosTicket.ticketInfos, infosTicket.numbersCard, infosTicket.isCard, infosTicket.typeRaffle);
         }
+        CheckStateVisibility();
         GameManager.instance.WriteInfosGlobe();
 
-        CheckStateVisibility();
     }
     public void CheckStateVisibility()
     {
@@ -91,10 +94,10 @@ public class TicketController : MonoBehaviour
             {
                 spin.ActiveButtonNewRaffleSpin();
             }
-            SendMessageToClientHideTicket(GameManager.instance.isTicketVisible);
+           
         }
     }
-    
+
     private string RevertDate(string date)
     {
         DateTime dateTime = System.DateTime.Parse(date);
@@ -243,10 +246,22 @@ public class TicketController : MonoBehaviour
 
         if (!GameManager.instance.isBackup)
         {
-           
-            SendMessageToClientShowTicket(GameManager.instance.isTicketVisible, _ticketInfos, _numbersCard.ToArray(), _isCard, _typeRaffle);
+            infosTicket.isCard = _isCard;
+            infosTicket.typeRaffle = _typeRaffle;
+            infosTicket.ticketInfos = _ticketInfos;
+            infosTicket.numbersCard = _numbersCard.ToArray();
+
         }
     }
+    [Serializable]
+    public class Infosticket
+    {
+       public bool isCard;
+       public string[] ticketInfos;
+       public int[] numbersCard;
+       public int typeRaffle;
+    }
+
     #region Messages
     public void SendMessageToClientShowTicket(bool _canShowTicket, string[] _ticketInfos, int[] _numbersCard, bool _isCard, int _typeRaffle)
     {

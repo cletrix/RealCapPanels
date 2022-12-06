@@ -19,7 +19,8 @@ public class TicketScreen : MonoBehaviour
     [SerializeField] private Image imgTicket;
 
     [Header("WINNER INFOS")]
-    [SerializeField] private TextMeshProUGUI prizeName;
+    [SerializeField] private TextMeshProUGUI prizeNameGlobe;
+    [SerializeField] private TextMeshProUGUI prizeNameSpin;
     [SerializeField] private TextMeshProUGUI txtGlobeRound;
     [SerializeField] private TextMeshProUGUI txtSpinRound;
     [Space]
@@ -106,18 +107,9 @@ public class TicketScreen : MonoBehaviour
     public void SetTicketVisibility(bool isActive, float timeAnim = 1f)
     {
         if (isActive)
-        {
-           
+        {  
             SetBgBlackVisibility(true);
-            if (GameManager.instance.globeScriptable.Winners > 1)
-            {
-                string prizeFormated = string.Format(CultureInfo.CurrentCulture, GameManager.instance.globeScriptable.prizeValue.ToString("C2"));
-                prizeName.text = prizeFormated;
-            }
-            else
-            {
-                prizeName.text = GameManager.instance.globeScriptable.description;
-            }
+           
             WinnersScreen.instance.SetWinnersScreenVisibility(false);
             bgTicket.transform.DOLocalMoveY(-250, timeAnim);
             bgSuperior.transform.DOLocalMoveY(250, timeAnim);
@@ -139,6 +131,15 @@ public class TicketScreen : MonoBehaviour
             globeSuperior.SetActive(true);
             spinSuperior.SetActive(false);
             txtGlobeRound.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
+            if (GameManager.instance.globeScriptable.Winners > 1)
+            {
+                string prizeFormated = string.Format(CultureInfo.CurrentCulture, GameManager.instance.globeScriptable.prizeValue.ToString("C2"));
+                prizeNameGlobe.text = prizeFormated;
+            }
+            else
+            {
+                prizeNameGlobe.text = GameManager.instance.globeScriptable.description;
+            }
 
         }
         else
@@ -148,6 +149,7 @@ public class TicketScreen : MonoBehaviour
             globeSuperior.SetActive(false);
             SetResult(infosWinner[21]);
             txtSpinRound.text = $"{GameManager.instance.luckySpinScriptable.currentSpinID}º Sorteio";
+            prizeNameSpin.text = GameManager.instance.luckySpinScriptable.prizeDescription;
 
         }
         PopulateTicketInfos(

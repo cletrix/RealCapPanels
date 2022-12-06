@@ -3,6 +3,7 @@ using RiptideNetworking;
 using System;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening.Core.Easing;
 
 public enum ServerToClientId : ushort
 {
@@ -132,29 +133,45 @@ public class NetworkManager : MonoBehaviour
 
     #region Messages
 
+    [MessageHandler((ushort)ServerToClientId.messageTypeRaffle)]
+    private static void ReceiveMessageChangeType(Message message)
+    {
+        string scene = message.GetString();
+        if (scene == "SceneGlobe")
+        {
+            UIManager.instance.ResetRaffle();
+        }
+    }
+
     [MessageHandler((ushort)ServerToClientId.messageBall)]
     private static void ReceiveMessage(Message message)
     {
         string[] ballsRaffled = message.GetStrings();
         int[] newBalls = new int[ballsRaffled.Length];
+        int forOneBall = message.GetInt();
+        int winnersCount = message.GetInt();
 
         for (int i = 0; i < ballsRaffled.Length; i++)
         {
             newBalls[i] = int.Parse(ballsRaffled[i].ToString());
         }
-        UIManager.instance.RecieveBalls(newBalls.ToList());
+
+        UIManager.instance.RecieveBalls(newBalls.ToList(), winnersCount);
     }
     [MessageHandler((ushort)ServerToClientId.messageBallRevoked)]
     private static void ReceiveMessageBallRevoked(Message message)
     {
         string[] ballsRaffled = message.GetStrings();
         int[] newBalls = new int[ballsRaffled.Length];
+        int forOneBall = message.GetInt();
+        int winnersCount = message.GetInt();
+
 
         for (int i = 0; i < ballsRaffled.Length; i++)
         {
             newBalls[i] = int.Parse(ballsRaffled[i].ToString());
         }
-        UIManager.instance.RecieveBalls(newBalls.ToList());
+        UIManager.instance.RecieveBalls(newBalls.ToList(), winnersCount);
     }
 
     [MessageHandler((ushort)ServerToClientId.messageNextRaffleGlobe)]

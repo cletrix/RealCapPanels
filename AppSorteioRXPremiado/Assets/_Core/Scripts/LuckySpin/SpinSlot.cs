@@ -66,7 +66,7 @@ public class SpinSlot : MonoBehaviour
     }
     public void MovementSpin()
     {
-        ShowNumber();
+       
         for (int i = 0; i < numberSlots.Count; i++)
         {
             numberSlots[i].speed = spinSpeed;

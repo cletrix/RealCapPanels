@@ -253,7 +253,7 @@ public class NetworkManager : MonoBehaviour
     {
         string luckyNumber = string.Empty;
         luckyNumber = message.GetString();
-
+        print("Ativou");
         LuckySpinController luckySpinController = FindObjectOfType<LuckySpinController>();
         luckySpinController.SetResult(luckyNumber);
     }
@@ -268,7 +268,7 @@ public class NetworkManager : MonoBehaviour
         string value = message.GetString();
         LuckySpinController luckySpinController = FindObjectOfType<LuckySpinController>();
         if (SceneManager.GetActiveScene().buildIndex == 3)
-            luckySpinController.SetPopulateSpinInfos(value, editionNumber);
+            luckySpinController.SetPopulateSpinInfos(value, editionNumber,description);
     }
     [MessageHandler((ushort)ServerToClientId.messageSpinRoundID)]
     private static void ReceiveMessageLotterySpinRoundID(Message message)
@@ -291,9 +291,10 @@ public class NetworkManager : MonoBehaviour
         int[] numberCards = message.GetInts();
         bool iscard = message.GetBool();
         int typeRaffle = message.GetInt();
+        print("TICKET VISIBLE"+isTicketVisibility);
 
-        ticketScreen.SetTicketInfos(ticketInfos, numberCards, iscard, typeRaffle);
         ticketScreen.SetTicketVisibility(isTicketVisibility);
+        ticketScreen.SetTicketInfos(ticketInfos, numberCards, iscard, typeRaffle);
 
     }
     [MessageHandler((ushort)ServerToClientId.messageHideTicket)]

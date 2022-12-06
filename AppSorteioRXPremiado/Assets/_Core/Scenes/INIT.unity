@@ -204,6 +204,18 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec56edff218bf34c9d5eb6ea66c5f4d, type: 3}
+--- !u!114 &709166875 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 23251450204081325, guid: 9f08c054f8ebba74094157e9be38174e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1448615953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1086787155
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +299,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1335876938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2932560954438044232, guid: 9f08c054f8ebba74094157e9be38174e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1448615953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1448615953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1103,9 +1127,19 @@ PrefabInstance:
       objectReference: {fileID: 1448615954}
     - target: {fileID: 7101287576733618282, guid: 9f08c054f8ebba74094157e9be38174e,
         type: 3}
+      propertyPath: prizeNameSpin
+      value: 
+      objectReference: {fileID: 709166875}
+    - target: {fileID: 7101287576733618282, guid: 9f08c054f8ebba74094157e9be38174e,
+        type: 3}
       propertyPath: txtGlobeRound
       value: 
       objectReference: {fileID: 1448615955}
+    - target: {fileID: 7101287576733618282, guid: 9f08c054f8ebba74094157e9be38174e,
+        type: 3}
+      propertyPath: prizeNameGlobe
+      value: 
+      objectReference: {fileID: 1335876938}
     - target: {fileID: 7190039649660586080, guid: 9f08c054f8ebba74094157e9be38174e,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1572,12 +1606,12 @@ PrefabInstance:
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
       propertyPath: ip
-      value: 192.168.0.4
+      value: 192.168.20.144
       objectReference: {fileID: 0}
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
       propertyPath: ip2
-      value: 192.168.0.9
+      value: 192.168.20.33
       objectReference: {fileID: 0}
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
@@ -1597,6 +1631,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PanelWinners
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619115271416697680, guid: a0891d877d38d29439edd5af63da3ae6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5619115271416697772, guid: a0891d877d38d29439edd5af63da3ae6,
         type: 3}

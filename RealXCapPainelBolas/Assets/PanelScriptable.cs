@@ -7,7 +7,7 @@ public class PanelScriptable : ScriptableObject
 {
     public List<int> Balls;
     public int indexBalls = 0;
-
+    public int winnersCount = 0;
     public void ResetVariables()
     {
         Balls.Clear();

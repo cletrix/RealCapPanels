@@ -67,6 +67,7 @@ public class BallController : MonoBehaviour
     {
         DesactiveAllBorder();
         balls[index - 1].SetEnableBallBorder();
+        UIManager.instance.canRaffleBall = true;
     }
 
 

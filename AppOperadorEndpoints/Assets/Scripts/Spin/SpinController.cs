@@ -111,6 +111,8 @@ public class SpinController : MonoBehaviour
     }
     private IEnumerator RaffleNumberLuckySpin()
     {
+        SendMessageToClientSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado);
+
         currentNumberRaffled = GameManager.instance.spinResultScriptable.numeroSorteado;
         GameManager.instance.technicalScriptable.UpdateSpinConfig(currentNumberRaffled, GameManager.instance.spinResultScriptable.ganhadorContemplado);
         GameManager.instance.spinScriptable.sorteioOrdem = GameManager.instance.technicalScriptable.spinIndex;
@@ -119,6 +121,7 @@ public class SpinController : MonoBehaviour
 
         UpdateFieldScreen();
         SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
+       
 
         //currentNumberRaffled = string.Empty;
         foreach (var item in NumberRaffle)
@@ -135,7 +138,6 @@ public class SpinController : MonoBehaviour
         
         spinRaffleDatas[indexSpin-1].SetNumberTicket(currentNumberRaffled);
         yield return new WaitForSeconds(0.1f);
-        SendMessageToClientSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado);
         spinRaffleDatas[indexSpin-1].SetStateInteractableButton(true);
         spinRaffleDatas[indexSpin-1].SetStateFinishedRaffle(true);
 

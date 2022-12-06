@@ -29,6 +29,21 @@ public class LuckySpinController : MonoBehaviour
 
     }
 
+    public void StartSpin()
+    {
+        StartCoroutine(StartMovement());
+        speed = 80;
+        //StopAllCoroutines();
+        stopSlots = false;
+        index = 0;
+    }
+    private void ActiveMovementRaffle()
+    {
+        awaitNextRaffle = true;
+        StartSpin();
+        startSpin = true;
+        hasStop = false;
+    }
     public void SetResult(string _raffleLuckyNumber)
     {
         GameManager.instance.luckySpinScriptable.currentResult = _raffleLuckyNumber;
@@ -43,6 +58,8 @@ public class LuckySpinController : MonoBehaviour
         }
         ActiveMovementRaffle();
     }
+
+  
     public void ResetResult()
     {
         for (int i = 0; i < spins.Count; i++)
@@ -50,46 +67,48 @@ public class LuckySpinController : MonoBehaviour
             spins[i].ReloadPositions();
         }
     }
-    public void StartSpin()
+
+    private void StopMovement()
     {
-        speed = 80;
-        StopAllCoroutines();
-        stopSlots = false;
-        index = 0;
-        StartCoroutine(StartMovement(0.2f));
+        hasStop = true;
+        StartCoroutine(StopRoll());
     }
-    private IEnumerator StartMovement(float time)
+    private IEnumerator StartMovement()
     {
-        yield return new WaitForSecondsRealtime(time);
-        for (int i = 0; i < spins.Count; i++)
+        foreach (var item in spins)
         {
-            spins[i].stopped = false;
-            yield return new WaitForSecondsRealtime(0.4f);
-            spins[i].MovementSpin();
+            yield return new WaitForSeconds(0.2f);
+            item.ShowNumber();
+            item.MovementSpin();
+            item.stopped = false;
         }
-        yield return new WaitForSecondsRealtime(1);
+        //for (int i = 0; i < spins.Count; i++)
+        //{
+        //    yield return new WaitForSeconds(0.2f);
+        //    spins[i].ShowNumber();
+        //    spins[i].MovementSpin();
+        //    spins[i].stopped = false;
+        //}
+        yield return new WaitForSeconds(1f);
         StopMovement();
     }
-   
+  
+
     public IEnumerator StopRoll()
     {
         foreach (var item in spins)
         {
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSeconds(0.5f);
             item.ActiveStopSlot();
         }
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(1f);
         ActiveWinners();
     }
-    private void ActiveMovementRaffle()
+  
+    public void SetPopulateSpinInfos(string _value, string _edition, string _description)
     {
-        awaitNextRaffle = true;
-        StartSpin();
-        startSpin = true;
-        hasStop = false;
-    }
-    public void SetPopulateSpinInfos(string _value, string _edition)
-    {
+        GameManager.instance.luckySpinScriptable.prizeValue = _value;
+        GameManager.instance.luckySpinScriptable.prizeDescription = _description;
         uiLuckySpinController.PopulateSpinInfos(_value, _edition);
     }
     public void SetRoundIDSpin(int _roundNumber)
@@ -97,24 +116,7 @@ public class LuckySpinController : MonoBehaviour
         uiLuckySpinController.SetRoundIDLuckySpin(_roundNumber);
         GameManager.instance.luckySpinScriptable.currentSpinID = _roundNumber;
     }
-    //public void ShowTicketSpin(bool canShowTicket)
-    //{
-    //    if (canShowTicket)
-    //    {
-    //        Invoke("CallTicketLuckySpin", 0.1f);
-    //    }
-    //    else
-    //    {
-    //        awaitNextRaffle = false;
 
-    //        ResetResult();
-    //    }
-    //}
-    private void StopMovement()
-    {
-        hasStop = true;
-        StartCoroutine(StopRoll());
-    }
     private void ActiveWinners()
     {
         if (!stopSlots)

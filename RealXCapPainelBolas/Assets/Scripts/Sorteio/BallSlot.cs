@@ -9,6 +9,7 @@ public class BallSlot : MonoBehaviour
     public Color selectedColor;
     public Color noSelectedColor;
     public Color finishedColor;
+    public Color winnerColor;
     public TextMeshProUGUI textNumber;
     public int numberBall;
     public Image imageBall;
@@ -54,7 +55,14 @@ public class BallSlot : MonoBehaviour
         ballTransform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f);
         SetEnableBall();
         isActive = true;
-        imageBall.color = selectedColor;
+        if (UIManager.instance.panelScriptable.winnersCount > 0)
+        {
+            imageBall.color = winnerColor;
+        }
+        else
+        {
+            imageBall.color = selectedColor;
+        }
         textNumber.color = Color.black;
         Invoke("ActiveBlinkAnimBorder", 0.1f);
     }
@@ -70,7 +78,7 @@ public class BallSlot : MonoBehaviour
         animBorder.SetBool("IsBlink", false);
         CancelInvoke("DesactiveBlinkAnimBorder");
         ballTransform.DOScale(new Vector3(1f, 1f, 1f), 0.5f);
-        UIManager.instance.canRaffleBall = true;
+
 
     }
     public void SetEnableBall()
