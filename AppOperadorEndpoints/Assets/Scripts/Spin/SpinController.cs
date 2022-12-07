@@ -50,6 +50,7 @@ public class SpinController : MonoBehaviour
         SetSpinPrize();
         PopulateFieldsSpinData();
         UpdateFieldScreen();
+        ActiveButtonNewRaffleSpin();
     }
     public void SetIndexSpin(int spinOrder)
     {
