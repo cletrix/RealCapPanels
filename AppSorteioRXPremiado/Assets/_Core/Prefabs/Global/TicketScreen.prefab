@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 5178171142642472434}
   - component: {fileID: 2565022764218833561}
   m_Layer: 5
-  m_Name: TxtRoundRaffle
+  m_Name: TxtGlobeRound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -996,8 +996,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1422,8 +1422,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1578,8 +1578,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1803,8 +1803,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2198,8 +2198,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2354,8 +2354,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2666,8 +2666,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2898,8 +2898,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2922,7 +2922,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 15
   m_fontSizeMax: 50
-  m_fontStyle: 16
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3054,8 +3054,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3427,8 +3427,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3659,8 +3659,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3815,8 +3815,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3971,8 +3971,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4224,8 +4224,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4380,8 +4380,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4495,8 +4495,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: 0}
-  m_SizeDelta: {x: -10, y: 0}
+  m_AnchoredPosition: {x: 4, y: 0}
+  m_SizeDelta: {x: -8, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2176522271480129126
 CanvasRenderer:
@@ -4536,8 +4536,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4779,10 +4779,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 789101
+  m_text: 456870
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c5558542944b8ed479a43fb9f58e3937, type: 2}
-  m_sharedMaterial: {fileID: 5482523598328024403, guid: c5558542944b8ed479a43fb9f58e3937,
+  m_fontAsset: {fileID: 11400000, guid: a21683e3dfbdc444c8ca801d029b5475, type: 2}
+  m_sharedMaterial: {fileID: 5302009204636872595, guid: a21683e3dfbdc444c8ca801d029b5475,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4790,14 +4790,14 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294929920
-  m_fontColor: {r: 0, g: 0.43137258, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0.43023157, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 0.8534628, b: 0, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 0.5214752, b: 0, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -4807,12 +4807,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 14
+  m_fontSize: 75
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 15
-  m_fontSizeMax: 90
+  m_fontSizeMin: 18
+  m_fontSizeMax: 75
   m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -4823,13 +4823,13 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_enableExtraPadding: 1
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
@@ -4945,8 +4945,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14465404, b: 0.3773585, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5352,7 +5352,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1004}
+  m_AnchoredPosition: {x: 0, y: -250}
   m_SizeDelta: {x: 1920.0001, y: 510}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5693520997314285871
@@ -5867,7 +5867,7 @@ GameObject:
   - component: {fileID: 2936298627726186847}
   - component: {fileID: 5577050159521470915}
   m_Layer: 5
-  m_Name: TxtRoundRaffle
+  m_Name: TxtSpinRound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6523,7 +6523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1000}
+  m_AnchoredPosition: {x: 0, y: 250}
   m_SizeDelta: {x: 1820, y: 510}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6023837372181112116
@@ -6717,8 +6717,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284491008
-  m_fontColor: {r: 0, g: 0.14509805, b: 0.37647063, a: 1}
+    rgba: 4294929920
+  m_fontColor: {r: 0, g: 0.43137255, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7409,7 +7409,7 @@ Canvas:
   m_GameObject: {fileID: 8742465533621270091}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -7485,8 +7485,10 @@ MonoBehaviour:
   bgticketGlobe: {fileID: 21300000, guid: c03d1522263580f42a5883b87b29a4a2, type: 3}
   bgticketSpin: {fileID: 21300000, guid: b8fc7ce0cc8e3d34ea7464723f650da8, type: 3}
   imgTicket: {fileID: 64499618918050095}
-  prizeName: {fileID: 2932560954438044232}
-  txtRaffleRound: {fileID: 2565022764218833561}
+  prizeNameGlobe: {fileID: 2932560954438044232}
+  prizeNameSpin: {fileID: 23251450204081325}
+  txtGlobeRound: {fileID: 2565022764218833561}
+  txtSpinRound: {fileID: 5577050159521470915}
   nameWinner: {fileID: 2176522269896845457}
   cpf: {fileID: 2176522270550244134}
   birthDate: {fileID: 2176522271320780933}

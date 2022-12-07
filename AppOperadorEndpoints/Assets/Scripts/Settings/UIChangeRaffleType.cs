@@ -154,6 +154,8 @@ public class UIChangeRaffleType : MonoBehaviour
                     panelRaffleSpin.SetActive(true);
                     btRaffleSpin.image.color = selectedColor;
                     infosRaffle.PopulateRaffleInfos(GameManager.instance.spinScriptable.sorteioOrdem.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
+                    SpinController spinController = FindObjectOfType<SpinController>();
+                    spinController.ActiveButtonNewRaffleSpin();
                     break;
                 }
             default:

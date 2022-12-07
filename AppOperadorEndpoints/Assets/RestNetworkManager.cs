@@ -376,8 +376,7 @@ public class RestNetworkManager : MonoBehaviour
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.spinScriptable);
-                        SpinController spinController = FindObjectOfType<SpinController>();
-                        spinController.ActiveButtonNewRaffleSpin();
+                        
                     }
                     break;
             }

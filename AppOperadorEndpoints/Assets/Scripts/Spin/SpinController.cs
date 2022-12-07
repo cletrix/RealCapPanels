@@ -200,7 +200,7 @@ public class SpinController : MonoBehaviour
         }
         else
         {
-            if (GameManager.instance.technicalScriptable.spinIndex < GameManager.instance.recoveryScriptable.limit_spin)
+            if (GameManager.instance.technicalScriptable.spinIndex < 20)
                 btGenerateLuckyNumber.interactable = true;
             else
                 btGenerateLuckyNumber.interactable = false;
