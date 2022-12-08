@@ -76,7 +76,7 @@ public class SpinController : MonoBehaviour
     {
         for (int i = 0; i < spinRaffleDatas.Count; i++)
         {
-            if (i != indexSpin-1)
+            if (i != indexSpin - 1)
             {
                 if (spinRaffleDatas[i].GetIsFinishedRaffle())
                 {
@@ -103,7 +103,7 @@ public class SpinController : MonoBehaviour
     private void SpawnNewLuckyNumber()
     {
         RestNetworkManager.instance.SetPostResultSpin(GameManager.instance.spinScriptable.sorteioOrdem);
-       
+
         btGenerateLuckyNumber.interactable = false;
     }
     public void ShowNumberLuckySpin()
@@ -122,7 +122,7 @@ public class SpinController : MonoBehaviour
 
         UpdateFieldScreen();
         SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
-       
+
 
         //currentNumberRaffled = string.Empty;
         foreach (var item in NumberRaffle)
@@ -130,17 +130,17 @@ public class SpinController : MonoBehaviour
             item.text = "0";
         }
         yield return new WaitForSeconds(0.1f);
-       
+
 
         for (int i = 0; i < NumberRaffle.Count; i++)
         {
             NumberRaffle[i].text = currentNumberRaffled[i].ToString();
         }
-        
-        spinRaffleDatas[indexSpin-1].SetNumberTicket(currentNumberRaffled);
+
+        spinRaffleDatas[indexSpin - 1].SetNumberTicket(currentNumberRaffled);
         yield return new WaitForSeconds(0.1f);
-        spinRaffleDatas[indexSpin-1].SetStateInteractableButton(true);
-        spinRaffleDatas[indexSpin-1].SetStateFinishedRaffle(true);
+        spinRaffleDatas[indexSpin - 1].SetStateInteractableButton(true);
+        spinRaffleDatas[indexSpin - 1].SetStateFinishedRaffle(true);
 
 
     }
@@ -200,10 +200,10 @@ public class SpinController : MonoBehaviour
         }
         else
         {
-            if (GameManager.instance.technicalScriptable.spinIndex < 20)
-                btGenerateLuckyNumber.interactable = true;
-            else
+            if (GameManager.instance.recoveryScriptable.sorteio_tipo == "finish")
                 btGenerateLuckyNumber.interactable = false;
+            else
+                btGenerateLuckyNumber.interactable = true;
 
         }
     }

@@ -38,9 +38,18 @@ public class RecoveryScriptable : ScriptableObject
     {
         //GLOBE RECOVERY
         GameManager.instance.globeRaffleScriptable.bolasSorteadas.Clear();
+        GameManager.instance.technicalScriptable.spinNumbers.Clear();
         foreach (var item in globe_balls)
         {
             GameManager.instance.globeRaffleScriptable.bolasSorteadas.Add(item.ToString());
+        }
+
+        for (int i = 0; i < number_winner_giro.Count; i++)
+        {
+            if (number_winner_giro[i].Length > 0)
+            {
+                GameManager.instance.technicalScriptable.spinNumbers.Add(number_winner_giro[i]);
+            }
         }
 
         ////SPIN RECOVERY

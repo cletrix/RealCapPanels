@@ -233,12 +233,12 @@ PrefabInstance:
     - target: {fileID: 1641690461297808988, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
       propertyPath: m_text
-      value: R$ 250,00
+      value: R$ 500,00
       objectReference: {fileID: 0}
     - target: {fileID: 1641690461297808988, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
       propertyPath: m_fontSize
-      value: 18
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1641690461297808988, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}

@@ -864,7 +864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2058212433, guid: 7e247de90f897a045ab0ca1cda36ab51, type: 3}
       propertyPath: m_text
-      value: "Valor L\xEDquido R$ 2000,00"
+      value: "Valor L\xEDquido R$ 50.000,00"
       objectReference: {fileID: 0}
     - target: {fileID: 2058212433, guid: 7e247de90f897a045ab0ca1cda36ab51, type: 3}
       propertyPath: m_fontAsset

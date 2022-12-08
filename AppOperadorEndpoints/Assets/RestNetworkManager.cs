@@ -1,11 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
 using static GameManager;
@@ -84,10 +80,8 @@ public class RestNetworkManager : MonoBehaviour
     }
     public void GetRaffleInfos()
     {
-        if (GameManager.instance.isBackup)
-        {
-            CallGetInfoServer();
-        }
+        CallGetInfoServer();
+
         StartCoroutine(GetLotteryInfos(baseUrl1 + urlInfoLottery));
 
         StartCoroutine(GetGlobeInfos(baseUrl1 + urlGlobeInfos));
@@ -124,7 +118,10 @@ public class RestNetworkManager : MonoBehaviour
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoveryScriptable);
                         GameManager.instance.recoveryScriptable.UpdateInfos();
-                        CallReadMemory();
+                        if (GameManager.instance.isBackup)
+                        {
+                            CallReadMemory();
+                        }
                     }
                     break;
             }
@@ -227,8 +224,8 @@ public class RestNetworkManager : MonoBehaviour
                         break;
                     }
             }
-           
-                GameManager.instance.technicalScriptable.PopulateConfig();
+
+            GameManager.instance.technicalScriptable.PopulateConfig();
         }
     }
 
@@ -376,7 +373,7 @@ public class RestNetworkManager : MonoBehaviour
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.spinScriptable);
-                        
+
                     }
                     break;
             }
