@@ -362,6 +362,11 @@ PrefabInstance:
       propertyPath: spinSpeed
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 2140097157828769500, guid: 4c6527db0db8a964eb966cac51eacff9,
+        type: 3}
+      propertyPath: tampDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2323978534929489192, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -627,6 +632,11 @@ PrefabInstance:
       propertyPath: spinSpeed
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 3591391305297087031, guid: 4c6527db0db8a964eb966cac51eacff9,
+        type: 3}
+      propertyPath: tampDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4789205421877471773, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -666,6 +676,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spinSpeed
       value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883925588804302666, guid: 4c6527db0db8a964eb966cac51eacff9,
+        type: 3}
+      propertyPath: tampDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5332577829414718036, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
@@ -707,6 +722,11 @@ PrefabInstance:
       propertyPath: spinSpeed
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 6044373325811268866, guid: 4c6527db0db8a964eb966cac51eacff9,
+        type: 3}
+      propertyPath: tampDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6690194808436012506, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -742,6 +762,11 @@ PrefabInstance:
       propertyPath: spinSpeed
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 7013778169672884775, guid: 4c6527db0db8a964eb966cac51eacff9,
+        type: 3}
+      propertyPath: tampDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7738549059933596428, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -771,6 +796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spinSpeed
       value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7894998137153858528, guid: 4c6527db0db8a964eb966cac51eacff9,
+        type: 3}
+      propertyPath: tampDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8058026777178954608, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}

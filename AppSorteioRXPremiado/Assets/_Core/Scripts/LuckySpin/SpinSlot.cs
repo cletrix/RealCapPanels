@@ -16,7 +16,7 @@ public class SpinSlot : MonoBehaviour
     public Vector3 posCentral = new Vector3(-85.5f, -18.8f, 90f);
 
     [SerializeField] private Image bgTamp;
-    [SerializeField] private float tampDelay = 2f;
+    [SerializeField] private float tampDelay = 0.5f;
     [SerializeField] private float spinSpeed = 40f;
 
     private void Start()

@@ -59,7 +59,13 @@ public class LuckySpinController : MonoBehaviour
         ActiveMovementRaffle();
     }
 
-  
+    public void CloseDoor()
+    {
+        foreach (var item in spins)
+        {
+            item.HideNumber();
+        }
+    }
     public void ResetResult()
     {
         for (int i = 0; i < spins.Count; i++)
@@ -82,13 +88,6 @@ public class LuckySpinController : MonoBehaviour
             item.MovementSpin();
             item.stopped = false;
         }
-        //for (int i = 0; i < spins.Count; i++)
-        //{
-        //    yield return new WaitForSeconds(0.2f);
-        //    spins[i].ShowNumber();
-        //    spins[i].MovementSpin();
-        //    spins[i].stopped = false;
-        //}
         yield return new WaitForSeconds(1f);
         StopMovement();
     }

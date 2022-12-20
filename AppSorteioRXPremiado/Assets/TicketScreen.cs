@@ -107,9 +107,9 @@ public class TicketScreen : MonoBehaviour
     public void SetTicketVisibility(bool isActive, float timeAnim = 1f)
     {
         if (isActive)
-        {  
+        {
             SetBgBlackVisibility(true);
-           
+
             WinnersScreen.instance.SetWinnersScreenVisibility(false);
             bgTicket.transform.DOLocalMoveY(-250, timeAnim);
             bgSuperior.transform.DOLocalMoveY(250, timeAnim);
@@ -119,6 +119,11 @@ public class TicketScreen : MonoBehaviour
             SetBgBlackVisibility(false);
             bgTicket.transform.DOLocalMoveY(-1000, timeAnim);
             bgSuperior.transform.DOLocalMoveY(1000, timeAnim);
+            LuckySpinController luckySpin = FindObjectOfType<LuckySpinController>();
+            if (luckySpin != null)
+            {
+                luckySpin.CloseDoor();
+            }
         }
     }
 
@@ -223,7 +228,7 @@ public class TicketScreen : MonoBehaviour
         luckyNumber.text = _luckyNumber;
 
         if (isCard)
-        {   
+        {
             groupCard.SetActive(true);
             luckyNumber.gameObject.SetActive(false);
             UiGlobeManager uiGlobeManager = FindObjectOfType<UiGlobeManager>();
