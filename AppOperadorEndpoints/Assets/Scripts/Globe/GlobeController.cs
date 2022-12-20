@@ -301,7 +301,6 @@ public class GlobeController : MonoBehaviour
     }
     private void PopulatePossibleWinners(List<string> _infos)
     {
-
         UpdateStateVisibilityButtonsTicket(false);
 
         possiblesWinners = new PossibleWinners[0];
@@ -484,6 +483,25 @@ public class GlobeController : MonoBehaviour
            GameManager.instance.globeRaffleScriptable.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroSorte,
            true,
            2);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.Return)|| Input.GetKeyUp(KeyCode.KeypadEnter))
+        {
+            if(panelConfirmBall.activeSelf)
+            {
+                ConfirmBallSelected();
+                panelConfirmBall.SetActive(false);
+            }
+        }
+        else if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (panelConfirmBall.activeSelf)
+            {
+                ClosePanelConfirmBall();
+            }
+        }
     }
 
     #region MESSAGES
