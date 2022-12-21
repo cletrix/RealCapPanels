@@ -24,6 +24,8 @@ public class GlobeController : MonoBehaviour
     public string numberSTR;
     public float timeToSpawn = 3f;
     public bool canRafleeBall = true;
+    private bool isPlayWinnerSound = false;
+
 
     void Start()
     {
@@ -45,6 +47,7 @@ public class GlobeController : MonoBehaviour
             lastBallRaffle.PlayAnimationHeart(false);
         }
         GameManager.instance.SetCamActiveInCanvas(Camera.main);
+        isPlayWinnerSound = false;
     }
     private void OnEnable()
     {
@@ -72,11 +75,9 @@ public class GlobeController : MonoBehaviour
     {
         canRafleeBall = true;
         GameManager.instance.globeScriptable.indexBalls++;
-
     }
     public void UpdateScreenRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, string _prizeValue)
     {
-       
         if (GameManager.instance.globeScriptable.numberBalls.Count < _ballsRaffled.Length)
         {
             VerifyBalls();
@@ -86,12 +87,11 @@ public class GlobeController : MonoBehaviour
         }
         else if (GameManager.instance.globeScriptable.numberBalls.Count > _ballsRaffled.Length)
         {
-
             ballController.SetRevokedBall(_ballsRaffled);
             UpdateInfosScreen(_ballsRaffled.Length, _forOneBall);
 
         }
-        
+
         if (_forOneBall > 0)
         {
             lastBallRaffle.PlayAnimationHeart(true);
@@ -132,7 +132,12 @@ public class GlobeController : MonoBehaviour
         {
             winnersScreen.SetInfosWinnerScreen(GameManager.instance.globeScriptable.Winners, GameManager.instance.globeScriptable.prizeValue);
             UiGlobeManager uiGlobeManager = FindObjectOfType<UiGlobeManager>();
-            
+            if (isPlayWinnerSound == false)
+            {
+                AudioManager.instance.PlaySFX("Winner");
+                isPlayWinnerSound = true;
+            }
+
         }
     }
     public void SetUpdateInfoScreen()

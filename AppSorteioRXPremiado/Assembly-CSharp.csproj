@@ -110,6 +110,11 @@
     <Compile Include="Assets\WinnersScreen.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\GlobeInfos.cs" />
     <Compile Include="Assets\_Core\Scripts\LuckySpin\NumberSlot.cs" />
+    <Compile Include="Assets\_Core\Scripts\AudioManager\SoundMusic.cs" />
+    <Compile Include="Assets\_Core\Scripts\AudioManager\MixerControl.cs" />
+    <Compile Include="Assets\_Core\Scripts\AudioManager\SoundSFX.cs" />
+    <Compile Include="Assets\_Core\Scripts\AudioManager\AudioManager.cs" />
+    <Compile Include="Assets\_Core\Scripts\Globe\MonoSingleton.cs" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

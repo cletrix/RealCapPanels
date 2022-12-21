@@ -62,7 +62,6 @@ public class UiGlobeManager : MonoBehaviour
     }
     public void SetGlobeRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, string _prizeValue)
     {
-       
         globeController.UpdateScreenRaffle(_ballsRaffled, _forOneBall, _winnersCount, _prizeValue);
     }
     //public void SetRevokedBallGlobeRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, string _prizeValue)

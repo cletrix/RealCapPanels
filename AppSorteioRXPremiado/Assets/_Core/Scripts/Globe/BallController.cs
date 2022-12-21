@@ -102,9 +102,6 @@ public class BallController : MonoBehaviour
         seq.Insert(1, instance.transform.DOMove(spawnerPointBallsStart[2].position, 0.2f).OnComplete(() =>
         {
             instance.MoveBallAtFinalPos(positionBallsGrid[ballCountSpawn].position);
-            //GlobeController globe = new GlobeController();
-            //globe.SendMessageConfirmBallRaffled();
-
             ballCountSpawn++;
             if (ballCountSpawn < 5)
             {
@@ -135,14 +132,12 @@ public class BallController : MonoBehaviour
             BallsSelected[i].MoveBallAtFinalPos(positionBallsGrid[i].position);
             BallsSelected[i].RotateLoop(rotZ: 360, rotSpeed: 1f, loop: 1);
         }
-
     }
     public void CallWinnerScreen()
     {
         if (GameManager.instance.globeScriptable.Winners > 0)
         {
             WinnersScreen.instance.SetWinnersScreenVisibility(true);
-
         }
     }
     public void SetRevokedBall(string[] _numbers)

@@ -23,8 +23,11 @@ public class PossiblesWinners : MonoBehaviour
     }
     public void SetTicketForOneBallInfo(string _info)
     {
-        textInfo.text = _info;
-        
+        if(_info!= textInfo.text)
+        {
+            AudioManager.instance.PlaySFX("Possible");
+        }
+        textInfo.text = _info; 
     }
 
     public void ActiveMovement()

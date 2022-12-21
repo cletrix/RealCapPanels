@@ -61,6 +61,7 @@ public class WinnersScreen : MonoBehaviour
             });
         }
     }
+
     public void SetInfosWinnerScreen(int _count, int _prize)
     {
         string prizeFormated = string.Format(CultureInfo.CurrentCulture, _prize.ToString("C2"));
