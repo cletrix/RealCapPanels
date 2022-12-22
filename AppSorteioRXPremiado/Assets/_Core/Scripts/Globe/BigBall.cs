@@ -15,6 +15,9 @@ public class BigBall : MonoBehaviour
     public string numberBall;
     public GameObject trackBall;
 
+    [SerializeField] private Color firstColor;
+    [SerializeField] private Color secondColor;
+    [SerializeField] private Image bgLineBall;
     public void SetInfoInBigBall(string _numberBall, bool isAnim = true)
     {
         if (isAnim)
@@ -24,15 +27,16 @@ public class BigBall : MonoBehaviour
         imageBall.sprite = bgBall;
         numberBall = _numberBall;
         textNumber.text = _numberBall;
+        ChangeColorBgLine();
         imageBall.enabled = true;
-        if (numberBall == "9" || numberBall == "6")
-        {
-            trackBall.SetActive(true);
-        }
-        else
-        {
-            trackBall.SetActive(false);
-        }
+        //if (numberBall == "9" || numberBall == "6")
+        //{
+        //    trackBall.SetActive(true);
+        //}
+        //else
+        //{
+        //    trackBall.SetActive(false);
+        //}
     }
 
     public void SetBgBallWithLogo()
@@ -40,6 +44,19 @@ public class BigBall : MonoBehaviour
         imageBall.sprite = bgBallLogo;
         textNumber.text = string.Empty;
         imageBall.enabled = true;
+    }
+
+    private void ChangeColorBgLine()
+    {
+        int number = int.Parse(numberBall);
+        if (number <= 30)
+        {
+            bgLineBall.color = firstColor;
+        }
+        else
+        {
+            bgLineBall.color = secondColor;
+        }
     }
 
     public void SetBallWinner()

@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\FadeController.cs" />
     <Compile Include="Assets\Scripts\Sorteio\BallSlot.cs" />
     <Compile Include="Assets\Scripts\Sorteio\BallController.cs" />
+    <Compile Include="Assets\FPSCounter.cs" />
     <Compile Include="Assets\BallContrrollerDezenas.cs" />
     <Compile Include="Assets\Scripts\LocalNetwork\NetworkManager.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />

@@ -16,6 +16,10 @@ public class Ball : MonoBehaviour
     private bool canMove = false;
     public GameObject trackBall;
 
+    [SerializeField] private Color firstColor;
+    [SerializeField] private Color secondColor;
+    [SerializeField] private Image bgLineBall;
+
     private void Start()
     {
         ballTransform = GetComponent<Transform>();
@@ -25,14 +29,15 @@ public class Ball : MonoBehaviour
         numberBall = _numberBall;
         textNumber.text = _numberBall;
         imageBall.enabled = true;
-        if (numberBall == "9" || numberBall == "6")
-        {
-            trackBall.SetActive(true);
-        }
-        else
-        {
-            trackBall.SetActive(false);
-        }
+        ChangeColorBgLine();
+        //if (numberBall == "9" || numberBall == "6")
+        //{
+        //    trackBall.SetActive(true);
+        //}
+        //else
+        //{
+        //    trackBall.SetActive(false);
+        //}
         SetMarkedNormal();
     }
     public void SetMarkedRevokedBall()
@@ -45,6 +50,20 @@ public class Ball : MonoBehaviour
         imageBall.color = Color.white;
         textNumber.color = Color.black;
     }
+
+    private void ChangeColorBgLine()
+    {
+        int number = int.Parse(numberBall);
+        if (number <= 30)
+        {
+            bgLineBall.color = firstColor;
+        }
+        else
+        {
+            bgLineBall.color = secondColor;
+        }
+    }
+
     public void HideBall()
     {
         Destroy(this.gameObject, 0.1f);
