@@ -27,16 +27,9 @@ public class BigBall : MonoBehaviour
         imageBall.sprite = bgBall;
         numberBall = _numberBall;
         textNumber.text = _numberBall;
-        ChangeColorBgLine();
         imageBall.enabled = true;
-        //if (numberBall == "9" || numberBall == "6")
-        //{
-        //    trackBall.SetActive(true);
-        //}
-        //else
-        //{
-        //    trackBall.SetActive(false);
-        //}
+        ChangeColorBgLine();
+  
     }
 
     public void SetBgBallWithLogo()
@@ -52,10 +45,12 @@ public class BigBall : MonoBehaviour
         if (number <= 30)
         {
             bgLineBall.color = firstColor;
+            textNumber.color = firstColor;
         }
         else
         {
             bgLineBall.color = secondColor;
+            textNumber.color = secondColor;
         }
     }
 

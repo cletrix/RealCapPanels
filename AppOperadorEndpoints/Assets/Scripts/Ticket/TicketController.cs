@@ -16,23 +16,19 @@ public class TicketController : MonoBehaviour
     [SerializeField] private Image imgTicket;
 
     [Header("WINNER INFOS")]
-    [SerializeField] private TextMeshProUGUI titleDescription;
     [SerializeField] private TextMeshProUGUI nameWinner;
     [SerializeField] private TextMeshProUGUI cpf;
     [SerializeField] private TextMeshProUGUI birthDate;
     [SerializeField] private TextMeshProUGUI phone;
     [SerializeField] private TextMeshProUGUI email;
-    [SerializeField] private TextMeshProUGUI address;
-    [SerializeField] private TextMeshProUGUI numberAddress;
-    [SerializeField] private TextMeshProUGUI complement;
     [SerializeField] private TextMeshProUGUI district;
     [SerializeField] private TextMeshProUGUI county;
-    [SerializeField] private TextMeshProUGUI cep;
     [SerializeField] private TextMeshProUGUI state;
     [SerializeField] private TextMeshProUGUI dateRaffle;
     [SerializeField] private TextMeshProUGUI editionName;
     [SerializeField] private TextMeshProUGUI value;
-    [SerializeField] private TextMeshProUGUI PDV;
+    [SerializeField] private TextMeshProUGUI namePDV;
+    [SerializeField] private TextMeshProUGUI streetPDV;
     [SerializeField] private TextMeshProUGUI dateAndHourBuy;
     [Header("RAFFLE INFOS")]
     [SerializeField] private TextMeshProUGUI numberTicket;
@@ -94,7 +90,7 @@ public class TicketController : MonoBehaviour
             {
                 spin.ActiveButtonNewRaffleSpin();
             }
-           
+
         }
     }
 
@@ -114,12 +110,6 @@ public class TicketController : MonoBehaviour
         string cpfFormated = cpf.Substring(0, 8);
         cpfFormated += "XXX-XX";
         return cpfFormated;
-    }
-    private string HidePartCEP(string cep)
-    {
-        string Newcep = cep;
-        Newcep = "XXXXX-XXX";
-        return Newcep;
     }
     private string HidePartBirthDate(string date)
     {
@@ -171,9 +161,8 @@ public class TicketController : MonoBehaviour
             return "SITE";
     }
     public void PopulateTicketInfos(string _nameWinner, string _cpf, string _birthDate, string _phone,
-        string _email, string _address, string _numberAddress, string _complement, string _district,
-        string _county, string _cep, string _state, string _dateRaffle, string _editionName, int _value, string _PDV,
-        string _districtPDV, string _dateBuy, string _hourBuy, string _ticketNumber, string _chance,
+        string _email, string _district, string _county, string _state, string _dateRaffle, string _editionName, int _value,
+        string _PDV, string _districtPDV, string _dateBuy, string _hourBuy, string _ticketNumber, string _chance,
         List<int> _numbersCard, string _luckyNumber, bool _isCard = false, int _typeRaffle = 1)
     {
         nameWinner.text = $"{CheckIsNullInfo(_nameWinner)}";
@@ -181,17 +170,14 @@ public class TicketController : MonoBehaviour
         birthDate.text = $"{HidePartBirthDate(_birthDate)}";
         phone.text = $"{HidePartPhone(_phone)}";
         email.text = $"{HidePartEmail(_email)}";
-        address.text = $"{CheckIsNullInfo(_address)}";
-        numberAddress.text = $"{CheckIsNullInfo(_numberAddress)}";
-        complement.text = $"{CheckIsNullInfo(_complement)}";
         district.text = $"{CheckIsNullInfo(_district)}";
         county.text = $"{CheckIsNullInfo(_county)}";
-        cep.text = $"{HidePartCEP(_cep)}";
         state.text = $"{CheckIsNullInfo(_state)}";
         dateRaffle.text = $"{DateRaffle(_dateRaffle)}";
         editionName.text = $"{CheckIsNullInfo(_editionName)}";
         value.text = $"{FormatMoneyInfo(_value)}";
-        PDV.text = $"{CheckPDV(_PDV)} \n{CheckDistrictPDV(_districtPDV)}";
+        namePDV.text = $"{CheckPDV(_PDV)}";
+        streetPDV.text = $"{CheckDistrictPDV(_districtPDV)}";
         dateAndHourBuy.text = $"\n{RevertDate(_dateBuy)} - {_hourBuy}";
         numberTicket.text = CheckIsNullInfo(_ticketNumber);
         Chance.text = $"{CheckIsNullInfo(_chance)}";
@@ -207,7 +193,6 @@ public class TicketController : MonoBehaviour
                 if (_numbersCard[i].ToString() == GameManager.instance.globeRaffleScriptable.bolasSorteadas[GameManager.instance.globeRaffleScriptable.bolasSorteadas.Count - 1])
                 {
                     numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
-                    // numbersCard[i].GetComponent<Image>().color = Color.red;
                 }
             }
             imgTicket.sprite = bgticketGlobe;
@@ -220,29 +205,25 @@ public class TicketController : MonoBehaviour
             imgTicket.sprite = bgticketSpin;
 
         }
-        string[] _ticketInfos = new string[22];
+        string[] _ticketInfos = new string[18];
         _ticketInfos[0] = CheckIsNullInfo(_nameWinner);
         _ticketInfos[1] = HidePartCPF(_cpf);
         _ticketInfos[2] = HidePartBirthDate(_birthDate);
         _ticketInfos[3] = HidePartPhone(_phone);
         _ticketInfos[4] = HidePartEmail(_email);
-        _ticketInfos[5] = CheckIsNullInfo(_address);
-        _ticketInfos[6] = CheckIsNullInfo(_numberAddress);
-        _ticketInfos[7] = CheckIsNullInfo(_complement);
-        _ticketInfos[8] = CheckIsNullInfo(_district);
-        _ticketInfos[9] = CheckIsNullInfo(_county);
-        _ticketInfos[10] = HidePartCEP(_cep);
-        _ticketInfos[11] = CheckIsNullInfo(_state);
-        _ticketInfos[12] = RevertDate(_dateRaffle);
-        _ticketInfos[13] = CheckIsNullInfo(_editionName);
-        _ticketInfos[14] = FormatMoneyInfo(_value);
-        _ticketInfos[15] = CheckPDV(_PDV);
-        _ticketInfos[16] = CheckDistrictPDV(_districtPDV);
-        _ticketInfos[17] = RevertDate(_dateBuy);
-        _ticketInfos[18] = _hourBuy;
-        _ticketInfos[19] = CheckIsNullInfo(_ticketNumber);
-        _ticketInfos[20] = CheckIsNullInfo(_chance);
-        _ticketInfos[21] = CheckIsNullInfo(_luckyNumber);
+        _ticketInfos[5] = CheckIsNullInfo(_district);
+        _ticketInfos[6] = CheckIsNullInfo(_county);
+        _ticketInfos[7] = CheckIsNullInfo(_state);
+        _ticketInfos[8] = RevertDate(_dateRaffle);
+        _ticketInfos[9] = CheckIsNullInfo(_editionName);
+        _ticketInfos[10] = FormatMoneyInfo(_value);
+        _ticketInfos[11] = CheckPDV(_PDV);
+        _ticketInfos[12] = CheckDistrictPDV(_districtPDV);
+        _ticketInfos[13] = RevertDate(_dateBuy);
+        _ticketInfos[14] = _hourBuy;
+        _ticketInfos[15] = CheckIsNullInfo(_ticketNumber);
+        _ticketInfos[16] = CheckIsNullInfo(_chance);
+        _ticketInfos[17] = CheckIsNullInfo(_luckyNumber);
 
         if (!GameManager.instance.isBackup)
         {
@@ -256,10 +237,10 @@ public class TicketController : MonoBehaviour
     [Serializable]
     public class Infosticket
     {
-       public bool isCard;
-       public string[] ticketInfos;
-       public int[] numbersCard;
-       public int typeRaffle;
+        public bool isCard;
+        public string[] ticketInfos;
+        public int[] numbersCard;
+        public int typeRaffle;
     }
 
     #region Messages

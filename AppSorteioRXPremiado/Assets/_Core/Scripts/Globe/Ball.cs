@@ -30,14 +30,7 @@ public class Ball : MonoBehaviour
         textNumber.text = _numberBall;
         imageBall.enabled = true;
         ChangeColorBgLine();
-        //if (numberBall == "9" || numberBall == "6")
-        //{
-        //    trackBall.SetActive(true);
-        //}
-        //else
-        //{
-        //    trackBall.SetActive(false);
-        //}
+    
         SetMarkedNormal();
     }
     public void SetMarkedRevokedBall()
@@ -48,7 +41,6 @@ public class Ball : MonoBehaviour
     public void SetMarkedNormal()
     {
         imageBall.color = Color.white;
-        textNumber.color = Color.black;
     }
 
     private void ChangeColorBgLine()
@@ -57,10 +49,12 @@ public class Ball : MonoBehaviour
         if (number <= 30)
         {
             bgLineBall.color = firstColor;
+            textNumber.color = firstColor;
         }
         else
         {
             bgLineBall.color = secondColor;
+            textNumber.color = secondColor;
         }
     }
 
