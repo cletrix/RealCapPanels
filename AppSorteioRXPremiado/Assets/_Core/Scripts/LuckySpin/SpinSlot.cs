@@ -27,9 +27,9 @@ public class SpinSlot : MonoBehaviour
     {
         bgTamp.transform.DOLocalMoveY(1000, 0.5f).SetDelay(tampDelay);
     }
-    public void HideNumber()
+    public void HideNumber(float time=0.2f)
     {
-        bgTamp.transform.DOLocalMoveY(0, 0.2f);
+        bgTamp.transform.DOLocalMoveY(0, time);
     }
     private void StartPositions()
     {

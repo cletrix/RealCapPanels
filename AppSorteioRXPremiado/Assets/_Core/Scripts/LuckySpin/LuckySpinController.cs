@@ -63,7 +63,7 @@ public class LuckySpinController : MonoBehaviour
     {
         foreach (var item in spins)
         {
-            item.HideNumber();
+            item.HideNumber(0.1f);
         }
     }
     public void ResetResult()

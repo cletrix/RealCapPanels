@@ -29,17 +29,14 @@ public class TicketScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI birthDate;
     [SerializeField] private TextMeshProUGUI phone;
     [SerializeField] private TextMeshProUGUI email;
-    [SerializeField] private TextMeshProUGUI address;
-    [SerializeField] private TextMeshProUGUI numberAddress;
-    [SerializeField] private TextMeshProUGUI complement;
     [SerializeField] private TextMeshProUGUI district;
     [SerializeField] private TextMeshProUGUI county;
     [SerializeField] private TextMeshProUGUI state;
-    [SerializeField] private TextMeshProUGUI cep;
     [SerializeField] private TextMeshProUGUI dateRaffle;
     [SerializeField] private TextMeshProUGUI editionName;
     [SerializeField] private TextMeshProUGUI value;
-    [SerializeField] private TextMeshProUGUI PDV;
+    [SerializeField] private TextMeshProUGUI namePDV;
+    [SerializeField] private TextMeshProUGUI streetPDV;
     [SerializeField] private TextMeshProUGUI dateAndHourBuy;
     [Header("RAFFLE INFOS")]
     [SerializeField] private TextMeshProUGUI numberTicket;
@@ -116,14 +113,15 @@ public class TicketScreen : MonoBehaviour
         }
         else
         {
-            SetBgBlackVisibility(false);
-            bgTicket.transform.DOLocalMoveY(-1000, timeAnim);
-            bgSuperior.transform.DOLocalMoveY(1000, timeAnim);
             LuckySpinController luckySpin = FindObjectOfType<LuckySpinController>();
             if (luckySpin != null)
             {
                 luckySpin.CloseDoor();
             }
+            SetBgBlackVisibility(false);
+            bgTicket.transform.DOLocalMoveY(-1000, timeAnim);
+            bgSuperior.transform.DOLocalMoveY(1000, timeAnim);
+          
         }
     }
 
@@ -152,7 +150,7 @@ public class TicketScreen : MonoBehaviour
             imgTicket.sprite = bgticketSpin;
             spinSuperior.SetActive(true);
             globeSuperior.SetActive(false);
-            SetResult(infosWinner[21]);
+            SetResult(infosWinner[17]);
             txtSpinRound.text = $"{GameManager.instance.luckySpinScriptable.currentSpinID}º Sorteio";
             prizeNameSpin.text = GameManager.instance.luckySpinScriptable.prizeDescription;
 
@@ -175,12 +173,8 @@ public class TicketScreen : MonoBehaviour
            infosWinner[14],
            infosWinner[15],
            infosWinner[16],
-           infosWinner[17],
-           infosWinner[18],
-           infosWinner[19],
-           infosWinner[20],
            _numbersCard,
-           infosWinner[21],
+           infosWinner[17],
            isCard,
            typeRaffle);
 
@@ -191,9 +185,8 @@ public class TicketScreen : MonoBehaviour
         lastBallRaffled = _lastBall;
     }
     private void PopulateTicketInfos(string _nameWinner, string _cpf, string _birthDate, string _phone,
-         string _email, string _address, string _numberAddress, string _complement, string _district,
-         string _county, string _cep, string _state, string _dateRaffle, string _editionName, string _value, string _PDV,
-         string _districtPDV, string _dateBuy, string _hourBuy, string _ticketNumber, string _chance,
+         string _email, string _district, string _county, string _state, string _dateRaffle, string _editionName, 
+         string _value, string _PDV, string _districtPDV, string _dateBuy, string _hourBuy, string _ticketNumber, string _chance,
          int[] _numbersCard, string _luckyNumber, bool isCard = false, int typeRaffle = 1)
     {
         nameWinner.text = $"{_nameWinner}";
@@ -201,17 +194,14 @@ public class TicketScreen : MonoBehaviour
         birthDate.text = $"{_birthDate}";
         phone.text = $"{_phone}";
         email.text = $"{_email}";
-        address.text = $"{_address}";
-        numberAddress.text = $"{_numberAddress}";
-        complement.text = $"{_complement}";
         district.text = $"{_district}";
         county.text = $"{_county}";
-        cep.text = $"{_cep}";
         state.text = $"{_state}";
         dateRaffle.text = $"{_dateRaffle}";
         editionName.text = $"{_editionName}";
         value.text = $"{_value}";
-        PDV.text = $"{_PDV} \n{_districtPDV}";
+        namePDV.text = $"{_PDV}";
+        streetPDV.text = $"{_districtPDV}";
         dateAndHourBuy.text = $"\n {_dateBuy} - {_hourBuy}";
         numberTicket.text = _ticketNumber;
         Chance.text = $"{_chance}";

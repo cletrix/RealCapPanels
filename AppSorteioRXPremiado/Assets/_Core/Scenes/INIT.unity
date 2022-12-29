@@ -237,6 +237,30 @@ MonoBehaviour:
     loop: 0
     audioSource: {fileID: 0}
   soundsMusic: []
+--- !u!114 &585445620 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1277498301749322139, guid: 9f08c054f8ebba74094157e9be38174e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1448615953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &670681704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2176522271480129127, guid: 9f08c054f8ebba74094157e9be38174e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1448615953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1086787155
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +1011,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7101287576733618282, guid: 9f08c054f8ebba74094157e9be38174e,
+        type: 3}
+      propertyPath: namePDV
+      value: 
+      objectReference: {fileID: 670681704}
+    - target: {fileID: 7101287576733618282, guid: 9f08c054f8ebba74094157e9be38174e,
+        type: 3}
+      propertyPath: streetPDV
+      value: 
+      objectReference: {fileID: 585445620}
     - target: {fileID: 7190039649660586080, guid: 9f08c054f8ebba74094157e9be38174e,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1419,7 +1453,7 @@ PrefabInstance:
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
       propertyPath: ip
-      value: 192.168.0.4
+      value: 192.168.0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
