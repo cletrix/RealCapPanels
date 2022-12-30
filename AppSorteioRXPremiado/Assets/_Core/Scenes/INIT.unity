@@ -231,10 +231,10 @@ MonoBehaviour:
     volume: 1
     loop: 0
     audioSource: {fileID: 0}
-  - name: Possible
-    clip: {fileID: 8300000, guid: 2d4d3f0e12d98d54ea73716fb4bcbca7, type: 3}
+  - name: Heart
+    clip: {fileID: 8300000, guid: e0829c561451a5241ac52910dd47dd1d, type: 3}
     volume: 1
-    loop: 0
+    loop: 1
     audioSource: {fileID: 0}
   soundsMusic: []
 --- !u!114 &585445620 stripped

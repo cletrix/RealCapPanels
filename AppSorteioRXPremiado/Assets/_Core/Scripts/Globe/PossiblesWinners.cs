@@ -23,30 +23,36 @@ public class PossiblesWinners : MonoBehaviour
     }
     public void SetTicketForOneBallInfo(string _info)
     {
-        if(_info!= textInfo.text)
-        {
-            AudioManager.instance.PlaySFX("Possible");
-        }
-        textInfo.text = _info; 
+
+        textInfo.text = _info;
     }
 
     public void ActiveMovement()
     {
         transform.DOLocalMoveY(-540, 1f).SetDelay(2f);
-      
+
         PlayAnimationHeart(false);
 
     }
+    private bool canPlaySound = true;
     public void PlayAnimationHeart(bool isRed)
     {
         StopAllCoroutines();
         if (isRed)
         {
             StartCoroutine(PlayAnimation(animHeart.heartRed));
+            if (canPlaySound == true)
+            {
+                AudioManager.instance.PlaySFX("Heart");
+                canPlaySound = false;
+            }
+
         }
         else
         {
             StartCoroutine(PlayAnimation(animHeart.heartBlue));
+            AudioManager.instance.StopSFX("Heart");
+            canPlaySound = true;
         }
     }
     private IEnumerator PlayAnimation(List<Sprite> currentAnim)
