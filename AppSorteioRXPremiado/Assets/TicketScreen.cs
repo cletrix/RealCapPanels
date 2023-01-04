@@ -202,7 +202,7 @@ public class TicketScreen : MonoBehaviour
         value.text = $"{_value}";
         namePDV.text = $"{_PDV}";
         streetPDV.text = $"{_districtPDV}";
-        dateAndHourBuy.text = $"\n {_dateBuy} - {_hourBuy}";
+        dateAndHourBuy.text = $"{_dateBuy} \n {_hourBuy}";
         numberTicket.text = _ticketNumber;
         Chance.text = $"{_chance}";
 

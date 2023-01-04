@@ -1222,8 +1222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 365, y: -137.5}
-  m_SizeDelta: {x: -750, y: -467}
+  m_AnchoredPosition: {x: 365, y: -138}
+  m_SizeDelta: {x: -750, y: -452}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2176522270422407823
 CanvasRenderer:
@@ -2331,8 +2331,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -145.90997, y: -176.5}
-  m_SizeDelta: {x: -1050.41, y: -427}
+  m_AnchoredPosition: {x: -145.90997, y: -170.71243}
+  m_SizeDelta: {x: -1050.41, y: -406.1647}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2176522270866654379
 CanvasRenderer:
@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10/11/2022 - 10:10
+  m_text: "10/11/2022 \n10:10"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6265420dfd8b1ec40812ed72c720e5de, type: 2}
   m_sharedMaterial: {fileID: 5302009204636872595, guid: 6265420dfd8b1ec40812ed72c720e5de,
@@ -2606,14 +2606,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.5
+  m_fontSize: 35
   m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 15
-  m_fontSizeMax: 50
+  m_fontSizeMax: 35
   m_fontStyle: 17
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3462,12 +3462,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 45
   m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 15
-  m_fontSizeMax: 30
+  m_fontSizeMax: 45
   m_fontStyle: 17
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -4260,8 +4260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 365, y: -201.1}
-  m_SizeDelta: {x: -750, y: -467}
+  m_AnchoredPosition: {x: 365, y: -198.7}
+  m_SizeDelta: {x: -750, y: -452}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6393646790859518307
 CanvasRenderer:
@@ -6455,12 +6455,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 45
   m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 15
-  m_fontSizeMax: 30
+  m_fontSizeMax: 45
   m_fontStyle: 17
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
