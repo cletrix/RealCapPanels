@@ -4717,31 +4717,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1428078002820375786}
     m_Modifications:
-    - target: {fileID: 3858816405945078656, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f8d665f6d8435384a8103b2a0ec19bde,
-        type: 3}
-    - target: {fileID: 3858816405945078656, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_UseSpriteMesh
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3858816405945078656, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3858816405945078658, guid: 1e584e46938b0a44fbb5201cc753b408,
         type: 3}
       propertyPath: m_Name
       value: Ball (51)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3858816405945078658, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858816405945078659, guid: 1e584e46938b0a44fbb5201cc753b408,
         type: 3}
@@ -4847,73 +4826,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3979593427699497470, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 170
-      objectReference: {fileID: 0}
-    - target: {fileID: 3979593427699497470, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 9411954aaaf077b42bc0366e10933b69,
-        type: 2}
-    - target: {fileID: 3979593427699497470, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3979593427699497470, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3979593427699497470, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3979593427699497470, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_fontSizeMax
-      value: 170
-      objectReference: {fileID: 0}
-    - target: {fileID: 3979593427699497470, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -3944956914130795764, guid: 9411954aaaf077b42bc0366e10933b69,
-        type: 2}
-    - target: {fileID: 3979593427699497470, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3979593427699497470, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7091423851797726208, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: finishedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7091423851797726208, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: finishedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7091423851797726208, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: finishedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7091423851797726208, guid: 1e584e46938b0a44fbb5201cc753b408,
-        type: 3}
-      propertyPath: finishedColor.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e584e46938b0a44fbb5201cc753b408, type: 3}

@@ -15,9 +15,15 @@ public class BigBall : MonoBehaviour
     public string numberBall;
     public GameObject trackBall;
 
+    [SerializeField] private Color initialColor;
     [SerializeField] private Color firstColor;
     [SerializeField] private Color secondColor;
     [SerializeField] private Image bgLineBall;
+
+    public void Start()
+    {
+        SetBgBallWithLogo();
+    }
     public void SetInfoInBigBall(string _numberBall, bool isAnim = true)
     {
         if (isAnim)
@@ -37,6 +43,7 @@ public class BigBall : MonoBehaviour
         imageBall.sprite = bgBallLogo;
         textNumber.text = string.Empty;
         imageBall.enabled = true;
+        bgLineBall.color = initialColor;
     }
 
     private void ChangeColorBgLine()
