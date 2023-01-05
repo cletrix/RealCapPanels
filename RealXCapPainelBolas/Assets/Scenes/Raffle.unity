@@ -603,6 +603,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StandyByScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 1749019566904585053, guid: d44440d98bf8f464eb4afa601e16e86a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1749019566904585121, guid: d44440d98bf8f464eb4afa601e16e86a,
         type: 3}
       propertyPath: m_Pivot.x

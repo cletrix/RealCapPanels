@@ -19,6 +19,11 @@ public class BallSlot : MonoBehaviour
     public bool isFinishRaffle = false;
     public bool hasRaffled = false;
     public Transform ballTransform;
+
+    public Image bgLineBall;
+    public Color firstColor;
+    public Color secondColor;
+
     void Start()
     {
         imageBall.color = noSelectedColor;
@@ -32,13 +37,13 @@ public class BallSlot : MonoBehaviour
 
         ballBorder.SetActive(false);
         SetEnableBall();
+        ChangeColorBgLine();
     }
     public void SetSelectedBall()
     {
         ballBorder.SetActive(true);
         imageBall.enabled = true;
         imageBall.color = selectedColor;
-        textNumber.color = Color.black;
 
     }
     public void DisableBall()
@@ -63,7 +68,6 @@ public class BallSlot : MonoBehaviour
         {
             imageBall.color = selectedColor;
         }
-        textNumber.color = Color.black;
         Invoke("ActiveBlinkAnimBorder", 0.1f);
     }
     private void ActiveBlinkAnimBorder()
@@ -78,9 +82,23 @@ public class BallSlot : MonoBehaviour
         animBorder.SetBool("IsBlink", false);
         CancelInvoke("DesactiveBlinkAnimBorder");
         ballTransform.DOScale(new Vector3(1f, 1f, 1f), 0.5f);
-
-
     }
+
+    private void ChangeColorBgLine()
+    {
+        int number = numberBall;
+        if (number <= 30)
+        {
+            bgLineBall.color = firstColor;
+            textNumber.color = firstColor;
+        }
+        else
+        {
+            bgLineBall.color = secondColor;
+            textNumber.color = secondColor;
+        }
+    }
+
     public void SetEnableBall()
     {
         imageBall.enabled = true;
@@ -90,7 +108,6 @@ public class BallSlot : MonoBehaviour
     {
         imageBall.enabled = true;
         imageBall.color = noSelectedColor;
-        textNumber.color = Color.white;
     }
     public void SetSelectedColor()
     {
@@ -102,7 +119,6 @@ public class BallSlot : MonoBehaviour
     {
         imageBall.enabled = true;
         imageBall.color = finishedColor;
-        textNumber.color = Color.black;
     }
 
 
