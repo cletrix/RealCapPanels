@@ -30,7 +30,7 @@ public class EditionInfosScriptable : ScriptableObject
         public int tipoTamanhoSerie;
         public int modalidades;
         public string tipoQuantidadeChances;
-        public string valor;
+        public float valor;
         public int status;
     }
 }

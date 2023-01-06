@@ -43,7 +43,7 @@ public class UiGlobeManager : MonoBehaviour
         UpdateOrder();
     }
 
-    public void SetPopulateInfosGlobe(string _editionName, string _editionNumber, string _date, int _order, string _description, string _value)
+    public void SetPopulateInfosGlobe(string _editionName, string _editionNumber, string _date, int _order, string _description, float _value)
     {
         globeController.PopulateInfosGlobe(_editionName, _editionNumber, _date, _order, _description, _value);
 
@@ -51,7 +51,7 @@ public class UiGlobeManager : MonoBehaviour
         txtEditionInfo.text = $"EDIÇÃO N° {GameManager.instance.globeScriptable.editionNumber}";
 
         txtPrizeName.text = $"{GameManager.instance.globeScriptable.description}";
-        txtPrizeValue.text = $"Valor Líquido {GameManager.instance.FormatMoneyInfo(int.Parse(GameManager.instance.globeScriptable.value),2)}";
+        txtPrizeValue.text = $"Valor Líquido {GameManager.instance.FormatMoneyInfo(GameManager.instance.globeScriptable.value,2)}";
         StartCoroutine(ActiveRaffle());
 
     }

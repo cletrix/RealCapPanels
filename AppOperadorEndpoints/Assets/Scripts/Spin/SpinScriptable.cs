@@ -7,6 +7,6 @@ public class SpinScriptable : ScriptableObject
 {
     public int sorteioOrdem;
     public string sorteioDescricao;
-    public string sorteioValor;
+    public float sorteioValor;
 
 }

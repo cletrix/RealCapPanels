@@ -28,11 +28,11 @@ public class UiInfosRaffle : MonoBehaviour
         btEditionInfos.onClick.AddListener(ActivePanelEditionInfos);
     }
  
-    public void PopulateRaffleInfos(string _order, string _description, string _value)
+    public void PopulateRaffleInfos(string _order, string _description, float _value)
     {
         txtOrder.text = $"Ordem\n{_order}"; 
         txtDescription.text = $"Descrição\n{_description}";
-        txtValue.text = $"Valor líquido\n {GameManager.instance.FormatMoneyInfo(int.Parse(_value), 2)}";
+        txtValue.text = $"Valor líquido\n {GameManager.instance.FormatMoneyInfo(_value, 2)}";
     }
     public void UpdateOrder(string _order)
     {

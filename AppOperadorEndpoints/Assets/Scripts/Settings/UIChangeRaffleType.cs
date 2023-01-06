@@ -366,19 +366,19 @@ public class UIChangeRaffleType : MonoBehaviour
             TcpNetworkManager.instance.Server.SendToAll(GetMessageString(Message.Create(MessageSendMode.reliable, ServerToClientId.messageTypeRaffle), _messageString));
         }
     }
-    public void SendMessageLotteryInfos(string _editionNumber, string __competitionNumber, string _dateRaffle, string _dateCompetition, int _ordem, string _description, string _value)
+    public void SendMessageLotteryInfos(string _editionNumber, string __competitionNumber, string _dateRaffle, string _dateCompetition, int _ordem, string _description, float _value)
     {
         if (!GameManager.instance.isBackup)
         {
             TcpNetworkManager.instance.Server.SendToAll(GetMessageLotteryInfos(Message.Create(MessageSendMode.reliable, ServerToClientId.messageInfosLottery), _editionNumber, __competitionNumber, _dateRaffle, _dateCompetition, _ordem, _description, _value));
         }
     }
-    public void SendMessageGlobeInfos(string _editionName, string _editionNumber, string _date, int _ordem, string _description, string _value)
+    public void SendMessageGlobeInfos(string _editionName, string _editionNumber, string _date, int _ordem, string _description, float _value)
     {
         if (!GameManager.instance.isBackup)
             TcpNetworkManager.instance.Server.SendToAll(GetMessageGlobeInfos(Message.Create(MessageSendMode.reliable, ServerToClientId.messageInfosGlobe), _editionName, _editionNumber, _date, _ordem, _description, _value));
     }
-    public void SendMessageSpinInfos(string _editionName, string _editionNumber, string _date, int _ordem, string _description, string _value)
+    public void SendMessageSpinInfos(string _editionName, string _editionNumber, string _date, int _ordem, string _description, float _value)
     {
         if (!GameManager.instance.isBackup)
             TcpNetworkManager.instance.Server.SendToAll(GetMessageSpinInfos(Message.Create(MessageSendMode.reliable, ServerToClientId.messageInfosSpin), _editionName, _editionNumber, _date, _ordem, _description, _value));
@@ -394,7 +394,7 @@ public class UIChangeRaffleType : MonoBehaviour
         return message;
     }
 
-    private Message GetMessageLotteryInfos(Message message, string _editionNumber, string __competitionNumber, string _dateRaffle, string _dateCompetition, int _ordem, string _description, string _value)
+    private Message GetMessageLotteryInfos(Message message, string _editionNumber, string __competitionNumber, string _dateRaffle, string _dateCompetition, int _ordem, string _description, float _value)
     {
         message.AddString(_editionNumber);
         message.AddString(__competitionNumber);
@@ -402,30 +402,30 @@ public class UIChangeRaffleType : MonoBehaviour
         message.AddString(_dateCompetition);
         message.AddInt(_ordem);
         message.AddString(_description);
-        message.AddString(_value);
+        message.AddFloat(_value);
 
         return message;
     }
-    private Message GetMessageGlobeInfos(Message message, string _editionName, string _editionNumber, string _date, int _ordem, string _description, string _value)
+    private Message GetMessageGlobeInfos(Message message, string _editionName, string _editionNumber, string _date, int _ordem, string _description, float _value)
     {
         message.AddString(_editionName);
         message.AddString(_editionNumber);
         message.AddString(_date);
         message.AddInt(_ordem);
         message.AddString(_description);
-        message.AddString(_value);
+        message.AddFloat(_value);
 
         return message;
     }
 
-    private Message GetMessageSpinInfos(Message message, string _editionName, string _editionNumber, string _date, int _ordem, string _description, string _value)
+    private Message GetMessageSpinInfos(Message message, string _editionName, string _editionNumber, string _date, int _ordem, string _description, float _value)
     {
         message.AddString(_editionName);
         message.AddString(_editionNumber);
         message.AddString(_date);
         message.AddInt(_ordem);
         message.AddString(_description);
-        message.AddString(_value);
+        message.AddFloat(_value);
 
         return message;
     }

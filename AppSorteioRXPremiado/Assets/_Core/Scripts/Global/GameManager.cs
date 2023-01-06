@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         InitializeVariables();
     }
-    public string FormatMoneyInfo(int value, int decimalHouse=2)
+    public string FormatMoneyInfo(float value, int decimalHouse=2)
     {
         string prizeFormated = string.Format(CultureInfo.CurrentCulture, value.ToString($"C{decimalHouse}"));
         return prizeFormated;

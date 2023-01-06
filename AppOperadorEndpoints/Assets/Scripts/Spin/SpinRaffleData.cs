@@ -47,9 +47,9 @@ public class SpinRaffleData : MonoBehaviour
         txtNumberSpin.text = _number.ToString();
     }
 
-    public void SetSpinPrize(string _value)
+    public void SetSpinPrize(float _value)
     {
-        txtNumberPrize.text = $"R$ {_value}";
+        txtNumberPrize.text = GameManager.instance.FormatMoneyInfo(_value,2);
     }
     public void SetNumberTicket(string _number)
     {

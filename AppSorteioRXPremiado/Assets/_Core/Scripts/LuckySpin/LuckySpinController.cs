@@ -104,7 +104,7 @@ public class LuckySpinController : MonoBehaviour
         ActiveWinners();
     }
   
-    public void SetPopulateSpinInfos(string _value, string _edition, string _description)
+    public void SetPopulateSpinInfos(float _value, string _edition, string _description)
     {
         GameManager.instance.luckySpinScriptable.prizeValue = _value;
         GameManager.instance.luckySpinScriptable.prizeDescription = _description;

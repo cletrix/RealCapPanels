@@ -214,7 +214,7 @@ public class NetworkManager : MonoBehaviour
         string date = message.GetString();
         int order = message.GetInt();
         string description = message.GetString();
-        string value = message.GetString();
+        float value = message.GetFloat();
 
         UiGlobeManager uiRaffleManager = FindObjectOfType<UiGlobeManager>();
         if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -265,7 +265,7 @@ public class NetworkManager : MonoBehaviour
         string date = message.GetString();
         int order = message.GetInt();
         string description = message.GetString();
-        string value = message.GetString();
+        float value = message.GetFloat();
         LuckySpinController luckySpinController = FindObjectOfType<LuckySpinController>();
         if (SceneManager.GetActiveScene().buildIndex == 3)
             luckySpinController.SetPopulateSpinInfos(value, editionNumber,description);

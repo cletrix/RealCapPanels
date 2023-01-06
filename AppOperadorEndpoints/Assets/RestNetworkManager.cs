@@ -193,7 +193,6 @@ public class RestNetworkManager : MonoBehaviour
         }
     }
 
-
     public IEnumerator GetConfig(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -373,6 +372,7 @@ public class RestNetworkManager : MonoBehaviour
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.spinScriptable);
+                        GameManager.instance.spinScriptable.sorteioOrdem = 1;
 
                     }
                     break;

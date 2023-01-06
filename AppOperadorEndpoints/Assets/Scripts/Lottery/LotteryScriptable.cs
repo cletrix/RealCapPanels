@@ -8,7 +8,7 @@ public class LotteryScriptable : ScriptableObject
 {
     public int sorteioOrdem;
     public string sorteioDescricao;
-    public string sorteioValor;
+    public float sorteioValor;
     public string resultadoLoteriaFederalNumeroConcurso;
     public string resultadoLoteriaFederalDataConcurso;
     public string resultadoLoteriaFederalPrimeiroSorteio;

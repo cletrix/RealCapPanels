@@ -9,7 +9,7 @@ public class GlobeScriptable : ScriptableObject
     public int order;
     public string date;
     public string description;
-    public string value;
+    public float value;
     [Space]
     public int Winners;
     public int prizeValue;

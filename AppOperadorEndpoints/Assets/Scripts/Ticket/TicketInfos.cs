@@ -18,7 +18,7 @@ public class TicketInfos
     public string cep;
     public string estado;
     public string dataSorteio;
-    public int valor;
+    public float valor;
     public string PDV;
     public string bairoPDV;
     public string dataCompra;

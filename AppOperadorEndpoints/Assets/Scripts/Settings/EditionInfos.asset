@@ -10,33 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 886690ac1de49e54d976de71b5e39144, type: 3}
-  m_Name: EditionInfos
+  m_Name: 
   m_EditorClassIdentifier: 
-  canRecoveryRaffleGlobe: 0
-  tecnicoNome: Ariel Elfo
-  tecnicoCPF: 208.123.075-15
+  tecnicoNome: 
+  tecnicoCPF: XXX.XXX.XXX-XX
   edicaoInfos:
-  - nome: Allana Costa - Copa do Mundo
+  - nome: Real X Premiado
     iD: 0
-    numero: 0001
-    dataRealizacao: 18/11/2022 20:30
-    nomePlano: 'VIACAP FILP-PU 388-0701 '
-    processoSUSEP: 15414.616118/2022-83
-    denominacaoComercial: REAL X PREMIADO V.01
-    tipoTamanhoSerie: 5
+    numero: 3
+    dataRealizacao: 11/01/2023 - 20:00
+    nomePlano: FILP-PU 433-0101 - REAL X PREMIADO
+    processoSUSEP: 15414.622492/2022-18
+    denominacaoComercial: RX022
+    tipoTamanhoSerie: 9400
     modalidades: 3
-    tipoQuantidadeChances: 3
-    valor: 1.00
-    status: 0
-  - nome: Allana Costa - Natal Premiado
-    iD: 1
-    numero: 0002
-    dataRealizacao: 23/12/2022 20:00
-    nomePlano: 'VIACAP FILP-PU 388-0702 '
-    processoSUSEP: 15414.614025/2022-15
-    denominacaoComercial: REAL X PREMIADO V.02
-    tipoTamanhoSerie: 5
-    modalidades: 2
     tipoQuantidadeChances: 1
-    valor: 5.00
-    status: 1
+    valor: 2.5
+    status: 0

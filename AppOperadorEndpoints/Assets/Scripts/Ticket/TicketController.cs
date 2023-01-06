@@ -132,7 +132,7 @@ public class TicketController : MonoBehaviour
         newInfo += "@xxxxxxxxx";
         return newInfo;
     }
-    private string FormatMoneyInfo(int value)
+    private string FormatMoneyInfo(float value)
     {
         string prizeFormated = string.Format(CultureInfo.CurrentCulture, value.ToString("C2"));
         return prizeFormated;
@@ -144,6 +144,14 @@ public class TicketController : MonoBehaviour
             return info;
         else
             return "XXXXX";
+    }
+
+    private string CheckIsNullUF(string info)
+    {
+        if (info != "nan")
+            return info;
+        else
+            return "XX";
     }
 
     private string CheckPDV(string _pdv)
@@ -161,7 +169,7 @@ public class TicketController : MonoBehaviour
             return "SITE";
     }
     public void PopulateTicketInfos(string _nameWinner, string _cpf, string _birthDate, string _phone,
-        string _email, string _district, string _county, string _state, string _dateRaffle, string _editionName, int _value,
+        string _email, string _district, string _county, string _state, string _dateRaffle, string _editionName, float _value,
         string _PDV, string _districtPDV, string _dateBuy, string _hourBuy, string _ticketNumber, string _chance,
         List<int> _numbersCard, string _luckyNumber, bool _isCard = false, int _typeRaffle = 1)
     {
@@ -172,7 +180,7 @@ public class TicketController : MonoBehaviour
         email.text = $"{HidePartEmail(_email)}";
         district.text = $"{CheckIsNullInfo(_district)}";
         county.text = $"{CheckIsNullInfo(_county)}";
-        state.text = $"{CheckIsNullInfo(_state)}";
+        state.text = $"{CheckIsNullUF(_state)}";
         dateRaffle.text = $"{DateRaffle(_dateRaffle)}";
         editionName.text = $"{CheckIsNullInfo(_editionName)}";
         value.text = $"{FormatMoneyInfo(_value)}";
@@ -213,7 +221,7 @@ public class TicketController : MonoBehaviour
         _ticketInfos[4] = HidePartEmail(_email);
         _ticketInfos[5] = CheckIsNullInfo(_district);
         _ticketInfos[6] = CheckIsNullInfo(_county);
-        _ticketInfos[7] = CheckIsNullInfo(_state);
+        _ticketInfos[7] = CheckIsNullUF(_state);
         _ticketInfos[8] = RevertDate(_dateRaffle);
         _ticketInfos[9] = CheckIsNullInfo(_editionName);
         _ticketInfos[10] = FormatMoneyInfo(_value);

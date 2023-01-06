@@ -61,7 +61,7 @@ public class GlobeController : MonoBehaviour
         BallController.OnBallRaffled -= SetUpdateInfoScreen;
         BallController.OnBallRaffled -= PermissionCallNewBallBall;
     }
-    public void PopulateInfosGlobe(string _editionName, string _editionNumber, string _date, int _order, string _description, string _value)
+    public void PopulateInfosGlobe(string _editionName, string _editionNumber, string _date, int _order, string _description, float _value)
     {
         GameManager.instance.globeScriptable.editionName = _editionName;
         GameManager.instance.globeScriptable.editionNumber = _editionNumber;
