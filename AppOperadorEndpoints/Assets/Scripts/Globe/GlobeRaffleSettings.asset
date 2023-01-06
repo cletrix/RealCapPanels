@@ -12,9 +12,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7778f46e0283c8458b1ea9689352121, type: 3}
   m_Name: GlobeRaffleSettings
   m_EditorClassIdentifier: 
-  bolasSorteadas: []
-  porDuasBolas: 0
+  bolasSorteadas:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 45
+  - 44
+  - 57
+  porDuasBolas: 26
   porUmaBolas: []
-  valorPremio: 2000
-  ganhadorContemplado: []
-  ticketListVisible: 
+  valorPremio: 50000
+  ganhadorContemplado:
+  - nome: Suanny S Dall'Agnol
+    cpf: 2532960051
+    dataNascimento: 1991-03-18
+    telefone: (54) 99170-1152
+    email: suanny.dal@live.com
+    endereco: nan
+    numero: nan
+    complemento: nan
+    bairro: nan
+    municipio: nan
+    cep: 95050-812
+    estado: nan
+    dataSorteio: 2023-01-11 20:00:00
+    valor: 2.5
+    PDV: Allana Costa
+    bairoPDV: Influencer
+    dataCompra: 27/12/2022
+    horaCompra: 19:49
+    numeroTitulo: 0007231
+    chance: Primeira Chance
+    numeroCartela: 030000000400000006000000100000001200000014000000150000001600000018000000190000001a0000001b0000001c0000001d000000230000002500000027000000280000002b0000002d000000
+    numeroSorte: 007231
+  ticketListVisible: 01

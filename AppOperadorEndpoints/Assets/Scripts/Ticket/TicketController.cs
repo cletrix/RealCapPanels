@@ -78,6 +78,7 @@ public class TicketController : MonoBehaviour
     }
     public void CheckStateVisibility()
     {
+        RestNetworkManager.instance.CallGetInfoServer();
         if (GameManager.instance.isTicketVisible)
         {
             bgTicket.SetActive(true);

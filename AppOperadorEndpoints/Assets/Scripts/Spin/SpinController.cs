@@ -204,7 +204,6 @@ public class SpinController : MonoBehaviour
                 btGenerateLuckyNumber.interactable = false;
             else
                 btGenerateLuckyNumber.interactable = true;
-
         }
     }
     public void ShowTicketSpin()

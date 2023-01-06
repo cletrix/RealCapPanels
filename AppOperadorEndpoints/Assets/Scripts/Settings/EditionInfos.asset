@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 886690ac1de49e54d976de71b5e39144, type: 3}
-  m_Name: 
+  m_Name: EditionInfos
   m_EditorClassIdentifier: 
   tecnicoNome: 
   tecnicoCPF: XXX.XXX.XXX-XX
   edicaoInfos:
   - nome: Real X Premiado
-    iD: 0
+    iD: 6
     numero: 3
     dataRealizacao: 11/01/2023 - 20:00
-    nomePlano: FILP-PU 433-0101 - REAL X PREMIADO
+    nomePlano: VIACAP_FILP_PU_429_0101
     processoSUSEP: 15414.622492/2022-18
-    denominacaoComercial: RX022
+    denominacaoComercial: REAL X PREMIADO V.22
     tipoTamanhoSerie: 9400
     modalidades: 3
     tipoQuantidadeChances: 1
