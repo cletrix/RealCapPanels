@@ -91,8 +91,6 @@ public class UiGlobeManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       
-
         DateTime theTime = DateTime.Now;
         txtDateRaffle.text = theTime.ToString(("dd/MM/yyyy - HH:mm:ss"));
     }

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         InitializeVariables();
     }
-    public string FormatMoneyInfo(float value, int decimalHouse=2)
+    public string FormatMoneyInfo(float value, int decimalHouse = 2)
     {
         string prizeFormated = string.Format(CultureInfo.CurrentCulture, value.ToString($"C{decimalHouse}"));
         return prizeFormated;
@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-           
+
 
             SendMessageToServerConfirmChange(true, sceneIndex);
         }
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
     #region SendMessages
     public void SendMessageToServerVisibilityScene(bool _state)
     {
-        Message message = Message.Create(MessageSendMode.reliable, ClientToServerId.messageCheckVisibilityScreen);
+        Message message = Message.Create(MessageSendMode.unreliable, ClientToServerId.messageCheckVisibilityScreen);
         message.AddBool(_state);
 
         NetworkManager.Client.Send(message);
@@ -115,21 +115,20 @@ public class GameManager : MonoBehaviour
     }
     public void SendMessageToServerGetActiveScene(int index)
     {
-        Message message = Message.Create(MessageSendMode.reliable, ClientToServerId.messageGetActiveScene);
+        Message message = Message.Create(MessageSendMode.unreliable, ClientToServerId.messageGetActiveScene);
         message.AddInt(index);
-
         NetworkManager.Client.Send(message);
         NetworkManager.Client2.Send(message);
     }
     public void SendMessageToServerConfirmChange(bool _state, int _scene)
     {
-        Message message = Message.Create(MessageSendMode.reliable, ClientToServerId.messageChangeScene);
+        Message message = Message.Create(MessageSendMode.unreliable, ClientToServerId.messageChangeScene);
         message.AddBool(_state);
         message.AddInt(_scene);
-
         NetworkManager.Client.Send(message);
         NetworkManager.Client2.Send(message);
     }
+
     public int GetSceneIndex()
     {
         return sceneIndex;

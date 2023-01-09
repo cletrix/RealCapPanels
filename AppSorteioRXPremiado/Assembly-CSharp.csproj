@@ -65,7 +65,6 @@
     <Compile Include="Assets\_Core\Scripts\AudioManager\MixerControl.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\StandyByScreen.cs" />
     <Compile Include="Assets\_Core\ballAnimGlobeController.cs" />
-    <Compile Include="Assets\_Core\Scripts\Global\GenerateQrCode.cs" />
     <Compile Include="Assets\_Core\Scripts\Lottery\LotteryController.cs" />
     <Compile Include="Assets\_Core\Scripts\Lottery\LotteryTextNumber.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonSoundSpawn.cs" />
@@ -99,11 +98,7 @@
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonOrbit.cs" />
     <Compile Include="Assets\TicketScreen.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\TotalBallRaffle.cs" />
-    <Compile Include="Assets\FPS&amp;Stats Monitor\Scripts\InfoGathererInspector.cs" />
-    <Compile Include="Assets\FPS&amp;Stats Monitor\Scripts\InfoGatherer.cs" />
-    <Compile Include="Assets\_Core\ExternalAssets\Plugins\BarcodeCam.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\ConfetsController.cs" />
-    <Compile Include="Assets\FPS&amp;Stats Monitor\Scripts\ActionStorage.cs" />
     <Compile Include="Assets\_Core\Scripts\AudioManager\SoundSFX.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\Ball.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\GlobeController.cs" />
@@ -120,7 +115,6 @@
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\_Core\ExternalAssets\FFmpegOut\Resources\Preprocess.shader" />
     <None Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Shaders\Standard\PolyRimLightSelective.shader" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Shaders\Standard\PolyRimLightSolid.shader" />
@@ -136,7 +130,6 @@
     <None Include="Assets\_Core\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Shaders\Standard\PolyRimLightTransparent.shader" />
     <None Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Shaders\Standard\PolyLitSurface.shader" />
-    <None Include="Assets\_Core\ExternalAssets\FFmpegOut\Resources\Blitter.shader" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -367,9 +360,6 @@
     </Reference>
     <Reference Include="DOTween">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="zxing.unity">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/_Core/ExternalAssets/Plugins/zxing.unity.dll</HintPath>
     </Reference>
     <Reference Include="RiptideNetworking">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/RiptideNetwork/RiptideNetworking.dll</HintPath>
@@ -760,16 +750,6 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{4F7B16BF-C2D6-627D-8F43-FC81C59EF9B9}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="FFmpegOut.Editor.csproj">
-      <Project>{EB30E916-9EF4-1F68-CD67-22D65D37C63E}</Project>
-      <Name>FFmpegOut.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="FFmpegOut.csproj">
-      <Project>{F65CA565-E954-60A1-D19A-FD1A4E32C030}</Project>
-      <Name>FFmpegOut</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="IngameDebugConsole.Editor.csproj">

@@ -35,14 +35,12 @@ public class WinnersScreen : MonoBehaviour
 
     private void InitializeVariables()
     {
-        // SetWinnersScreenVisibility(true);
-
         canvasGroup.alpha = 0;
         winnersPanel.transform.DOScale(new Vector3(0, 0, 0), 0.1f);
     }
     public void SetWinnersScreenVisibility(bool isActive, float timeAnim=1f)
     {
-        // txtTitle.transform.DOScale(1.2f, 0.7f).SetLoops(-1, LoopType.Yoyo);
+        print("PRIZE VISIBLE? ==>" + isActive);
 
         if (isActive)
         {

@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
   noSelectedColor: {r: 0, g: 0, b: 0, a: 1}
-  finishedColor: {r: 0.4509804, g: 0.4509804, b: 0.4509804, a: 0.5019608}
+  finishedColor: {r: 1, g: 1, b: 1, a: 1}
   winnerColor: {r: 1, g: 1, b: 0, a: 1}
   textNumber: {fileID: 3979593427699497470}
   numberBall: 0
@@ -314,8 +314,8 @@ MonoBehaviour:
   hasRaffled: 0
   ballTransform: {fileID: 0}
   bgLineBall: {fileID: 1972910167355892149}
-  firstColor: {r: 0, g: 0.38679248, b: 0.03708973, a: 1}
-  secondColor: {r: 0, g: 0.18431373, b: 0.57254905, a: 1}
+  firstColor: {r: 0, g: 0.6037736, b: 0.054458044, a: 1}
+  secondColor: {r: 0, g: 0.4946847, b: 1, a: 1}
 --- !u!1 &4232729240646702205
 GameObject:
   m_ObjectHideFlags: 0

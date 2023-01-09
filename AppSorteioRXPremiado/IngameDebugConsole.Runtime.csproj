@@ -318,9 +318,6 @@
     <Reference Include="DOTween">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
-    <Reference Include="zxing.unity">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/_Core/ExternalAssets/Plugins/zxing.unity.dll</HintPath>
-    </Reference>
     <Reference Include="RiptideNetworking">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/RiptideNetwork/RiptideNetworking.dll</HintPath>
     </Reference>

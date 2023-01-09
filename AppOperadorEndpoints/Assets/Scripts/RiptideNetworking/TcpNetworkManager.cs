@@ -1,7 +1,6 @@
 using RiptideNetworking.Utils;
 using RiptideNetworking;
 using UnityEngine;
-using System.Linq;
 
 public enum ServerToClientId : ushort
 {

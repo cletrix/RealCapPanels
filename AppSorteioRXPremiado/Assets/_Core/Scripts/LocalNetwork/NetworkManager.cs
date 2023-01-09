@@ -215,7 +215,7 @@ public class NetworkManager : MonoBehaviour
         int order = message.GetInt();
         string description = message.GetString();
         float value = message.GetFloat();
-
+        print("test");
         UiGlobeManager uiRaffleManager = FindObjectOfType<UiGlobeManager>();
         if (SceneManager.GetActiveScene().buildIndex == 2)
             uiRaffleManager.SetPopulateInfosGlobe(editionName, editionNumber, date, order, description, value);
@@ -312,7 +312,7 @@ public class NetworkManager : MonoBehaviour
         WinnersScreen winnersScreen = FindObjectOfType<WinnersScreen>();
 
         bool isPrizeVisibility = message.GetBool();
-        print("PRIZE VISIBLE? ==>" + isPrizeVisibility);
+        
         winnersScreen.SetWinnersScreenVisibility(isPrizeVisibility);
     }
 

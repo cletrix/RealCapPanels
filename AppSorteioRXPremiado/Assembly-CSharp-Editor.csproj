@@ -300,9 +300,6 @@
     <Reference Include="DOTween">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
-    <Reference Include="zxing.unity">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/_Core/ExternalAssets/Plugins/zxing.unity.dll</HintPath>
-    </Reference>
     <Reference Include="RiptideNetworking">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioRXPremiado/Assets/Plugins/RiptideNetwork/RiptideNetworking.dll</HintPath>
     </Reference>
@@ -700,16 +697,6 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{B6C04C6E-F3F2-7AED-FA9A-FC9A0C1C6378}</Project>
       <Name>Assembly-CSharp</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="FFmpegOut.Editor.csproj">
-      <Project>{EB30E916-9EF4-1F68-CD67-22D65D37C63E}</Project>
-      <Name>FFmpegOut.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="FFmpegOut.csproj">
-      <Project>{F65CA565-E954-60A1-D19A-FD1A4E32C030}</Project>
-      <Name>FFmpegOut</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="IngameDebugConsole.Editor.csproj">
