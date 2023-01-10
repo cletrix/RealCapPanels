@@ -35,7 +35,8 @@ MonoBehaviour:
   - 25
   - 14
   - 27
-  - 18
+  - 1
+  - 8
   - 7
   - 20
   - 9
@@ -43,7 +44,6 @@ MonoBehaviour:
   - 57
   - 31
   - 15
-  - 1
   - 49
   - 54
   - 56
@@ -53,7 +53,6 @@ MonoBehaviour:
   - 37
   - 2
   - 5
-  - 8
   - 12
   - 23
   - 43
@@ -62,41 +61,75 @@ MonoBehaviour:
   - 28
   - 39
   - 41
-  porDuasBolas: 35
-  porUmaBolas:
-  - numeroTitulo: 0001064
-    numeroChance: 1 Chance
-    numeroBola: 6
-  - numeroTitulo: 0001277
-    numeroChance: 1 Chance
-    numeroBola: 13
-  - numeroTitulo: 0001032
-    numeroChance: 1 Chance
-    numeroBola: 13
-  - numeroTitulo: 0000422
-    numeroChance: 1 Chance
-    numeroBola: 32
-  - numeroTitulo: 0002282
-    numeroChance: 1 Chance
-    numeroBola: 47
-  - numeroTitulo: 0008595
-    numeroChance: 1 Chance
-    numeroBola: 4
-  - numeroTitulo: 0008133
-    numeroChance: 1 Chance
-    numeroBola: 19
-  - numeroTitulo: 0001837
-    numeroChance: 1 Chance
-    numeroBola: 45
-  - numeroTitulo: 0001223
-    numeroChance: 1 Chance
-    numeroBola: 19
-  - numeroTitulo: 0003557
-    numeroChance: 1 Chance
-    numeroBola: 34
-  - numeroTitulo: 0007024
-    numeroChance: 1 Chance
-    numeroBola: 13
-  valorPremio: 1500
-  ganhadorContemplado: []
-  ticketListVisible: 
+  - 13
+  porDuasBolas: 32
+  porUmaBolas: []
+  valorPremio: 500
+  ganhadorContemplado:
+  - nome: Antonio Pedro da Silva Junior
+    cpf: 880297433
+    dataNascimento: 1979-05-26
+    telefone: (81) 98621-0573
+    email: legalnetjr@gmail.com
+    endereco: nan
+    numero: nan
+    complemento: nan
+    bairro: nan
+    municipio: Palmares
+    cep: 55540-000
+    estado: PE
+    dataSorteio: 2023-01-11 20:00:00
+    valor: 2.5
+    PDV: nan
+    bairoPDV: nan
+    dataCompra: 09/12/2022
+    horaCompra: 23:27
+    numeroTitulo: 0001277
+    chance: Primeira Chance
+    numeroCartela: 02000000050000000d000000100000001100000016000000170000001e0000002300000025000000280000002a0000003200000033000000350000003700000038000000390000003a0000003b000000
+    numeroSorte: 001277
+  - nome: Isandro Pereira Dias
+    cpf: 2315590116
+    dataNascimento: 1986-07-03
+    telefone: (67) 99974-8872
+    email: isandro_dias@hotmail.com
+    endereco: nan
+    numero: nan
+    complemento: nan
+    bairro: nan
+    municipio: Maracaju
+    cep: 79150-000
+    estado: MS
+    dataSorteio: 2023-01-11 20:00:00
+    valor: 2.5
+    PDV: Allana Costa
+    bairoPDV: Influencer
+    dataCompra: 11/12/2022
+    horaCompra: 01:15
+    numeroTitulo: 0001032
+    chance: Primeira Chance
+    numeroCartela: 010000000300000005000000080000000b0000000d0000001100000014000000160000001f000000210000002300000026000000290000002c0000003100000034000000370000003800000039000000
+    numeroSorte: 001032
+  - nome: Sergio Cardoso Zacarias
+    cpf: 3436553816
+    dataNascimento: 1960-07-10
+    telefone: (11) 94714-4486
+    email: zaca@terra.com.br
+    endereco: nan
+    numero: nan
+    complemento: nan
+    bairro: nan
+    municipio: nan
+    cep: 03273-200
+    estado: nan
+    dataSorteio: 2023-01-11 20:00:00
+    valor: 2.5
+    PDV: Allana Costa
+    bairoPDV: Influencer
+    dataCompra: 28/12/2022
+    horaCompra: 00:15
+    numeroTitulo: 0007024
+    chance: Primeira Chance
+    numeroCartela: 03000000050000000d000000100000001100000016000000190000001e0000001f0000002100000024000000250000002600000028000000290000002b0000003000000033000000350000003b000000
+    numeroSorte: 007024
+  ticketListVisible: 010101

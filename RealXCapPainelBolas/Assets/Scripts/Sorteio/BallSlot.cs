@@ -38,12 +38,15 @@ public class BallSlot : MonoBehaviour
         ballBorder.SetActive(false);
         SetEnableBall();
         ChangeColorBgLine();
+        textNumber.color = Color.white;
+
     }
     public void SetSelectedBall()
     {
         ballBorder.SetActive(true);
         imageBall.enabled = true;
         imageBall.color = selectedColor;
+        ChangeColorBgLine();
 
     }
     public void DisableBall()
@@ -102,12 +105,13 @@ public class BallSlot : MonoBehaviour
     public void SetEnableBall()
     {
         imageBall.enabled = true;
-
+        ChangeColorBgLine();
     }
     public void SetNormalColor()
     {
         imageBall.enabled = true;
         imageBall.color = noSelectedColor;
+        textNumber.color = Color.white;
     }
     public void SetSelectedColor()
     {
