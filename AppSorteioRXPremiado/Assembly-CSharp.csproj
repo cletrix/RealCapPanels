@@ -64,6 +64,7 @@
     <Compile Include="Assets\_Core\Scripts\Lottery\UiLotteryController.cs" />
     <Compile Include="Assets\_Core\Scripts\AudioManager\MixerControl.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\StandyByScreen.cs" />
+    <Compile Include="Assets\CromaObject.cs" />
     <Compile Include="Assets\_Core\ballAnimGlobeController.cs" />
     <Compile Include="Assets\_Core\Scripts\Lottery\LotteryController.cs" />
     <Compile Include="Assets\_Core\Scripts\Lottery\LotteryTextNumber.cs" />
