@@ -7,7 +7,7 @@ public class GlobeRaffleScriptable : ScriptableObject
     public List<string> bolasSorteadas;
     public int porDuasBolas;
     public List<porUmaBola> porUmaBolas;
-    public int valorPremio;
+    public float valorPremio;
     [Header("Ticket Winner")]
     public TicketInfos[] ganhadorContemplado;
     public bool[] ticketListVisible;

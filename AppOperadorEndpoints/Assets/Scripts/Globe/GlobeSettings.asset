@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9b300caa554c7449db7dc2975241a3, type: 3}
   m_Name: GlobeSettings
   m_EditorClassIdentifier: 
-  sorteioOrdem: 1
-  sorteioDescricao: Smart TV de 50 polegadas
-  sorteioValor: 2.000,00
+  infosGlobe:
+  - sorteioDescricao: Iphone1
+    sorteioValor: 4000
+    sorteioOrdem: 1
+  - sorteioDescricao: Iphone2
+    sorteioValor: 5000
+    sorteioOrdem: 2
+  - sorteioDescricao: Iphone3
+    sorteioValor: 9000
+    sorteioOrdem: 3
+  currentIndex: 2

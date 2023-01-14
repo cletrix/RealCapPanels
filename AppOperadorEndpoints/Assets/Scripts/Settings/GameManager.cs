@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
         if (!globeRaffleScriptable.bolasSorteadas.Contains(newBall))
         {
             globeRaffleScriptable.SetNewBall(newBall);
-            RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem);
+            RestNetworkManager.instance.SendBallsRaffledFromServer();
         }
     }
     public List<String> GetBallsRaffled()
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
         if (globeRaffleScriptable.bolasSorteadas.Contains(newBall))
         {
             globeRaffleScriptable.RevokeBall(newBall);
-            RestNetworkManager.instance.SendBallsRaffledFromServer(globeScriptable.sorteioOrdem);
+            RestNetworkManager.instance.SendBallsRaffledFromServer();
         }
     }
     public void PopulateListOfVisibleTicket()
@@ -228,7 +228,7 @@ public class GameManager : MonoBehaviour
 
     public void WriteInfosGlobe()
     {
-        technicalScriptable.UpdateConfig(sceneId, globeScriptable.sorteioOrdem, isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas
+        technicalScriptable.UpdateConfig(sceneId, globeScriptable.GetGlobeOrder(), isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas
             , globeRaffleScriptable.ganhadorContemplado.ToList(),
             globeRaffleScriptable.ticketListVisible.ToList(),
            ticketWinnerIndex, instance.isTicketVisible);

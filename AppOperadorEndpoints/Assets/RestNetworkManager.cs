@@ -63,7 +63,10 @@ public class RestNetworkManager : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine(PostConfig(baseUrl1 + payloadWrite));
+        string json = JsonUtility.ToJson(GameManager.instance.globeScriptable);
+
+        print(json);
+
     }
     private void OnEnable()
     {
@@ -93,7 +96,11 @@ public class RestNetworkManager : MonoBehaviour
     {
         StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
     }
+    public void CallInfosGlobe()
+    {
+        StartCoroutine(GetGlobeInfos(baseUrl1 + urlGlobeInfos));
 
+    }
     private IEnumerator GetInfosServer(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -278,17 +285,22 @@ public class RestNetworkManager : MonoBehaviour
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string jsonResponse = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeScriptable);
+
+                        UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
+                        if (uiInfos != null)
+                            uiInfos.PopulateRaffleInfos(GameManager.instance.globeScriptable.GetGlobeOrder().ToString(),
+                            GameManager.instance.globeScriptable.GetGlobeDescription(), GameManager.instance.globeScriptable.GetGlobeValue());
                     }
                     break;
             }
         }
     }
 
-    public void SendBallsRaffledFromServer(int orderIndex)
+    public void SendBallsRaffledFromServer()
     {
-        StartCoroutine(PostGlobeRaffle(baseUrl1 + urlRaffleGlobe, orderIndex));
+        StartCoroutine(PostGlobeRaffle(baseUrl1 + urlRaffleGlobe));
     }
-    private IEnumerator PostGlobeRaffle(string uri, int index)
+    private IEnumerator PostGlobeRaffle(string uri)
     {
         RequestBallsRaffled ballsRaffled = new RequestBallsRaffled();
         ballsRaffled.balls = new List<int>();
@@ -296,7 +308,7 @@ public class RestNetworkManager : MonoBehaviour
         {
             ballsRaffled.balls.Add(int.Parse(GameManager.instance.globeRaffleScriptable.bolasSorteadas[i]));
         }
-        ballsRaffled.sorteioOrdem = index;
+        ballsRaffled.sorteioOrdem = GameManager.instance.globeScriptable.GetGlobeOrder();
         string json = JsonUtility.ToJson(ballsRaffled);
 
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
@@ -338,7 +350,6 @@ public class RestNetworkManager : MonoBehaviour
                             {
                                 globeController.CheckWinners();
                                 globeController.SendBallsRaffledToScreen();
-
                             }
                         }
                     }

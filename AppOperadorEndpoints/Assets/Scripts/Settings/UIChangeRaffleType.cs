@@ -143,7 +143,7 @@ public class UIChangeRaffleType : MonoBehaviour
                     panelRaffleGlobe.SetActive(true);
                     panelRaffleSpin.SetActive(false);
                     btRaffleGlobe.image.color = selectedColor;
-                    infosRaffle.PopulateRaffleInfos(GameManager.instance.globeScriptable.sorteioOrdem.ToString(), GameManager.instance.globeScriptable.sorteioDescricao, GameManager.instance.globeScriptable.sorteioValor);
+                    infosRaffle.PopulateRaffleInfos(GameManager.instance.globeScriptable.GetGlobeOrder().ToString(), GameManager.instance.globeScriptable.GetGlobeDescription(), GameManager.instance.globeScriptable.GetGlobeValue());
                     break;
                 }
             case 3:
@@ -280,8 +280,6 @@ public class UIChangeRaffleType : MonoBehaviour
         if (GameManager.instance.isVisibleRaffle)
         {
             GameManager.instance.isVisibleRaffle = false;
-
-
         }
         else
         {
@@ -329,9 +327,9 @@ public class UIChangeRaffleType : MonoBehaviour
        GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
        GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
        GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-       GameManager.instance.globeScriptable.sorteioOrdem,
-       GameManager.instance.globeScriptable.sorteioDescricao,
-       GameManager.instance.globeScriptable.sorteioValor);
+       GameManager.instance.globeScriptable.GetGlobeOrder(),
+       GameManager.instance.globeScriptable.GetGlobeDescription(),
+       GameManager.instance.globeScriptable.GetGlobeValue());
         }
         else if (panelRaffleSpin.activeSelf == true)
         {

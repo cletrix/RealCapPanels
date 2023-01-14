@@ -74,7 +74,7 @@ public class TechnicalScriptable : ScriptableObject
             forOneBalls[i].numeroChance = forOneBalls[i].numeroChance.Insert(1, "°");
         }
         GameManager.instance.sceneId = currentSceneID;
-        GameManager.instance.globeScriptable.sorteioOrdem = currentRaffle;
+        GameManager.instance.globeScriptable.SetGlobeOrder(currentRaffle);
         GameManager.instance.isVisibleRaffle = isVisibleRaffle;
         GameManager.instance.globeRaffleScriptable.porDuasBolas = forTwoBalls;
         GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();

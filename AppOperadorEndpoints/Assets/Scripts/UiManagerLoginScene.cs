@@ -17,7 +17,9 @@ public class UiManagerLoginScene : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropdown;
     [SerializeField] private TMP_InputField inputUsername;
     [SerializeField] private TMP_InputField inputPassword;
+    [SerializeField] private TMP_InputField inputIPAddress;
     public Button btSelectBackup;
+    public Button btConfirm;
     public bool hasbackup = false;
     void Start()
     {
@@ -29,6 +31,16 @@ public class UiManagerLoginScene : MonoBehaviour
         panelSelectEdition.SetActive(false);
         panelLogin.SetActive(true);
         btSelectBackup.onClick.AddListener(SelectBackup);
+        PopulateFieldIPAddress(RestNetworkManager.instance.baseUrl1);
+    }
+
+    private void PopulateFieldIPAddress(string url)
+    {
+        inputIPAddress.text = url;
+    }
+    private void SetNewIPAddress()
+    {
+        RestNetworkManager.instance.baseUrl1 = inputIPAddress.text;
     }
     public void SelectBackup()
     {
@@ -45,6 +57,8 @@ public class UiManagerLoginScene : MonoBehaviour
     }
     public void Login()
     {
+        SetNewIPAddress();
+        btConfirm.interactable = false;
         string url = RestNetworkManager.instance.baseUrl1 + RestNetworkManager.instance.urlLogin;
         StartCoroutine(GetLoginInfos(url));
     }
@@ -63,9 +77,11 @@ public class UiManagerLoginScene : MonoBehaviour
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                    btConfirm.interactable = true;
                     break;
                 case UnityWebRequest.Result.ProtocolError:
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                    btConfirm.interactable = true;
                     break;
                 case UnityWebRequest.Result.Success:
                     {

@@ -392,7 +392,7 @@ public class GlobeController : MonoBehaviour
         UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
         uIChangeRaffle.CheckStateVisibilityRaffle();
-        GameManager.instance.globeScriptable.sorteioOrdem++;
+        GameManager.instance.globeScriptable.SetGlobeOrder(GameManager.instance.globeScriptable.GetGlobeOrder()+1);
         GameManager.instance.ResetScreenGlobe();
         yield return new WaitForSeconds(1);
         SendMesageNextRaffle();
@@ -405,24 +405,19 @@ public class GlobeController : MonoBehaviour
             }
         }
         possiblesWinners = new PossibleWinners[0];
-
-        yield return new WaitForSeconds(0.3f);
+        RestNetworkManager.instance.CallInfosGlobe();
+        yield return new WaitForSeconds(0.2f);
         UpdateScreen();
         uIChangeRaffle.SendMessageGlobeInfos(
            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-           GameManager.instance.globeScriptable.sorteioOrdem,
-           GameManager.instance.globeScriptable.sorteioDescricao,
-           GameManager.instance.globeScriptable.sorteioValor);
-
-        uiInfos.PopulateRaffleInfos(
-            GameManager.instance.globeScriptable.sorteioOrdem.ToString(),
-            GameManager.instance.globeScriptable.sorteioDescricao,
-            GameManager.instance.globeScriptable.sorteioValor);
+           GameManager.instance.globeScriptable.GetGlobeOrder(),
+           GameManager.instance.globeScriptable.GetGlobeDescription(),
+           GameManager.instance.globeScriptable.GetGlobeValue());
 
         btNextRaffle.interactable = false;
-        RestNetworkManager.instance.SendBallsRaffledFromServer(GameManager.instance.globeScriptable.sorteioOrdem);
+        RestNetworkManager.instance.SendBallsRaffledFromServer();
     }
 
     public void CheckWinnerButtonState(List<bool> _ticketsShown, int index)
@@ -449,7 +444,7 @@ public class GlobeController : MonoBehaviour
                 item.SetIsFinished(true);
             }
         }
-        if (GameManager.instance.globeScriptable.sorteioOrdem + 1 < GameManager.instance.recoveryScriptable.limit_globo)
+        if (GameManager.instance.globeScriptable.GetGlobeOrder() < GameManager.instance.recoveryScriptable.limit_globo)
             btNextRaffle.interactable = GameManager.instance.GetAllTicketsVisible();
         PopulateTicketGlobe();
         ticketController.SetTicketVisibility();
