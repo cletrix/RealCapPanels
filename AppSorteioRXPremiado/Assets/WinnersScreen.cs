@@ -7,6 +7,9 @@ public class WinnersScreen : MonoBehaviour
 {
     public static WinnersScreen instance { get; private set; }
 
+    PrizeImageController prizeImageController;
+
+
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private TextMeshProUGUI txtTitle;
     [SerializeField] private TextMeshProUGUI txtCount;
@@ -37,10 +40,10 @@ public class WinnersScreen : MonoBehaviour
     {
         canvasGroup.alpha = 0;
         winnersPanel.transform.DOScale(new Vector3(0, 0, 0), 0.1f);
+        prizeImageController = GetComponentInChildren<PrizeImageController>();
     }
     public void SetWinnersScreenVisibility(bool isActive, float timeAnim=1f)
     {
-        print("PRIZE VISIBLE? ==>" + isActive);
 
         if (isActive)
         {
@@ -60,9 +63,11 @@ public class WinnersScreen : MonoBehaviour
         }
     }
 
-    public void SetInfosWinnerScreen(int _count, int _prize)
+    public void SetInfosWinnerScreen(int _count, float _prize)
     {
-        string prizeFormated = string.Format(CultureInfo.CurrentCulture, _prize.ToString("C2"));
+        prizeImageController.SetPrizeImage(GameManager.instance.globeScriptable.order);
+        float newValue = Mathf.Floor(_prize * 100) / 100;
+        string prizeFormated = string.Format(CultureInfo.CurrentCulture, "{0:C2}", newValue);
         if(_count>1)
         {
             txtTitle.text = $"TEMOS {_count}\nGANHADORES";

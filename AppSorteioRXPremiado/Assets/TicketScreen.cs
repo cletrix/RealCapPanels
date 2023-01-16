@@ -136,14 +136,14 @@ public class TicketScreen : MonoBehaviour
             txtGlobeRound.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
             if (GameManager.instance.globeScriptable.Winners > 1)
             {
-                string prizeFormated = string.Format(CultureInfo.CurrentCulture, GameManager.instance.globeScriptable.prizeValue.ToString("C2"));
+                float newValue = Mathf.Floor(GameManager.instance.globeScriptable.prizeValue * 100) / 100;
+                string prizeFormated = string.Format(CultureInfo.CurrentCulture, "{0:C2}", newValue);
                 prizeNameGlobe.text = prizeFormated;
             }
             else
             {
                 prizeNameGlobe.text = GameManager.instance.globeScriptable.description;
             }
-
         }
         else
         {

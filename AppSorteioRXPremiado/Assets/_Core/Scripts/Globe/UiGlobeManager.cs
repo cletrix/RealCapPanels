@@ -13,6 +13,7 @@ public class UiGlobeManager : MonoBehaviour
     DateTime dateValue;
     [Header("COMPONENTS SCRIPTS")]
     [SerializeField] private GlobeController globeController;
+    [SerializeField] private PrizeImageController prizeImageController;
 
     [SerializeField] private GameObject confets;
     [SerializeField] private Image imgPrize;
@@ -52,6 +53,7 @@ public class UiGlobeManager : MonoBehaviour
 
         txtPrizeName.text = $"{GameManager.instance.globeScriptable.description}";
         txtPrizeValue.text = $"Valor Líquido {GameManager.instance.FormatMoneyInfo(GameManager.instance.globeScriptable.value,2)}";
+        prizeImageController.SetPrizeImage(GameManager.instance.globeScriptable.order);
         StartCoroutine(ActiveRaffle());
 
     }
@@ -60,14 +62,11 @@ public class UiGlobeManager : MonoBehaviour
         txtRoundRaffle.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
 
     }
-    public void SetGlobeRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, string _prizeValue)
+    public void SetGlobeRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, float _prizeValue)
     {
         globeController.UpdateScreenRaffle(_ballsRaffled, _forOneBall, _winnersCount, _prizeValue);
     }
-    //public void SetRevokedBallGlobeRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, string _prizeValue)
-    //{
-    //    globeController.AdjustListBallsAfterBallRevoked(_ballsRaffled, _forOneBall, _winnersCount, _prizeValue);
-    //}
+    
 
     public IEnumerator ActiveRaffle()
     {

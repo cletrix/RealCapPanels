@@ -5,7 +5,7 @@ using UnityEngine;
 public class GlobeScriptable : ScriptableObject
 {
     public List<infoGlobe> infosGlobe;
-    public int currentIndex=0;
+    public int currentIndex = 0;
 
     [System.Serializable]
     public class infoGlobe
@@ -15,23 +15,35 @@ public class GlobeScriptable : ScriptableObject
         public int sorteioOrdem = 1;
     }
 
-    public int GetGlobeOrder()
-    {
-        return infosGlobe[currentIndex].sorteioOrdem;
-    }
-
     public void SetGlobeOrder(int _order)
     {
-        infosGlobe[currentIndex].sorteioOrdem=_order;
+        if (currentIndex < infosGlobe.Count)
+            infosGlobe[currentIndex].sorteioOrdem = _order;
     }
+    public int GetGlobeOrder()
+    {
+        if (currentIndex < infosGlobe.Count)
+            return infosGlobe[currentIndex].sorteioOrdem;
+        else
+            return infosGlobe[currentIndex - 1].sorteioOrdem;
+    }
+
 
     public string GetGlobeDescription()
     {
-        return infosGlobe[currentIndex].sorteioDescricao;
+        if (currentIndex < infosGlobe.Count)
+        {
+            return infosGlobe[currentIndex].sorteioDescricao;
+        }
+        else
+            return infosGlobe[currentIndex - 1].sorteioDescricao;
     }
 
     public float GetGlobeValue()
     {
-        return infosGlobe[currentIndex].sorteioValor;
+        if (currentIndex < infosGlobe.Count)
+            return infosGlobe[currentIndex].sorteioValor;
+        else
+            return infosGlobe[currentIndex - 1].sorteioValor;
     }
 }

@@ -76,7 +76,7 @@ public class GlobeController : MonoBehaviour
         canRafleeBall = true;
         GameManager.instance.globeScriptable.indexBalls++;
     }
-    public void UpdateScreenRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, string _prizeValue)
+    public void UpdateScreenRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, float _prizeValue)
     {
         if (GameManager.instance.globeScriptable.numberBalls.Count < _ballsRaffled.Length)
         {
@@ -103,7 +103,7 @@ public class GlobeController : MonoBehaviour
         TicketScreen.instance.SetLastBallGlobeRaffle(_ballsRaffled[_ballsRaffled.Length - 1]);
 
         GameManager.instance.globeScriptable.Winners = _winnersCount;
-        GameManager.instance.globeScriptable.prizeValue = int.Parse(_prizeValue);
+        GameManager.instance.globeScriptable.prizeValue = _prizeValue;
 
         GameManager.instance.globeScriptable.ballRaffledCount = _ballsRaffled.Length;
         GameManager.instance.globeScriptable.possiblesWinnersCount = _forOneBall;
@@ -152,12 +152,7 @@ public class GlobeController : MonoBehaviour
     }
     #region SEND MESSAGES
 
-    //public void SendMessageConfirmBallRaffled()
-    //{
-    //    Message message = Message.Create(MessageSendMode.reliable, ClientToServerId.messageConfirmBall);
-    //    NetworkManager.Client.Send(message);
-    //    //  NetworkManager.Client2.Send(message);
-    //}
+   
 
 
     private void FixedUpdate()

@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 5299518448324370191}
   - component: {fileID: 1191641437243035219}
   - component: {fileID: 4810182240491168947}
+  - component: {fileID: 5114063735293272954}
   m_Layer: 5
   m_Name: imgPrize
   m_TagString: Untagged
@@ -313,6 +314,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5114063735293272954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593408511228802509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30931ac7cd7ec9649b377ba3122a500a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prizeImages:
+  - {fileID: 21300000, guid: e84b5392e218fec4f8159f5c088bc407, type: 3}
+  - {fileID: 21300000, guid: 9957e17c4209da04d822045881af37fd, type: 3}
+  - {fileID: 21300000, guid: c7259fd8ec9ca764eac57010e41f917f, type: 3}
+  prizeImage: {fileID: 4810182240491168947}
 --- !u!1 &1897304442798402786
 GameObject:
   m_ObjectHideFlags: 0

@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonBeamStatic.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\PossiblesWinners.cs" />
+    <Compile Include="Assets\PrizeImageController.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonEffectCycler.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\BigBall.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\BallController.cs" />

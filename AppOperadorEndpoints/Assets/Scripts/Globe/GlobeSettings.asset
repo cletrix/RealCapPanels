@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infosGlobe:
   - sorteioDescricao: Iphone1
-    sorteioValor: 4000
+    sorteioValor: 5000
     sorteioOrdem: 1
   - sorteioDescricao: Iphone2
     sorteioValor: 5000
@@ -22,4 +22,4 @@ MonoBehaviour:
   - sorteioDescricao: Iphone3
     sorteioValor: 9000
     sorteioOrdem: 3
-  currentIndex: 2
+  currentIndex: 3

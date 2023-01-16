@@ -227,7 +227,7 @@ public class NetworkManager : MonoBehaviour
         string[] ballsRaffled = message.GetStrings();
         int forOneBall = message.GetInt();
         int winnersCount = message.GetInt();
-        string prizeValue = message.GetString();
+        float prizeValue = message.GetFloat();
         UiGlobeManager uiRaffleManager = FindObjectOfType<UiGlobeManager>();
         if (uiRaffleManager != null && ballsRaffled.Length > 0)
         {
@@ -240,7 +240,7 @@ public class NetworkManager : MonoBehaviour
         string[] ballsRaffled = message.GetStrings();
         int forOneBall = message.GetInt();
         int winnersCount = message.GetInt();
-        string prizeValue = message.GetString();
+        float prizeValue = message.GetFloat();
         UiGlobeManager uiRaffleManager = FindObjectOfType<UiGlobeManager>();
         if (uiRaffleManager != null && ballsRaffled.Length > 0)
         {

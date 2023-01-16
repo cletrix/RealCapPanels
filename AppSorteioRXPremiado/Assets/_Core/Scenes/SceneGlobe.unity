@@ -509,6 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globeController: {fileID: 714116153}
+  prizeImageController: {fileID: 207213273656485382}
   confets: {fileID: 6027870568997482918}
   imgPrize: {fileID: 1859122066}
   imgGlobeLogo: {fileID: 207213273656485374}
@@ -729,7 +730,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 207213273656485373}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 207213273656485381}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -1496,6 +1497,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageCroma: {fileID: 0}
+--- !u!1 &207213273656485381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5769027007267805753, guid: 7e247de90f897a045ab0ca1cda36ab51,
+    type: 3}
+  m_PrefabInstance: {fileID: 207213273656485373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &207213273656485382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207213273656485381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30931ac7cd7ec9649b377ba3122a500a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prizeImages:
+  - {fileID: 21300000, guid: e84b5392e218fec4f8159f5c088bc407, type: 3}
+  - {fileID: 21300000, guid: 9957e17c4209da04d822045881af37fd, type: 3}
+  - {fileID: 21300000, guid: c7259fd8ec9ca764eac57010e41f917f, type: 3}
+  prizeImage: {fileID: 1859122066}
 --- !u!1001 &6027870568997482917
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-using static GameManager;
 
 public class RestNetworkManager : MonoBehaviour
 {
@@ -38,11 +37,16 @@ public class RestNetworkManager : MonoBehaviour
         {
             instance = this;
         }
+        if(isTest==true)
+        {
+            baseUrl1 = baseTest;
+        }
         DontDestroyOnLoad(gameObject);
     }
     [Header("BASE URL")]
-
-    public string baseUrl1 = "45.235.54.188:43212";
+    public bool isTest = false;
+    public string baseUrl1 = "http://192.168.20.31:43212/";
+    public string baseTest = "http://192.168.0.2:43212/";
     public string payloadWrite = "writeMemory";
     public string payloadRead = "readMemory";
     public string payloadInfo = "info";
@@ -61,20 +65,19 @@ public class RestNetworkManager : MonoBehaviour
 
     #region REQUESTS
 
+
     private void Start()
     {
         string json = JsonUtility.ToJson(GameManager.instance.globeScriptable);
 
-        print(json);
-
     }
     private void OnEnable()
     {
-        OnPopulateRaffles += GetRaffleInfos;
+        GameManager.OnPopulateRaffles += GetRaffleInfos;
     }
     private void OnDisable()
     {
-        OnPopulateRaffles -= GetRaffleInfos;
+        GameManager.OnPopulateRaffles -= GetRaffleInfos;
     }
 
     public void DisableInvokInfosServer()
@@ -224,7 +227,6 @@ public class RestNetworkManager : MonoBehaviour
                         string json = Encoding.GetEncoding("UTF-8").GetString(webRequest.downloadHandler.data);
                         string newj = json.Trim(charsToTrim);
 
-
                         JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
                         break;
                     }
@@ -302,7 +304,7 @@ public class RestNetworkManager : MonoBehaviour
     }
     private IEnumerator PostGlobeRaffle(string uri)
     {
-        RequestBallsRaffled ballsRaffled = new RequestBallsRaffled();
+        GameManager.RequestBallsRaffled ballsRaffled = new GameManager.RequestBallsRaffled();
         ballsRaffled.balls = new List<int>();
         for (int i = 0; i < GameManager.instance.globeRaffleScriptable.bolasSorteadas.Count; i++)
         {
@@ -383,6 +385,7 @@ public class RestNetworkManager : MonoBehaviour
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.spinScriptable);
+                        GameManager.instance.spinScriptable.sorteioOrdem = 1;
                     }
                     break;
             }
@@ -395,7 +398,7 @@ public class RestNetworkManager : MonoBehaviour
     }
     private IEnumerator PostResultSpin(string uri, int index)
     {
-        RequestSpin requestSpin = new RequestSpin();
+        GameManager.RequestSpin requestSpin = new GameManager.RequestSpin();
         requestSpin.sorteioOrdem = index;
 
         string json = JsonUtility.ToJson(requestSpin);

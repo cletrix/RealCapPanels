@@ -12,7 +12,7 @@ public class GlobeScriptable : ScriptableObject
     public float value;
     [Space]
     public int Winners;
-    public int prizeValue;
+    public float prizeValue;
     public int ballRaffledCount;
     public int possiblesWinnersCount;
     [Space]
