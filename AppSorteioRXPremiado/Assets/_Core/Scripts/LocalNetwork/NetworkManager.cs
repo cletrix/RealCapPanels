@@ -49,7 +49,8 @@ public class NetworkManager : MonoBehaviour
             }
         }
     }
-
+    [SerializeField] private bool isTest;
+    [SerializeField] private string ipTest;
     [SerializeField] private string ip;
     [SerializeField] private string ip2;
     [SerializeField] private ushort port;
@@ -67,6 +68,11 @@ public class NetworkManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(_instance);
+        }
+
+        if (isTest == true)
+        {
+            ip = ipTest;
         }
     }
 

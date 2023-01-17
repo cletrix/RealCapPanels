@@ -1453,7 +1453,7 @@ PrefabInstance:
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
       propertyPath: ip
-      value: 192.168.0.2
+      value: 192.168.20.31
       objectReference: {fileID: 0}
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
@@ -1464,6 +1464,16 @@ PrefabInstance:
         type: 3}
       propertyPath: port
       value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
+        type: 3}
+      propertyPath: ipTest
+      value: 192.168.0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
+        type: 3}
+      propertyPath: isTest
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c348909edc441124c9ceec5345b4030a, type: 3}

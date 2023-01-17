@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sorteioOrdem: 4
-  sorteioDescricao: "Pr\xEAmio de R$ 250,00"
-  sorteioValor: 250
+  sorteioDescricao: "Pr\xEAmio de R$ 1.000,00"
+  sorteioValor: 1000

@@ -13,7 +13,6 @@ public class BallController : MonoBehaviour
     void Start()
     {
         SetNumberInBalls();
-        //Invoke("SetEnableBallsTest", 1f);
     }
     private void SetNumberInBalls()
     {

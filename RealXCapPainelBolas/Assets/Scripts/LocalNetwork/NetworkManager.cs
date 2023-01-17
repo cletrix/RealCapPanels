@@ -49,6 +49,8 @@ public class NetworkManager : MonoBehaviour
             }
         }
     }
+    [SerializeField] private bool isTest;
+    [SerializeField] private string ipTest;
     [SerializeField] private string ip;
     [SerializeField] private string ip2;
     [SerializeField] private ushort port;
@@ -59,6 +61,11 @@ public class NetworkManager : MonoBehaviour
     private void Awake()
     {
         Singleton = this;
+
+        if (isTest == true)
+        {
+            ip = ipTest;
+        }
     }
     private void Start()
     {

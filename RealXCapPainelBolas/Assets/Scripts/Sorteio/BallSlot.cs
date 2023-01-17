@@ -117,12 +117,16 @@ public class BallSlot : MonoBehaviour
     {
         imageBall.enabled = true;
         imageBall.color = selectedColor;
+        ChangeColorBgLine();
+
     }
 
     public void SetFinishedColor()
     {
         imageBall.enabled = true;
         imageBall.color = finishedColor;
+        ChangeColorBgLine();
+
     }
 
 
