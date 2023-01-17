@@ -8,6 +8,8 @@ public class TechnicalScriptable : ScriptableObject
 {
     public int currentSceneID;
     public int currentRaffle;
+    public string currentGlobeDesc;
+    public float currentGlobeValue;
     public int panelActive;
     public bool isVisibleRaffle;
     public int forTwoBalls;
@@ -42,7 +44,6 @@ public class TechnicalScriptable : ScriptableObject
     {
         if (!GameManager.instance.isBackup)
         {
-            currentRaffle = _currentRaffle;
             currentSceneID = sceneId;
             isVisibleRaffle = raffleVisibility;
             forTwoBalls = _forTwoBalls;
@@ -54,6 +55,9 @@ public class TechnicalScriptable : ScriptableObject
             ticketsShown.AddRange(_ticketsShown);
             currentTicketIndex = _currentTicketIndex;
             isTicketVisible = _isTicketVisible;
+            currentRaffle = _currentRaffle;
+            currentGlobeDesc = GameManager.instance.globeScriptable.GetGlobeDescription();
+            currentGlobeValue = GameManager.instance.globeScriptable.GetGlobeValue();
 
             RestNetworkManager.instance.CallWriteMemory();
         }
@@ -75,6 +79,8 @@ public class TechnicalScriptable : ScriptableObject
         }
         GameManager.instance.sceneId = currentSceneID;
         GameManager.instance.globeScriptable.SetGlobeOrder(currentRaffle);
+        GameManager.instance.globeScriptable.SetGlobeDesc(currentGlobeDesc);
+        GameManager.instance.globeScriptable.SetGlobeValue(currentGlobeValue);
         GameManager.instance.isVisibleRaffle = isVisibleRaffle;
         GameManager.instance.globeRaffleScriptable.porDuasBolas = forTwoBalls;
         GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();

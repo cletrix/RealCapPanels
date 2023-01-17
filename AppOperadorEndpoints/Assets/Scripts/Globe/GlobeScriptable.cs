@@ -28,7 +28,11 @@ public class GlobeScriptable : ScriptableObject
             return infosGlobe[currentIndex - 1].sorteioOrdem;
     }
 
-
+    public void SetGlobeDesc(string _desc)
+    {
+        if (currentIndex < infosGlobe.Count)
+            infosGlobe[currentIndex].sorteioDescricao = _desc;
+    }
     public string GetGlobeDescription()
     {
         if (currentIndex < infosGlobe.Count)
@@ -39,6 +43,11 @@ public class GlobeScriptable : ScriptableObject
             return infosGlobe[currentIndex - 1].sorteioDescricao;
     }
 
+    public void SetGlobeValue(float _value)
+    {
+        if (currentIndex < infosGlobe.Count)
+            infosGlobe[currentIndex].sorteioValor = _value;
+    }
     public float GetGlobeValue()
     {
         if (currentIndex < infosGlobe.Count)

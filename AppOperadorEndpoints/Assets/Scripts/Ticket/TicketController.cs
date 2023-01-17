@@ -78,7 +78,9 @@ public class TicketController : MonoBehaviour
     }
     public void CheckStateVisibility()
     {
-        RestNetworkManager.instance.CallGetInfoServer();
+        if (!GameManager.instance.isBackup)
+            RestNetworkManager.instance.CallGetInfoServer();
+
         if (GameManager.instance.isTicketVisible)
         {
             bgTicket.SetActive(true);
@@ -91,7 +93,6 @@ public class TicketController : MonoBehaviour
             {
                 spin.ActiveButtonNewRaffleSpin();
             }
-
         }
     }
 
