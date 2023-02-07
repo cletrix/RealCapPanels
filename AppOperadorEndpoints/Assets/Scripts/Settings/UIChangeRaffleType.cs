@@ -13,7 +13,7 @@ public class UIChangeRaffleType : MonoBehaviour
     [SerializeField] private UiInfosRaffle infosRaffle;
     [Header("RAFFLES PANELS")]
     [SerializeField] private GameObject panelRaffleLottery;
-    [SerializeField] private GameObject panelRaffleGlobe;
+    public GameObject panelRaffleGlobe;
     [SerializeField] private GameObject panelRaffleSpin;
 
     [Header("BUTTONS RAFFLES")]
@@ -89,7 +89,7 @@ public class UIChangeRaffleType : MonoBehaviour
         btRaffleSpin.onClick.AddListener(SetRaffleSpin);
         btRaffleSpin.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
         btVisibilityRaffle.onClick.AddListener(SetStateHasRaffleVisibility);
-        btVisibilityRaffle.onClick.AddListener(SendMessageVisibilityRaffle);
+        btVisibilityRaffle.onClick.AddListener(SendInfosRaffle);
         btVisibilityRaffle.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
     }
 
@@ -309,6 +309,11 @@ public class UIChangeRaffleType : MonoBehaviour
     #region MESSAGES
     public void SendMessageVisibilityRaffle()
     {
+        TcpNetworkManager.instance.Server.SendToAll(GetMessageVisibilityRaffle(Message.Create(MessageSendMode.unreliable, ServerToClientId.messageVisibilityRaffle), GameManager.instance.isVisibleRaffle, GameManager.instance.sceneId));
+
+    }
+    public void SendInfosRaffle()
+    {
 
         if (panelRaffleLottery.activeSelf == true)
         {
@@ -341,8 +346,7 @@ public class UIChangeRaffleType : MonoBehaviour
        GameManager.instance.spinScriptable.sorteioDescricao,
        GameManager.instance.spinScriptable.sorteioValor);
         }
-
-        TcpNetworkManager.instance.Server.SendToAll(GetMessageVisibilityRaffle(Message.Create(MessageSendMode.unreliable, ServerToClientId.messageVisibilityRaffle), GameManager.instance.isVisibleRaffle, GameManager.instance.sceneId));
+        SendMessageVisibilityRaffle();
     }
     private Message GetMessageVisibilityRaffle(Message message, bool isActive, int typeRaffle)
     {

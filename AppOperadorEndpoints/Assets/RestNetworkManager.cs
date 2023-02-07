@@ -37,7 +37,7 @@ public class RestNetworkManager : MonoBehaviour
         {
             instance = this;
         }
-        if(isTest==true)
+        if (isTest == true)
         {
             baseUrl1 = baseTest;
         }
@@ -344,18 +344,16 @@ public class RestNetworkManager : MonoBehaviour
                         string jsonResponse = webRequest.downloadHandler.text;
 
                         GlobeController globeController = FindObjectOfType<GlobeController>();
-                        if (jsonResponse != "EOF Globe")
+
+                        JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeRaffleScriptable);
+                        GameManager.instance.PopulateListOfVisibleTicket();
+                        if (globeController != null)
                         {
-                            JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeRaffleScriptable);
-                            GameManager.instance.PopulateListOfVisibleTicket();
-                            if (globeController != null)
-                            {
-                                globeController.CheckWinners();
-                                globeController.SendBallsRaffledToScreen();
-                            }
+                            globeController.CheckWinners();
+                            globeController.SendBallsRaffledToScreen();
                         }
+                        break;
                     }
-                    break;
             }
         }
     }
@@ -381,12 +379,10 @@ public class RestNetworkManager : MonoBehaviour
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    {
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                        string json = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.spinScriptable);
-                        //GameManager.instance.spinScriptable.sorteioOrdem = 1;
-                    }
+                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    string json = webRequest.downloadHandler.text;
+                    JsonUtility.FromJsonOverwrite(json, GameManager.instance.spinScriptable);
+                    //GameManager.instance.spinScriptable.sorteioOrdem = 1;
                     break;
             }
         }
@@ -424,14 +420,13 @@ public class RestNetworkManager : MonoBehaviour
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    {
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                        string jsonResponse = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.spinResultScriptable);
-                        SpinController spinController = FindObjectOfType<SpinController>();
-                        spinController.ShowNumberLuckySpin();
-                    }
+                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    string jsonResponse = webRequest.downloadHandler.text;
+                    JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.spinResultScriptable);
+                    SpinController spinController = FindObjectOfType<SpinController>();
+                    spinController.ShowNumberLuckySpin();
                     break;
+
             }
         }
     }

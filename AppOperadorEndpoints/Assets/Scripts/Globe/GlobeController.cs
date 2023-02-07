@@ -392,7 +392,6 @@ public class GlobeController : MonoBehaviour
     {
         UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
-        uIChangeRaffle.CheckStateVisibilityRaffle();
         GameManager.instance.globeScriptable.SetGlobeOrder(GameManager.instance.globeScriptable.GetGlobeOrder() + 1);
         GameManager.instance.ResetScreenGlobe();
         yield return new WaitForSeconds(1);

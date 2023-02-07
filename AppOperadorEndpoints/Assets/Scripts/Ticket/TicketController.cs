@@ -66,6 +66,21 @@ public class TicketController : MonoBehaviour
         {
             GameManager.instance.isTicketVisible = false;
             SendMessageToClientHideTicket(GameManager.instance.isTicketVisible);
+            int count = 0;
+            for (int i = 0; i < GameManager.instance.globeRaffleScriptable.ticketListVisible.Length; i++)
+            {
+                if (GameManager.instance.globeRaffleScriptable.ticketListVisible[i] == true)
+                    count++;
+            }
+            if (count == GameManager.instance.globeRaffleScriptable.ticketListVisible.Length)
+            {
+                UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
+                if (uIChangeRaffle.panelRaffleGlobe.activeSelf == true)
+                {
+                    uIChangeRaffle.SetStateHasRaffleVisibility();
+                    uIChangeRaffle.SendMessageVisibilityRaffle();
+                }
+            }
         }
         else
         {
