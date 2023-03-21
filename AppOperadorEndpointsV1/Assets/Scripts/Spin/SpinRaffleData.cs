@@ -41,6 +41,7 @@ public class SpinRaffleData : MonoBehaviour
     public void InitializeVariables()
     {
         SetStateInteractableButton(false);
+       
     }
     public void SetNumberSpin(int _number)
     {

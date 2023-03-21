@@ -60,6 +60,7 @@ public class SpinController : MonoBehaviour
         foreach (var item in spinRaffleDatas)
         {
             item.InitializeVariables();
+            item.SetEventButton(ShowTicketSpin);
         }
         SetButtonsEvent();
         ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
