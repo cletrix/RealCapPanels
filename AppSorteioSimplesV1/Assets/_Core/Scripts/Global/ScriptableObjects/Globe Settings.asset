@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc5ab2ff1dbe53245ab8e27a63e92874, type: 3}
-  m_Name: 
+  m_Name: Globe Settings
   m_EditorClassIdentifier: 
   editionName: Real X Premiado
   editionNumber: 3

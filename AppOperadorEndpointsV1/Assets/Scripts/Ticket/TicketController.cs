@@ -107,10 +107,13 @@ public class TicketController : MonoBehaviour
             if (spin != null)
             {
                 spin.ActiveButtonNewRaffleSpin();
-                GameManager.instance.spinScriptable.sorteioOrdem++;
-                spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
-                spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
-                
+                if (GameManager.instance.spinScriptable.sorteioOrdem < GameManager.instance.recoveryScriptable.limit_spin)
+                {
+                    GameManager.instance.spinScriptable.sorteioOrdem++;
+                    spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
+                    spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
+                }
+
             }
         }
     }
@@ -144,7 +147,7 @@ public class TicketController : MonoBehaviour
         }
         else
             return "XX/XX/XXXX";
-        
+
     }
     private string HidePartPhone(string info)
     {
