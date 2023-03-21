@@ -75,6 +75,14 @@ public class UIChangeRaffleType : MonoBehaviour
                     SetRaffleGlobe();
                     break;
                 }
+            case 4:
+                {
+                    hasActiveLottery = false;
+                    hasActiveGlobe = false;
+                    hasActiveSpin = true;
+                    SetRaffleSpin();
+                    break;
+                }
         }
         btRaffleLottery.interactable = hasActiveLottery;
         btRaffleGlobe.interactable = hasActiveGlobe;

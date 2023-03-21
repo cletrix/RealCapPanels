@@ -204,39 +204,6 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec56edff218bf34c9d5eb6ea66c5f4d, type: 3}
---- !u!1 &521058244 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6570969155629736973, guid: dec56edff218bf34c9d5eb6ea66c5f4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 521058243}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &521058245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 521058244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f9c03471b6fd54abad556d38feea75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DontDestroy: 0
-  _volumeSFX: 1
-  _volumeMusic: 1
-  soundsSFX:
-  - name: Winner
-    clip: {fileID: 8300000, guid: f9773d0b12db5de43b5a327e65adc4fe, type: 3}
-    volume: 1
-    loop: 0
-    audioSource: {fileID: 0}
-  - name: Heart
-    clip: {fileID: 8300000, guid: e0829c561451a5241ac52910dd47dd1d, type: 3}
-    volume: 1
-    loop: 1
-    audioSource: {fileID: 0}
-  soundsMusic: []
 --- !u!1 &1086787155
 GameObject:
   m_ObjectHideFlags: 0

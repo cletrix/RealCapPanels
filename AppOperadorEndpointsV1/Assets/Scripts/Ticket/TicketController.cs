@@ -107,6 +107,10 @@ public class TicketController : MonoBehaviour
             if (spin != null)
             {
                 spin.ActiveButtonNewRaffleSpin();
+                GameManager.instance.spinScriptable.sorteioOrdem++;
+                spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
+                spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
+                
             }
         }
     }

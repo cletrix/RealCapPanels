@@ -8,6 +8,8 @@ using RiptideNetworking;
 public class SpinController : MonoBehaviour
 {
     [Header("SPIN RAFFLE")]
+    [SerializeField] private SpinRaffleData spinRaffleData;
+    [SerializeField] private Transform content;
     [SerializeField] private List<SpinRaffleData> spinRaffleDatas = new List<SpinRaffleData>();
     [SerializeField] private List<TextMeshProUGUI> NumberRaffle = new List<TextMeshProUGUI>();
     [SerializeField] private TextMeshProUGUI txtSpinID;
@@ -24,9 +26,22 @@ public class SpinController : MonoBehaviour
     [SerializeField] private TicketController ticketController;
     void Start()
     {
+        PopulateSpinDatas(GameManager.instance.recoveryScriptable.limit_spin);
         InitializeVariables();
     }
 
+    public void PopulateSpinDatas(int _spinAmout)
+    {
+        spinRaffleDatas.Clear();
+
+        for (int i = 0; i < _spinAmout; i++)
+        {
+            SpinRaffleData inst = Instantiate(spinRaffleData, transform.position, Quaternion.identity);
+            inst.transform.SetParent(content);
+            inst.transform.localScale = Vector3.one;
+            spinRaffleDatas.Add(inst);
+        }
+    }
     private void InitializeVariables()
     {
         contentScrollView = GameObject.Find("Content");
@@ -41,6 +56,7 @@ public class SpinController : MonoBehaviour
         NumberRaffle.Clear();
         NumberRaffle.AddRange(groupNumberSpinRaffle.GetComponentsInChildren<TextMeshProUGUI>());
 
+        
         foreach (var item in spinRaffleDatas)
         {
             item.InitializeVariables();
@@ -117,11 +133,11 @@ public class SpinController : MonoBehaviour
         currentNumberRaffled = GameManager.instance.spinResultScriptable.numeroSorteado;
         GameManager.instance.technicalScriptable.UpdateSpinConfig(currentNumberRaffled, GameManager.instance.spinResultScriptable.ganhadorContemplado);
         GameManager.instance.spinScriptable.sorteioOrdem = GameManager.instance.technicalScriptable.spinIndex;
-        ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
+        //ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
         indexSpin = GameManager.instance.spinScriptable.sorteioOrdem;
 
         UpdateFieldScreen();
-        SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
+        
 
 
         //currentNumberRaffled = string.Empty;

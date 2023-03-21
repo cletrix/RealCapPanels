@@ -172,7 +172,6 @@ public class NetworkManager : MonoBehaviour
     {
         string luckyNumber = string.Empty;
         luckyNumber = message.GetString();
-        print("Ativou");
         LuckySpinController luckySpinController = FindObjectOfType<LuckySpinController>();
         luckySpinController.SetResult(luckyNumber);
     }
@@ -186,7 +185,6 @@ public class NetworkManager : MonoBehaviour
         string description = message.GetString();
         float value = message.GetFloat();
         LuckySpinController luckySpinController = FindObjectOfType<LuckySpinController>();
-        if (SceneManager.GetActiveScene().buildIndex == 3)
             luckySpinController.SetPopulateSpinInfos(value, editionNumber,description);
     }
     [MessageHandler((ushort)ServerToClientId.messageSpinRoundID)]
