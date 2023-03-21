@@ -13,7 +13,7 @@ public class SpinController : MonoBehaviour
     [SerializeField] private List<SpinRaffleData> spinRaffleDatas = new List<SpinRaffleData>();
     [SerializeField] private List<TextMeshProUGUI> NumberRaffle = new List<TextMeshProUGUI>();
     [SerializeField] private TextMeshProUGUI txtSpinID;
-    [SerializeField] private int indexSpin;
+    [SerializeField] public int indexSpin;
     [SerializeField] private string currentNumberRaffled;
 
     [Header("BUTTONS")]
@@ -24,6 +24,7 @@ public class SpinController : MonoBehaviour
     [SerializeField] private GameObject groupNumberSpinRaffle;
     [SerializeField] private Scrollbar verticalScrollbar;
     [SerializeField] private TicketController ticketController;
+
     void Start()
     {
         PopulateSpinDatas(GameManager.instance.recoveryScriptable.limit_spin);
@@ -136,7 +137,7 @@ public class SpinController : MonoBehaviour
         GameManager.instance.spinScriptable.sorteioOrdem = GameManager.instance.technicalScriptable.spinIndex;
         //ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
         indexSpin = GameManager.instance.spinScriptable.sorteioOrdem;
-
+        //lastIndex = GameManager.instance.spinScriptable.sorteioOrdem;
         UpdateFieldScreen();
         
 

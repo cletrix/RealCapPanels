@@ -109,9 +109,13 @@ public class TicketController : MonoBehaviour
                 spin.ActiveButtonNewRaffleSpin();
                 if (GameManager.instance.spinScriptable.sorteioOrdem < GameManager.instance.recoveryScriptable.limit_spin)
                 {
-                    GameManager.instance.spinScriptable.sorteioOrdem++;
-                    spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
-                    spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
+                    if (spin.indexSpin == GameManager.instance.spinScriptable.sorteioOrdem)
+                    {
+                        GameManager.instance.spinScriptable.sorteioOrdem=spin.indexSpin + 1;
+                        spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
+                        spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
+                        
+                    }
                 }
 
             }

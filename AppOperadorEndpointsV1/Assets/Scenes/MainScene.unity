@@ -18949,6 +18949,7 @@ MonoBehaviour:
   groupNumberSpinRaffle: {fileID: 0}
   verticalScrollbar: {fileID: 630277031}
   ticketController: {fileID: 0}
+  lastIndex: 1
 --- !u!1 &1308069532
 GameObject:
   m_ObjectHideFlags: 0
