@@ -131,13 +131,12 @@ public class SpinController : MonoBehaviour
     private IEnumerator RaffleNumberLuckySpin()
     {
         SendMessageToClientSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado);
-
+        SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
         currentNumberRaffled = GameManager.instance.spinResultScriptable.numeroSorteado;
         GameManager.instance.technicalScriptable.UpdateSpinConfig(currentNumberRaffled, GameManager.instance.spinResultScriptable.ganhadorContemplado);
         GameManager.instance.spinScriptable.sorteioOrdem = GameManager.instance.technicalScriptable.spinIndex;
         //ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
         indexSpin = GameManager.instance.spinScriptable.sorteioOrdem;
-        //lastIndex = GameManager.instance.spinScriptable.sorteioOrdem;
         UpdateFieldScreen();
         
 

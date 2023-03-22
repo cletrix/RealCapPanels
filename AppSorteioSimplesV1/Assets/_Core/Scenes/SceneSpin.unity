@@ -160,21 +160,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1938201438791501951, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_text
-      value: "CAINDO \nNA REAL"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1938201438791501951, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1938201438791501951, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontSizeMax
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 2323978534929489192, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -315,43 +300,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2323978536236814811, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_text
-      value: "1\xB0 sorteio"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2323978536236814811, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 2f10b8adcfd075042bb61ec05a040b82,
-        type: 2}
-    - target: {fileID: 2323978536236814811, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 5302009204636872595, guid: 2f10b8adcfd075042bb61ec05a040b82,
-        type: 2}
-    - target: {fileID: 2323978536236814811, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.topLeft.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2323978536236814811, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.topRight.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2323978536236814811, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.bottomLeft.g
-      value: 0.89411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 2323978536236814811, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.bottomRight.g
-      value: 0.89411765
-      objectReference: {fileID: 0}
     - target: {fileID: 3142701225236836826, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -526,73 +474,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_text
-      value: "Edi\xE7\xE3o"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 73.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_colorMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 2f10b8adcfd075042bb61ec05a040b82,
-        type: 2}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontSizeMax
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 5302009204636872595, guid: 2f10b8adcfd075042bb61ec05a040b82,
-        type: 2}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_enableVertexGradient
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.topLeft.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.topRight.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.bottomLeft.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.bottomLeft.g
-      value: 0.89411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.bottomRight.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779113518828259014, guid: 4c6527db0db8a964eb966cac51eacff9,
-        type: 3}
-      propertyPath: m_fontColorGradient.bottomRight.g
-      value: 0.89411765
       objectReference: {fileID: 0}
     - target: {fileID: 8937370984732638463, guid: 4c6527db0db8a964eb966cac51eacff9,
         type: 3}
@@ -714,6 +595,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31c51bfcb522a70408138303c688c460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &32481461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1938201438791501951, guid: 4c6527db0db8a964eb966cac51eacff9,
+    type: 3}
+  m_PrefabInstance: {fileID: 32481452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &67843150
@@ -1438,6 +1331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtRoundRaffle: {fileID: 32481454}
   txtLiquidPrize: {fileID: 32481455}
+  txtEditionName: {fileID: 32481461}
 --- !u!4 &1890611011
 Transform:
   m_ObjectHideFlags: 0

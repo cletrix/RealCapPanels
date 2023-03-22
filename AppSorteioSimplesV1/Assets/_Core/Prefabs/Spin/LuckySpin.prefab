@@ -254,10 +254,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1\xB0 SORTEIO"
+  m_text: "1\xB0 sorteio"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c5558542944b8ed479a43fb9f58e3937, type: 2}
-  m_sharedMaterial: {fileID: 5482523598328024403, guid: c5558542944b8ed479a43fb9f58e3937,
+  m_fontAsset: {fileID: 11400000, guid: 2f10b8adcfd075042bb61ec05a040b82, type: 2}
+  m_sharedMaterial: {fileID: 5302009204636872595, guid: 2f10b8adcfd075042bb61ec05a040b82,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -269,10 +269,10 @@ MonoBehaviour:
   m_enableVertexGradient: 1
   m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 0.8534628, b: 0, a: 1}
-    topRight: {r: 1, g: 0.8534628, b: 0, a: 1}
-    bottomLeft: {r: 1, g: 0.5214752, b: 0, a: 1}
-    bottomRight: {r: 1, g: 0.5214752, b: 0, a: 1}
+    topLeft: {r: 1, g: 1, b: 0, a: 1}
+    topRight: {r: 1, g: 1, b: 0, a: 1}
+    bottomLeft: {r: 1, g: 0.89411765, b: 0, a: 1}
+    bottomRight: {r: 1, g: 0.89411765, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -2816,7 +2816,69 @@ PrefabInstance:
     - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
         type: 3}
       propertyPath: m_text
-      value: "EDI\xC7\xC3O"
+      value: "Edi\xE7\xE3o"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 73.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_colorMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f10b8adcfd075042bb61ec05a040b82,
+        type: 2}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontSizeMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5302009204636872595, guid: 2f10b8adcfd075042bb61ec05a040b82,
+        type: 2}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontColorGradient.topLeft.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontColorGradient.topRight.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontColorGradient.bottomLeft.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontColorGradient.bottomLeft.g
+      value: 0.89411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontColorGradient.bottomRight.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053883437059597810, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontColorGradient.bottomRight.g
+      value: 0.89411765
       objectReference: {fileID: 0}
     - target: {fileID: 4537422324404732522, guid: a365252cd802fd046aa1746e31119e5b,
         type: 3}
@@ -2956,12 +3018,17 @@ PrefabInstance:
     - target: {fileID: 9201046253154724683, guid: a365252cd802fd046aa1746e31119e5b,
         type: 3}
       propertyPath: m_text
-      value: CAINDO NA REAL
+      value: "CAINDO \nNA REAL"
       objectReference: {fileID: 0}
     - target: {fileID: 9201046253154724683, guid: a365252cd802fd046aa1746e31119e5b,
         type: 3}
       propertyPath: m_fontSize
-      value: 61.5
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201046253154724683, guid: a365252cd802fd046aa1746e31119e5b,
+        type: 3}
+      propertyPath: m_fontSizeMax
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a365252cd802fd046aa1746e31119e5b, type: 3}

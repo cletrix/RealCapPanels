@@ -5,6 +5,7 @@ public class UiLuckySpinController : MonoBehaviour
 
     public TextMeshProUGUI txtRoundRaffle;
     public TextMeshProUGUI txtLiquidPrize;
+    public TextMeshProUGUI txtEditionName;
 
 
     public void SetRoundIDLuckySpin(int _roundID)
@@ -12,9 +13,10 @@ public class UiLuckySpinController : MonoBehaviour
         txtRoundRaffle.text = $"{_roundID}° SORTEIO";
     }
 
-    public void PopulateSpinInfos(float _value, string _edition)
+    public void PopulateSpinInfos(float _value,string _edition)
     {
         txtLiquidPrize.text = GameManager.instance.FormatMoneyInfo(_value, 2);
+        txtEditionName.text = _edition;
     }
 
    

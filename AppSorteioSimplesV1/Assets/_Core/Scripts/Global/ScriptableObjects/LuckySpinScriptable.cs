@@ -5,17 +5,30 @@ using UnityEngine;
 
 public class LuckySpinScriptable : ScriptableObject
 {
-    public int currentSpinID;
+    public string editionName;
+    public int nextDraw;
+    public int currentDrawIndex;
     public string currentResult;
     public string prizeDescription;
     public float prizeValue;
     public List<string> allSpinsResult;
 
+    public List<int> AllSpinsOder;
 
     public void Reset()
     {
-        currentSpinID = 1;
+        nextDraw = 1;
+        currentDrawIndex = -1;
         currentResult = string.Empty;
         allSpinsResult.Clear();
+        AllSpinsOder.Clear();
+    }
+
+    public void AddOrder(int _order)
+    {
+        if(!AllSpinsOder.Contains(_order))
+        {
+            AllSpinsOder.Add(_order);
+        }
     }
 }

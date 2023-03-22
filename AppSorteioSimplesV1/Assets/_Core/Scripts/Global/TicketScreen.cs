@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
-using System.Linq;
 using System.Globalization;
 
 public class TicketScreen : MonoBehaviour
@@ -23,6 +21,7 @@ public class TicketScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI prizeNameSpin;
     [SerializeField] private TextMeshProUGUI txtGlobeRound;
     [SerializeField] private TextMeshProUGUI txtSpinRound;
+    [SerializeField] private TextMeshProUGUI txtEditionName;
     [Space]
     [SerializeField] private TextMeshProUGUI nameWinner;
     [SerializeField] private TextMeshProUGUI cpf;
@@ -150,7 +149,8 @@ public class TicketScreen : MonoBehaviour
             spinSuperior.SetActive(true);
             globeSuperior.SetActive(false);
             SetResult(infosWinner[17]);
-            txtSpinRound.text = $"{GameManager.instance.luckySpinScriptable.currentSpinID}º Sorteio";
+            txtSpinRound.text = $"{GameManager.instance.luckySpinScriptable.AllSpinsOder[GameManager.instance.luckySpinScriptable.currentDrawIndex]}º Sorteio";
+            txtEditionName.text = GameManager.instance.luckySpinScriptable.editionName;
             prizeNameSpin.text = GameManager.instance.luckySpinScriptable.prizeDescription;
 
         }

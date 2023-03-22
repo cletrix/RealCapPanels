@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7aeacd01a18274891a8ba3c9c33464, type: 3}
   m_Name: Lucky Spin Settings
   m_EditorClassIdentifier: 
-  currentSpinID: 6
-  currentResult: 516359
-  allSpinsResult:
-  - 548250
-  - 269161
-  - 440702
-  - 509911
-  - 255694
-  - 516359
+  nextDraw: 1
+  currentDrawIndex: -1
+  currentResult: 
+  prizeDescription: 
+  prizeValue: 0
+  allSpinsResult: []
+  AllSpinsOder: 
