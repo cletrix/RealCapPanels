@@ -274,18 +274,20 @@ public class NetworkManager : MonoBehaviour
         float value = message.GetFloat();
         LuckySpinController luckySpinController = FindObjectOfType<LuckySpinController>();
         if (SceneManager.GetActiveScene().buildIndex == 3)
-            luckySpinController.SetPopulateSpinInfos(value, editionNumber,description);
+            luckySpinController.SetPopulateSpinInfos(value, editionNumber, description);
     }
     [MessageHandler((ushort)ServerToClientId.messageSpinRoundID)]
-    private static void ReceiveMessageLotterySpinRoundID(Message message)
+    private static void ReceiveMessageSpinRoundID(Message message)
     {
         int roundID;
         roundID = message.GetInt();
 
         LuckySpinController luckySpinController = FindObjectOfType<LuckySpinController>();
-        luckySpinController.SetRoundIDSpin(roundID);
-        luckySpinController.ResetResult();
-
+        if (luckySpinController != null)
+        {
+            luckySpinController.SetRoundIDSpin(roundID);
+            luckySpinController.ResetResult();
+        }
     }
     [MessageHandler((ushort)ServerToClientId.messageShowTicket)]
     private static void ReceiveMessageShowTicket(Message message)
@@ -297,7 +299,7 @@ public class NetworkManager : MonoBehaviour
         int[] numberCards = message.GetInts();
         bool iscard = message.GetBool();
         int typeRaffle = message.GetInt();
-        print("TICKET VISIBLE"+isTicketVisibility);
+        print("TICKET VISIBLE" + isTicketVisibility);
 
         ticketScreen.SetTicketVisibility(isTicketVisibility);
         ticketScreen.SetTicketInfos(ticketInfos, numberCards, iscard, typeRaffle);
@@ -318,7 +320,7 @@ public class NetworkManager : MonoBehaviour
         WinnersScreen winnersScreen = FindObjectOfType<WinnersScreen>();
 
         bool isPrizeVisibility = message.GetBool();
-        
+
         winnersScreen.SetWinnersScreenVisibility(isPrizeVisibility);
     }
 

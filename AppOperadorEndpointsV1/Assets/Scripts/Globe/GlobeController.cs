@@ -278,14 +278,13 @@ public class GlobeController : MonoBehaviour
     public void PopulateWinners(List<string> _infos)
     {
         txtInfosTitle.text = "GANHADOR";
-        GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();
+        //GameManager.instance.globeRaffleScriptable.porUmaBolas.Clear();
         _infos = GameManager.instance.GetWinners();
         possiblesWinners = new PossibleWinners[_infos.Count];
         if (GameManager.instance.globeRaffleScriptable.ganhadorContemplado.Length > 1)
             txtInfosTitle.text = "GANHADORES";
         txtWinners.text = _infos.Count.ToString();
         GameManager.instance.isWinner = true;
-        txtForOneBall.text = "0";
         SetDisableAllNotRevoke();
 
         for (int i = 0; i < _infos.Count; i++)
