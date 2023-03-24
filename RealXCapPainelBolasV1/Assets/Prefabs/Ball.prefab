@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
-  noSelectedColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  noSelectedColor: {r: 1, g: 1, b: 1, a: 0.5019608}
   finishedColor: {r: 1, g: 1, b: 1, a: 1}
   winnerColor: {r: 1, g: 1, b: 0, a: 1}
   textNumber: {fileID: 3979593427699497470}

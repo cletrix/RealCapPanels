@@ -38,7 +38,8 @@ public class BallSlot : MonoBehaviour
         ballBorder.SetActive(false);
         SetEnableBall();
         ChangeColorBgLine();
-        textNumber.color = Color.white;
+        textNumber.color = new Color(1, 1, 1, 0.5f);
+        bgLineBall.color = new Color(bgLineBall.color.r, bgLineBall.color.g, bgLineBall.color.b, 0.5f);
 
     }
     public void SetSelectedBall()
@@ -128,7 +129,5 @@ public class BallSlot : MonoBehaviour
         ChangeColorBgLine();
 
     }
-
-
 
 }
