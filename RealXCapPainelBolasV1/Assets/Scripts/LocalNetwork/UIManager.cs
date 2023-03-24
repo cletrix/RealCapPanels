@@ -29,16 +29,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float timeToSpawn ;
     public float maxTimetoSpawn = 1.5f;
     public bool canRaffleBall = true;
+
+    public List<int> balls = new List<int>();
     private void Awake()
     {
         instance = this;
+
     }
 
     private void Start()
     {
+        balls.AddRange(panelScriptable.Balls);
         Invoke("Connect", 1f);
         panelScriptable.ResetVariables();
         timeToSpawn = maxTimetoSpawn;
+        RecieveBalls(balls, 0);
     }
     public void Connect()
     {

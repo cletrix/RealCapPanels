@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -38,7 +36,7 @@ public class BallSlot : MonoBehaviour
         ballBorder.SetActive(false);
         SetEnableBall();
         ChangeColorBgLine();
-        textNumber.color = new Color(1, 1, 1, 0.5f);
+        textNumber.color = new Color(1, 1, 1, 0.4f);
         bgLineBall.color = new Color(bgLineBall.color.r, bgLineBall.color.g, bgLineBall.color.b, 0.5f);
 
     }
@@ -129,5 +127,7 @@ public class BallSlot : MonoBehaviour
         ChangeColorBgLine();
 
     }
+
+
 
 }
