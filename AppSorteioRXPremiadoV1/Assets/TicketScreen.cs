@@ -92,11 +92,10 @@ public class TicketScreen : MonoBehaviour
             canvasGroup.DOFade(0, 1f);
         }
     }
-    public void SetResult(string _raffleLuckyNumber)
+    public void SetResultSpin(string _raffleLuckyNumber)
     {
-        for (int i = 0; i < spins.Count; i++)
+        for (int i = 0; i < _raffleLuckyNumber.Length; i++)
         {
-            spins[i].numberSlotsFinal.Clear();
             spins[i].indexNumber = int.Parse(_raffleLuckyNumber[i].ToString());
             spins[i].ShowNumberNow();
         }
@@ -121,7 +120,7 @@ public class TicketScreen : MonoBehaviour
             SetBgBlackVisibility(false);
             bgTicket.transform.DOLocalMoveY(-1000, timeAnim);
             bgSuperior.transform.DOLocalMoveY(1000, timeAnim);
-          
+
         }
     }
 
@@ -150,9 +149,10 @@ public class TicketScreen : MonoBehaviour
             imgTicket.sprite = bgticketSpin;
             spinSuperior.SetActive(true);
             globeSuperior.SetActive(false);
-            SetResult(infosWinner[17]);
             txtSpinRound.text = $"{GameManager.instance.luckySpinScriptable.currentSpinID}º Sorteio";
             prizeNameSpin.text = GameManager.instance.luckySpinScriptable.prizeDescription;
+            if (infosWinner[17].Length == 6)
+                SetResultSpin(infosWinner[17]);
 
         }
         PopulateTicketInfos(
@@ -185,7 +185,7 @@ public class TicketScreen : MonoBehaviour
         lastBallRaffled = _lastBall;
     }
     private void PopulateTicketInfos(string _nameWinner, string _cpf, string _birthDate, string _phone,
-         string _email, string _district, string _county, string _state, string _dateRaffle, string _editionName, 
+         string _email, string _district, string _county, string _state, string _dateRaffle, string _editionName,
          string _value, string _PDV, string _districtPDV, string _dateBuy, string _hourBuy, string _ticketNumber, string _chance,
          int[] _numbersCard, string _luckyNumber, bool isCard = false, int typeRaffle = 1)
     {

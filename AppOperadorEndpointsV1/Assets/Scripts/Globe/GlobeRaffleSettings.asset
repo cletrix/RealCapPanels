@@ -13,123 +13,98 @@ MonoBehaviour:
   m_Name: GlobeRaffleSettings
   m_EditorClassIdentifier: 
   bolasSorteadas:
+  - 1
+  - 14
+  - 25
+  - 2
   - 3
-  - 16
-  - 29
-  - 42
-  - 55
-  - 44
-  - 33
-  - 22
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
   - 11
+  - 12
+  - 13
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
   - 24
-  - 36
-  - 48
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 43
+  - 45
+  - 34
+  - 47
   - 60
-  - 59
-  - 46
-  - 53
+  - 54
   - 40
   - 51
-  - 38
-  - 25
-  - 14
-  - 27
-  - 1
-  - 8
-  - 7
-  - 20
-  - 9
-  - 35
-  - 57
-  - 31
-  - 15
-  - 49
-  - 54
-  - 56
-  - 58
+  - 36
   - 52
-  - 50
-  - 37
-  - 2
-  - 5
-  - 12
-  - 23
-  - 43
-  - 30
-  - 17
-  - 28
-  - 39
-  - 41
-  - 13
-  porDuasBolas: 32
-  porUmaBolas: []
-  valorPremio: 500
+  - 58
+  porDuasBolas: 48
+  porUmaBolas:
+  - numeroTitulo: 0159492
+    numeroChance: 1 Chance
+    numeroBola: 42
+  - numeroTitulo: 0111467
+    numeroChance: 1 Chance
+    numeroBola: 55
+  - numeroTitulo: 0150600
+    numeroChance: 1 Chance
+    numeroBola: 33
+  - numeroTitulo: 0141228
+    numeroChance: 1 Chance
+    numeroBola: 39
+  - numeroTitulo: 0040453
+    numeroChance: 1 Chance
+    numeroBola: 55
+  - numeroTitulo: 0186858
+    numeroChance: 1 Chance
+    numeroBola: 55
+  - numeroTitulo: 0011762
+    numeroChance: 1 Chance
+    numeroBola: 57
+  - numeroTitulo: 0147029
+    numeroChance: 2 Chance
+    numeroBola: 48
+  - numeroTitulo: 0115612
+    numeroChance: 2 Chance
+    numeroBola: 39
+  valorPremio: 2500
   ganhadorContemplado:
-  - nome: Antonio Pedro da Silva Junior
-    cpf: 880297433
-    dataNascimento: 1979-05-26
-    telefone: (81) 98621-0573
-    email: legalnetjr@gmail.com
-    endereco: nan
-    numero: nan
-    complemento: nan
-    bairro: nan
-    municipio: Palmares
-    cep: 55540-000
-    estado: PE
-    dataSorteio: 2023-01-11 20:00:00
-    valor: 2.5
-    PDV: nan
-    bairoPDV: nan
-    dataCompra: 09/12/2022
-    horaCompra: 23:27
-    numeroTitulo: 0001277
-    chance: Primeira Chance
-    numeroCartela: 02000000050000000d000000100000001100000016000000170000001e0000002300000025000000280000002a0000003200000033000000350000003700000038000000390000003a0000003b000000
-    numeroSorte: 001277
-  - nome: Isandro Pereira Dias
-    cpf: 2315590116
-    dataNascimento: 1986-07-03
-    telefone: (67) 99974-8872
-    email: isandro_dias@hotmail.com
-    endereco: nan
-    numero: nan
-    complemento: nan
-    bairro: nan
-    municipio: Maracaju
-    cep: 79150-000
-    estado: MS
-    dataSorteio: 2023-01-11 20:00:00
-    valor: 2.5
-    PDV: Allana Costa
-    bairoPDV: Influencer
-    dataCompra: 11/12/2022
-    horaCompra: 01:15
-    numeroTitulo: 0001032
-    chance: Primeira Chance
-    numeroCartela: 010000000300000005000000080000000b0000000d0000001100000014000000160000001f000000210000002300000026000000290000002c0000003100000034000000370000003800000039000000
-    numeroSorte: 001032
-  - nome: Sergio Cardoso Zacarias
-    cpf: 3436553816
-    dataNascimento: 1960-07-10
-    telefone: (11) 94714-4486
-    email: zaca@terra.com.br
+  - nome: ELINALVA VALIENSE DIAS
+    cpf: 95989650582
+    dataNascimento: nan
+    telefone: (73) 99927-9703
+    email: elinalvavaliensedias@hotmail.com
     endereco: nan
     numero: nan
     complemento: nan
     bairro: nan
     municipio: nan
-    cep: 03273-200
+    cep: 45816-000
     estado: nan
-    dataSorteio: 2023-01-11 20:00:00
-    valor: 2.5
-    PDV: Allana Costa
-    bairoPDV: Influencer
-    dataCompra: 28/12/2022
-    horaCompra: 00:15
-    numeroTitulo: 0007024
+    dataSorteio: 2023-04-12 20:00:00
+    valor: 0.25
+    PDV: Marcela Gil - @marcelagilfitness
+    bairoPDV: Digital Influencer
+    dataCompra: 21/03/2023
+    horaCompra: 15:17
+    numeroTitulo: 0125514
     chance: Primeira Chance
-    numeroCartela: 03000000050000000d000000100000001100000016000000190000001e0000001f0000002100000024000000250000002600000028000000290000002b0000003000000033000000350000003b000000
-    numeroSorte: 007024
-  ticketListVisible: 010101
+    numeroCartela: 04000000060000000700000008000000090000000b0000000e00000010000000120000001300000014000000180000001e0000002200000024000000280000002b0000002f0000003300000034000000
+    numeroSorte: 125514
+  ticketListVisible: 01

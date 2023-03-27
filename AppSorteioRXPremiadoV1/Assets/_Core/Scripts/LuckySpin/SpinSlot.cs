@@ -77,11 +77,12 @@ public class SpinSlot : MonoBehaviour
     public void ShowNumberNow()
     {
         MovementSpin();
-        ShowNumber();
         ActiveStopSlot();
+        ShowNumber();
     }
     public void ActiveStopSlot()
     {
+        numberSlotsFinal.Clear();
         int newIndex = indexNumber;
         for (int i = 0; i < numberSlots.Count; i++)
         {

@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Settings\RecoveryScriptable.cs" />
     <Compile Include="Assets\Scripts\Settings\UIChangeRaffleType.cs" />
     <Compile Include="Assets\Scripts\Settings\UiInfosRaffle.cs" />
+    <Compile Include="Assets\Version\VersionController.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
