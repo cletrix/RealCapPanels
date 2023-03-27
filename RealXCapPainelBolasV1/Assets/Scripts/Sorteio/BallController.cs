@@ -19,7 +19,6 @@ public class BallController : MonoBehaviour
         for (int i = 0; i < balls.Count; i++)
         {
             balls[i].SetNumberBall(i + 1);
-
         }
     }
 
