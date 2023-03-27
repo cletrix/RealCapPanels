@@ -135,6 +135,7 @@ public class GlobeController : MonoBehaviour
             if (isPlayWinnerSound == false)
             {
                 AudioManager.instance.PlaySFX("Winner");
+                AudioManager.instance.StopSFX("Heart");
                 isPlayWinnerSound = true;
             }
 

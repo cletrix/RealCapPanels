@@ -22,10 +22,15 @@ public class GlobeScriptable : ScriptableObject
     }
     public int GetGlobeOrder()
     {
-        if (currentIndex < infosGlobe.Count)
-            return infosGlobe[currentIndex].sorteioOrdem;
+        if (infosGlobe.Count > 0)
+        {
+            if (currentIndex < infosGlobe.Count)
+                return infosGlobe[currentIndex].sorteioOrdem;
+            else
+                return infosGlobe[currentIndex - 1].sorteioOrdem;
+        }
         else
-            return infosGlobe[currentIndex - 1].sorteioOrdem;
+            return 999;
     }
 
     public void SetGlobeDesc(string _desc)
@@ -35,12 +40,17 @@ public class GlobeScriptable : ScriptableObject
     }
     public string GetGlobeDescription()
     {
-        if (currentIndex < infosGlobe.Count)
+        if (infosGlobe.Count > 0)
         {
-            return infosGlobe[currentIndex].sorteioDescricao;
+            if (currentIndex < infosGlobe.Count)
+            {
+                return infosGlobe[currentIndex].sorteioDescricao;
+            }
+            else
+                return infosGlobe[currentIndex - 1].sorteioDescricao;
         }
         else
-            return infosGlobe[currentIndex - 1].sorteioDescricao;
+            return "Null";
     }
 
     public void SetGlobeValue(float _value)
@@ -50,9 +60,14 @@ public class GlobeScriptable : ScriptableObject
     }
     public float GetGlobeValue()
     {
-        if (currentIndex < infosGlobe.Count)
-            return infosGlobe[currentIndex].sorteioValor;
+        if (infosGlobe.Count > 0)
+        {
+            if (currentIndex < infosGlobe.Count)
+                return infosGlobe[currentIndex].sorteioValor;
+            else
+                return infosGlobe[currentIndex - 1].sorteioValor;
+        }
         else
-            return infosGlobe[currentIndex - 1].sorteioValor;
+            return 0f;
     }
 }

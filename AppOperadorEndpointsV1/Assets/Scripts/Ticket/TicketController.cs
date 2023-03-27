@@ -93,20 +93,33 @@ public class TicketController : MonoBehaviour
     }
     public void CheckStateVisibility()
     {
+        SpinController spin = FindObjectOfType<SpinController>();
         if (!GameManager.instance.isBackup)
             RestNetworkManager.instance.CallGetInfoServer();
 
         if (GameManager.instance.isTicketVisible)
         {
             bgTicket.SetActive(true);
+            
+            
         }
         else
         {
             bgTicket.SetActive(false);
-            SpinController spin = FindObjectOfType<SpinController>();
             if (spin != null)
             {
                 spin.ActiveButtonNewRaffleSpin();
+                if (GameManager.instance.spinScriptable.sorteioOrdem < GameManager.instance.recoveryScriptable.limit_spin)
+                {
+                    if (spin.indexSpin == GameManager.instance.spinScriptable.sorteioOrdem)
+                    {
+                        GameManager.instance.spinScriptable.sorteioOrdem = spin.indexSpin + 1;
+                        spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
+                        spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
+
+                    }
+                }
+
             }
         }
     }
@@ -140,7 +153,7 @@ public class TicketController : MonoBehaviour
         }
         else
             return "XX/XX/XXXX";
-        
+
     }
     private string HidePartPhone(string info)
     {

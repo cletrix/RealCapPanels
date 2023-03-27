@@ -13,8 +13,7 @@ public class PossiblesWinners : MonoBehaviour
 
     public Image imgHeart;
 
-    public bool newCallHeart = true;
-
+    private bool canPlaySound = true;
 
     public void Start()
     {
@@ -34,7 +33,6 @@ public class PossiblesWinners : MonoBehaviour
         PlayAnimationHeart(false);
 
     }
-    private bool canPlaySound = true;
     public void PlayAnimationHeart(bool isRed)
     {
         StopAllCoroutines();
