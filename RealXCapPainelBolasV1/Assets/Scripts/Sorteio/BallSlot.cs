@@ -110,7 +110,7 @@ public class BallSlot : MonoBehaviour
     {
         imageBall.enabled = true;
         imageBall.color = noSelectedColor;
-        textNumber.color = Color.white;
+        textNumber.color = new Color(1, 1, 1, 0.4f);
     }
     public void SetSelectedColor()
     {
