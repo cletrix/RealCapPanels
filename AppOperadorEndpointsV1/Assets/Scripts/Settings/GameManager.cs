@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public LotteryResultScriptable lotteryResultScriptable;
     [Space]
     public GlobeScriptable globeScriptable;
-    public GlobeRaffleScriptable globeRaffleScriptable;
+    public GlobeRaffleScriptable globeDraw;
     [Space]
     public SpinScriptable spinScriptable;
     public SpinResultScriptable spinResultScriptable;
@@ -55,17 +55,18 @@ public class GameManager : MonoBehaviour
     public int sceneId;
     void Start()
     {
-        globeRaffleScriptable.ResetInfos();
+        globeDraw.ResetInfos();
         technicalScriptable.ResetInfos();
         recoveryScriptable.ResetInfos();
     }
     public void RecoveryGlobeScreen()
     {
         GlobeController globeController = FindObjectOfType<GlobeController>();
-        if (globeController != null)
+        if (globeController != null && recoveryScriptable.sorteio_tipo == "Globe")
         {
             if (isBackup)
             {
+                globeController.UpdateScreen();
                 TicketController ticket = FindObjectOfType<TicketController>();
                 if (isWinner == true)
                 {
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
                     ticket.CheckStateVisibility();
                     globeController.UpdateStateVisibilityButtonsTicket(false);
                 }
-                globeController.UpdateScreen();
+
             }
         }
 
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         SpinController spinController = FindObjectOfType<SpinController>();
         TicketController ticket = FindObjectOfType<TicketController>();
-        if (spinController != null)
+        if (spinController != null && recoveryScriptable.sorteio_tipo == "Spin")
         {
             spinController.PopulateSpinsFields(technicalScriptable.spinNumbers);
             spinController.PopulateTicketSpin();
@@ -136,43 +137,43 @@ public class GameManager : MonoBehaviour
     #region GLOBE FUNCTIONS
     public void SetNewBall(string newBall)
     {
-        if (!globeRaffleScriptable.bolasSorteadas.Contains(newBall))
+        if (!globeDraw.bolasSorteadas.Contains(newBall))
         {
-            globeRaffleScriptable.SetNewBall(newBall);
+            globeDraw.SetNewBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer();
         }
     }
     public List<String> GetBallsRaffled()
     {
-        return globeRaffleScriptable.bolasSorteadas;
+        return globeDraw.bolasSorteadas;
     }
     public void SetRemoveBall(string newBall)
     {
-        if (globeRaffleScriptable.bolasSorteadas.Contains(newBall))
+        if (globeDraw.bolasSorteadas.Contains(newBall))
         {
-            globeRaffleScriptable.RevokeBall(newBall);
+            globeDraw.RevokeBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer();
         }
     }
     public void PopulateListOfVisibleTicket()
     {
-        globeRaffleScriptable.ticketListVisible = new bool[globeRaffleScriptable.ganhadorContemplado.Length];
+        globeDraw.ticketListVisible = new bool[globeDraw.ganhadorContemplado.Length];
     }
     public void SetIsVisibleTicketList(int index)
     {
-        globeRaffleScriptable.ticketListVisible[index] = true;
+        globeDraw.ticketListVisible[index] = true;
     }
     public bool GetAllTicketsVisible()
     {
         int index = 0;
-        for (int i = 0; i < globeRaffleScriptable.ticketListVisible.Length; i++)
+        for (int i = 0; i < globeDraw.ticketListVisible.Length; i++)
         {
-            if (globeRaffleScriptable.ticketListVisible[i] == true)
+            if (globeDraw.ticketListVisible[i] == true)
             {
                 index++;
             }
         }
-        if (index >= globeRaffleScriptable.ticketListVisible.Length)
+        if (index >= globeDraw.ticketListVisible.Length)
         {
             return true;
         }
@@ -185,9 +186,9 @@ public class GameManager : MonoBehaviour
     {
         List<string> forOneBalls = new List<string>();
 
-        for (int i = 0; i < globeRaffleScriptable.porUmaBolas.Count; i++)
+        for (int i = 0; i < globeDraw.porUmaBolas.Count; i++)
         {
-            forOneBalls.Add($"{globeRaffleScriptable.porUmaBolas[i].numeroBola} - {globeRaffleScriptable.porUmaBolas[i].numeroChance} - {globeRaffleScriptable.porUmaBolas[i].numeroTitulo}");
+            forOneBalls.Add($"{globeDraw.porUmaBolas[i].numeroBola} - {globeDraw.porUmaBolas[i].numeroChance} - {globeDraw.porUmaBolas[i].numeroTitulo}");
         }
         return forOneBalls;
     }
@@ -196,31 +197,31 @@ public class GameManager : MonoBehaviour
     {
         List<string> winners = new List<string>();
 
-        for (int i = 0; i < globeRaffleScriptable.ganhadorContemplado.Length; i++)
+        for (int i = 0; i < globeDraw.ganhadorContemplado.Length; i++)
         {
-            winners.Add($"{globeRaffleScriptable.ganhadorContemplado[i].numeroTitulo} - {globeRaffleScriptable.ganhadorContemplado[i].chance} ");
+            winners.Add($"{globeDraw.ganhadorContemplado[i].numeroTitulo} - {globeDraw.ganhadorContemplado[i].chance} ");
         }
         return winners;
     }
     public string GetForTwoBalls()
     {
         string result = string.Empty;
-        result = globeRaffleScriptable.porDuasBolas.ToString();
+        result = globeDraw.porDuasBolas.ToString();
         return result;
     }
     public string GetWinnersCount()
     {
         string result = string.Empty;
-        result = globeRaffleScriptable.ganhadorContemplado.ToString();
+        result = globeDraw.ganhadorContemplado.ToString();
         return result;
     }
 
     public void ResetScreenGlobe()
     {
-        globeRaffleScriptable.bolasSorteadas.Clear();
-        globeRaffleScriptable.porUmaBolas.Clear();
-        globeRaffleScriptable.porDuasBolas = 0;
-        globeRaffleScriptable.ganhadorContemplado = new TicketInfos[0];
+        globeDraw.bolasSorteadas.Clear();
+        globeDraw.porUmaBolas.Clear();
+        globeDraw.porDuasBolas = 0;
+        globeDraw.ganhadorContemplado = new TicketInfos[0];
 
         WriteInfosGlobe();
     }
@@ -228,9 +229,9 @@ public class GameManager : MonoBehaviour
 
     public void WriteInfosGlobe()
     {
-        technicalScriptable.UpdateConfig(sceneId, globeScriptable.GetGlobeOrder(), isVisibleRaffle, globeRaffleScriptable.porDuasBolas, globeRaffleScriptable.porUmaBolas
-            , globeRaffleScriptable.ganhadorContemplado.ToList(),
-            globeRaffleScriptable.ticketListVisible.ToList(),
+        technicalScriptable.UpdateConfig(sceneId, globeScriptable.GetGlobeOrder(), isVisibleRaffle, globeDraw.porDuasBolas, globeDraw.porUmaBolas
+            , globeDraw.ganhadorContemplado.ToList(),
+            globeDraw.ticketListVisible.ToList(),
            ticketWinnerIndex, instance.isTicketVisible);
     }
     private void FixedUpdate()
@@ -243,7 +244,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (globeRaffleScriptable.ganhadorContemplado.Length > 0)
+        if (globeDraw.ganhadorContemplado.Length > 0)
         {
             isWinner = true;
         }

@@ -9,54 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7778f46e0283c8458b1ea9689352121, type: 3}
-  m_Name: GlobeRaffleSettings
+  m_Script: {fileID: 11500000, guid: 7553c0730aac7bb4eb3ed4b69faab2e6, type: 3}
+  m_Name: TechinicalData
   m_EditorClassIdentifier: 
-  bolasSorteadas:
-  - 3
-  - 16
-  - 29
-  - 42
-  - 55
-  - 44
-  - 33
-  - 22
-  - 11
-  - 24
-  - 36
-  - 48
-  - 60
-  - 59
-  - 46
-  - 53
-  - 40
-  - 51
-  - 38
-  - 25
-  - 14
-  - 27
-  - 18
-  - 7
-  - 20
-  - 9
-  - 35
-  - 23
-  - 47
-  - 57
-  - 45
-  - 32
-  - 19
-  - 43
-  - 41
-  - 39
-  - 15
-  - 4
-  - 1
-  - 37
-  - 26
-  - 8
-  porDuasBolas: 92
-  porUmaBolas:
+  currentSceneID: 2
+  currentRaffle: 1
+  currentGlobeDesc: Premio de R$ 2.500,00
+  currentGlobeValue: 2500
+  panelActive: 2
+  isVisibleRaffle: 1
+  forTwoBalls: 92
+  forOneBalls:
   - numeroTitulo: 0184392
     numeroChance: "1\xB0 Chance"
     numeroBola: 13
@@ -78,8 +41,7 @@ MonoBehaviour:
   - numeroTitulo: 0074660
     numeroChance: "2\xB0 Chance"
     numeroBola: 13
-  valorPremio: 0
-  ganhadorContemplado:
+  ticketInfos:
   - nome: Daniel tomaz silva nascimento
     cpf: 79381065500
     dataNascimento: 1979-11-20
@@ -102,4 +64,31 @@ MonoBehaviour:
     chance: Primeira Chance
     numeroCartela: 0100000008000000090000000f000000100000001300000014000000180000001b0000002100000024000000250000002a0000002c0000002d0000002f00000033000000350000003700000039000000
     numeroSorte: 145980
-  ticketListVisible: 01
+  ticketsShown: 01
+  currentTicketIndex: 0
+  isTicketVisible: 1
+  spinNumbers: []
+  spinIndex: 1
+  ticketSpin:
+    nome: ELINALVA VALIENSE DIAS
+    cpf: 95989650582
+    dataNascimento: nan
+    telefone: (73) 99927-9703
+    email: elinalvavaliensedias@hotmail.com
+    endereco: nan
+    numero: nan
+    complemento: nan
+    bairro: nan
+    municipio: nan
+    cep: 45816-000
+    estado: nan
+    dataSorteio: 2023-04-12 20:00:00
+    valor: 0.25
+    PDV: Marcela Gil - @marcelagilfitness
+    bairoPDV: Digital Influencer
+    dataCompra: 21/03/2023
+    horaCompra: 15:17
+    numeroTitulo: 0024492
+    chance: Segunda Chance
+    numeroCartela: 02000000080000000d0000001200000015000000170000001b0000001d00000023000000270000002c0000002d0000002f00000030000000330000003400000035000000390000003a0000003b000000
+    numeroSorte: 305539

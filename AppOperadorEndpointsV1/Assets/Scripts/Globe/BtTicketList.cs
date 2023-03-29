@@ -1,19 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
-public class PossibleWinners : MonoBehaviour
+public class BtTicketList : MonoBehaviour
 {
-    [SerializeField] private string infos;
+    public static event Action<TicketInfos> OnShowticket;
     private TextMeshProUGUI textInfo;
-    [SerializeField] private Button button;
+    private Button button;
+
+    [SerializeField] private bool isSelected = false;
+    [SerializeField] private bool isFinished = false;
+    [SerializeField] private int index;
+    [SerializeField] private string infos;
 
     [SerializeField] private Color selectedColor;
     [SerializeField] private Color normalColor;
     [SerializeField] private Color finishedColor;
-    [SerializeField] private bool isSelected = false;
-    [SerializeField] private bool isFinished = false;
-    [SerializeField] private int index;
+
     void Start()
     {
         InitializeVariables();
@@ -30,13 +34,9 @@ public class PossibleWinners : MonoBehaviour
     }
     public void SelectWinner()
     {
-        GlobeController globe = FindObjectOfType<GlobeController>();
-        globe.ResetPossiblesWinners();
-        globe.UpdateStateVisibilityButtonsTicket(true);
-        GameManager.instance.ticketWinnerIndex = index;
+        OnShowticket?.Invoke(GameManager.instance.globeDraw.ganhadorContemplado[index]);
         button.image.color = selectedColor;
         isSelected = true;
-        GameManager.instance.WriteInfosGlobe();
 
     }
     public void SetInteractableButton(bool _isActive)
@@ -62,7 +62,8 @@ public class PossibleWinners : MonoBehaviour
     public void SetIsFinished(bool _isActive)
     {
         isFinished = _isActive;
-        isSelected = false;
+        DesactiveIsSelect();
+
     }
     public void DesactiveIsSelect()
     {

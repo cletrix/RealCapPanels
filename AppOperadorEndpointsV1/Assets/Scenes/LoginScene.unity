@@ -399,6 +399,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7804240743405866441, guid: d4c05a7adb4a3d4488268bfad5a041c0, type: 3}
+      propertyPath: globeDraw
+      value: 
+      objectReference: {fileID: 11400000, guid: dcbb083204bf825439a4620a15a0e068, type: 2}
+    - target: {fileID: 7804240743405866441, guid: d4c05a7adb4a3d4488268bfad5a041c0, type: 3}
       propertyPath: configScriptable
       value: 
       objectReference: {fileID: 0}
@@ -5600,7 +5604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8551582041316902805, guid: d400b74712f1b4842a336930c55a9c55, type: 3}
       propertyPath: baseUrl1
-      value: http://192.168.20.31:43212/
+      value: http://192.168.0.2:43212/
       objectReference: {fileID: 0}
     - target: {fileID: 8551582041316902805, guid: d400b74712f1b4842a336930c55a9c55, type: 3}
       propertyPath: baseUrl2

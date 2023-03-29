@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 7716311749426724613}
   - component: {fileID: 1961342627}
   m_Layer: 5
-  m_Name: PossibleWinners
+  m_Name: BtTicketList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

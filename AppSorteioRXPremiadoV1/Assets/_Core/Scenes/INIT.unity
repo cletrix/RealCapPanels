@@ -1663,12 +1663,12 @@ PrefabInstance:
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
       propertyPath: ip
-      value: 192.168.20.31
+      value: 192.168.0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
       propertyPath: ip2
-      value: 192.168.20.32
+      value: 192.168.0.10
       objectReference: {fileID: 0}
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}

@@ -67,12 +67,12 @@ public class TicketController : MonoBehaviour
             GameManager.instance.isTicketVisible = false;
             SendMessageToClientHideTicket(GameManager.instance.isTicketVisible);
             int count = 0;
-            for (int i = 0; i < GameManager.instance.globeRaffleScriptable.ticketListVisible.Length; i++)
+            for (int i = 0; i < GameManager.instance.globeDraw.ticketListVisible.Length; i++)
             {
-                if (GameManager.instance.globeRaffleScriptable.ticketListVisible[i] == true)
+                if (GameManager.instance.globeDraw.ticketListVisible[i] == true)
                     count++;
             }
-            if (count == GameManager.instance.globeRaffleScriptable.ticketListVisible.Length)
+            if (count == GameManager.instance.globeDraw.ticketListVisible.Length)
             {
                 UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
                 if (uIChangeRaffle.panelRaffleGlobe.activeSelf == true)
@@ -100,8 +100,8 @@ public class TicketController : MonoBehaviour
         if (GameManager.instance.isTicketVisible)
         {
             bgTicket.SetActive(true);
-            
-            
+
+
         }
         else
         {
@@ -119,6 +119,16 @@ public class TicketController : MonoBehaviour
 
                     }
                 }
+                else
+                {
+                    UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
+                    if (uIChangeRaffle.panelRaffleSpin.activeSelf == true)
+                    {
+                        uIChangeRaffle.SetStateHasRaffleVisibility();
+                        uIChangeRaffle.SendMessageVisibilityRaffle();
+                    }
+                }
+
 
             }
         }
@@ -234,7 +244,7 @@ public class TicketController : MonoBehaviour
             {
                 numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().text = _numbersCard[i].ToString();
                 numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.blue;
-                if (_numbersCard[i].ToString() == GameManager.instance.globeRaffleScriptable.bolasSorteadas[GameManager.instance.globeRaffleScriptable.bolasSorteadas.Count - 1])
+                if (_numbersCard[i].ToString() == GameManager.instance.globeDraw.bolasSorteadas[GameManager.instance.globeDraw.bolasSorteadas.Count - 1])
                 {
                     numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
                 }

@@ -167,15 +167,22 @@ public class RestNetworkManager : MonoBehaviour
     {
         TechnicalScriptable config = GameManager.instance.technicalScriptable;
 
-        for (int i = 0; i < config.forOneBalls.Count; i++)
-        {
-            config.forOneBalls[i].numeroChance = config.forOneBalls[i].numeroChance.Replace("°", "");
-        }
-        string json = RemoveAccents(JsonUtility.ToJson(config));
+
+
+
+
+        //for (int i = 0; i < config.forOneBalls.Count; i++)
+        //{
+        //    config.forOneBalls[i].numeroChance = config.forOneBalls[i].numeroChance.Replace("°", "");
+        //}
+        //string json = RemoveAccents(JsonUtility.ToJson(config));
+        string json = JsonUtility.ToJson(GameManager.instance.technicalScriptable);
+        print("JsonSTRING" + json);
 
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
         {
-            byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+            byte[] jsonToSend = Encoding.UTF8.GetBytes(json);
+            print("JsonByte" + jsonToSend);
             webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
             webRequest.SetRequestHeader("Content-Type", "application/json");
@@ -223,11 +230,8 @@ public class RestNetworkManager : MonoBehaviour
                 case UnityWebRequest.Result.Success:
                     {
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                        char[] charsToTrim = { 'b', '\'' };
-                        string json = Encoding.GetEncoding("UTF-8").GetString(webRequest.downloadHandler.data);
-                        string newj = json.Trim(charsToTrim);
-
-                        JsonUtility.FromJsonOverwrite(newj, GameManager.instance.technicalScriptable);
+                        string json = webRequest.downloadHandler.text;
+                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.technicalScriptable);
                         break;
                     }
             }
@@ -306,9 +310,9 @@ public class RestNetworkManager : MonoBehaviour
     {
         GameManager.RequestBallsRaffled ballsRaffled = new GameManager.RequestBallsRaffled();
         ballsRaffled.balls = new List<int>();
-        for (int i = 0; i < GameManager.instance.globeRaffleScriptable.bolasSorteadas.Count; i++)
+        for (int i = 0; i < GameManager.instance.globeDraw.bolasSorteadas.Count; i++)
         {
-            ballsRaffled.balls.Add(int.Parse(GameManager.instance.globeRaffleScriptable.bolasSorteadas[i]));
+            ballsRaffled.balls.Add(int.Parse(GameManager.instance.globeDraw.bolasSorteadas[i]));
         }
         ballsRaffled.sorteioOrdem = GameManager.instance.globeScriptable.GetGlobeOrder();
         string json = JsonUtility.ToJson(ballsRaffled);
@@ -345,11 +349,11 @@ public class RestNetworkManager : MonoBehaviour
 
                         GlobeController globeController = FindObjectOfType<GlobeController>();
 
-                        JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeRaffleScriptable);
+                        JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeDraw);
                         GameManager.instance.PopulateListOfVisibleTicket();
                         if (globeController != null)
                         {
-                            globeController.CheckWinners();
+
                             globeController.SendBallsRaffledToScreen();
                         }
                         break;

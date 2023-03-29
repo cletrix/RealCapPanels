@@ -14,7 +14,7 @@ public class UIChangeRaffleType : MonoBehaviour
     [Header("RAFFLES PANELS")]
     [SerializeField] private GameObject panelRaffleLottery;
     public GameObject panelRaffleGlobe;
-    [SerializeField] private GameObject panelRaffleSpin;
+    public GameObject panelRaffleSpin;
 
     [Header("BUTTONS RAFFLES")]
     [SerializeField] private Button btRaffleLottery;
