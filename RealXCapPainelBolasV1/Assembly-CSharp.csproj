@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\LocalNetwork\UIManager.cs" />
     <Compile Include="Assets\Scripts\FadeController.cs" />
+    <Compile Include="Assets\Version\VersionController.cs" />
     <Compile Include="Assets\Scripts\Sorteio\BallSlot.cs" />
     <Compile Include="Assets\Scripts\Sorteio\BallController.cs" />
     <Compile Include="Assets\FPSCounter.cs" />
@@ -67,7 +68,6 @@
     <Compile Include="Assets\Scripts\Sorteio\SpriteManager.cs" />
     <Compile Include="Assets\PanelScriptable.cs" />
     <Compile Include="Assets\Scripts\StandyByScreen.cs" />
-    <Compile Include="Assets\Version\VersionController.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
