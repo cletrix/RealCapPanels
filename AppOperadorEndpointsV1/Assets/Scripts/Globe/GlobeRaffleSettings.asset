@@ -13,93 +13,28 @@ MonoBehaviour:
   m_Name: GlobeRaffleSettings
   m_EditorClassIdentifier: 
   bolasSorteadas:
-  - 3
-  - 16
-  - 29
-  - 42
-  - 55
-  - 44
-  - 33
-  - 22
-  - 11
-  - 24
-  - 36
-  - 48
-  - 60
-  - 59
-  - 46
-  - 53
-  - 40
-  - 51
-  - 38
-  - 25
-  - 14
-  - 27
-  - 18
-  - 7
-  - 20
-  - 9
-  - 35
-  - 23
-  - 47
-  - 57
-  - 45
-  - 32
-  - 19
-  - 43
-  - 41
-  - 39
-  - 15
-  - 4
   - 1
-  - 37
-  - 26
-  - 8
-  porDuasBolas: 92
-  porUmaBolas:
-  - numeroTitulo: 0184392
-    numeroChance: "1\xB0 Chance"
-    numeroBola: 13
-  - numeroTitulo: 0107670
-    numeroChance: "1\xB0 Chance"
-    numeroBola: 2
-  - numeroTitulo: 0115788
-    numeroChance: "1\xB0 Chance"
-    numeroBola: 10
-  - numeroTitulo: 0097034
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 12
-  - numeroTitulo: 0171720
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 56
-  - numeroTitulo: 0071725
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 30
-  - numeroTitulo: 0074660
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 13
+  - 4
+  - 6
+  - 13
+  - 16
+  - 20
+  - 25
+  - 27
+  - 29
+  - 33
+  - 35
+  - 41
+  - 44
+  - 45
+  - 46
+  - 47
+  - 54
+  - 55
+  - 60
+  - 42
+  porDuasBolas: 0
+  porUmaBolas: []
   valorPremio: 0
-  ganhadorContemplado:
-  - nome: Daniel tomaz silva nascimento
-    cpf: 79381065500
-    dataNascimento: 1979-11-20
-    telefone: (75) 98287-7938
-    email: siilvanasimento20@hotmail.com
-    endereco: Travessa 4 de Dezembro
-    numero: nan
-    complemento: nan
-    bairro: Pernambues
-    municipio: Salvador
-    cep: 41110-480
-    estado: BA
-    dataSorteio: 2023-04-12 20:00:00
-    valor: 0.25
-    PDV: nan
-    bairoPDV: nan
-    dataCompra: 20/03/2023
-    horaCompra: 23:12
-    numeroTitulo: 0145980
-    chance: Primeira Chance
-    numeroCartela: 0100000008000000090000000f000000100000001300000014000000180000001b0000002100000024000000250000002a0000002c0000002d0000002f00000033000000350000003700000039000000
-    numeroSorte: 145980
-  ticketListVisible: 01
+  ganhadorContemplado: []
+  ticketListVisible: 

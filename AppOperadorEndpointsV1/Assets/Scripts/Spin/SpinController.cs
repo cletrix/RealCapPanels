@@ -51,7 +51,6 @@ public class SpinController : MonoBehaviour
         ticketController = FindObjectOfType<TicketController>();
 
         verticalScrollbar = GameObject.Find("Scrollbar Vertical").GetComponent<Scrollbar>();
-        btGenerateLuckyNumber = GameObject.Find("BtSGenerateTicket").GetComponent<Button>();
         txtSpinID = GameObject.Find("TxtSpinID").GetComponent<TextMeshProUGUI>();
 
         NumberRaffle.Clear();
@@ -68,7 +67,7 @@ public class SpinController : MonoBehaviour
         SetSpinPrize();
         PopulateFieldsSpinData();
         UpdateFieldScreen();
-        ActiveButtonNewRaffleSpin();
+        btGenerateLuckyNumber.interactable = false;
     }
     public void SetIndexSpin(int spinOrder)
     {
@@ -123,6 +122,11 @@ public class SpinController : MonoBehaviour
         RestNetworkManager.instance.SetPostResultSpin(GameManager.instance.spinScriptable.sorteioOrdem);
 
         btGenerateLuckyNumber.interactable = false;
+    }
+
+    public void SetActiveBtGenerateSpin(bool _isActive)
+    {
+        btGenerateLuckyNumber.interactable=_isActive;
     }
     public void ShowNumberLuckySpin()
     {

@@ -12,83 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553c0730aac7bb4eb3ed4b69faab2e6, type: 3}
   m_Name: TechinicalData
   m_EditorClassIdentifier: 
-  currentSceneID: 2
+  currentSceneID: 3
   currentRaffle: 1
-  currentGlobeDesc: Premio de R$ 2.500,00
+  currentGlobeDesc: "Pr\xEAmio de R$ 2.500,00"
   currentGlobeValue: 2500
-  panelActive: 2
-  isVisibleRaffle: 1
-  forTwoBalls: 92
-  forOneBalls:
-  - numeroTitulo: 0184392
-    numeroChance: "1\xB0 Chance"
-    numeroBola: 13
-  - numeroTitulo: 0107670
-    numeroChance: "1\xB0 Chance"
-    numeroBola: 2
-  - numeroTitulo: 0115788
-    numeroChance: "1\xB0 Chance"
-    numeroBola: 10
-  - numeroTitulo: 0097034
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 12
-  - numeroTitulo: 0171720
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 56
-  - numeroTitulo: 0071725
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 30
-  - numeroTitulo: 0074660
-    numeroChance: "2\xB0 Chance"
-    numeroBola: 13
-  ticketInfos:
-  - nome: Daniel tomaz silva nascimento
-    cpf: 79381065500
-    dataNascimento: 1979-11-20
-    telefone: (75) 98287-7938
-    email: siilvanasimento20@hotmail.com
-    endereco: Travessa 4 de Dezembro
-    numero: nan
-    complemento: nan
-    bairro: Pernambues
-    municipio: Salvador
-    cep: 41110-480
-    estado: BA
-    dataSorteio: 2023-04-12 20:00:00
-    valor: 0.25
-    PDV: nan
-    bairoPDV: nan
-    dataCompra: 20/03/2023
-    horaCompra: 23:12
-    numeroTitulo: 0145980
-    chance: Primeira Chance
-    numeroCartela: 0100000008000000090000000f000000100000001300000014000000180000001b0000002100000024000000250000002a0000002c0000002d0000002f00000033000000350000003700000039000000
-    numeroSorte: 145980
-  ticketsShown: 01
+  panelActive: 3
+  isVisibleRaffle: 0
+  forTwoBalls: 0
+  forOneBalls: []
+  ticketInfos: []
+  ticketsShown: 
   currentTicketIndex: 0
-  isTicketVisible: 1
+  isTicketVisible: 0
   spinNumbers: []
   spinIndex: 1
   ticketSpin:
-    nome: ELINALVA VALIENSE DIAS
-    cpf: 95989650582
+    nome: "Alana Queiroz Assun\xE7\xE3o "
+    cpf: 565224522
     dataNascimento: nan
-    telefone: (73) 99927-9703
-    email: elinalvavaliensedias@hotmail.com
+    telefone: (73) 99991-9093
+    email: alanaassuncao1@hotmail.com
     endereco: nan
     numero: nan
     complemento: nan
     bairro: nan
-    municipio: nan
+    municipio: Arraial D'Ajuda
     cep: 45816-000
-    estado: nan
+    estado: BA
     dataSorteio: 2023-04-12 20:00:00
     valor: 0.25
     PDV: Marcela Gil - @marcelagilfitness
     bairoPDV: Digital Influencer
-    dataCompra: 21/03/2023
-    horaCompra: 15:17
-    numeroTitulo: 0024492
+    dataCompra: 18/03/2023
+    horaCompra: 16:09
+    numeroTitulo: 0141971
     chance: Segunda Chance
-    numeroCartela: 02000000080000000d0000001200000015000000170000001b0000001d00000023000000270000002c0000002d0000002f00000030000000330000003400000035000000390000003a0000003b000000
-    numeroSorte: 305539
+    numeroCartela: 0300000008000000090000000d0000001200000017000000180000001b0000001c00000024000000270000002a0000002c0000002f00000031000000340000003700000038000000390000003b000000
+    numeroSorte: 290935

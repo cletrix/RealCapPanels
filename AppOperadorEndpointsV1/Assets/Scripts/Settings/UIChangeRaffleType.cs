@@ -7,6 +7,7 @@ public class UIChangeRaffleType : MonoBehaviour
 {
     [Header("CONTROLLERS")]
     [SerializeField] GlobeController globeController;
+    [SerializeField] SpinController spinController;
 
     [Header("GERAL")]
     [SerializeField] private Button btRecovery;
@@ -162,8 +163,8 @@ public class UIChangeRaffleType : MonoBehaviour
                     panelRaffleSpin.SetActive(true);
                     btRaffleSpin.image.color = selectedColor;
                     infosRaffle.PopulateRaffleInfos(GameManager.instance.spinScriptable.sorteioOrdem.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
-                    SpinController spinController = FindObjectOfType<SpinController>();
-                    spinController.ActiveButtonNewRaffleSpin();
+                    //SpinController spinController = FindObjectOfType<SpinController>();
+                    //spinController.ActiveButtonNewRaffleSpin();
                     break;
                 }
             default:
@@ -233,12 +234,12 @@ public class UIChangeRaffleType : MonoBehaviour
             btRecovery.image.color = Color.green;
             globeController.UpdateScreen();
 
-            SpinController spinController = FindObjectOfType<SpinController>();
-            if (spinController != null)
-            {
-                //spinController.ActiveLastSpin();
-                spinController.ActiveButtonNewRaffleSpin();
-            }
+            //SpinController spinController = FindObjectOfType<SpinController>();
+            //if (spinController != null)
+            //{
+            //    //spinController.ActiveLastSpin();
+            //    spinController.ActiveButtonNewRaffleSpin();
+            //}
         }
     }
     #endregion
@@ -303,6 +304,8 @@ public class UIChangeRaffleType : MonoBehaviour
             btVisibilityRaffle.image.color = selectedColor;
             SetStateButtonsRaffle(false);
             globeController.SetEnableAll();
+            if (GameManager.instance.recoveryScriptable.sorteio_tipo == "Spin")
+                spinController.SetActiveBtGenerateSpin(true);
         }
         else
         {
@@ -310,6 +313,8 @@ public class UIChangeRaffleType : MonoBehaviour
             btVisibilityRaffle.image.color = normalColor;
             SetStateButtonsRaffle(true);
             globeController.SetDisableAll();
+            if (GameManager.instance.recoveryScriptable.sorteio_tipo == "Spin")
+                spinController.SetActiveBtGenerateSpin(false);
         }
     }
     #endregion

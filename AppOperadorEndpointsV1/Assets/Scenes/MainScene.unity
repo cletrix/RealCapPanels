@@ -8170,7 +8170,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 555656125}
   m_OnClick:
     m_PersistentCalls:
@@ -15661,6 +15661,7 @@ MonoBehaviour:
   btTickets: []
   btTicket: {fileID: 1961342627, guid: 0f9116adadb6cff46abb535e9b455a41, type: 3}
   content: {fileID: 1081407679}
+  savedInfos: []
 --- !u!1 &1086062824
 GameObject:
   m_ObjectHideFlags: 0
@@ -18960,7 +18961,7 @@ MonoBehaviour:
   txtSpinID: {fileID: 0}
   indexSpin: 0
   currentNumberRaffled: 
-  btGenerateLuckyNumber: {fileID: 0}
+  btGenerateLuckyNumber: {fileID: 555656124}
   contentScrollView: {fileID: 937423255}
   groupNumberSpinRaffle: {fileID: 0}
   verticalScrollbar: {fileID: 630277031}
@@ -26262,6 +26263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globeController: {fileID: 1593991039}
+  spinController: {fileID: 1305966566}
   btRecovery: {fileID: 134799525}
   infosRaffle: {fileID: 1293479484}
   panelRaffleLottery: {fileID: 782738951}
