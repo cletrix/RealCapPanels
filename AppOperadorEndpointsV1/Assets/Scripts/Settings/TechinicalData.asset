@@ -12,23 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553c0730aac7bb4eb3ed4b69faab2e6, type: 3}
   m_Name: TechinicalData
   m_EditorClassIdentifier: 
-  currentSceneID: 3
+  currentSceneID: 2
   currentRaffle: 1
   currentGlobeDesc: "Pr\xEAmio de R$ 2.500,00"
   currentGlobeValue: 2500
-  panelActive: 3
-  isVisibleRaffle: 0
+  panelActive: 2
+  isVisibleRaffle: 1
   forTwoBalls: 0
   forOneBalls: []
-  ticketInfos: []
-  ticketsShown: 
-  currentTicketIndex: 0
-  isTicketVisible: 0
-  spinNumbers: []
-  spinIndex: 1
-  ticketSpin:
-    nome: "Alana Queiroz Assun\xE7\xE3o "
-    cpf: 565224522
+  ticketInfos:
+  - nome: "Alana Queiroz Assun\xE7\xE3o "
+    cpf: 00565224522
     dataNascimento: nan
     telefone: (73) 99991-9093
     email: alanaassuncao1@hotmail.com
@@ -43,9 +37,37 @@ MonoBehaviour:
     valor: 0.25
     PDV: Marcela Gil - @marcelagilfitness
     bairoPDV: Digital Influencer
-    dataCompra: 18/03/2023
-    horaCompra: 16:09
-    numeroTitulo: 0141971
-    chance: Segunda Chance
-    numeroCartela: 0300000008000000090000000d0000001200000017000000180000001b0000001c00000024000000270000002a0000002c0000002f00000031000000340000003700000038000000390000003b000000
-    numeroSorte: 290935
+    dataCompra: 13/03/2023
+    horaCompra: 15:58
+    numeroTitulo: 0194929
+    chance: Primeira Chance
+    numeroCartela: 04000000060000000d000000110000001200000014000000150000001700000018000000190000002200000026000000270000002e0000003000000032000000350000003a0000003b0000003c000000
+    numeroSorte: 194929
+  ticketsShown: 01
+  currentTicketIndex: 0
+  isTicketVisible: 0
+  spinNumbers: []
+  spinIndex: 1
+  ticketSpin:
+    nome: 
+    cpf: 
+    dataNascimento: 
+    telefone: 
+    email: 
+    endereco: 
+    numero: 
+    complemento: 
+    bairro: 
+    municipio: 
+    cep: 
+    estado: 
+    dataSorteio: 
+    valor: 0
+    PDV: 
+    bairoPDV: 
+    dataCompra: 
+    horaCompra: 
+    numeroTitulo: 
+    chance: 
+    numeroCartela: 
+    numeroSorte: 

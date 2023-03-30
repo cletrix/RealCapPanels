@@ -13,28 +13,50 @@ MonoBehaviour:
   m_Name: GlobeRaffleSettings
   m_EditorClassIdentifier: 
   bolasSorteadas:
-  - 1
   - 4
   - 6
   - 13
-  - 16
+  - 17
+  - 18
   - 20
+  - 21
+  - 23
+  - 24
   - 25
-  - 27
-  - 29
-  - 33
-  - 35
-  - 41
-  - 44
-  - 45
+  - 34
+  - 38
+  - 39
   - 46
-  - 47
-  - 54
-  - 55
+  - 48
+  - 50
+  - 53
+  - 58
+  - 59
   - 60
-  - 42
   porDuasBolas: 0
   porUmaBolas: []
-  valorPremio: 0
-  ganhadorContemplado: []
-  ticketListVisible: 
+  valorPremio: 2500
+  ganhadorContemplado:
+  - nome: "Alana Queiroz Assun\xE7\xE3o "
+    cpf: 565224522
+    dataNascimento: nan
+    telefone: (73) 99991-9093
+    email: alanaassuncao1@hotmail.com
+    endereco: nan
+    numero: nan
+    complemento: nan
+    bairro: nan
+    municipio: Arraial D'Ajuda
+    cep: 45816-000
+    estado: BA
+    dataSorteio: 2023-04-12 20:00:00
+    valor: 0.25
+    PDV: Marcela Gil - @marcelagilfitness
+    bairoPDV: Digital Influencer
+    dataCompra: 13/03/2023
+    horaCompra: 15:58
+    numeroTitulo: 0194929
+    chance: Primeira Chance
+    numeroCartela: 04000000060000000d000000110000001200000014000000150000001700000018000000190000002200000026000000270000002e0000003000000032000000350000003a0000003b0000003c000000
+    numeroSorte: 194929
+  ticketListVisible: 00

@@ -42,25 +42,22 @@ public class TechnicalScriptable : ScriptableObject
     public void UpdateConfig(int sceneId, int _currentRaffle, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall,
         List<TicketInfos> _tickets, List<bool> _ticketsShown, int _currentTicketIndex, bool _isTicketVisible)
     {
-        if (!GameManager.instance.isBackup)
-        {
-            currentSceneID = sceneId;
-            isVisibleRaffle = raffleVisibility;
-            forTwoBalls = _forTwoBalls;
-            forOneBalls = _forOneBall;
+        currentSceneID = sceneId;
+        isVisibleRaffle = raffleVisibility;
+        forTwoBalls = _forTwoBalls;
+        forOneBalls = _forOneBall;
 
-            ticketInfos.Clear();
-            ticketInfos.AddRange(_tickets);
-            ticketsShown.Clear();
-            ticketsShown.AddRange(_ticketsShown);
-            currentTicketIndex = _currentTicketIndex;
-            isTicketVisible = _isTicketVisible;
-            currentRaffle = _currentRaffle;
-            currentGlobeDesc = GameManager.instance.globeScriptable.GetGlobeDescription();
-            currentGlobeValue = GameManager.instance.globeScriptable.GetGlobeValue();
+        ticketInfos.Clear();
+        ticketInfos.AddRange(_tickets);
+        ticketsShown.Clear();
+        ticketsShown.AddRange(_ticketsShown);
+        currentTicketIndex = _currentTicketIndex;
+        isTicketVisible = _isTicketVisible;
+        currentRaffle = _currentRaffle;
+        currentGlobeDesc = GameManager.instance.globeScriptable.GetGlobeDescription();
+        currentGlobeValue = GameManager.instance.globeScriptable.GetGlobeValue();
 
-            RestNetworkManager.instance.CallWriteMemory();
-        }
+        RestNetworkManager.instance.CallWriteMemory();
     }
     public void UpdateSpinConfig(string _spinNumber, TicketInfos _ticketSpin)
     {
@@ -73,41 +70,41 @@ public class TechnicalScriptable : ScriptableObject
     }
     public void PopulateConfig()
     {
-        for (int i = 0; i < forOneBalls.Count; i++)
-        {
-            forOneBalls[i].numeroChance = forOneBalls[i].numeroChance.Insert(1, "°");
-        }
         GameManager.instance.sceneId = currentSceneID;
         GameManager.instance.globeScriptable.SetGlobeOrder(currentRaffle);
         GameManager.instance.globeScriptable.SetGlobeDesc(currentGlobeDesc);
         GameManager.instance.globeScriptable.SetGlobeValue(currentGlobeValue);
         GameManager.instance.isVisibleRaffle = isVisibleRaffle;
         GameManager.instance.globeDraw.porDuasBolas = forTwoBalls;
-        GameManager.instance.globeDraw.porUmaBolas.Clear();
-        GameManager.instance.globeDraw.porUmaBolas.AddRange(forOneBalls);
+        //GameManager.instance.globeDraw.porUmaBolas.Clear();
+
+        GameManager.instance.globeDraw.IncreseForOneBalls(forOneBalls);
+
         GameManager.instance.globeDraw.ganhadorContemplado = new TicketInfos[ticketInfos.Count];
         GameManager.instance.globeDraw.ticketListVisible = new bool[ticketInfos.Count];
         GameManager.instance.isTicketVisible = isTicketVisible;
         GameManager.instance.ticketWinnerIndex = currentTicketIndex;
 
-        for (int i = 0; i < ticketInfos.Count; i++)
-        {
-            GameManager.instance.globeDraw.ganhadorContemplado[i] = ticketInfos[i];
-            GameManager.instance.globeDraw.ticketListVisible[i] = ticketsShown[i];
-        }
-        GameManager.instance.spinScriptable.sorteioOrdem = spinIndex;
-        GameManager.instance.spinResultScriptable.ganhadorContemplado = ticketSpin;
 
         if (currentSceneID == 2)
         {
+            for (int i = 0; i < ticketInfos.Count; i++)
+            {
+                GameManager.instance.globeDraw.ganhadorContemplado[i] = ticketInfos[i];
+                GameManager.instance.globeDraw.ticketListVisible[i] = ticketsShown[i];
+            }
             GameManager.instance.RecoveryGlobeScreen();
         }
-        else if (currentSceneID == 3)
+
+        if (currentSceneID == 3)
         {
+            GameManager.instance.spinScriptable.sorteioOrdem = spinIndex;
+            GameManager.instance.spinResultScriptable.ganhadorContemplado = ticketSpin;
             GameManager.instance.RecoverySpinScreen();
         }
+
     }
 
-   
+
 }
 

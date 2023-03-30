@@ -21,12 +21,21 @@ public class GlobeRaffleScriptable : ScriptableObject
         bolasSorteadas.Remove(ball);
     }
 
+    public void IncreseForOneBalls(List<porUmaBola> _oneBalls)
+    {
+
+        for (int i = 0; i < _oneBalls.Count; i++)
+        {
+            if (!porUmaBolas.Contains(_oneBalls[i]))
+                porUmaBolas.Add(_oneBalls[i]);
+        }
+    }
     public void ResetInfos()
     {
         bolasSorteadas.Clear();
-        porUmaBolas.Clear();
         ganhadorContemplado = new TicketInfos[0];
         ticketListVisible = new bool[0];
+        porUmaBolas.Clear();
         valorPremio = 0;
         porDuasBolas = 0;
     }

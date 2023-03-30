@@ -46,6 +46,7 @@ public class RestNetworkManager : MonoBehaviour
     [Header("BASE URL")]
     public bool isTest = false;
     public string baseUrl1 = "http://192.168.20.31:43212/";
+    // path server bruno rvrgs.sytes.net:43212
     public string baseTest = "http://192.168.0.2:43212/";
     public string payloadWrite = "writeMemory";
     public string payloadRead = "readMemory";
@@ -97,7 +98,10 @@ public class RestNetworkManager : MonoBehaviour
     }
     public void CallGetInfoServer()
     {
+        StopAllCoroutines();
         StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
+        if (GameManager.instance.isBackup == true)
+            StartCoroutine(GetReadMemory(baseUrl1 + payloadRead));
     }
     public void CallInfosGlobe()
     {
@@ -124,65 +128,47 @@ public class RestNetworkManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     {
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoveryScriptable);
                         GameManager.instance.recoveryScriptable.UpdateInfos();
                         if (GameManager.instance.isBackup)
                         {
-                            CallReadMemory();
+                            yield return new WaitForSeconds(1f);
+                            StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
                         }
+                        break;
                     }
-                    break;
             }
-            if (GameManager.instance.isBackup)
-            {
-                Invoke("CallGetInfoServer", 1f);
-            }
+
+
         }
     }
 
     public void CallWriteMemory()
     {
+        StopAllCoroutines();
         if (!GameManager.instance.isBackup)
-            StartCoroutine(PostConfig(baseUrl1 + payloadWrite));
+            StartCoroutine(PostWriteMemory(baseUrl1 + payloadWrite));
     }
 
-    public void CallReadMemory()
+
+    //public string RemoveAccents(string text)
+    //{
+    //    StringBuilder sbReturn = new StringBuilder();
+    //    var arrayText = text.Normalize(NormalizationForm.FormD).ToCharArray();
+    //    foreach (char letter in arrayText)
+    //    {
+    //        if (CharUnicodeInfo.GetUnicodeCategory(letter) != UnicodeCategory.NonSpacingMark)
+    //            sbReturn.Append(letter);
+    //    }
+    //    return sbReturn.ToString();
+    //}
+    private IEnumerator PostWriteMemory(string uri)
     {
-        StartCoroutine(GetConfig(baseUrl1 + payloadRead));
-    }
-    public string RemoveAccents(string text)
-    {
-        StringBuilder sbReturn = new StringBuilder();
-        var arrayText = text.Normalize(NormalizationForm.FormD).ToCharArray();
-        foreach (char letter in arrayText)
-        {
-            if (CharUnicodeInfo.GetUnicodeCategory(letter) != UnicodeCategory.NonSpacingMark)
-                sbReturn.Append(letter);
-        }
-        return sbReturn.ToString();
-    }
-    private IEnumerator PostConfig(string uri)
-    {
-        TechnicalScriptable config = GameManager.instance.technicalScriptable;
-
-
-
-
-
-        //for (int i = 0; i < config.forOneBalls.Count; i++)
-        //{
-        //    config.forOneBalls[i].numeroChance = config.forOneBalls[i].numeroChance.Replace("°", "");
-        //}
-        //string json = RemoveAccents(JsonUtility.ToJson(config));
         string json = JsonUtility.ToJson(GameManager.instance.technicalScriptable);
-        print("JsonSTRING" + json);
-
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
         {
             byte[] jsonToSend = Encoding.UTF8.GetBytes(json);
-            print("JsonByte" + jsonToSend);
             webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
             webRequest.SetRequestHeader("Content-Type", "application/json");
@@ -209,7 +195,7 @@ public class RestNetworkManager : MonoBehaviour
         }
     }
 
-    public IEnumerator GetConfig(string uri)
+    public IEnumerator GetReadMemory(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
@@ -229,14 +215,21 @@ public class RestNetworkManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     {
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                        string json = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.technicalScriptable);
+                        //Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                        byte[] bytesResponse = webRequest.downloadHandler.data;
+                        string response = Encoding.UTF8.GetString(bytesResponse);
+                        JsonUtility.FromJsonOverwrite(response, GameManager.instance.technicalScriptable);
+                        GameManager.instance.technicalScriptable.PopulateConfig();
+                        if (GameManager.instance.isBackup)
+                        {
+                            yield return new WaitForSeconds(1f);
+                            StartCoroutine(GetReadMemory(baseUrl1 + payloadRead));
+                        }
                         break;
                     }
             }
 
-            GameManager.instance.technicalScriptable.PopulateConfig();
+
         }
     }
 
@@ -260,7 +253,7 @@ public class RestNetworkManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     {
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.lotteryScriptable);
                     }
@@ -344,7 +337,7 @@ public class RestNetworkManager : MonoBehaviour
                     }
                 case UnityWebRequest.Result.Success:
                     {
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+
                         string jsonResponse = webRequest.downloadHandler.text;
 
                         GlobeController globeController = FindObjectOfType<GlobeController>();
@@ -383,7 +376,7 @@ public class RestNetworkManager : MonoBehaviour
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+
                     string json = webRequest.downloadHandler.text;
                     JsonUtility.FromJsonOverwrite(json, GameManager.instance.spinScriptable);
                     //GameManager.instance.spinScriptable.sorteioOrdem = 1;

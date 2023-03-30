@@ -85,7 +85,7 @@ public class UiManagerLoginScene : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     {
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.editionScriptable);
                         GameManager.instance.CallEventLogin();

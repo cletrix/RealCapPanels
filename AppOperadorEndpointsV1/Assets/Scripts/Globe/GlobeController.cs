@@ -261,49 +261,7 @@ public class GlobeController : MonoBehaviour
     }
     #endregion
 
-    //public void PopulateWinners(List<string> _infos)
-    //{
-    //    txtInfosTitle.text = "GANHADOR";
-    //    _infos = GameManager.instance.GetWinners();
-    //    possiblesWinners = new BtTicketList[_infos.Count];
-    //    if (GameManager.instance.globeDraw.ganhadorContemplado.Length > 1)
-    //        txtInfosTitle.text = "GANHADORES";
-    //    txtWinners.text = _infos.Count.ToString();
-    //    GameManager.instance.isWinner = true;
-    //    SetDisableAllNotRevoke();
-
-    //    for (int i = 0; i < _infos.Count; i++)
-    //    {
-    //        BtTicketList inst = Instantiate(possibleWinnerGO);
-    //        inst.PopulateInfos(_infos[i]);
-    //        inst.SetIndex(i);
-
-    //        inst.transform.SetParent(contentParent.transform);
-    //        inst.transform.localScale = new Vector2(1, 1);
-    //        possiblesWinners[i] = inst;
-    //    }
-    //    possiblesWinners[0].SelectWinner();
-    //}
-    //private void PopulatePossibleWinners(List<string> _infos)
-    //{
-
-    //    _infos = GameManager.instance.GetForOneBalls();
-    //    possiblesWinners = new BtTicketList[_infos.Count];
-    //    txtForOneBall.text = _infos.Count.ToString();
-
-
-    //    for (int i = 0; i < _infos.Count; i++)
-    //    {
-    //        BtTicketList inst = Instantiate(possibleWinnerGO);
-    //        inst.PopulateInfos(_infos[i]);
-    //        inst.SetIndex(i);
-
-    //        inst.transform.SetParent(contentParent.transform);
-    //        inst.transform.localScale = new Vector2(1, 1);
-    //        possiblesWinners[i] = inst;
-    //    }
-    //    GameManager.instance.isWinner = false;
-    //}
+   
     public void CheckWinners()
     {
         ticketsListController.ResetGrid();
@@ -338,7 +296,6 @@ public class GlobeController : MonoBehaviour
 
     public void ValidateBall()
     {
-        CheckWinners();
         if (indexBalls.Count > 0)
         {
             lastBallRaffled = balls[indexBalls[indexBalls.Count - 1]];
@@ -348,6 +305,8 @@ public class GlobeController : MonoBehaviour
         CheckStateBalls();
 
         SpawnBallRaffled(GameManager.instance.GetBallsRaffled());
+        CheckWinners();
+
     }
     public void CallNextRaffle()
     {
@@ -405,6 +364,7 @@ public class GlobeController : MonoBehaviour
     }
     public void PopulateTicketGlobe()
     {
+        print("AAAAAAAAA   "+GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].cpf);
         ticketController.PopulateTicketInfos(
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].nome,
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].cpf,

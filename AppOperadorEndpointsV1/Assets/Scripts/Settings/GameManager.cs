@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     public void RecoveryGlobeScreen()
     {
         GlobeController globeController = FindObjectOfType<GlobeController>();
-        if (globeController != null && recoveryScriptable.sorteio_tipo == "Globe")
+        if (globeController != null)
         {
             if (isBackup)
             {
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         SpinController spinController = FindObjectOfType<SpinController>();
         TicketController ticket = FindObjectOfType<TicketController>();
-        if (spinController != null && recoveryScriptable.sorteio_tipo == "Spin")
+        if (spinController != null )
         {
             spinController.PopulateSpinsFields(technicalScriptable.spinNumbers);
             spinController.PopulateTicketSpin();
@@ -229,10 +229,13 @@ public class GameManager : MonoBehaviour
 
     public void WriteInfosGlobe()
     {
-        technicalScriptable.UpdateConfig(sceneId, globeScriptable.GetGlobeOrder(), isVisibleRaffle, globeDraw.porDuasBolas, globeDraw.porUmaBolas
-            , globeDraw.ganhadorContemplado.ToList(),
-            globeDraw.ticketListVisible.ToList(),
-           ticketWinnerIndex, instance.isTicketVisible);
+        if (!instance.isBackup)
+        {
+            technicalScriptable.UpdateConfig(sceneId, globeScriptable.GetGlobeOrder(), isVisibleRaffle, globeDraw.porDuasBolas, globeDraw.porUmaBolas
+                , globeDraw.ganhadorContemplado.ToList(),
+                globeDraw.ticketListVisible.ToList(),
+               ticketWinnerIndex, instance.isTicketVisible);
+        }
     }
     private void FixedUpdate()
     {

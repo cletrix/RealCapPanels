@@ -209,13 +209,13 @@ public class UIChangeRaffleType : MonoBehaviour
     {
         if (GameManager.instance.isBackup)
         {
-            RestNetworkManager.instance.DisableInvokInfosServer();
             GameManager.instance.isBackup = false;
+            RestNetworkManager.instance.DisableInvokInfosServer();
         }
         else
         {
-            RestNetworkManager.instance.CallGetInfoServer();
             GameManager.instance.isBackup = true;
+            RestNetworkManager.instance.CallGetInfoServer();
         }
         SetStateSelectBackupButton();
     }
@@ -233,13 +233,6 @@ public class UIChangeRaffleType : MonoBehaviour
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
             btRecovery.image.color = Color.green;
             globeController.UpdateScreen();
-
-            //SpinController spinController = FindObjectOfType<SpinController>();
-            //if (spinController != null)
-            //{
-            //    //spinController.ActiveLastSpin();
-            //    spinController.ActiveButtonNewRaffleSpin();
-            //}
         }
     }
     #endregion

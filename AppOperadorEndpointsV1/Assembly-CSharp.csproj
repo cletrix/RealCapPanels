@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Spin\SpinResultScriptable.cs" />
     <Compile Include="Assets\Version\VersionController.cs" />
     <Compile Include="Assets\Scripts\Spin\SpinController.cs" />
+    <Compile Include="Assets\Scripts\Globe\TicketsListController.cs" />
     <Compile Include="Assets\Scripts\Settings\EditionInfosScriptable.cs" />
     <Compile Include="Assets\Scripts\Globe\Ball.cs" />
     <Compile Include="Assets\Scripts\Globe\BtTicketList.cs" />
@@ -83,7 +84,6 @@
     <Compile Include="Assets\Scripts\Settings\RecoveryScriptable.cs" />
     <Compile Include="Assets\Scripts\Settings\UIChangeRaffleType.cs" />
     <Compile Include="Assets\Scripts\Settings\UiInfosRaffle.cs" />
-    <Compile Include="Assets\Scripts\Globe\TicketsListController.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

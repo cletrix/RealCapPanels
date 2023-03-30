@@ -100,8 +100,6 @@ public class TicketController : MonoBehaviour
         if (GameManager.instance.isTicketVisible)
         {
             bgTicket.SetActive(true);
-
-
         }
         else
         {
@@ -145,15 +143,15 @@ public class TicketController : MonoBehaviour
         return dateTime.ToString("dd/MM/yyyy - HH:mm");
     }
     private string HidePartCPF(string cpf)
-    {
+    {   
         cpf = Convert.ToUInt64(cpf).ToString(@"000\.000\.000\-00");
         string cpfFormated = cpf.Substring(0, 8);
         cpfFormated += "XXX-XX";
-        return cpfFormated;
+        return cpf;
     }
     private string HidePartBirthDate(string date)
     {
-        if (date != "nan")
+        if (date.Length > 5)
         {
             DateTime dateTime = System.DateTime.Parse(date);
 
