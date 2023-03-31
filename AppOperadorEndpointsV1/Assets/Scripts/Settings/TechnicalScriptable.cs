@@ -76,7 +76,6 @@ public class TechnicalScriptable : ScriptableObject
         GameManager.instance.globeScriptable.SetGlobeValue(currentGlobeValue);
         GameManager.instance.isVisibleRaffle = isVisibleRaffle;
         GameManager.instance.globeDraw.porDuasBolas = forTwoBalls;
-        //GameManager.instance.globeDraw.porUmaBolas.Clear();
 
         GameManager.instance.globeDraw.IncreseForOneBalls(forOneBalls);
 
@@ -86,7 +85,7 @@ public class TechnicalScriptable : ScriptableObject
         GameManager.instance.ticketWinnerIndex = currentTicketIndex;
 
 
-        if (currentSceneID == 2)
+        if (ticketInfos.Count > 0)
         {
             for (int i = 0; i < ticketInfos.Count; i++)
             {
@@ -95,14 +94,12 @@ public class TechnicalScriptable : ScriptableObject
             }
             GameManager.instance.RecoveryGlobeScreen();
         }
-
-        if (currentSceneID == 3)
+        if (ticketSpin.nome != string.Empty)
         {
             GameManager.instance.spinScriptable.sorteioOrdem = spinIndex;
             GameManager.instance.spinResultScriptable.ganhadorContemplado = ticketSpin;
             GameManager.instance.RecoverySpinScreen();
         }
-
     }
 
 

@@ -81,6 +81,16 @@ public class TicketController : MonoBehaviour
                     uIChangeRaffle.SendMessageVisibilityRaffle();
                 }
             }
+            if (GameManager.instance.spinScriptable.sorteioOrdem > GameManager.instance.recoveryScriptable.limit_spin)
+            {
+                UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
+                if (uIChangeRaffle.panelRaffleSpin.activeSelf == true)
+                {
+                    uIChangeRaffle.SetStateHasRaffleVisibility();
+                    uIChangeRaffle.SendMessageVisibilityRaffle();
+                }
+            }
+
         }
         else
         {
@@ -114,20 +124,8 @@ public class TicketController : MonoBehaviour
                         GameManager.instance.spinScriptable.sorteioOrdem = spin.indexSpin + 1;
                         spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
                         spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
-
                     }
                 }
-                else
-                {
-                    UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
-                    if (uIChangeRaffle.panelRaffleSpin.activeSelf == true)
-                    {
-                        uIChangeRaffle.SetStateHasRaffleVisibility();
-                        uIChangeRaffle.SendMessageVisibilityRaffle();
-                    }
-                }
-
-
             }
         }
     }

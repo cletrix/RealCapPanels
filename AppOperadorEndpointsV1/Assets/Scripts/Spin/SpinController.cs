@@ -29,6 +29,7 @@ public class SpinController : MonoBehaviour
     {
         PopulateSpinDatas(GameManager.instance.recoveryScriptable.limit_spin);
         InitializeVariables();
+        SetActiveBtGenerateSpin(false);
     }
 
     public void PopulateSpinDatas(int _spinAmout)
@@ -56,7 +57,7 @@ public class SpinController : MonoBehaviour
         NumberRaffle.Clear();
         NumberRaffle.AddRange(groupNumberSpinRaffle.GetComponentsInChildren<TextMeshProUGUI>());
 
-        
+
         foreach (var item in spinRaffleDatas)
         {
             item.InitializeVariables();
@@ -126,7 +127,10 @@ public class SpinController : MonoBehaviour
 
     public void SetActiveBtGenerateSpin(bool _isActive)
     {
-        btGenerateLuckyNumber.interactable=_isActive;
+        if (!GameManager.instance.isBackup)
+            btGenerateLuckyNumber.interactable = _isActive;
+        else
+            btGenerateLuckyNumber.interactable = false;
     }
     public void ShowNumberLuckySpin()
     {
@@ -142,7 +146,7 @@ public class SpinController : MonoBehaviour
         //ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
         indexSpin = GameManager.instance.spinScriptable.sorteioOrdem;
         UpdateFieldScreen();
-        
+
 
 
         //currentNumberRaffled = string.Empty;

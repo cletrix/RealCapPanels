@@ -232,7 +232,8 @@ public class UIChangeRaffleType : MonoBehaviour
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().text = "Principal";
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
             btRecovery.image.color = Color.green;
-            globeController.UpdateScreen();
+            if (GameManager.instance.technicalScriptable.currentSceneID == 2)
+                globeController.UpdateScreen();
         }
     }
     #endregion
@@ -297,7 +298,7 @@ public class UIChangeRaffleType : MonoBehaviour
             btVisibilityRaffle.image.color = selectedColor;
             SetStateButtonsRaffle(false);
             globeController.SetEnableAll();
-            if (GameManager.instance.recoveryScriptable.sorteio_tipo == "Spin")
+            if (GameManager.instance.technicalScriptable.currentSceneID == 3)
                 spinController.SetActiveBtGenerateSpin(true);
         }
         else
@@ -306,7 +307,7 @@ public class UIChangeRaffleType : MonoBehaviour
             btVisibilityRaffle.image.color = normalColor;
             SetStateButtonsRaffle(true);
             globeController.SetDisableAll();
-            if (GameManager.instance.recoveryScriptable.sorteio_tipo == "Spin")
+            if (GameManager.instance.technicalScriptable.currentSceneID == 3)
                 spinController.SetActiveBtGenerateSpin(false);
         }
     }
