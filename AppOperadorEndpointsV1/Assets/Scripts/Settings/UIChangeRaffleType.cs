@@ -226,13 +226,15 @@ public class UIChangeRaffleType : MonoBehaviour
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().text = "Backup";
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
             btRecovery.image.color = Color.red;
+            SetStateButtonsRaffle(false);
         }
         else
         {
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().text = "Principal";
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
             btRecovery.image.color = Color.green;
-            if (GameManager.instance.technicalScriptable.currentSceneID == 2)
+            SetStateButtonsRaffle(true);
+            if (panelRaffleGlobe.activeSelf == true)
                 globeController.UpdateScreen();
         }
     }
@@ -247,9 +249,12 @@ public class UIChangeRaffleType : MonoBehaviour
             btRaffleLottery.interactable = false;
             btRaffleGlobe.interactable = false;
             btRaffleSpin.interactable = false;
+            btVisibilityRaffle.interactable = false;
         }
         else
         {
+            btVisibilityRaffle.interactable = true;
+
             if (hasActiveLottery)
             {
                 btRaffleLottery.interactable = isActive;

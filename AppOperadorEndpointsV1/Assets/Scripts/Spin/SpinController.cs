@@ -128,7 +128,12 @@ public class SpinController : MonoBehaviour
     public void SetActiveBtGenerateSpin(bool _isActive)
     {
         if (!GameManager.instance.isBackup)
-            btGenerateLuckyNumber.interactable = _isActive;
+        {
+            if (GameManager.instance.recoveryScriptable.sorteio_tipo == "finish" || GameManager.instance.isVisibleRaffle==false)
+                btGenerateLuckyNumber.interactable = false;
+            else
+                btGenerateLuckyNumber.interactable = _isActive;
+        }
         else
             btGenerateLuckyNumber.interactable = false;
     }
@@ -143,11 +148,8 @@ public class SpinController : MonoBehaviour
         currentNumberRaffled = GameManager.instance.spinResultScriptable.numeroSorteado;
         GameManager.instance.technicalScriptable.UpdateSpinConfig(currentNumberRaffled, GameManager.instance.spinResultScriptable.ganhadorContemplado);
         GameManager.instance.spinScriptable.sorteioOrdem = GameManager.instance.technicalScriptable.spinIndex;
-        //ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
         indexSpin = GameManager.instance.spinScriptable.sorteioOrdem;
         UpdateFieldScreen();
-
-
 
         //currentNumberRaffled = string.Empty;
         foreach (var item in NumberRaffle)

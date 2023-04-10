@@ -20,30 +20,8 @@ MonoBehaviour:
   isVisibleRaffle: 1
   forTwoBalls: 0
   forOneBalls: []
-  ticketInfos:
-  - nome: "Alana Queiroz Assun\xE7\xE3o "
-    cpf: 00565224522
-    dataNascimento: nan
-    telefone: (73) 99991-9093
-    email: alanaassuncao1@hotmail.com
-    endereco: nan
-    numero: nan
-    complemento: nan
-    bairro: nan
-    municipio: Arraial D'Ajuda
-    cep: 45816-000
-    estado: BA
-    dataSorteio: 2023-04-12 20:00:00
-    valor: 0.25
-    PDV: Marcela Gil - @marcelagilfitness
-    bairoPDV: Digital Influencer
-    dataCompra: 13/03/2023
-    horaCompra: 15:58
-    numeroTitulo: 0194929
-    chance: Primeira Chance
-    numeroCartela: 04000000060000000d000000110000001200000014000000150000001700000018000000190000002200000026000000270000002e0000003000000032000000350000003a0000003b0000003c000000
-    numeroSorte: 194929
-  ticketsShown: 01
+  ticketInfos: []
+  ticketsShown: 
   currentTicketIndex: 0
   isTicketVisible: 0
   spinNumbers: []

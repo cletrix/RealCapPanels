@@ -89,12 +89,12 @@ public class GameManager : MonoBehaviour
     {
         SpinController spinController = FindObjectOfType<SpinController>();
         TicketController ticket = FindObjectOfType<TicketController>();
-        if (spinController != null )
+        if (spinController != null && technicalScriptable.spinNumbers.Count > 0)
         {
+            spinController.ShowSpinOrder(technicalScriptable.spinIndex);
             spinController.PopulateSpinsFields(technicalScriptable.spinNumbers);
             spinController.PopulateTicketSpin();
             ticket.CheckStateVisibility();
-            spinController.ShowSpinOrder(technicalScriptable.spinIndex);
         }
 
         UIChangeRaffleType uIChangeRaffleType = FindObjectOfType<UIChangeRaffleType>();

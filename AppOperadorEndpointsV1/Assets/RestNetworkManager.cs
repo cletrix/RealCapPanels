@@ -98,7 +98,6 @@ public class RestNetworkManager : MonoBehaviour
     }
     public void CallGetInfoServer()
     {
-        StopAllCoroutines();
         StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
         if (GameManager.instance.isBackup == true)
             StartCoroutine(GetReadMemory(baseUrl1 + payloadRead));
@@ -128,6 +127,7 @@ public class RestNetworkManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     {
+                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoveryScriptable);
                         GameManager.instance.recoveryScriptable.UpdateInfos();
@@ -140,13 +140,11 @@ public class RestNetworkManager : MonoBehaviour
                     }
             }
 
-
         }
     }
 
     public void CallWriteMemory()
     {
-        StopAllCoroutines();
         if (!GameManager.instance.isBackup)
             StartCoroutine(PostWriteMemory(baseUrl1 + payloadWrite));
     }
@@ -215,7 +213,7 @@ public class RestNetworkManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     {
-                        //Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         byte[] bytesResponse = webRequest.downloadHandler.data;
                         string response = Encoding.UTF8.GetString(bytesResponse);
                         JsonUtility.FromJsonOverwrite(response, GameManager.instance.technicalScriptable);
@@ -228,8 +226,6 @@ public class RestNetworkManager : MonoBehaviour
                         break;
                     }
             }
-
-
         }
     }
 
@@ -253,7 +249,6 @@ public class RestNetworkManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     {
-
                         string json = webRequest.downloadHandler.text;
                         JsonUtility.FromJsonOverwrite(json, GameManager.instance.lotteryScriptable);
                     }

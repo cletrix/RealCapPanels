@@ -13,7 +13,6 @@ public enum ServerToClientId : ushort
     messageInfosLottery = 4,
     messageVisibilityPanelLotteryRaffle = 5,
     messageLotteryNumber = 6,
-    messageInfosGlobe = 7,
     messageBall = 8,
     messageBallRevoked = 9,
     messageSpinNumber = 10,

@@ -99,7 +99,6 @@ public class TicketController : MonoBehaviour
         }
         CheckStateVisibility();
         GameManager.instance.WriteInfosGlobe();
-
     }
     public void CheckStateVisibility()
     {

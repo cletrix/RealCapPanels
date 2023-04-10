@@ -85,7 +85,7 @@ public class TechnicalScriptable : ScriptableObject
         GameManager.instance.ticketWinnerIndex = currentTicketIndex;
 
 
-        if (ticketInfos.Count > 0)
+        if (GameManager.instance.sceneId==2)
         {
             for (int i = 0; i < ticketInfos.Count; i++)
             {
@@ -94,11 +94,11 @@ public class TechnicalScriptable : ScriptableObject
             }
             GameManager.instance.RecoveryGlobeScreen();
         }
-        if (ticketSpin.nome != string.Empty)
+        if (GameManager.instance.sceneId == 3)
         {
+            GameManager.instance.RecoverySpinScreen();
             GameManager.instance.spinScriptable.sorteioOrdem = spinIndex;
             GameManager.instance.spinResultScriptable.ganhadorContemplado = ticketSpin;
-            GameManager.instance.RecoverySpinScreen();
         }
     }
 
