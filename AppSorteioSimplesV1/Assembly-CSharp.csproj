@@ -57,33 +57,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonBeamStatic.cs" />
-    <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonEffectCycler.cs" />
-    <Compile Include="Assets\_Core\Scripts\Global\StandyByScreen.cs" />
-    <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonSoundSpawn.cs" />
-    <Compile Include="Assets\_Core\Scripts\Global\ScriptableObjects\LotteryScriptable.cs" />
-    <Compile Include="Assets\_Core\Scripts\LuckySpin\SpinSlot.cs" />
-    <Compile Include="Assets\_Core\Scripts\Global\ScriptableObjects\GlobeScriptable.cs" />
-    <Compile Include="Assets\_Core\Scripts\LuckySpin\LuckySpinController.cs" />
-    <Compile Include="Assets\_Core\Scripts\LocalNetwork\NetworkManager.cs" />
-    <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonLightFlicker.cs" />
-    <Compile Include="Assets\_Core\Scripts\Global\ScriptableObjects\LuckySpinScriptable.cs" />
-    <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonProjectileScript.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\FadeController.cs" />
+    <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonEffectCycler.cs" />
     <Compile Include="Assets\_Core\Scripts\LuckySpin\UiLuckySpinController.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonLoopScript.cs" />
+    <Compile Include="Assets\_Core\Scripts\Global\StandyByScreen.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonButtonScript.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonSceneSelect.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonLightFade.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonFireProjectile.cs" />
+    <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonSoundSpawn.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\GameManager.cs" />
+    <Compile Include="Assets\_Core\Scripts\Global\ScriptableObjects\LotteryScriptable.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonOrbit.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\TicketScreen.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\ConfetsController.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonRotation.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonBeamScript.cs" />
+    <Compile Include="Assets\_Core\Scripts\LuckySpin\SpinSlot.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\QuitGame.cs" />
+    <Compile Include="Assets\_Core\Scripts\Global\ScriptableObjects\GlobeScriptable.cs" />
+    <Compile Include="Assets\_Core\Scripts\LuckySpin\LuckySpinController.cs" />
+    <Compile Include="Assets\_Core\Scripts\LocalNetwork\NetworkManager.cs" />
     <Compile Include="Assets\_Core\Scripts\LuckySpin\NumberSlot.cs" />
+    <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonLightFlicker.cs" />
+    <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonProjectileScript.cs" />
+    <Compile Include="Assets\_Core\Scripts\Global\ScriptableObjects\LuckySpinScriptable.cs" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -683,20 +683,8 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder.Editor">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Recorder.Base">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Recorder.Base.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Sysroot.Linux_x86_64">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -713,11 +701,23 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Recorder">
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.SysrootPackage.Editor">
       <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder">
-      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
+    <Reference Include="Unity.Recorder.Editor">
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Recorder.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Sysroot.Linux_x86_64">
+      <HintPath>D:/RGB/RGTech/PROJETO REAL X PREMIADO/GITHUB/RealCapPanels/AppSorteioSimplesV1/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
