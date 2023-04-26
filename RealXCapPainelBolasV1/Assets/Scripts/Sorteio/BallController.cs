@@ -65,7 +65,7 @@ public class BallController : MonoBehaviour
         balls[index - 1].SetEnableBallBorder();
         if (UIManager.instance.panelScriptable.winnersCount > 0)
         {
-            DisableAllBallsNoDrawn();
+            Invoke("DisableAllBallsNoDrawn",3f);
         }
         else
             UIManager.instance.canRaffleBall = true;

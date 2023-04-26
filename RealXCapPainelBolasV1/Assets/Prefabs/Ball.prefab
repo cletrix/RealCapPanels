@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4666267679105148228}
   - component: {fileID: 2339622041505925190}
   - component: {fileID: 1972910167355892149}
+  - component: {fileID: 4159284254280708725}
   m_Layer: 5
   m_Name: bgLineBall
   m_TagString: Untagged
@@ -28,7 +29,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 967660830484002898}
   m_Father: {fileID: 1575911623581295056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &4159284254280708725
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135631940168657827}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1486075900294061832
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,8 +118,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1575911623581295056}
-  m_RootOrder: 1
+  m_Father: {fileID: 4666267679105148228}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -300,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ab2a71c3a6fc943aed75fb1aa9e966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 4159284254280708725}
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
   noSelectedColor: {r: 1, g: 1, b: 1, a: 0.4}
   finishedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -347,7 +362,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4666267679105148228}
-  - {fileID: 967660830484002898}
   m_Father: {fileID: 3858816405945078659}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

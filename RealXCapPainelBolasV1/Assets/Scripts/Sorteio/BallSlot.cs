@@ -4,6 +4,7 @@ using TMPro;
 using DG.Tweening;
 public class BallSlot : MonoBehaviour
 {
+    public CanvasGroup canvasGroup;
     public Color selectedColor;
     public Color noSelectedColor;
     public Color finishedColor;
@@ -50,6 +51,7 @@ public class BallSlot : MonoBehaviour
     }
     public void ResetBall()
     {
+        canvasGroup.alpha = 1;
         hasRaffled = false;
         isFinishRaffle = false;
         isActive = false;
@@ -61,8 +63,7 @@ public class BallSlot : MonoBehaviour
     public void SetEnableBall()
     {
         imageBall.enabled = true;
-        bgLineBall.enabled = true;
-        textNumber.enabled = true;
+        canvasGroup.alpha = 1;
 
         ChangeColorBgLine();
     }
@@ -70,10 +71,7 @@ public class BallSlot : MonoBehaviour
     {
         imageBall.enabled = true;
         imageBall.color = new Color(1, 1, 1, 0.3f);
-        bgLineBall.enabled = false;
-        textNumber.enabled = false;
-
-        ChangeColorBgLine();
+        canvasGroup.DOFade(0, 1f);
     }
     public void SetEnableBallBorder()
     {
