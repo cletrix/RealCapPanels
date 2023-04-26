@@ -191,7 +191,6 @@ public class NetworkManager : MonoBehaviour
     {
         bool isActive = message.GetBool();
         int sceneActive = message.GetInt();
-        print(sceneActive);
         if (sceneActive == 2)
         {
             StandyByScreen.instance.SetManualVisibilityScreen(isActive);

@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
     }
     public void ResetRaffle()
     {
-        ballController.DisableAll();
+        ballController.ResetGrid();
         panelScriptable.ResetVariables();
     }
     public void RecieveBalls(List<int> ballsRaffled, int _winnersCount)

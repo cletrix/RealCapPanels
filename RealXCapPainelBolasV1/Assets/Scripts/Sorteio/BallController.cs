@@ -33,19 +33,17 @@ public class BallController : MonoBehaviour
             }
         }
     }
-    public void DisableAll()
+    public void ResetGrid()
     {
         for (int i = 0; i < balls.Count; i++)
         {
-            balls[i].DisableBall();
-
+            balls[i].ResetBall();
         }
     }
 
     public void UpdateScreenBalls(List<int> ballsRaffled)
     {
-        DisableAll();
-        print("balls " + ballsRaffled[ballsRaffled.Count - 1]);
+        ResetGrid();
         UIManager.instance.panelScriptable.indexBalls--;
         for (int i = 0; i < ballsRaffled.Count; i++)
         {
@@ -65,8 +63,22 @@ public class BallController : MonoBehaviour
     {
         DesactiveAllBorder();
         balls[index - 1].SetEnableBallBorder();
-        UIManager.instance.canRaffleBall = true;
+        if (UIManager.instance.panelScriptable.winnersCount > 0)
+        {
+            DisableAllBallsNoDrawn();
+        }
+        else
+            UIManager.instance.canRaffleBall = true;
     }
 
-
+    public void DisableAllBallsNoDrawn()
+    {
+        foreach (var item in balls)
+        {
+            if (!item.hasRaffled)
+            {
+                item.SetDisableBall();
+            }
+        }
+    }
 }

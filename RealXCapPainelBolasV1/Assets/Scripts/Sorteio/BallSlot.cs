@@ -30,11 +30,11 @@ public class BallSlot : MonoBehaviour
 
     public void SetNumberBall(int _number)
     {
+        SetEnableBall();
         numberBall = _number;
         textNumber.text = _number.ToString();
 
         ballBorder.SetActive(false);
-        SetEnableBall();
         ChangeColorBgLine();
         textNumber.color = new Color(1, 1, 1, 0.4f);
         bgLineBall.color = new Color(bgLineBall.color.r, bgLineBall.color.g, bgLineBall.color.b, 0.5f);
@@ -48,20 +48,39 @@ public class BallSlot : MonoBehaviour
         ChangeColorBgLine();
 
     }
-    public void DisableBall()
+    public void ResetBall()
     {
         hasRaffled = false;
         isFinishRaffle = false;
         isActive = false;
+        bgLineBall.enabled = true;
+        textNumber.enabled = true;
         SetNormalColor();
         ballBorder.SetActive(isActive);
     }
+    public void SetEnableBall()
+    {
+        imageBall.enabled = true;
+        bgLineBall.enabled = true;
+        textNumber.enabled = true;
 
+        ChangeColorBgLine();
+    }
+    public void SetDisableBall()
+    {
+        imageBall.enabled = true;
+        imageBall.color = new Color(1, 1, 1, 0.3f);
+        bgLineBall.enabled = false;
+        textNumber.enabled = false;
+
+        ChangeColorBgLine();
+    }
     public void SetEnableBallBorder()
     {
         ballTransform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f);
         SetEnableBall();
         isActive = true;
+        hasRaffled = true;
         if (UIManager.instance.panelScriptable.winnersCount > 0)
         {
             imageBall.color = winnerColor;
@@ -101,11 +120,7 @@ public class BallSlot : MonoBehaviour
         }
     }
 
-    public void SetEnableBall()
-    {
-        imageBall.enabled = true;
-        ChangeColorBgLine();
-    }
+
     public void SetNormalColor()
     {
         imageBall.enabled = true;
@@ -125,7 +140,6 @@ public class BallSlot : MonoBehaviour
         imageBall.enabled = true;
         imageBall.color = finishedColor;
         ChangeColorBgLine();
-
     }
 
 

@@ -144,7 +144,7 @@ public class TicketController : MonoBehaviour
         cpf = Convert.ToUInt64(cpf).ToString(@"000\.000\.000\-00");
         string cpfFormated = cpf.Substring(0, 8);
         cpfFormated += "XXX-XX";
-        return cpf;
+        return cpfFormated;
     }
     private string HidePartBirthDate(string date)
     {
