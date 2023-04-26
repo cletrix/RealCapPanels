@@ -29,21 +29,8 @@ public class LuckySpinController : MonoBehaviour
 
     }
 
-    public void StartSpin()
-    {
-        StartCoroutine(StartMovement());
-        speed = 80;
-        //StopAllCoroutines();
-        stopSlots = false;
-        index = 0;
-    }
-    private void ActiveMovementRaffle()
-    {
-        awaitNextRaffle = true;
-        StartSpin();
-        startSpin = true;
-        hasStop = false;
-    }
+  
+
     public void SetResult(string _raffleLuckyNumber)
     {
         GameManager.instance.luckySpinScriptable.currentResult = _raffleLuckyNumber;
@@ -56,7 +43,9 @@ public class LuckySpinController : MonoBehaviour
             spins[i].indexNumber = System.Convert.ToInt16(GameManager.instance.luckySpinScriptable.currentResult[i].ToString());
             spins[i].ReloadPositions();
         }
+       
         ActiveMovementRaffle();
+        AudioManager.instance.PlaySFX("Giro");
     }
 
     public void CloseDoor()
@@ -79,8 +68,23 @@ public class LuckySpinController : MonoBehaviour
         hasStop = true;
         StartCoroutine(StopRoll());
     }
+    private void ActiveMovementRaffle()
+    {
+        awaitNextRaffle = true;
+        StartSpin();
+        startSpin = true;
+        hasStop = false;
+    }
+    public void StartSpin()
+    {
+        StartCoroutine(StartMovement());
+        speed = 80;
+        stopSlots = false;
+        index = 0;
+    }
     private IEnumerator StartMovement()
     {
+       
         foreach (var item in spins)
         {
             yield return new WaitForSeconds(0.2f);

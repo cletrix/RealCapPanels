@@ -236,6 +236,11 @@ MonoBehaviour:
     volume: 1
     loop: 1
     audioSource: {fileID: 0}
+  - name: Giro
+    clip: {fileID: 8300000, guid: 0839c3d59e8900540ad9fdd95e07c7ce, type: 3}
+    volume: 1
+    loop: 0
+    audioSource: {fileID: 0}
   soundsMusic: []
 --- !u!1 &1086787155
 GameObject:
