@@ -293,7 +293,7 @@ public class UIChangeRaffleType : MonoBehaviour
         {
             GameManager.instance.isVisibleRaffle = true;
         }
-        CheckStateVisibilityRaffle();
+        Invoke("CheckStateVisibilityRaffle", 0.1f);
     }
     public void CheckStateVisibilityRaffle()
     {
@@ -303,8 +303,7 @@ public class UIChangeRaffleType : MonoBehaviour
             btVisibilityRaffle.image.color = selectedColor;
             SetStateButtonsRaffle(false);
             globeController.SetEnableAll();
-            if (GameManager.instance.technicalScriptable.currentSceneID == 3)
-                spinController.SetActiveBtGenerateSpin(true);
+            spinController.SetActiveBtGenerateSpin(true);
         }
         else
         {
@@ -312,8 +311,7 @@ public class UIChangeRaffleType : MonoBehaviour
             btVisibilityRaffle.image.color = normalColor;
             SetStateButtonsRaffle(true);
             globeController.SetDisableAll();
-            if (GameManager.instance.technicalScriptable.currentSceneID == 3)
-                spinController.SetActiveBtGenerateSpin(false);
+            spinController.SetActiveBtGenerateSpin(false);
         }
     }
     #endregion

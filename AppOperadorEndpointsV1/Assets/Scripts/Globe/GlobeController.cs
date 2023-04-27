@@ -218,7 +218,6 @@ public class GlobeController : MonoBehaviour
         if (GameManager.instance.isWinner == true)
             ticketsListController.CheckWinnerButtonState(GameManager.instance.technicalScriptable.ticketsShown, GameManager.instance.technicalScriptable.currentTicketIndex);
     }
-
     public void SendBallsRaffledToScreen()
     {
         UpdateScreen();
@@ -230,7 +229,6 @@ public class GlobeController : MonoBehaviour
         {
             SendMessageBallsRaffled();
         }
-
     }
     #region BALLS RAFFLED
 
@@ -260,7 +258,6 @@ public class GlobeController : MonoBehaviour
         orderBalls.text = $"Dezenas Sorteadas: {ballsRaffled.Length}";
     }
     #endregion
-
    
     public void CheckWinners()
     {
@@ -364,7 +361,6 @@ public class GlobeController : MonoBehaviour
     }
     public void PopulateTicketGlobe()
     {
-        print("AAAAAAAAA   "+GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].cpf);
         ticketController.PopulateTicketInfos(
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].nome,
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].cpf,
@@ -444,7 +440,6 @@ public class GlobeController : MonoBehaviour
 
         return message;
     }
-
     private Message GetMessage(Message message)
     {
         return message;

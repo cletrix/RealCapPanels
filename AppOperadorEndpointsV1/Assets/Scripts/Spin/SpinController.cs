@@ -17,7 +17,7 @@ public class SpinController : MonoBehaviour
     [SerializeField] private string currentNumberRaffled;
 
     [Header("BUTTONS")]
-    [SerializeField] private Button btGenerateLuckyNumber;
+    public Button btGenerateLuckyNumber;
 
     [Header("REFERENCES")]
     [SerializeField] private GameObject contentScrollView;
@@ -29,7 +29,6 @@ public class SpinController : MonoBehaviour
     {
         PopulateSpinDatas(GameManager.instance.recoveryScriptable.limit_spin);
         InitializeVariables();
-        SetActiveBtGenerateSpin(false);
     }
 
     public void PopulateSpinDatas(int _spinAmout)
