@@ -29,7 +29,7 @@ public class LuckySpinController : MonoBehaviour
 
     }
 
-  
+
 
     public void SetResult(string _raffleLuckyNumber)
     {
@@ -43,9 +43,8 @@ public class LuckySpinController : MonoBehaviour
             spins[i].indexNumber = System.Convert.ToInt16(GameManager.instance.luckySpinScriptable.currentResult[i].ToString());
             spins[i].ReloadPositions();
         }
-       
         ActiveMovementRaffle();
-        AudioManager.instance.PlaySFX("Giro");
+
     }
 
     public void CloseDoor()
@@ -84,18 +83,22 @@ public class LuckySpinController : MonoBehaviour
     }
     private IEnumerator StartMovement()
     {
-       
-        foreach (var item in spins)
+        for (int i = 0; i < spins.Count; i++)
         {
             yield return new WaitForSeconds(0.2f);
-            item.ShowNumber();
-            item.MovementSpin();
-            item.stopped = false;
+            spins[i].ShowNumber();
+            spins[i].MovementSpin();
+            spins[i].stopped = false;
+            if (i == 2)
+            {
+                AudioManager.instance.PlaySFX("Spin");
+            }
         }
+
         yield return new WaitForSeconds(1f);
         StopMovement();
     }
-  
+
 
     public IEnumerator StopRoll()
     {
@@ -106,8 +109,11 @@ public class LuckySpinController : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         ActiveWinners();
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.PlaySFX("Clap");
+        AudioManager.instance.PlaySFX("Winner");
     }
-  
+
     public void SetPopulateSpinInfos(float _value, string _edition, string _description)
     {
         GameManager.instance.luckySpinScriptable.prizeValue = _value;
@@ -132,6 +138,7 @@ public class LuckySpinController : MonoBehaviour
                 {
                     confets.SetActive(true);
                     stopSlots = true;
+                    
                 }
             }
         }

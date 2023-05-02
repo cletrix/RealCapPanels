@@ -236,8 +236,13 @@ MonoBehaviour:
     volume: 1
     loop: 1
     audioSource: {fileID: 0}
-  - name: Giro
+  - name: Spin
     clip: {fileID: 8300000, guid: 0839c3d59e8900540ad9fdd95e07c7ce, type: 3}
+    volume: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Clap
+    clip: {fileID: 8300000, guid: a02fdcaa532d88047a94a2557c8615cf, type: 3}
     volume: 1
     loop: 0
     audioSource: {fileID: 0}

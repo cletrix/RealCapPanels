@@ -1,9 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BallController : MonoBehaviour
 {
+    public GridLayoutGroup groupBalls;
     public List<BallSlot> balls;
 
     public int indexNumberBall;
@@ -35,10 +35,14 @@ public class BallController : MonoBehaviour
     }
     public void ResetGrid()
     {
+        UIManager.instance.canRaffleBall = true;
+        int enableBalls = 0;
         for (int i = 0; i < balls.Count; i++)
         {
             balls[i].ResetBall();
+            enableBalls++;
         }
+        UpdateGrid(enableBalls);
     }
 
     public void UpdateScreenBalls(List<int> ballsRaffled)
@@ -65,20 +69,44 @@ public class BallController : MonoBehaviour
         balls[index - 1].SetEnableBallBorder();
         if (UIManager.instance.panelScriptable.winnersCount > 0)
         {
-            Invoke("DisableAllBallsNoDrawn",3f);
+            Invoke("DisableAllBallsNoDrawn", 4f);
         }
         else
             UIManager.instance.canRaffleBall = true;
     }
 
+    public void UpdateGrid(int _ballsDrawn)
+    {
+        if (_ballsDrawn > 50)
+        {
+            groupBalls.cellSize = new Vector2(250, 250);
+            groupBalls.spacing = new Vector2(120, 80);
+        }
+        else if (_ballsDrawn > 40 && _ballsDrawn <= 50)
+        {
+            groupBalls.cellSize = new Vector2(270, 270);
+            groupBalls.spacing = new Vector2(100, 80);
+        }
+        else if (_ballsDrawn <= 40)
+        {
+            groupBalls.cellSize = new Vector2(300, 300);
+            groupBalls.spacing = new Vector2(80, 80);
+        }
+    }
     public void DisableAllBallsNoDrawn()
     {
+        int enableBalls = 0;
         foreach (var item in balls)
         {
             if (!item.hasRaffled)
             {
                 item.SetDisableBall();
             }
+            else
+            {
+                enableBalls++;
+            }
         }
+        UpdateGrid(enableBalls);
     }
 }
