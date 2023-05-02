@@ -51,7 +51,7 @@ public class BallSlot : MonoBehaviour
     }
     public void ResetBall()
     {
-        canvasGroup.alpha = 1;
+        gameObject.SetActive(true);
         hasRaffled = false;
         isFinishRaffle = false;
         isActive = false;
@@ -63,15 +63,13 @@ public class BallSlot : MonoBehaviour
     public void SetEnableBall()
     {
         imageBall.enabled = true;
-        canvasGroup.alpha = 1;
+        gameObject.SetActive(true);
 
         ChangeColorBgLine();
     }
     public void SetDisableBall()
     {
-        imageBall.enabled = true;
-        imageBall.color = new Color(1, 1, 1, 0.3f);
-        canvasGroup.DOFade(0, 1f);
+        gameObject.SetActive(false);
     }
     public void SetEnableBallBorder()
     {
