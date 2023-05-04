@@ -70,7 +70,6 @@ public class GlobeController : MonoBehaviour
         GameManager.instance.globeScriptable.description = _description;
         GameManager.instance.globeScriptable.value = _value;
     }
-
     public void PermissionCallNewBallBall()
     {
         canRafleeBall = true;
@@ -89,7 +88,6 @@ public class GlobeController : MonoBehaviour
         {
             ballController.SetRevokedBall(_ballsRaffled);
             UpdateInfosScreen(_ballsRaffled.Length, _forOneBall);
-
         }
 
         if (_forOneBall > 0)
@@ -107,7 +105,6 @@ public class GlobeController : MonoBehaviour
 
         GameManager.instance.globeScriptable.ballRaffledCount = _ballsRaffled.Length;
         GameManager.instance.globeScriptable.possiblesWinnersCount = _forOneBall;
-
     }
     public void VerifyBalls()
     {
@@ -138,7 +135,6 @@ public class GlobeController : MonoBehaviour
                 AudioManager.instance.StopSFX("Heart");
                 isPlayWinnerSound = true;
             }
-
         }
     }
     public void SetUpdateInfoScreen()
@@ -153,20 +149,13 @@ public class GlobeController : MonoBehaviour
     }
     #region SEND MESSAGES
 
-   
-
-
     private void FixedUpdate()
     {
         if (timeToSpawn > 0)
         {
             timeToSpawn -= Time.deltaTime;
         }
-
-
-
     }
     #endregion
-
 }
 

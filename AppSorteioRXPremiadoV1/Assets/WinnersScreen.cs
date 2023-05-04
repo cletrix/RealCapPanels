@@ -45,7 +45,6 @@ public class WinnersScreen : MonoBehaviour
     }
     public void SetWinnersScreenVisibility(bool isActive, float timeAnim=1f)
     {
-
         if (isActive)
         {
             canvasGroup.DOFade(1, timeAnim).OnComplete(() =>
@@ -53,6 +52,8 @@ public class WinnersScreen : MonoBehaviour
                 winnersPanel.transform.DOScale(1, 1f);
                 UiGlobeManager uiGlobeManager = FindObjectOfType<UiGlobeManager>();
                 uiGlobeManager.ActiveConfets();
+                AudioManager.instance.PlaySFX("Clap");
+
             });
         }
         else

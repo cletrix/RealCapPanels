@@ -12,51 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7778f46e0283c8458b1ea9689352121, type: 3}
   m_Name: GlobeRaffleSettings
   m_EditorClassIdentifier: 
-  bolasSorteadas:
-  - 4
-  - 6
-  - 13
-  - 17
-  - 18
-  - 20
-  - 21
-  - 23
-  - 24
-  - 25
-  - 34
-  - 38
-  - 39
-  - 46
-  - 48
-  - 50
-  - 53
-  - 58
-  - 59
-  - 60
+  bolasSorteadas: []
   porDuasBolas: 0
   porUmaBolas: []
-  valorPremio: 2500
-  ganhadorContemplado:
-  - nome: 
-    cpf: 
-    dataNascimento: 
-    telefone: 
-    email: 
-    endereco: 
-    numero: 
-    complemento: 
-    bairro: 
-    municipio: 
-    cep: 
-    estado: 
-    dataSorteio: 
-    valor: 0
-    PDV: 
-    bairoPDV: 
-    dataCompra: 
-    horaCompra: 
-    numeroTitulo: 
-    chance: 
-    numeroCartela: 
-    numeroSorte: 
-  ticketListVisible: 00
+  valorPremio: 0
+  ganhadorContemplado: []
+  ticketListVisible: 

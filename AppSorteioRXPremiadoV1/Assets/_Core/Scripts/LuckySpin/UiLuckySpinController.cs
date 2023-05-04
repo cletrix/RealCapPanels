@@ -18,9 +18,9 @@ public class UiLuckySpinController : MonoBehaviour
         txtRoundRaffle.text = $"{_roundID}° SORTEIO";
     }
 
-    public void PopulateSpinInfos(float _value, string _edition)
+    public void PopulateSpinInfos(float _value, string _description , string _edition)
     {
-        txtLiquidPrize.text = GameManager.instance.FormatMoneyInfo(_value, 2);
+        txtLiquidPrize.text = _description;   //GameManager.instance.FormatMoneyInfo(_value, 2);
         txtEdition.text = $"EDIÇÃO N° {_edition}";
     }
 

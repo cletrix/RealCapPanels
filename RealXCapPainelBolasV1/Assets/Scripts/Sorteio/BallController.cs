@@ -33,21 +33,19 @@ public class BallController : MonoBehaviour
             }
         }
     }
-    public void ResetGrid()
+    public void ResetBalls()
     {
         UIManager.instance.canRaffleBall = true;
-        int enableBalls = 0;
         for (int i = 0; i < balls.Count; i++)
         {
             balls[i].ResetBall();
-            enableBalls++;
         }
-        UpdateGrid(enableBalls);
+        ResetGrid();
     }
 
     public void UpdateScreenBalls(List<int> ballsRaffled)
     {
-        ResetGrid();
+        ResetBalls();
         UIManager.instance.panelScriptable.indexBalls--;
         for (int i = 0; i < ballsRaffled.Count; i++)
         {
@@ -77,21 +75,21 @@ public class BallController : MonoBehaviour
 
     public void UpdateGrid(int _ballsDrawn)
     {
-        if (_ballsDrawn > 50)
+        if (_ballsDrawn > 40 )
         {
-            groupBalls.cellSize = new Vector2(250, 250);
-            groupBalls.spacing = new Vector2(120, 80);
+            groupBalls.cellSize = new Vector2(300, 300);
+            groupBalls.spacing = new Vector2(60, 50);
         }
-        else if (_ballsDrawn > 40 && _ballsDrawn <= 50)
-        {
-            groupBalls.cellSize = new Vector2(270, 270);
-            groupBalls.spacing = new Vector2(100, 80);
-        }
-        else if (_ballsDrawn <= 40)
+        else if (_ballsDrawn <= 40 )
         {
             groupBalls.cellSize = new Vector2(300, 300);
             groupBalls.spacing = new Vector2(80, 80);
         }
+    }
+    public void ResetGrid()
+    {
+        groupBalls.cellSize = new Vector2(250, 250);
+        groupBalls.spacing = new Vector2(120, 80);
     }
     public void DisableAllBallsNoDrawn()
     {

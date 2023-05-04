@@ -118,7 +118,7 @@ public class LuckySpinController : MonoBehaviour
     {
         GameManager.instance.luckySpinScriptable.prizeValue = _value;
         GameManager.instance.luckySpinScriptable.prizeDescription = _description;
-        uiLuckySpinController.PopulateSpinInfos(_value, _edition);
+        uiLuckySpinController.PopulateSpinInfos(_value, _description, _edition);
     }
     public void SetRoundIDSpin(int _roundNumber)
     {

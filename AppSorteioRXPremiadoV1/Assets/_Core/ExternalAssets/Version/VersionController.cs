@@ -5,6 +5,7 @@ using TMPro;
 public class VersionController : MonoBehaviour
 {
     public string version = "Versão : 12/04/2023 - 0.0.1";
+    public float timeToHide = 20;
 
     [SerializeField] private TextMeshProUGUI txtVersion;
     // Start is called before the first frame update
@@ -16,7 +17,9 @@ public class VersionController : MonoBehaviour
     void Start()
     {
         txtVersion.text = version;
+        Invoke("SetVisibilityVersion", timeToHide);
     }
+
 
     private void SetVisibilityVersion()
     {
