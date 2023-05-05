@@ -4223,7 +4223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8569965260248966666, guid: 87dee21a8f3e4bd4b9d722e920f2baf0, type: 3}
       propertyPath: version
-      value: "Vers\xE3o : 10/05/2023 - 0.0.3"
+      value: "Vers\xE3o : 10/05/2023 - 1.0.4"
       objectReference: {fileID: 0}
     - target: {fileID: 8569965260248966667, guid: 87dee21a8f3e4bd4b9d722e920f2baf0, type: 3}
       propertyPath: m_Name
@@ -5717,7 +5717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8551582041316902805, guid: d400b74712f1b4842a336930c55a9c55, type: 3}
       propertyPath: isTest
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8551582041316902805, guid: d400b74712f1b4842a336930c55a9c55, type: 3}
       propertyPath: baseTest
@@ -5725,7 +5725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8551582041316902805, guid: d400b74712f1b4842a336930c55a9c55, type: 3}
       propertyPath: baseUrl1
-      value: http://192.168.0.2:43212/
+      value: http://192.168.20.31:43212/
       objectReference: {fileID: 0}
     - target: {fileID: 8551582041316902805, guid: d400b74712f1b4842a336930c55a9c55, type: 3}
       propertyPath: baseUrl2

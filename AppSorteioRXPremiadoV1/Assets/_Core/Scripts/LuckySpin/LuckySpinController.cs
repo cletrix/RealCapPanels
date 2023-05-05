@@ -109,9 +109,9 @@ public class LuckySpinController : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         ActiveWinners();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         AudioManager.instance.PlaySFX("Clap");
-        AudioManager.instance.PlaySFX("Winner");
+        //AudioManager.instance.PlaySFX("Winner");
     }
 
     public void SetPopulateSpinInfos(float _value, string _edition, string _description)
