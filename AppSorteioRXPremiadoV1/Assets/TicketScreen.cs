@@ -106,7 +106,7 @@ public class TicketScreen : MonoBehaviour
         {
             SetBgBlackVisibility(true);
 
-            WinnersScreen.instance.SetWinnersScreenVisibility(false);
+            
             bgTicket.transform.DOLocalMoveY(-250, timeAnim);
             bgSuperior.transform.DOLocalMoveY(250, timeAnim);
         }

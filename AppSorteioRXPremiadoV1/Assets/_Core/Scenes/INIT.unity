@@ -1281,6 +1281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TicketScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8742465533621270198, guid: 9f08c054f8ebba74094157e9be38174e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8742465533621270199, guid: 9f08c054f8ebba74094157e9be38174e,
         type: 3}
       propertyPath: m_Pivot.x

@@ -98,7 +98,10 @@ public class GameManager : MonoBehaviour
             }
             yield return new WaitForSeconds(0.5f);
             sceneIndex = SceneManager.GetActiveScene().buildIndex;
-
+            if (sceneIndex == 3 && WinnersScreen.instance.GetAlphaValue() >= 0.9f)
+            {
+                WinnersScreen.instance.SetWinnersScreenVisibility(false);
+            }
 
 
             SendMessageToServerConfirmChange(true, sceneIndex);

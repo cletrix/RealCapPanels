@@ -37,6 +37,10 @@ public class WinnersScreen : MonoBehaviour
         InitializeVariables();
     }
 
+    public float GetAlphaValue()
+    {
+        return canvasGroup.alpha;
+    }
     private void InitializeVariables()
     {
         canvasGroup.alpha = 0;

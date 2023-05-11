@@ -12,9 +12,214 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7778f46e0283c8458b1ea9689352121, type: 3}
   m_Name: GlobeRaffleSettings
   m_EditorClassIdentifier: 
-  bolasSorteadas: []
-  porDuasBolas: 0
-  porUmaBolas: []
-  valorPremio: 0
-  ganhadorContemplado: []
-  ticketListVisible: 
+  bolasSorteadas:
+  - 4
+  - 17
+  - 30
+  - 31
+  - 20
+  - 9
+  - 22
+  - 35
+  - 46
+  - 59
+  - 48
+  - 36
+  - 12
+  - 11
+  - 33
+  - 45
+  - 57
+  - 56
+  - 43
+  - 54
+  - 41
+  - 28
+  - 15
+  - 26
+  - 6
+  - 7
+  - 32
+  - 39
+  - 52
+  - 50
+  - 37
+  - 13
+  - 2
+  - 23
+  - 47
+  - 18
+  - 42
+  - 53
+  - 27
+  - 38
+  - 51
+  - 49
+  - 25
+  - 1
+  - 40
+  - 14
+  - 10
+  - 58
+  - 21
+  porDuasBolas: 69
+  porUmaBolas:
+  - numeroTitulo: 0199610
+    numeroChance: "1\xB0 Chance"
+    numeroBola: 29
+  - numeroTitulo: 0134393
+    numeroChance: "1\xB0 Chance"
+    numeroBola: 29
+  - numeroTitulo: 0156524
+    numeroChance: "1\xB0 Chance"
+    numeroBola: 29
+  - numeroTitulo: 0038010
+    numeroChance: "1\xB0 Chance"
+    numeroBola: 16
+  - numeroTitulo: 0074479
+    numeroChance: "1\xB0 Chance"
+    numeroBola: 44
+  - numeroTitulo: 0138850
+    numeroChance: "1\xB0 Chance"
+    numeroBola: 44
+  - numeroTitulo: 0052261
+    numeroChance: "1\xB0 Chance"
+    numeroBola: 44
+  - numeroTitulo: 0164950
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 29
+  - numeroTitulo: 0017168
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 5
+  - numeroTitulo: 0077304
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 44
+  - numeroTitulo: 0132225
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 29
+  - numeroTitulo: 0053667
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 44
+  - numeroTitulo: 0156524
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 29
+  - numeroTitulo: 0167826
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 3
+  - numeroTitulo: 0073676
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 8
+  - numeroTitulo: 0198021
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 60
+  - numeroTitulo: 0060973
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 29
+  - numeroTitulo: 0095789
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 8
+  - numeroTitulo: 0176395
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 19
+  - numeroTitulo: 0168160
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 29
+  - numeroTitulo: 0072376
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 34
+  - numeroTitulo: 0072482
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 60
+  - numeroTitulo: 0046845
+    numeroChance: "2\xB0 Chance"
+    numeroBola: 60
+  - numeroTitulo: 0193781
+    numeroChance: "3\xB0 Chance"
+    numeroBola: 3
+  - numeroTitulo: 0060220
+    numeroChance: "3\xB0 Chance"
+    numeroBola: 44
+  - numeroTitulo: 0132225
+    numeroChance: "3\xB0 Chance"
+    numeroBola: 16
+  - numeroTitulo: 0093295
+    numeroChance: "3\xB0 Chance"
+    numeroBola: 24
+  - numeroTitulo: 0184337
+    numeroChance: "3\xB0 Chance"
+    numeroBola: 5
+  - numeroTitulo: 0015512
+    numeroChance: "3\xB0 Chance"
+    numeroBola: 44
+  - numeroTitulo: 0102822
+    numeroChance: "3\xB0 Chance"
+    numeroBola: 5
+  valorPremio: 5000
+  ganhadorContemplado:
+  - nome: Daniel tomaz silva nascimento
+    cpf: 79381065500
+    dataNascimento: 1979-11-20
+    telefone: (75) 98287-7938
+    email: siilvanasimento20@hotmail.com
+    endereco: Travessa 4 de Dezembro
+    numero: nan
+    complemento: nan
+    bairro: "Pernambu\xE9s"
+    municipio: Salvador
+    cep: 41110-480
+    estado: BA
+    dataSorteio: 2023-05-10 20:00:00
+    valor: 1.5
+    PDV: nan
+    bairoPDV: nan
+    dataCompra: 18/01/2023
+    horaCompra: 21:11
+    numeroTitulo: 0187529
+    chance: Primeira Chance
+    numeroCartela: 010000000c0000000e0000000f000000110000001400000015000000160000001a0000001b0000001f00000021000000230000002700000031000000320000003300000035000000360000003b000000
+    numeroSorte: 187529
+  - nome: Daniel tomaz silva nascimento
+    cpf: 79381065500
+    dataNascimento: 1979-11-20
+    telefone: (75) 98287-7938
+    email: siilvanasimento20@hotmail.com
+    endereco: Travessa 4 de Dezembro
+    numero: nan
+    complemento: nan
+    bairro: "Pernambu\xE9s"
+    municipio: Salvador
+    cep: 41110-480
+    estado: BA
+    dataSorteio: 2023-05-10 20:00:00
+    valor: 1.5
+    PDV: nan
+    bairoPDV: nan
+    dataCompra: 18/01/2023
+    horaCompra: 21:11
+    numeroTitulo: 0179196
+    chance: Terceira Chance
+    numeroCartela: 02000000070000000b0000000f000000110000001200000015000000190000001c00000020000000240000002500000027000000280000002a0000003000000035000000380000003a0000003b000000
+    numeroSorte: 564917
+  - nome: Daniel tomaz silva nascimento
+    cpf: 79381065500
+    dataNascimento: 1979-11-20
+    telefone: (75) 98287-7938
+    email: siilvanasimento20@hotmail.com
+    endereco: Travessa 4 de Dezembro
+    numero: nan
+    complemento: nan
+    bairro: "Pernambu\xE9s"
+    municipio: Salvador
+    cep: 41110-480
+    estado: BA
+    dataSorteio: 2023-05-10 20:00:00
+    valor: 1.5
+    PDV: nan
+    bairoPDV: nan
+    dataCompra: 18/01/2023
+    horaCompra: 21:11
+    numeroTitulo: 0156524
+    chance: Terceira Chance
+    numeroCartela: 010000000200000006000000070000000a0000000b0000000c0000000d000000150000001600000017000000190000001b0000001e0000001f0000002500000029000000300000003400000035000000
+    numeroSorte: 525526
+  ticketListVisible: 010101
