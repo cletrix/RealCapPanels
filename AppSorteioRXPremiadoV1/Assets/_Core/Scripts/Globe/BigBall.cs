@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class BigBall : MonoBehaviour
 {
     public TextMeshProUGUI textNumber;
 
+    public Ease easeType;
     public Image imageBall;
     public Sprite bgBall;
     public Sprite bgBallLogo;
@@ -28,7 +27,8 @@ public class BigBall : MonoBehaviour
     {
         if (isAnim)
         {
-            animBall.SetTrigger("isShow");
+            transform.localScale = new Vector3(0, 0, 0);
+            transform.DOScale(1.5f, 0.7f).SetEase(easeType);
         }
         imageBall.sprite = bgBall;
         numberBall = _numberBall;

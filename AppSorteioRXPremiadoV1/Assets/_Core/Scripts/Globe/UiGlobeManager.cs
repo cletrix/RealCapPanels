@@ -6,6 +6,7 @@ using System;
 using DG.Tweening;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.Video;
 
 public class UiGlobeManager : MonoBehaviour
 {
@@ -34,8 +35,14 @@ public class UiGlobeManager : MonoBehaviour
     {
 
         InitializeVariables();
+        Invoke("PlayVideo", 3f);
     }
 
+    void PlayVideo()
+    {
+        VideoPlayer video = FindObjectOfType<VideoPlayer>();
+        video.Play();
+    }
     private void InitializeVariables()
     {
         globeController = FindObjectOfType<GlobeController>();

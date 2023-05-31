@@ -67,7 +67,7 @@
     <Compile Include="Assets\_Core\Scripts\Global\StandyByScreen.cs" />
     <Compile Include="Assets\CromaObject.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Version\VersionController.cs" />
-    <Compile Include="Assets\_Core\ballAnimGlobeController.cs" />
+    <Compile Include="Assets\_Core\Scripts\ballAnimGlobeController.cs" />
     <Compile Include="Assets\_Core\Scripts\Lottery\LotteryController.cs" />
     <Compile Include="Assets\_Core\Scripts\Lottery\LotteryTextNumber.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Scripts\PolygonSoundSpawn.cs" />
@@ -83,6 +83,7 @@
     <Compile Include="Assets\_Core\Scripts\Global\ScriptableObjects\LuckySpinScriptable.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonProjectileScript.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\UiGlobeManager.cs" />
+    <Compile Include="Assets\_Core\Scripts\TransparentWindow.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\CoinAnimController.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\FadeController.cs" />
     <Compile Include="Assets\_Core\Scripts\LuckySpin\UiLuckySpinController.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonFireProjectile.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\GameManager.cs" />
     <Compile Include="Assets\_Core\Scripts\Global\DontDestroyOnLoad.cs" />
-    <Compile Include="Assets\_Core\ballAnimGlobe.cs" />
+    <Compile Include="Assets\_Core\Scripts\ballAnimGlobe.cs" />
     <Compile Include="Assets\_Core\ExternalAssets\Polygon Arsenal\Demo\Scripts\PolygonOrbit.cs" />
     <Compile Include="Assets\TicketScreen.cs" />
     <Compile Include="Assets\_Core\Scripts\Globe\TotalBallRaffle.cs" />

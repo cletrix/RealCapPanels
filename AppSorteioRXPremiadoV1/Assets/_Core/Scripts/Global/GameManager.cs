@@ -83,6 +83,13 @@ public class GameManager : MonoBehaviour
     {
         if (currentSceneName != sceneName)
         {
+            if (sceneName == "SceneGlobe")
+            {
+                if (Application.isMobilePlatform)
+                {
+                    sceneName += "Full";
+                }
+            }
             currentSceneName = sceneName;
             yield return new WaitForSeconds(0.8f);
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
