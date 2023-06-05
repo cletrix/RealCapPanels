@@ -114,6 +114,7 @@
     <Compile Include="Assets\_Core\Scripts\Globe\GlobeInfos.cs" />
     <Compile Include="Assets\_Core\Scripts\AudioManager\AudioManager.cs" />
     <Compile Include="Assets\_Core\Scripts\LuckySpin\NumberSlot.cs" />
+    <Compile Include="Assets\SoundBallsController.cs" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\_Core\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
