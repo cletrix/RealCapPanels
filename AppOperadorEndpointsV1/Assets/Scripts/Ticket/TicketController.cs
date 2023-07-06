@@ -60,6 +60,16 @@ public class TicketController : MonoBehaviour
         btBackTicket.onClick.AddListener(action);
     }
 
+    public void HideTicket()
+    {
+        if (GameManager.instance.isTicketVisible)
+        {
+            GameManager.instance.isTicketVisible = false;
+            SendMessageToClientHideTicket(GameManager.instance.isTicketVisible,false);
+        }
+        CheckStateVisibility();
+
+    }
     public void SetTicketVisibility()
     {
         if (GameManager.instance.isTicketVisible)
@@ -90,7 +100,6 @@ public class TicketController : MonoBehaviour
                     uIChangeRaffle.SendMessageVisibilityRaffle();
                 }
             }
-
         }
         else
         {
@@ -102,7 +111,7 @@ public class TicketController : MonoBehaviour
     }
     public void CheckStateVisibility()
     {
-        SpinController spin = FindObjectOfType<SpinController>();
+       
         if (!GameManager.instance.isBackup)
             RestNetworkManager.instance.CallGetInfoServer();
 
@@ -113,17 +122,22 @@ public class TicketController : MonoBehaviour
         else
         {
             bgTicket.SetActive(false);
-            if (spin != null)
+          
+        }
+    }
+    public void HabilityNewDrawnSpin()
+    {
+        SpinController spin = FindObjectOfType<SpinController>();
+        if (spin != null)
+        {
+            spin.ActiveButtonNewRaffleSpin();
+            if (GameManager.instance.spinScriptable.sorteioOrdem < GameManager.instance.recoveryScriptable.limit_spin)
             {
-                spin.ActiveButtonNewRaffleSpin();
-                if (GameManager.instance.spinScriptable.sorteioOrdem < GameManager.instance.recoveryScriptable.limit_spin)
+                if (spin.indexSpin == GameManager.instance.spinScriptable.sorteioOrdem)
                 {
-                    if (spin.indexSpin == GameManager.instance.spinScriptable.sorteioOrdem)
-                    {
-                        GameManager.instance.spinScriptable.sorteioOrdem = spin.indexSpin + 1;
-                        spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
-                        spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
-                    }
+                    GameManager.instance.spinScriptable.sorteioOrdem = spin.indexSpin + 1;
+                    spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
+                    spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
                 }
             }
         }
@@ -140,7 +154,7 @@ public class TicketController : MonoBehaviour
         return dateTime.ToString("dd/MM/yyyy - HH:mm");
     }
     private string HidePartCPF(string cpf)
-    {   
+    {
         cpf = Convert.ToUInt64(cpf).ToString(@"000\.000\.000\-00");
         string cpfFormated = cpf.Substring(0, 8);
         cpfFormated += "XXX-XX";
@@ -306,19 +320,15 @@ public class TicketController : MonoBehaviour
         message.AddInt(_typeRaffle);
         return message;
     }
-    public void SendMessageToClientHideTicket(bool _canShowTicket)
+    public void SendMessageToClientHideTicket(bool _canShowTicket, bool _withNextDrawn = true)
     {
-        TcpNetworkManager.instance.Server.SendToAll(GetMessageHideTicket(Message.Create(MessageSendMode.reliable, ServerToClientId.messageHideTicket), _canShowTicket));
+        TcpNetworkManager.instance.Server.SendToAll(GetMessageHideTicket(Message.Create(MessageSendMode.reliable, ServerToClientId.messageHideTicket), _canShowTicket, _withNextDrawn));
     }
-    private Message GetMessageHideTicket(Message message, bool _canShowTicket)
+    private Message GetMessageHideTicket(Message message, bool _canShowTicket,bool _withNextDrawn)
     {
         message.AddBool(_canShowTicket);
+        message.AddBool(_withNextDrawn);
         return message;
-    }
-
-    public void SendMessageToClientVisibilityPrize(bool _canShowPrize)
-    {
-        TcpNetworkManager.instance.Server.SendToAll(GetMessageHideTicket(Message.Create(MessageSendMode.reliable, ServerToClientId.messageVisibilityPrize), _canShowPrize));
     }
     #endregion
 }

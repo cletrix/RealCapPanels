@@ -345,7 +345,7 @@ PrefabInstance:
     - target: {fileID: 8569965260248966666, guid: 87dee21a8f3e4bd4b9d722e920f2baf0,
         type: 3}
       propertyPath: version
-      value: "Vers\xE3o : 10/05/2023 - 1.0.4"
+      value: "Vers\xE3o : 12/07/2023 - 1.0.6"
       objectReference: {fileID: 0}
     - target: {fileID: 8569965260248966667, guid: 87dee21a8f3e4bd4b9d722e920f2baf0,
         type: 3}
@@ -1688,7 +1688,7 @@ PrefabInstance:
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
       propertyPath: ip
-      value: 192.168.20.31
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
@@ -1708,6 +1708,11 @@ PrefabInstance:
     - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
         type: 3}
       propertyPath: isTest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295293635506248478, guid: c348909edc441124c9ceec5345b4030a,
+        type: 3}
+      propertyPath: current_mode
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

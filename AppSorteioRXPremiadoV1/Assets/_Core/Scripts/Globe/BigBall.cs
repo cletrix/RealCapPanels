@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class BigBall : MonoBehaviour
 {
+    public SoundBallsController soundBalls;
+    [Space]
     public TextMeshProUGUI textNumber;
 
     public Ease easeType;
@@ -28,7 +30,9 @@ public class BigBall : MonoBehaviour
         if (isAnim)
         {
             transform.localScale = new Vector3(0, 0, 0);
-            transform.DOScale(1.5f, 0.7f).SetEase(easeType);
+            transform.DOScale(1.5f, 0.7f).SetEase(easeType).OnComplete(() => {
+                soundBalls.PlaySoundBall(int.Parse(numberBall));
+            });
         }
         imageBall.sprite = bgBall;
         numberBall = _numberBall;

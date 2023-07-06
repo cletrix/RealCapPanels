@@ -100,13 +100,11 @@ public class TicketScreen : MonoBehaviour
             spins[i].ShowNumberNow();
         }
     }
-    public void SetTicketVisibility(bool isActive, float timeAnim = 1f)
+    public void SetTicketVisibilityForNextDraw(bool isActive, float timeAnim = 1f)
     {
         if (isActive)
         {
             SetBgBlackVisibility(true);
-
-            
             bgTicket.transform.DOLocalMoveY(-250, timeAnim);
             bgSuperior.transform.DOLocalMoveY(250, timeAnim);
         }
@@ -123,10 +121,15 @@ public class TicketScreen : MonoBehaviour
 
         }
     }
+    public void SetTicketVisibility(float timeAnim = 1f)
+    {
+        SetBgBlackVisibility(false);
+        bgTicket.transform.DOLocalMoveY(-1000, timeAnim);
+        bgSuperior.transform.DOLocalMoveY(1000, timeAnim);
+    }
 
     public void SetTicketInfos(string[] infosWinner, int[] _numbersCard, bool isCard, int typeRaffle)
     {
-
         if (isCard)
         {
             imgTicket.sprite = bgticketGlobe;
@@ -177,7 +180,6 @@ public class TicketScreen : MonoBehaviour
            infosWinner[17],
            isCard,
            typeRaffle);
-
     }
 
     public void SetLastBallGlobeRaffle(string _lastBall)
@@ -229,7 +231,7 @@ public class TicketScreen : MonoBehaviour
             groupCard.SetActive(false);
             luckyNumber.gameObject.SetActive(true);
             LuckySpinController luckySpin = FindObjectOfType<LuckySpinController>();
-            luckySpin.confets.SetActive(true);
+            luckySpin.ActiveConfets();
         }
     }
 }

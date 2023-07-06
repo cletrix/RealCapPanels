@@ -40,6 +40,7 @@ public class BallController : MonoBehaviour
         numberBall = _number;
 
         animeGlobe.SetCurrentBall(int.Parse(numberBall));
+        
         while (animeGlobe.isFinishMovement == false)
         {
             yield return null;
@@ -93,8 +94,9 @@ public class BallController : MonoBehaviour
         instance.RotateLoop(-360);
         Sequence seq = DOTween.Sequence();
         seq.Insert(0, instance.transform.DOMove(spawnerPointBallsStart[1].position, 0.3f).OnComplete(() =>
-        {
-            instance.SetSize(_delay: 0f);
+        {   
+            
+            instance.SetSize(1.8f);
             instance.transform.SetParent(parentFront);
             instance.transform.DOMove(instance.transform.position, 0.2f);
         }));
@@ -107,7 +109,6 @@ public class BallController : MonoBehaviour
             {
                 instance.RotateLoop(360);
             }
-
         }));
     }
     private void MovementOnSpawnerLoop(Ball instance)
@@ -117,7 +118,7 @@ public class BallController : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.Insert(0, instance.transform.DOMove(spawnerPointBallsStart[1].position, 0.3f).OnComplete(() =>
         {
-            instance.SetSize();
+            instance.SetSize(1.8f);
             instance.transform.SetParent(parentFront);
 
         }));

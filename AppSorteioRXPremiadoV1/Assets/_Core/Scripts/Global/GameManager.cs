@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         globeScriptable.ResetRaffle();
         WinnersScreen.instance.SetWinnersScreenVisibility(false, 0.1f);
-        TicketScreen.instance.SetTicketVisibility(false, 0.1f);
+        TicketScreen.instance.SetTicketVisibilityForNextDraw(false, 0.1f);
     }
     public void ConnectServer()
     {
@@ -85,11 +85,12 @@ public class GameManager : MonoBehaviour
         {
             if (sceneName == "SceneGlobe")
             {
-                if (Application.isMobilePlatform)
-                {
+                //if (Application.isMobilePlatform)
+                //{
+                //}
                     sceneName += "Full";
-                }
             }
+
             currentSceneName = sceneName;
             yield return new WaitForSeconds(0.8f);
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);

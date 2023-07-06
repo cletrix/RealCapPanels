@@ -31,7 +31,7 @@ public class UiManagerLoginScene : MonoBehaviour
         panelSelectEdition.SetActive(false);
         panelLogin.SetActive(true);
         btSelectBackup.onClick.AddListener(SelectBackup);
-        PopulateFieldIPAddress(RestNetworkManager.instance.baseUrl1);
+        PopulateFieldIPAddress(RestNetworkManager.instance.baseUrl);
     }
 
     private void PopulateFieldIPAddress(string url)
@@ -40,7 +40,7 @@ public class UiManagerLoginScene : MonoBehaviour
     }
     private void SetNewIPAddress()
     {
-        RestNetworkManager.instance.baseUrl1 = inputIPAddress.text;
+        RestNetworkManager.instance.baseUrl = inputIPAddress.text;
     }
     public void SelectBackup()
     {
@@ -59,7 +59,7 @@ public class UiManagerLoginScene : MonoBehaviour
     {
         SetNewIPAddress();
         btConfirm.interactable = false;
-        string url = RestNetworkManager.instance.baseUrl1 + RestNetworkManager.instance.urlLogin;
+        string url = RestNetworkManager.instance.baseUrl + RestNetworkManager.instance.urlLogin;
         StartCoroutine(GetLoginInfos(url));
     }
     private IEnumerator GetLoginInfos(string uri)

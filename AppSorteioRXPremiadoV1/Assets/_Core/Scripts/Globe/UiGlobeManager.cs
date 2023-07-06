@@ -35,7 +35,7 @@ public class UiGlobeManager : MonoBehaviour
     {
 
         InitializeVariables();
-        Invoke("PlayVideo", 3f);
+        //Invoke("PlayVideo", 3f);
     }
 
     void PlayVideo()

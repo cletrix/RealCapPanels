@@ -20,7 +20,7 @@ public enum ServerToClientId : ushort
     messageHideTicket = 14,
     messageCheckSceneActive = 15,
     messageVisibilityPrize = 16,
-    messageNextRaffleGlobe = 17
+    messageNextRaffleGlobe = 17,
 }
 public enum ClientToServerId : ushort
 {

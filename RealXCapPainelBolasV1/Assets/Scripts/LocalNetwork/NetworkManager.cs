@@ -48,8 +48,10 @@ public class NetworkManager : MonoBehaviour
             }
         }
     }
-    [SerializeField] private bool isTest;
-    [SerializeField] private string ipTest;
+    public enum MODE { LOCAL, PRODUCAO }
+
+    public MODE current_mode = MODE.LOCAL;
+    [Space]
     [SerializeField] private string ip;
     [SerializeField] private string ip2;
     [SerializeField] private ushort port;
@@ -61,9 +63,22 @@ public class NetworkManager : MonoBehaviour
     {
         Singleton = this;
 
-        if (isTest == true)
+        SetCurrentMode(current_mode);
+
+    }
+    private void SetCurrentMode(MODE _current_mode)
+    {
+        switch (_current_mode)
         {
-            ip = ipTest;
+            case MODE.LOCAL:
+                ip = "192.168.0.2";
+                break;
+            case MODE.PRODUCAO:
+                ip = "192.168.20.31";
+                ip2 = "192.168.20.32";
+                break;
+            default:
+                break;
         }
     }
     private void Start()

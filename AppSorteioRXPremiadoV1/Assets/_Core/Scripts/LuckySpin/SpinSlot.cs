@@ -29,7 +29,9 @@ public class SpinSlot : MonoBehaviour
     }
     public void HideNumber(float time=0.2f)
     {
+        print("test");
         bgTamp.transform.DOLocalMoveY(0, time);
+
     }
     private void StartPositions()
     {

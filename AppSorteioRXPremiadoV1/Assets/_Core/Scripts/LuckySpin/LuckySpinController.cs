@@ -13,6 +13,7 @@ public class LuckySpinController : MonoBehaviour
     public bool stopSlots = false;
     public bool hasStop = true;
     private bool startSpin = false;
+    private bool enableConfet = true;
     [SerializeField] private bool awaitNextRaffle = false;
     void Start()
     {
@@ -26,17 +27,22 @@ public class LuckySpinController : MonoBehaviour
         GameManager.instance.luckySpinScriptable.Reset();
         GameManager.instance.globeScriptable.ResetRaffle();
         GameManager.instance.SetCamActiveInCanvas(Camera.main);
-
     }
 
-
-
+    public void ActiveConfets()
+    {
+        if(enableConfet)
+        {
+            confets.SetActive(true);
+            enableConfet = false;
+        }
+    }
     public void SetResult(string _raffleLuckyNumber)
     {
+        enableConfet = true;
         GameManager.instance.luckySpinScriptable.currentResult = _raffleLuckyNumber;
         GameManager.instance.luckySpinScriptable.allSpinsResult.Add(GameManager.instance.luckySpinScriptable.currentResult);
 
-        // string result = string.Empty;
         for (int i = 0; i < spins.Count; i++)
         {
             spins[i].numberSlotsFinal.Clear();
@@ -94,12 +100,9 @@ public class LuckySpinController : MonoBehaviour
                 AudioManager.instance.PlaySFX("Spin");
             }
         }
-
         yield return new WaitForSeconds(1f);
         StopMovement();
     }
-
-
     public IEnumerator StopRoll()
     {
         foreach (var item in spins)

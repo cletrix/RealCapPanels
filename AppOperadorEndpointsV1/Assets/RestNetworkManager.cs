@@ -37,17 +37,19 @@ public class RestNetworkManager : MonoBehaviour
         {
             instance = this;
         }
-        if (isTest == true)
-        {
-            baseUrl1 = baseTest;
-        }
+
+        SetCurrentMode(current_mode);
         DontDestroyOnLoad(gameObject);
     }
+    
+    public enum MODE{LOCAL, REMOTO,PRODUCAO}
+
+    public MODE current_mode = MODE.LOCAL;
+    
     [Header("BASE URL")]
-    public bool isTest = false;
-    public string baseUrl1 = "http://192.168.20.31:43212/";
+    public string baseUrl;
     // path server bruno rvrgs.sytes.net:43212
-    public string baseTest = "http://192.168.0.2:43212/";
+   // public string baseTest = "http://192.168.0.2:43212/";
     public string payloadWrite = "writeMemory";
     public string payloadRead = "readMemory";
     public string payloadInfo = "info";
@@ -63,14 +65,28 @@ public class RestNetworkManager : MonoBehaviour
     public string urlSpin;
     public string urlResultSpin;
 
-
     #region REQUESTS
-
-
     private void Start()
     {
         string json = JsonUtility.ToJson(GameManager.instance.globeScriptable);
 
+    }
+    private void SetCurrentMode(MODE _current_mode)
+    {
+        switch (_current_mode)
+        {
+            case MODE.LOCAL:
+                baseUrl = "http://192.168.0.2:43212/";
+                break;
+            case MODE.REMOTO:
+                baseUrl = "http://192.168.0.2:43212/";
+                break;
+            case MODE.PRODUCAO:
+                baseUrl = "http://192.168.20.31:43212/";
+                break;
+            default:
+                break;
+        }
     }
     private void OnEnable()
     {
@@ -89,23 +105,22 @@ public class RestNetworkManager : MonoBehaviour
     {
         CallGetInfoServer();
 
-        StartCoroutine(GetLotteryInfos(baseUrl1 + urlInfoLottery));
+        StartCoroutine(GetLotteryInfos(baseUrl + urlInfoLottery));
 
-        StartCoroutine(GetGlobeInfos(baseUrl1 + urlGlobeInfos));
+        StartCoroutine(GetGlobeInfos(baseUrl + urlGlobeInfos));
 
-        StartCoroutine(GetSpinInfos(baseUrl1 + urlSpin));
+        StartCoroutine(GetSpinInfos(baseUrl + urlSpin));
 
     }
     public void CallGetInfoServer()
     {
-        StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
+        StartCoroutine(GetInfosServer(baseUrl + payloadInfo));
         if (GameManager.instance.isBackup == true)
-            StartCoroutine(GetReadMemory(baseUrl1 + payloadRead));
+            StartCoroutine(GetReadMemory(baseUrl + payloadRead));
     }
     public void CallInfosGlobe()
     {
-        StartCoroutine(GetGlobeInfos(baseUrl1 + urlGlobeInfos));
-
+        StartCoroutine(GetGlobeInfos(baseUrl + urlGlobeInfos));
     }
     private IEnumerator GetInfosServer(string uri)
     {
@@ -134,22 +149,18 @@ public class RestNetworkManager : MonoBehaviour
                         if (GameManager.instance.isBackup)
                         {
                             yield return new WaitForSeconds(1f);
-                            StartCoroutine(GetInfosServer(baseUrl1 + payloadInfo));
+                            StartCoroutine(GetInfosServer(baseUrl + payloadInfo));
                         }
                         break;
                     }
             }
-
         }
     }
-
     public void CallWriteMemory()
     {
         if (!GameManager.instance.isBackup)
-            StartCoroutine(PostWriteMemory(baseUrl1 + payloadWrite));
+            StartCoroutine(PostWriteMemory(baseUrl + payloadWrite));
     }
-
-
     //public string RemoveAccents(string text)
     //{
     //    StringBuilder sbReturn = new StringBuilder();
@@ -221,7 +232,7 @@ public class RestNetworkManager : MonoBehaviour
                         if (GameManager.instance.isBackup)
                         {
                             yield return new WaitForSeconds(1f);
-                            StartCoroutine(GetReadMemory(baseUrl1 + payloadRead));
+                            StartCoroutine(GetReadMemory(baseUrl + payloadRead));
                         }
                         break;
                     }
@@ -292,7 +303,7 @@ public class RestNetworkManager : MonoBehaviour
 
     public void SendBallsRaffledFromServer()
     {
-        StartCoroutine(PostGlobeRaffle(baseUrl1 + urlRaffleGlobe));
+        StartCoroutine(PostGlobeRaffle(baseUrl + urlRaffleGlobe));
     }
     private IEnumerator PostGlobeRaffle(string uri)
     {
@@ -381,7 +392,7 @@ public class RestNetworkManager : MonoBehaviour
     }
     public void SetPostResultSpin(int index)
     {
-        StartCoroutine(PostResultSpin(baseUrl1 + urlResultSpin, index));
+        StartCoroutine(PostResultSpin(baseUrl + urlResultSpin, index));
 
     }
     private IEnumerator PostResultSpin(string uri, int index)

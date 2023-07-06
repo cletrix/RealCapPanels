@@ -49,11 +49,15 @@ public class NetworkManager : MonoBehaviour
             }
         }
     }
-    [SerializeField] private bool isTest;
-    [SerializeField] private string ipTest;
+    public enum MODE { LOCAL, PRODUCAO }
+
+    public MODE current_mode = MODE.LOCAL;
+    [Space]
     [SerializeField] private string ip;
     [SerializeField] private string ip2;
     [SerializeField] private ushort port;
+
+   
 
     public static Client Client { get; private set; }
     public static Client Client2 { get; private set; }
@@ -69,13 +73,24 @@ public class NetworkManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(_instance);
         }
-
-        if (isTest == true)
-        {
-            ip = ipTest;
-        }
+        SetCurrentMode(current_mode);
     }
 
+    private void SetCurrentMode(MODE _current_mode)
+    {
+        switch (_current_mode)
+        {
+            case MODE.LOCAL:
+                ip = "192.168.0.2";
+                break;
+            case MODE.PRODUCAO:
+                ip = "192.168.20.31";
+                ip2 = "192.168.20.32";
+                break;
+            default:
+                break;
+        }
+    }
     private void Start()
     {
         RiptideLogger.Initialize(Debug.Log, Debug.Log, Debug.LogWarning, Debug.LogError, false);
@@ -301,7 +316,7 @@ public class NetworkManager : MonoBehaviour
         int typeRaffle = message.GetInt();
         print("TICKET VISIBLE" + isTicketVisibility);
 
-        ticketScreen.SetTicketVisibility(isTicketVisibility);
+        ticketScreen.SetTicketVisibilityForNextDraw(isTicketVisibility);
         ticketScreen.SetTicketInfos(ticketInfos, numberCards, iscard, typeRaffle);
 
     }
@@ -311,7 +326,12 @@ public class NetworkManager : MonoBehaviour
         TicketScreen ticketScreen = FindObjectOfType<TicketScreen>();
 
         bool isTicketVisibility = message.GetBool();
-        ticketScreen.SetTicketVisibility(isTicketVisibility);
+        bool withNextDrawn = message.GetBool();
+        //print(withNextDrawn);
+        //if (withNextDrawn == true)
+        //    ticketScreen.SetTicketVisibilityForNextDraw(isTicketVisibility);
+        //else
+            ticketScreen.SetTicketVisibility();
     }
 
     [MessageHandler((ushort)ServerToClientId.messageVisibilityPrize)]
