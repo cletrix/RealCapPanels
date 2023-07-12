@@ -108,10 +108,8 @@ public class GameManager : MonoBehaviour
             sceneIndex = SceneManager.GetActiveScene().buildIndex;
             if (sceneIndex == 3 && WinnersScreen.instance.GetAlphaValue() >= 0.9f)
             {
-                WinnersScreen.instance.SetWinnersScreenVisibility(false);
+                WinnersScreen.instance.SetWinnersScreenVisibility(false,0.1f);
             }
-
-
             SendMessageToServerConfirmChange(true, sceneIndex);
         }
     }

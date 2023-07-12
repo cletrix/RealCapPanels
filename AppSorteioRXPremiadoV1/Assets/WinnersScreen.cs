@@ -31,7 +31,6 @@ public class WinnersScreen : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
     void Start()
     {
         InitializeVariables();

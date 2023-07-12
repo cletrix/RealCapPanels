@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7778f46e0283c8458b1ea9689352121, type: 3}
-  m_Name: GlobeRaffleSettings
+  m_Name: 
   m_EditorClassIdentifier: 
   bolasSorteadas: []
   porDuasBolas: 0

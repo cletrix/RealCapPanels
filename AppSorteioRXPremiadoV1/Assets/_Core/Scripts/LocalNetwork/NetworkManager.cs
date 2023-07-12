@@ -81,7 +81,7 @@ public class NetworkManager : MonoBehaviour
         switch (_current_mode)
         {
             case MODE.LOCAL:
-                ip = "192.168.0.2";
+                ip = "192.168.0.4";
                 break;
             case MODE.PRODUCAO:
                 ip = "192.168.20.31";
@@ -236,9 +236,8 @@ public class NetworkManager : MonoBehaviour
         int order = message.GetInt();
         string description = message.GetString();
         float value = message.GetFloat();
-        print("test");
         UiGlobeManager uiRaffleManager = FindObjectOfType<UiGlobeManager>();
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().name == "SceneGlobeFull")
             uiRaffleManager.SetPopulateInfosGlobe(editionName, editionNumber, date, order, description, value);
     }
 

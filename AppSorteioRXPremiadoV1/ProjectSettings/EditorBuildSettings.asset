@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/_Core/Scenes/SceneGlobe.unity
     guid: 1d26e77705f1edc40bce2418c2fe199a
   - enabled: 1
-    path: Assets/_Core/Scenes/SceneSpin.unity
-    guid: b4ebc02b920b0e54593facb1afa869ff
-  - enabled: 1
     path: Assets/_Core/Scenes/SceneGlobeFull.unity
     guid: 4c8f4db981ab3404bb68e21ee6d10f61
+  - enabled: 1
+    path: Assets/_Core/Scenes/SceneSpin.unity
+    guid: b4ebc02b920b0e54593facb1afa869ff
   m_configObjects: {}

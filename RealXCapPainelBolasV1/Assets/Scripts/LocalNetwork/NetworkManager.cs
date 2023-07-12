@@ -71,7 +71,7 @@ public class NetworkManager : MonoBehaviour
         switch (_current_mode)
         {
             case MODE.LOCAL:
-                ip = "192.168.0.2";
+                ip = "192.168.0.4";
                 break;
             case MODE.PRODUCAO:
                 ip = "192.168.20.31";

@@ -10,6 +10,7 @@ public class LuckySpinScriptable : ScriptableObject
     public string currentResult;
     public string prizeDescription;
     public float prizeValue;
+    public string editionID;
     public List<string> allSpinsResult;
 
 

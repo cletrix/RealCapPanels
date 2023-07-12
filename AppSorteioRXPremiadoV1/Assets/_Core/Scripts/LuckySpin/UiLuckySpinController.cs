@@ -12,7 +12,6 @@ public class UiLuckySpinController : MonoBehaviour
     public TextMeshProUGUI txtDateRaffle;
     public TextMeshProUGUI txtEdition;
 
-
     public void SetRoundIDLuckySpin(int _roundID)
     {
         txtRoundRaffle.text = $"{_roundID}° SORTEIO";
@@ -21,13 +20,15 @@ public class UiLuckySpinController : MonoBehaviour
     public void PopulateSpinInfos(float _value, string _description , string _edition)
     {
         txtLiquidPrize.text = _description;   //GameManager.instance.FormatMoneyInfo(_value, 2);
-        txtEdition.text = $"EDIÇÃO N° {_edition}";
+       
     }
 
     private void FixedUpdate()
     {
         DateTime theTime = DateTime.Now;
         txtDateRaffle.text = theTime.ToString(("dd/MM/yyyy - HH:mm:ss"));
+        txtLiquidPrize.text = GameManager.instance.luckySpinScriptable.prizeDescription;
+        txtEdition.text = $"EDIÇÃO N° {GameManager.instance.luckySpinScriptable.editionID}";
     }
 
 }

@@ -27,7 +27,5 @@ public class GlobeScriptable : ScriptableObject
         numberBalls.Clear();
         indexBalls = 0;
     }
-
-
 }
 

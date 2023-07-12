@@ -76,10 +76,10 @@ public class RestNetworkManager : MonoBehaviour
         switch (_current_mode)
         {
             case MODE.LOCAL:
-                baseUrl = "http://192.168.0.2:43212/";
+                baseUrl = "http://192.168.0.4:43212/";
                 break;
             case MODE.REMOTO:
-                baseUrl = "http://192.168.0.2:43212/";
+                baseUrl = "http://192.168.0.4:43212/";
                 break;
             case MODE.PRODUCAO:
                 baseUrl = "http://192.168.20.31:43212/";
