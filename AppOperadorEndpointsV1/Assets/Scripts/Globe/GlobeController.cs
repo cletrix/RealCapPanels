@@ -13,15 +13,15 @@ public class GlobeController : MonoBehaviour
     [SerializeField] private TicketController ticketController;
     [SerializeField] public Button btTicketVisibility;
     [Header("GRID BALLS")]
-    [SerializeField] private List<Ball> balls;
+    [SerializeField] private List<SelectBall> balls;
     [SerializeField] private GameObject panelGridBalls;
     [SerializeField] private int indexBallSelected;
 
     [Header("GRID RAFFLED BALLS")]
-    [SerializeField] private Ball[] ballsRaffled;
-    [SerializeField] private Ball ballRaffledPrefab;
+    [SerializeField] private SelectBall[] ballsRaffled;
+    [SerializeField] private SelectBall ballRaffledPrefab;
     [SerializeField] private GameObject panelGridBallsRaffled;
-    [SerializeField] private Ball lastBallRaffled;
+    [SerializeField] private SelectBall lastBallRaffled;
     [SerializeField] private List<int> indexBalls;
 
 
@@ -53,8 +53,8 @@ public class GlobeController : MonoBehaviour
 
     private void InitializeVariables()
     {
-        balls = new List<Ball>();
-        balls.AddRange(panelGridBalls.GetComponentsInChildren<Ball>());
+        balls = new List<SelectBall>();
+        balls.AddRange(panelGridBalls.GetComponentsInChildren<SelectBall>());
         ticketController = FindObjectOfType<TicketController>();
         PopulateBalls();
         btNextRaffle.interactable = false;
@@ -238,10 +238,10 @@ public class GlobeController : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
-        ballsRaffled = new Ball[_balls.Count];
+        ballsRaffled = new SelectBall[_balls.Count];
         for (int i = 0; i < _balls.Count; i++)
         {
-            Ball inst = Instantiate(ballRaffledPrefab, transform.position, Quaternion.identity);
+            SelectBall inst = Instantiate(ballRaffledPrefab, transform.position, Quaternion.identity);
             inst.transform.SetParent(panelGridBallsRaffled.transform);
             inst.SetNumberInText(_balls[i]);
             inst.transform.localScale = new Vector3(1, 1, 1);

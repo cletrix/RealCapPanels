@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class Ball : MonoBehaviour
+public class SelectBall : MonoBehaviour
 {
     [Header("UI COMPONENTS")]
     [SerializeField] private int numberBall;
