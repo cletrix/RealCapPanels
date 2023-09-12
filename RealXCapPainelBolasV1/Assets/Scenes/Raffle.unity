@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94c7bdebba57204894258ae163b1a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current_mode: 0
+  current_mode: 1
   ip: 192.168.20.31
   ip2: 192.168.20.32
   port: 50000
@@ -607,6 +607,16 @@ PrefabInstance:
     - target: {fileID: 1749019566904585053, guid: d44440d98bf8f464eb4afa601e16e86a,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749019566904585120, guid: d44440d98bf8f464eb4afa601e16e86a,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1120666850}
+    - target: {fileID: 1749019566904585120, guid: d44440d98bf8f464eb4afa601e16e86a,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1749019566904585121, guid: d44440d98bf8f464eb4afa601e16e86a,
@@ -1239,7 +1249,7 @@ PrefabInstance:
     - target: {fileID: 8569965260248966666, guid: 87dee21a8f3e4bd4b9d722e920f2baf0,
         type: 3}
       propertyPath: version
-      value: "Vers\xE3o : 12/07/2023 - 1.0.6"
+      value: "Vers\xE3o : 13/09/2023 - 1.0.7"
       objectReference: {fileID: 0}
     - target: {fileID: 8569965260248966667, guid: 87dee21a8f3e4bd4b9d722e920f2baf0,
         type: 3}
@@ -1350,6 +1360,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569965260248966671, guid: 87dee21a8f3e4bd4b9d722e920f2baf0,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1120666850}
+    - target: {fileID: 8569965260248966671, guid: 87dee21a8f3e4bd4b9d722e920f2baf0,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87dee21a8f3e4bd4b9d722e920f2baf0, type: 3}

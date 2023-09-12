@@ -12,7 +12,6 @@ public class BigBall : MonoBehaviour
     public Image imageBall;
     public Sprite bgBall;
     public Sprite bgBallLogo;
-    public Animator animBall;
     public string numberBall;
     public GameObject trackBall;
 
@@ -30,7 +29,7 @@ public class BigBall : MonoBehaviour
         if (isAnim)
         {
             transform.localScale = new Vector3(0, 0, 0);
-            transform.DOScale(1.5f, 0.7f).SetEase(easeType).OnComplete(() => {
+            transform.DOScale(1.2f, 0.7f).SetEase(easeType).OnComplete(() => {
                 soundBalls.PlaySoundBall(int.Parse(numberBall));
             });
         }

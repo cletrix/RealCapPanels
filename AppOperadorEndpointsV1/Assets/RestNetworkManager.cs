@@ -412,7 +412,7 @@ public class RestNetworkManager : MonoBehaviour
 
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
-
+            SpinController spinController = FindObjectOfType<SpinController>();
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
@@ -421,12 +421,13 @@ public class RestNetworkManager : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.ProtocolError:
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                    spinController.btGenerateLuckyNumber.interactable = true;
                     break;
                 case UnityWebRequest.Result.Success:
                     Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     string jsonResponse = webRequest.downloadHandler.text;
                     JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.spinResultScriptable);
-                    SpinController spinController = FindObjectOfType<SpinController>();
+                    
                     spinController.ShowNumberLuckySpin();
                     break;
 

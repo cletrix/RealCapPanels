@@ -304,7 +304,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e84b5392e218fec4f8159f5c088bc407, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ac65d9dd0302534a9c1848538889c95, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prizeImages:
-  - {fileID: 21300000, guid: e84b5392e218fec4f8159f5c088bc407, type: 3}
+  - {fileID: 21300000, guid: 2ac65d9dd0302534a9c1848538889c95, type: 3}
   prizeImage: {fileID: 4810182240491168947}
 --- !u!1 &1897304442798402786
 GameObject:
@@ -505,8 +505,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: -60}
+  m_AnchoredPosition: {x: 0, y: -5}
+  m_SizeDelta: {x: -100, y: -110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4992394711852779229
 CanvasRenderer:
@@ -614,8 +614,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "1\xB0 SORTEIO"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c5558542944b8ed479a43fb9f58e3937, type: 2}
-  m_sharedMaterial: {fileID: 5482523598328024403, guid: c5558542944b8ed479a43fb9f58e3937,
+  m_fontAsset: {fileID: 11400000, guid: 5c90d9a620f670a498117d277ae94426, type: 2}
+  m_sharedMaterial: {fileID: -1467718647515929497, guid: 5c90d9a620f670a498117d277ae94426,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1288,7 +1288,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 230}
+  m_SizeDelta: {x: 400, y: 250}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &6107891524618288361
 CanvasRenderer:

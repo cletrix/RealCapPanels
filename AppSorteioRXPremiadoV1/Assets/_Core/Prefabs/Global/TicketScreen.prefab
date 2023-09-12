@@ -4676,8 +4676,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "1\xB0 SORTEIO"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2f10b8adcfd075042bb61ec05a040b82, type: 2}
-  m_sharedMaterial: {fileID: 5302009204636872595, guid: 2f10b8adcfd075042bb61ec05a040b82,
+  m_fontAsset: {fileID: 11400000, guid: 5c90d9a620f670a498117d277ae94426, type: 2}
+  m_sharedMaterial: {fileID: -1467718647515929497, guid: 5c90d9a620f670a498117d277ae94426,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
