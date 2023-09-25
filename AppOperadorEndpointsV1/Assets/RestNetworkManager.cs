@@ -144,8 +144,8 @@ public class RestNetworkManager : MonoBehaviour
                     {
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string json = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoveryScriptable);
-                        GameManager.instance.recoveryScriptable.UpdateInfos();
+                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoveryData);
+                        GameManager.instance.recoveryData.UpdateInfosGlobe();
                         if (GameManager.instance.isBackup)
                         {
                             yield return new WaitForSeconds(1f);
@@ -174,7 +174,7 @@ public class RestNetworkManager : MonoBehaviour
     //}
     private IEnumerator PostWriteMemory(string uri)
     {
-        string json = JsonUtility.ToJson(GameManager.instance.technicalScriptable);
+        string json = JsonUtility.ToJson(GameManager.instance.OperatorData);
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
         {
             byte[] jsonToSend = Encoding.UTF8.GetBytes(json);
@@ -227,8 +227,8 @@ public class RestNetworkManager : MonoBehaviour
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         byte[] bytesResponse = webRequest.downloadHandler.data;
                         string response = Encoding.UTF8.GetString(bytesResponse);
-                        JsonUtility.FromJsonOverwrite(response, GameManager.instance.technicalScriptable);
-                        GameManager.instance.technicalScriptable.PopulateConfig();
+                        JsonUtility.FromJsonOverwrite(response, GameManager.instance.OperatorData);
+                        GameManager.instance.OperatorData.PopulateConfig();
                         if (GameManager.instance.isBackup)
                         {
                             yield return new WaitForSeconds(1f);

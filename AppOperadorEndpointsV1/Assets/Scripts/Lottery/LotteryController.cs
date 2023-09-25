@@ -174,7 +174,7 @@ public class LotteryController : MonoBehaviour
             GameManager.instance.lotteryResultScriptable.ganhadorContemplado.municipio,
             GameManager.instance.lotteryResultScriptable.ganhadorContemplado.estado,
             GameManager.instance.lotteryResultScriptable.ganhadorContemplado.dataSorteio,
-            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+            GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
             GameManager.instance.lotteryResultScriptable.ganhadorContemplado.valor,
             GameManager.instance.lotteryResultScriptable.ganhadorContemplado.PDV,
             GameManager.instance.lotteryResultScriptable.ganhadorContemplado.bairoPDV,

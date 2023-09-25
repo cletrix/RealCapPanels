@@ -25,10 +25,10 @@ public class GameManager : MonoBehaviour
     }
     public static event Action OnPopulateRaffles;
 
-    public RecoveryScriptable recoveryScriptable;
+    public Resoucers.RecoveryData recoveryData;
     [Space]
-    public EditionInfosScriptable editionScriptable;
-    public TechnicalScriptable technicalScriptable;
+    public Resoucers.EditionData editonData;
+    public Resoucers.OperatorData OperatorData;
     [Space]
     public LotteryScriptable lotteryScriptable;
     public LotteryResultScriptable lotteryResultScriptable;
@@ -56,8 +56,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         globeDraw.ResetInfos();
-        technicalScriptable.ResetInfos();
-        recoveryScriptable.ResetInfos();
+        OperatorData.ResetInfos();
+        recoveryData.ResetInfos();
     }
     public void RecoveryGlobeScreen()
     {
@@ -82,17 +82,17 @@ public class GameManager : MonoBehaviour
         if (uIChangeRaffleType != null)
         {
             uIChangeRaffleType.CheckStateVisibilityRaffle();
-            uIChangeRaffleType.SelectPanelForActivate(technicalScriptable.panelActive);
+            uIChangeRaffleType.SelectPanelForActivate(OperatorData.panelActive);
         }
     }
     public void RecoverySpinScreen()
     {
         SpinController spinController = FindObjectOfType<SpinController>();
         TicketController ticket = FindObjectOfType<TicketController>();
-        if (spinController != null && technicalScriptable.spinNumbers.Count > 0)
+        if (spinController != null && OperatorData.spinNumbers.Count > 0)
         {
-            spinController.ShowSpinOrder(technicalScriptable.spinIndex);
-            spinController.PopulateSpinsFields(technicalScriptable.spinNumbers);
+            spinController.ShowSpinOrder(OperatorData.spinIndex);
+            spinController.PopulateSpinsFields(OperatorData.spinNumbers);
             spinController.PopulateTicketSpin();
             ticket.CheckStateVisibility();
         }
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         if (uIChangeRaffleType != null)
         {
             uIChangeRaffleType.CheckStateVisibilityRaffle();
-            uIChangeRaffleType.SelectPanelForActivate(technicalScriptable.panelActive);
+            uIChangeRaffleType.SelectPanelForActivate(OperatorData.panelActive);
         }
     }
     public void LoadSceneGame(string map)
@@ -231,7 +231,7 @@ public class GameManager : MonoBehaviour
     {
         if (!instance.isBackup)
         {
-            technicalScriptable.UpdateConfig(sceneId, globeScriptable.GetGlobeOrder(), isVisibleRaffle, globeDraw.porDuasBolas, globeDraw.porUmaBolas
+            OperatorData.UpdateConfig(sceneId, globeScriptable.GetGlobeOrder(), isVisibleRaffle, globeDraw.porDuasBolas, globeDraw.porUmaBolas
                 , globeDraw.ganhadorContemplado.ToList(),
                 globeDraw.ticketListVisible.ToList(),
                ticketWinnerIndex, instance.isTicketVisible);

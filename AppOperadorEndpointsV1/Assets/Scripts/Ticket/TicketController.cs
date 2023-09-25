@@ -91,7 +91,7 @@ public class TicketController : MonoBehaviour
                     uIChangeRaffle.SendMessageVisibilityRaffle();
                 }
             }
-            if (GameManager.instance.spinScriptable.sorteioOrdem >= GameManager.instance.recoveryScriptable.limit_spin)
+            if (GameManager.instance.spinScriptable.sorteioOrdem >= GameManager.instance.recoveryData.limit_spin)
             {
                 UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
                 if (uIChangeRaffle.panelRaffleSpin.activeSelf == true)
@@ -131,7 +131,7 @@ public class TicketController : MonoBehaviour
         if (spin != null)
         {
             spin.ActiveButtonNewRaffleSpin();
-            if (GameManager.instance.spinScriptable.sorteioOrdem < GameManager.instance.recoveryScriptable.limit_spin)
+            if (GameManager.instance.spinScriptable.sorteioOrdem < GameManager.instance.recoveryData.limit_spin)
             {
                 if (spin.indexSpin == GameManager.instance.spinScriptable.sorteioOrdem)
                 {

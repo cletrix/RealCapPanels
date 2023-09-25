@@ -41,7 +41,7 @@ public class UIChangeRaffleType : MonoBehaviour
     {
         SetModality();
         SetButtonsEvent();
-        GameManager.instance.isVisibleRaffle = GameManager.instance.technicalScriptable.isVisibleRaffle;
+        GameManager.instance.isVisibleRaffle = GameManager.instance.OperatorData.isVisibleRaffle;
         GameManager.instance.RecoveryGlobeScreen();
         SetStateSelectBackupButton();
         CheckStateVisibilityRaffle();
@@ -50,7 +50,7 @@ public class UIChangeRaffleType : MonoBehaviour
 
     private void SetModality()
     {
-        switch (GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].modalidades)
+        switch (GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].modalidades)
         {
             case 1:
                 {
@@ -177,7 +177,7 @@ public class UIChangeRaffleType : MonoBehaviour
                 }
         }
         GameManager.instance.sceneId = index;
-        GameManager.instance.technicalScriptable.panelActive = index;
+        GameManager.instance.OperatorData.panelActive = index;
     }
     public void RaffleTypeScene(int type)
     {
@@ -328,9 +328,9 @@ public class UIChangeRaffleType : MonoBehaviour
         if (panelRaffleLottery.activeSelf == true)
         {
             SendMessageLotteryInfos(
-       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
        GameManager.instance.lotteryScriptable.resultadoLoteriaFederalNumeroConcurso,
-       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
        GameManager.instance.lotteryScriptable.resultadoLoteriaFederalDataConcurso,
        GameManager.instance.lotteryScriptable.sorteioOrdem,
        GameManager.instance.lotteryScriptable.sorteioDescricao,
@@ -339,9 +339,9 @@ public class UIChangeRaffleType : MonoBehaviour
         else if (panelRaffleGlobe.activeSelf == true)
         {
             SendMessageGlobeInfos(
-       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
-       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].nome,
+       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
+       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
        GameManager.instance.globeScriptable.GetGlobeOrder(),
        GameManager.instance.globeScriptable.GetGlobeDescription(),
        GameManager.instance.globeScriptable.GetGlobeValue());
@@ -349,9 +349,9 @@ public class UIChangeRaffleType : MonoBehaviour
         else if (panelRaffleSpin.activeSelf == true)
         {
             SendMessageSpinInfos(
-       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
-       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-       GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].nome,
+       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
+       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
        GameManager.instance.spinScriptable.sorteioOrdem,
        GameManager.instance.spinScriptable.sorteioDescricao,
        GameManager.instance.spinScriptable.sorteioValor);

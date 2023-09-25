@@ -216,7 +216,7 @@ public class GlobeController : MonoBehaviour
         ValidateBall();
         CheckBtNextRaffle();
         if (GameManager.instance.isWinner == true)
-            ticketsListController.CheckWinnerButtonState(GameManager.instance.technicalScriptable.ticketsShown, GameManager.instance.technicalScriptable.currentTicketIndex);
+            ticketsListController.CheckWinnerButtonState(GameManager.instance.OperatorData.ticketsShown, GameManager.instance.OperatorData.currentTicketIndex);
     }
     public void SendBallsRaffledToScreen()
     {
@@ -323,9 +323,9 @@ public class GlobeController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         UpdateScreen();
         uIChangeRaffle.SendMessageGlobeInfos(
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].nome,
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+           GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].nome,
+           GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
+           GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
            GameManager.instance.globeScriptable.GetGlobeOrder(),
            GameManager.instance.globeScriptable.GetGlobeDescription(),
            GameManager.instance.globeScriptable.GetGlobeValue());
@@ -354,7 +354,7 @@ public class GlobeController : MonoBehaviour
 
     private void CheckBtNextRaffle()
     {
-        if (GameManager.instance.globeScriptable.GetGlobeOrder() < GameManager.instance.recoveryScriptable.limit_globo && GameManager.instance.isWinner == true)
+        if (GameManager.instance.globeScriptable.GetGlobeOrder() < GameManager.instance.recoveryData.limit_globo && GameManager.instance.isWinner == true)
             btNextRaffle.interactable = GameManager.instance.GetAllTicketsVisible();
         else
             btNextRaffle.interactable = false;
@@ -371,7 +371,7 @@ public class GlobeController : MonoBehaviour
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].municipio,
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].estado,
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataSorteio,
-           GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+           GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].valor,
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].PDV,
            GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].bairoPDV,

@@ -104,7 +104,7 @@ public class TcpNetworkManager : MonoBehaviour
         //    GameManager.instance.sceneId = sceneID;
         //    raffleType.SetStateCanChangeScene(isActive);
 
-        //    GameManager.instance.technicalScriptable.UpdateConfig(
+        //    GameManager.instance.OperatorData.UpdateConfig(
         //              GameManager.instance.sceneId,
         //              GameManager.instance.globeRaffleScriptable.bolasSorteadas,
         //              GameManager.instance.globeScriptable.sorteioOrdem,
@@ -136,7 +136,7 @@ public class TcpNetworkManager : MonoBehaviour
         //    if (sceneID != 0)
         //        GameManager.instance.sceneId = sceneID;
         //    raffleType.SelectPanelForActivate(sceneID);
-        //    GameManager.instance.technicalScriptable.UpdateConfig(
+        //    GameManager.instance.OperatorData.UpdateConfig(
         //              GameManager.instance.sceneId,
         //              GameManager.instance.globeRaffleScriptable.bolasSorteadas,
         //              GameManager.instance.globeScriptable.sorteioOrdem,

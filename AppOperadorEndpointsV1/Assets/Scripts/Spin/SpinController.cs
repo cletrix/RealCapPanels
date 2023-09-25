@@ -27,7 +27,7 @@ public class SpinController : MonoBehaviour
 
     void Start()
     {
-        PopulateSpinDatas(GameManager.instance.recoveryScriptable.limit_spin);
+        PopulateSpinDatas(GameManager.instance.recoveryData.limit_spin);
         InitializeVariables();
     }
 
@@ -128,7 +128,7 @@ public class SpinController : MonoBehaviour
     {
         if (!GameManager.instance.isBackup)
         {
-            if (GameManager.instance.recoveryScriptable.sorteio_tipo == "finish" || GameManager.instance.isVisibleRaffle==false)
+            if (GameManager.instance.recoveryData.sorteio_tipo == "finish" || GameManager.instance.isVisibleRaffle==false)
                 btGenerateLuckyNumber.interactable = false;
             else
                 btGenerateLuckyNumber.interactable = _isActive;
@@ -145,8 +145,8 @@ public class SpinController : MonoBehaviour
         SendMessageToClientSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado);
         SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
         currentNumberRaffled = GameManager.instance.spinResultScriptable.numeroSorteado;
-        GameManager.instance.technicalScriptable.UpdateSpinConfig(currentNumberRaffled, GameManager.instance.spinResultScriptable.ganhadorContemplado);
-        GameManager.instance.spinScriptable.sorteioOrdem = GameManager.instance.technicalScriptable.spinIndex;
+        GameManager.instance.OperatorData.UpdateSpinConfig(currentNumberRaffled, GameManager.instance.spinResultScriptable.ganhadorContemplado);
+        GameManager.instance.spinScriptable.sorteioOrdem = GameManager.instance.OperatorData.spinIndex;
         indexSpin = GameManager.instance.spinScriptable.sorteioOrdem;
         UpdateFieldScreen();
 
@@ -226,7 +226,7 @@ public class SpinController : MonoBehaviour
         }
         else
         {
-            if (GameManager.instance.recoveryScriptable.sorteio_tipo == "finish")
+            if (GameManager.instance.recoveryData.sorteio_tipo == "finish")
                 btGenerateLuckyNumber.interactable = false;
             else
                 btGenerateLuckyNumber.interactable = true;
@@ -249,7 +249,7 @@ public class SpinController : MonoBehaviour
             GameManager.instance.spinResultScriptable.ganhadorContemplado.municipio,
             GameManager.instance.spinResultScriptable.ganhadorContemplado.estado,
             GameManager.instance.spinResultScriptable.ganhadorContemplado.dataSorteio,
-            GameManager.instance.editionScriptable.edicaoInfos[GameManager.instance.EditionIndex].numero,
+            GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
             GameManager.instance.spinResultScriptable.ganhadorContemplado.valor,
             GameManager.instance.spinResultScriptable.ganhadorContemplado.PDV,
             GameManager.instance.spinResultScriptable.ganhadorContemplado.bairoPDV,
