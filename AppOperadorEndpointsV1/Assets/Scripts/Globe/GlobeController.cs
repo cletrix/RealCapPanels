@@ -106,7 +106,7 @@ public class GlobeController : MonoBehaviour
             balls[i].CheckState();
         }
 
-        if (GameManager.instance.globeDraw.ganhadorContemplado.Length > 0)
+        if (GameManager.instance.globeDrawData.ganhadorContemplado.Length > 0)
         {
             SetDisableAllNotRevoke();
         }
@@ -206,17 +206,17 @@ public class GlobeController : MonoBehaviour
     {
         DisableHasRevokedAll();
         indexBalls.Clear();
-        for (int i = 0; i < GameManager.instance.globeDraw.bolasSorteadas.Count; i++)
+        for (int i = 0; i < GameManager.instance.globeDrawData.bolasSorteadas.Count; i++)
         {
-            indexBalls.Add(int.Parse(GameManager.instance.globeDraw.bolasSorteadas[i]) - 1);
+            indexBalls.Add(int.Parse(GameManager.instance.globeDrawData.bolasSorteadas[i]) - 1);
 
-            balls[int.Parse(GameManager.instance.globeDraw.bolasSorteadas[i]) - 1].SetHasRaffled(true);
+            balls[int.Parse(GameManager.instance.globeDrawData.bolasSorteadas[i]) - 1].SetHasRaffled(true);
         }
         CheckStateBalls();
         ValidateBall();
         CheckBtNextRaffle();
         if (GameManager.instance.isWinner == true)
-            ticketsListController.CheckWinnerButtonState(GameManager.instance.OperatorData.ticketsShown, GameManager.instance.OperatorData.currentTicketIndex);
+            ticketsListController.CheckWinnerButtonState(GameManager.instance.operatorData.ticketsShown, GameManager.instance.operatorData.currentTicketIndex);
     }
     public void SendBallsRaffledToScreen()
     {
@@ -263,7 +263,7 @@ public class GlobeController : MonoBehaviour
     {
         ticketsListController.ResetGrid();
 
-        if (GameManager.instance.globeDraw.ganhadorContemplado.Length > 0)
+        if (GameManager.instance.globeDrawData.ganhadorContemplado.Length > 0)
         {
             txtInfosTitle.text = "GANHADORES";
             GameManager.instance.isWinner = true;
@@ -313,7 +313,7 @@ public class GlobeController : MonoBehaviour
     {
         UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
-        GameManager.instance.globeScriptable.SetGlobeOrder(GameManager.instance.globeScriptable.GetGlobeOrder() + 1);
+        GameManager.instance.globeData.SetOrder(GameManager.instance.globeData.GetOrder() + 1);
         GameManager.instance.ResetScreenGlobe();
         yield return new WaitForSeconds(1);
         SendMesageNextRaffle();
@@ -323,12 +323,12 @@ public class GlobeController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         UpdateScreen();
         uIChangeRaffle.SendMessageGlobeInfos(
-           GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].nome,
-           GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
-           GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-           GameManager.instance.globeScriptable.GetGlobeOrder(),
-           GameManager.instance.globeScriptable.GetGlobeDescription(),
-           GameManager.instance.globeScriptable.GetGlobeValue());
+           GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].nome,
+           GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].numero,
+           GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+           GameManager.instance.globeData.GetOrder(),
+           GameManager.instance.globeData.GetDescription(),
+           GameManager.instance.globeData.GetValue());
 
         CheckBtNextRaffle();
         RestNetworkManager.instance.SendBallsRaffledFromServer();
@@ -354,7 +354,7 @@ public class GlobeController : MonoBehaviour
 
     private void CheckBtNextRaffle()
     {
-        if (GameManager.instance.globeScriptable.GetGlobeOrder() < GameManager.instance.recoveryData.limit_globo && GameManager.instance.isWinner == true)
+        if (GameManager.instance.globeData.GetOrder() < GameManager.instance.recoveryData.limit_globo && GameManager.instance.isWinner == true)
             btNextRaffle.interactable = GameManager.instance.GetAllTicketsVisible();
         else
             btNextRaffle.interactable = false;
@@ -362,25 +362,25 @@ public class GlobeController : MonoBehaviour
     public void PopulateTicketGlobe()
     {
         ticketController.PopulateTicketInfos(
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].nome,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].cpf,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataNascimento,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].telefone,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].email,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].bairro,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].municipio,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].estado,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataSorteio,
-           GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].valor,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].PDV,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].bairoPDV,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataCompra,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].horaCompra,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroTitulo,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].chance,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroCartela,
-           GameManager.instance.globeDraw.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroSorte,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].nome,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].cpf,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataNascimento,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].telefone,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].email,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].bairro,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].municipio,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].estado,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataSorteio,
+           GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].numero,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].valor,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].PDV,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].bairoPDV,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].dataCompra,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].horaCompra,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroTitulo,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].chance,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroCartela,
+           GameManager.instance.globeDrawData.ganhadorContemplado[GameManager.instance.ticketWinnerIndex].numeroSorte,
            true,
            2);
     }
@@ -408,12 +408,12 @@ public class GlobeController : MonoBehaviour
     public void SendMessageBallsRaffled()
     {
         if (!GameManager.instance.isBackup)
-            TcpNetworkManager.instance.Server.SendToAll(GetMessageString(Message.Create(MessageSendMode.reliable, ServerToClientId.messageBall), GameManager.instance.GetBallsRaffled().ToArray(), GameManager.instance.globeDraw.porUmaBolas.Count, GameManager.instance.globeDraw.ganhadorContemplado.Length, GameManager.instance.globeDraw.valorPremio));
+            TcpNetworkManager.instance.Server.SendToAll(GetMessageString(Message.Create(MessageSendMode.reliable, ServerToClientId.messageBall), GameManager.instance.GetBallsRaffled().ToArray(), GameManager.instance.globeDrawData.porUmaBolas.Count, GameManager.instance.globeDrawData.ganhadorContemplado.Length, GameManager.instance.globeDrawData.valorPremio));
     }
     public void SendMessageBallRevoked()
     {
         if (!GameManager.instance.isBackup)
-            TcpNetworkManager.instance.Server.SendToAll(GetMessageBallRevoked(Message.Create(MessageSendMode.reliable, ServerToClientId.messageBallRevoked), GameManager.instance.GetBallsRaffled().ToArray(), GameManager.instance.globeDraw.porUmaBolas.Count, GameManager.instance.globeDraw.ganhadorContemplado.Length, GameManager.instance.globeDraw.valorPremio));
+            TcpNetworkManager.instance.Server.SendToAll(GetMessageBallRevoked(Message.Create(MessageSendMode.reliable, ServerToClientId.messageBallRevoked), GameManager.instance.GetBallsRaffled().ToArray(), GameManager.instance.globeDrawData.porUmaBolas.Count, GameManager.instance.globeDrawData.ganhadorContemplado.Length, GameManager.instance.globeDrawData.valorPremio));
     }
 
     public void SendMesageNextRaffle()

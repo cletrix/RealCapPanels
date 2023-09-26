@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +26,7 @@ public class Resoucers
             public string denominacaoComercial;
             public int tipoTamanhoSerie;
             public int modalidades;
+            public string matriz;
             public string tipoQuantidadeChances;
             public float valor;
             public int status;
@@ -77,18 +77,18 @@ public class Resoucers
         }
         public void UpdateInfosGlobe()
         {
-            GameManager.instance.globeDraw.bolasSorteadas.Clear();
-            GameManager.instance.OperatorData.spinNumbers.Clear();
+            GameManager.instance.globeDrawData.bolasSorteadas.Clear();
+            GameManager.instance.operatorData.spinNumbers.Clear();
             foreach (var item in globe_balls)
             {
-                GameManager.instance.globeDraw.bolasSorteadas.Add(item.ToString());
+                GameManager.instance.globeDrawData.bolasSorteadas.Add(item.ToString());
             }
 
             for (int i = 0; i < number_winner_giro.Count; i++)
             {
                 if (number_winner_giro[i].Length > 0)
                 {
-                    GameManager.instance.OperatorData.spinNumbers.Add(number_winner_giro[i]);
+                    GameManager.instance.operatorData.spinNumbers.Add(number_winner_giro[i]);
                 }
             }
         }
@@ -96,6 +96,8 @@ public class Resoucers
     #endregion
 
     #region OperatorPayload
+    
+    [Serializable]
     public class OperatorData
     {
         public int currentSceneID;
@@ -105,7 +107,7 @@ public class Resoucers
         public int panelActive;
         public bool isVisibleRaffle;
         public int forTwoBalls;
-        public List<GlobeRaffleScriptable.porUmaBola> forOneBalls = new List<GlobeRaffleScriptable.porUmaBola>();
+        public List<GlobeDrawData.porUmaBola> forOneBalls = new List<GlobeDrawData.porUmaBola>();
         public List<TicketInfos> ticketInfos;
 
         public List<bool> ticketsShown;
@@ -131,7 +133,7 @@ public class Resoucers
             spinIndex = 1;
             spinNumbers.Clear();
         }
-        public void UpdateConfig(int sceneId, int _currentRaffle, bool raffleVisibility, int _forTwoBalls, List<GlobeRaffleScriptable.porUmaBola> _forOneBall,
+        public void UpdateConfig(int sceneId, int _currentRaffle, bool raffleVisibility, int _forTwoBalls, List<GlobeDrawData.porUmaBola> _forOneBall,
             List<TicketInfos> _tickets, List<bool> _ticketsShown, int _currentTicketIndex, bool _isTicketVisible)
         {
             currentSceneID = sceneId;
@@ -146,8 +148,8 @@ public class Resoucers
             currentTicketIndex = _currentTicketIndex;
             isTicketVisible = _isTicketVisible;
             currentRaffle = _currentRaffle;
-            currentGlobeDesc = GameManager.instance.globeScriptable.GetGlobeDescription();
-            currentGlobeValue = GameManager.instance.globeScriptable.GetGlobeValue();
+            currentGlobeDesc = GameManager.instance.globeData.GetDescription();
+            currentGlobeValue = GameManager.instance.globeData.GetValue();
 
             RestNetworkManager.instance.CallWriteMemory();
         }
@@ -163,16 +165,16 @@ public class Resoucers
         public void PopulateConfig()
         {
             GameManager.instance.sceneId = currentSceneID;
-            GameManager.instance.globeScriptable.SetGlobeOrder(currentRaffle);
-            GameManager.instance.globeScriptable.SetGlobeDesc(currentGlobeDesc);
-            GameManager.instance.globeScriptable.SetGlobeValue(currentGlobeValue);
+            GameManager.instance.globeData.SetOrder(currentRaffle);
+            GameManager.instance.globeData.SetDescription(currentGlobeDesc);
+            GameManager.instance.globeData.SetValue(currentGlobeValue);
             GameManager.instance.isVisibleRaffle = isVisibleRaffle;
-            GameManager.instance.globeDraw.porDuasBolas = forTwoBalls;
+            GameManager.instance.globeDrawData.porDuasBolas = forTwoBalls;
 
-            GameManager.instance.globeDraw.IncreseForOneBalls(forOneBalls);
+            GameManager.instance.globeDrawData.IncreseForOneBalls(forOneBalls);
 
-            GameManager.instance.globeDraw.ganhadorContemplado = new TicketInfos[ticketInfos.Count];
-            GameManager.instance.globeDraw.ticketListVisible = new bool[ticketInfos.Count];
+            GameManager.instance.globeDrawData.ganhadorContemplado = new TicketInfos[ticketInfos.Count];
+            GameManager.instance.globeDrawData.ticketListVisible = new bool[ticketInfos.Count];
             GameManager.instance.isTicketVisible = isTicketVisible;
             GameManager.instance.ticketWinnerIndex = currentTicketIndex;
 
@@ -181,19 +183,181 @@ public class Resoucers
             {
                 for (int i = 0; i < ticketInfos.Count; i++)
                 {
-                    GameManager.instance.globeDraw.ganhadorContemplado[i] = ticketInfos[i];
-                    GameManager.instance.globeDraw.ticketListVisible[i] = ticketsShown[i];
+                    GameManager.instance.globeDrawData.ganhadorContemplado[i] = ticketInfos[i];
+                    GameManager.instance.globeDrawData.ticketListVisible[i] = ticketsShown[i];
                 }
                 GameManager.instance.RecoveryGlobeScreen();
             }
             if (GameManager.instance.sceneId == 3)
             {
                 GameManager.instance.RecoverySpinScreen();
-                GameManager.instance.spinScriptable.sorteioOrdem = spinIndex;
-                GameManager.instance.spinResultScriptable.ganhadorContemplado = ticketSpin;
+                GameManager.instance.spinData.sorteioOrdem = spinIndex;
+                GameManager.instance.spinDrawData.ganhadorContemplado = ticketSpin;
             }
         }
 
     }
     #endregion
+
+    #region GlobePayload
+
+    [Serializable]
+    public class GlobeData
+    {
+        public List<Infos> infosGlobe;
+        public int currentIndex = 0;
+
+        [System.Serializable]
+        public class Infos
+        {
+            public string sorteioDescricao;
+            public float sorteioValor;
+            public int sorteioOrdem = 1;
+        }
+
+        public void SetOrder(int _order)
+        {
+            if (currentIndex < infosGlobe.Count)
+                infosGlobe[currentIndex].sorteioOrdem = _order;
+        }
+        public int GetOrder()
+        {
+            if (infosGlobe.Count > 0)
+            {
+                if (currentIndex < infosGlobe.Count)
+                    return infosGlobe[currentIndex].sorteioOrdem;
+                else
+                    return infosGlobe[currentIndex - 1].sorteioOrdem;
+            }
+            else
+                return 999;
+        }
+
+        public void SetDescription(string _desc)
+        {
+            if (currentIndex < infosGlobe.Count)
+                infosGlobe[currentIndex].sorteioDescricao = _desc;
+        }
+        public string GetDescription()
+        {
+            if (infosGlobe.Count > 0)
+            {
+                if (currentIndex < infosGlobe.Count)
+                {
+                    return infosGlobe[currentIndex].sorteioDescricao;
+                }
+                else
+                    return infosGlobe[currentIndex - 1].sorteioDescricao;
+            }
+            else
+                return "Null";
+        }
+
+        public void SetValue(float _value)
+        {
+            if (currentIndex < infosGlobe.Count)
+                infosGlobe[currentIndex].sorteioValor = _value;
+        }
+        public float GetValue()
+        {
+            if (infosGlobe.Count > 0)
+            {
+                if (currentIndex < infosGlobe.Count)
+                    return infosGlobe[currentIndex].sorteioValor;
+                else
+                    return infosGlobe[currentIndex - 1].sorteioValor;
+            }
+            else
+                return 0f;
+        }
+    }
+    #endregion
+
+    #region GlobeDrawnPayload
+
+    [Serializable]
+    public class GlobeDrawData
+    {
+        public List<string> bolasSorteadas;
+        public int porDuasBolas;
+        public List<porUmaBola> porUmaBolas;
+        public float valorPremio;
+        [Header("Ticket Winner")]
+        public TicketInfos[] ganhadorContemplado;
+        public bool[] ticketListVisible;
+        public void SetNewBall(string ball)
+        {
+            bolasSorteadas.Add(ball);
+        }
+
+        public void RevokeBall(string ball)
+        {
+            bolasSorteadas.Remove(ball);
+        }
+
+        public void IncreseForOneBalls(List<porUmaBola> _oneBalls)
+        {
+
+            for (int i = 0; i < _oneBalls.Count; i++)
+            {
+                if (!porUmaBolas.Contains(_oneBalls[i]))
+                    porUmaBolas.Add(_oneBalls[i]);
+            }
+        }
+        public void ResetInfos()
+        {
+            bolasSorteadas.Clear();
+            ganhadorContemplado = new TicketInfos[0];
+            ticketListVisible = new bool[0];
+            porUmaBolas.Clear();
+            valorPremio = 0;
+            porDuasBolas = 0;
+        }
+        [System.Serializable]
+        public class porUmaBola
+        {
+            public string numeroTitulo;
+            public string numeroChance;
+            public string numeroBola;
+        }
+    }
+    #endregion
+
+    #region SpinDataPayload
+
+    [Serializable]
+    public class SpinData
+    {
+        public int sorteioOrdem;
+        public string sorteioDescricao;
+        public float sorteioValor;
+
+    }
+    #endregion
+
+    #region SpinDrawnPayload
+
+    [Serializable]
+    public class SpinDrawData
+    {
+        public string numeroSorteado;
+        public int sorteioOrdem = 1;
+        [Header("Ticket Winner")]
+        public TicketInfos ganhadorContemplado;
+
+        public void SetNewRaffleNumber()
+        {
+            numeroSorteado = string.Empty;
+            for (int i = 0; i < 6; i++)
+            {
+                int random = UnityEngine.Random.Range(0, 9);
+                numeroSorteado += random.ToString();
+            }
+            ganhadorContemplado.numeroSorte = numeroSorteado;
+            ganhadorContemplado.numeroTitulo = $"0{numeroSorteado}";
+        }
+    }
+    #endregion
+
+
 }

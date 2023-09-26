@@ -23,7 +23,7 @@ public class UiInfosRaffle : MonoBehaviour
 
     void InitializeVariables()
     {
-        string name = $"Informações da edição: {GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero}";
+        string name = $"Informações da edição: {GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].numero}";
         btEditionInfos.GetComponentInChildren<TextMeshProUGUI>().text = name;
         btEditionInfos.onClick.AddListener(ActivePanelEditionInfos);
     }

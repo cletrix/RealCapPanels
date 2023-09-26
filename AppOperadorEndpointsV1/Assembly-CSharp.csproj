@@ -48,17 +48,12 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\RestNetworkManager.cs" />
-     <Compile Include="Assets\Scripts\Spin\SpinScriptable.cs" />
      <Compile Include="Assets\Scripts\Spin\SpinRaffleData.cs" />
      <Compile Include="Assets\Scripts\Settings\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Globe\SelectBallController.cs" />
      <Compile Include="Assets\Scripts\Globe\FadeController.cs" />
-     <Compile Include="Assets\Scripts\Globe\GlobeScriptable.cs" />
-     <Compile Include="Assets\Scripts\Lottery\LotteryScriptable.cs" />
      <Compile Include="Assets\Scripts\Globe\GlobeController.cs" />
-     <Compile Include="Assets\Scripts\Lottery\LotteryController.cs" />
-     <Compile Include="Assets\Scripts\Globe\GlobeRaffleScriptable.cs" />
      <Compile Include="Assets\Scripts\Ticket\TicketInfos.cs" />
-     <Compile Include="Assets\Scripts\Lottery\LotteryResultScriptable.cs" />
      <Compile Include="Assets\Scripts\RiptideNetworking\TcpNetworkManager.cs" />
      <Compile Include="Assets\Scripts\Ticket\TicketController.cs" />
      <Compile Include="Assets\Scripts\UiManagerLoginScene.cs" />
@@ -72,7 +67,6 @@
      <Compile Include="Assets\Scripts\Settings\UIInfosEdition.cs" />
      <Compile Include="Assets\Scripts\Settings\UIChangeRaffleType.cs" />
      <Compile Include="Assets\Scripts\Settings\UiInfosRaffle.cs" />
-     <Compile Include="Assets\Scripts\Globe\SelectBallController.cs" />
      <Compile Include="Assets\Scripts\Settings\Resoucers.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

@@ -13,14 +13,13 @@ public class UIChangeRaffleType : MonoBehaviour
     [SerializeField] private Button btRecovery;
     [SerializeField] private UiInfosRaffle infosRaffle;
     [Header("RAFFLES PANELS")]
-    [SerializeField] private GameObject panelRaffleLottery;
-    public GameObject panelRaffleGlobe;
-    public GameObject panelRaffleSpin;
+    public GameObject panelGlobeDraw;
+    public GameObject panelSpinDraw;
 
     [Header("BUTTONS RAFFLES")]
-    [SerializeField] private Button btRaffleLottery;
-    [SerializeField] private Button btRaffleGlobe;
-    [SerializeField] private Button btRaffleSpin;
+    [SerializeField] private Button btLotteryDraw;
+    [SerializeField] private Button btGlobeDraw;
+    [SerializeField] private Button bSpinDraw;
 
     [Header("BUTTON COLORS")]
     [SerializeField] private Color selectedColor;
@@ -29,7 +28,6 @@ public class UIChangeRaffleType : MonoBehaviour
     [Header("HIDE RAFFLE SYSTEM")]
     [SerializeField] private Button btVisibilityRaffle;
 
-    [SerializeField] private bool hasActiveLottery = true;
     [SerializeField] private bool hasActiveGlobe = true;
     [SerializeField] private bool hasActiveSpin = true;
 
@@ -41,7 +39,7 @@ public class UIChangeRaffleType : MonoBehaviour
     {
         SetModality();
         SetButtonsEvent();
-        GameManager.instance.isVisibleRaffle = GameManager.instance.OperatorData.isVisibleRaffle;
+        GameManager.instance.isVisibleRaffle = GameManager.instance.operatorData.isVisibleRaffle;
         GameManager.instance.RecoveryGlobeScreen();
         SetStateSelectBackupButton();
         CheckStateVisibilityRaffle();
@@ -50,55 +48,48 @@ public class UIChangeRaffleType : MonoBehaviour
 
     private void SetModality()
     {
-        switch (GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].modalidades)
+        switch (GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].modalidades)
         {
             case 1:
                 {
-                    hasActiveLottery = true;
                     hasActiveGlobe = false;
                     hasActiveSpin = false;
-                    SetRaffleLottery();
                     break;
                 }
             case 2:
                 {
-                    hasActiveLottery = true;
                     hasActiveGlobe = true;
                     hasActiveSpin = true;
-                    SetRaffleGlobe();
+                    SetGlobeDraw();
                     break;
                 }
             case 3:
                 {
-                    hasActiveLottery = false;
                     hasActiveGlobe = true;
                     hasActiveSpin = true;
-                    SetRaffleGlobe();
+                    SetGlobeDraw();
                     break;
                 }
             case 4:
                 {
-                    hasActiveLottery = false;
                     hasActiveGlobe = false;
                     hasActiveSpin = true;
-                    SetRaffleSpin();
+                    SetSpinDraw();
                     break;
                 }
         }
-        btRaffleLottery.interactable = hasActiveLottery;
-        btRaffleGlobe.interactable = hasActiveGlobe;
-        btRaffleSpin.interactable = hasActiveSpin;
+        btGlobeDraw.interactable = hasActiveGlobe;
+        bSpinDraw.interactable = hasActiveSpin;
     }
     private void SetButtonsEvent()
     {
-        btRaffleLottery.onClick.AddListener(SetRaffleLottery);
-        btRaffleLottery.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
-        btRaffleGlobe.onClick.AddListener(SetRaffleGlobe);
-        btRaffleGlobe.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
-        btRaffleSpin.onClick.AddListener(SetRaffleSpin);
-        btRaffleSpin.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
-        btVisibilityRaffle.onClick.AddListener(SetStateHasRaffleVisibility);
-        btVisibilityRaffle.onClick.AddListener(SendInfosRaffle);
+        btLotteryDraw.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
+        btGlobeDraw.onClick.AddListener(SetGlobeDraw);
+        btGlobeDraw.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
+        bSpinDraw.onClick.AddListener(SetSpinDraw);
+        bSpinDraw.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
+        btVisibilityRaffle.onClick.AddListener(SetStateHasVisibilityDraw);
+        btVisibilityRaffle.onClick.AddListener(SendInfosDraw);
         btVisibilityRaffle.onClick.AddListener(GameManager.instance.WriteInfosGlobe);
     }
 
@@ -106,27 +97,21 @@ public class UIChangeRaffleType : MonoBehaviour
 
     private void ResetColorButtons(Color newColor)
     {
-        btRaffleLottery.image.color = newColor;
-        btRaffleGlobe.image.color = newColor;
-        btRaffleSpin.image.color = newColor;
-    }
-    public void SetRaffleLottery()
-    {
-        SelectPanelForActivate(1);
-        LotteryController lotteryController = FindObjectOfType<LotteryController>();
-        lotteryController.ResetNumberRaffle();
-        SendMessageToClientChangeRaffle("SceneLottery");
+        btLotteryDraw.image.color = newColor;
+        btGlobeDraw.image.color = newColor;
+        bSpinDraw.image.color = newColor;
     }
 
-    public void SetRaffleGlobe()
+
+    public void SetGlobeDraw()
     {
-        SelectPanelForActivate(2);
+        SelectPanelForActivate(1);
         SendMessageToClientChangeRaffle("SceneGlobe");
 
     }
-    public void SetRaffleSpin()
+    public void SetSpinDraw()
     {
-        SelectPanelForActivate(3);
+        SelectPanelForActivate(2);
         SendMessageToClientChangeRaffle("SceneSpin");
     }
 
@@ -136,48 +121,32 @@ public class UIChangeRaffleType : MonoBehaviour
         {
             case 1:
                 {
-                    panelRaffleLottery.SetActive(true);
                     ResetColorButtons(normalColor);
-                    panelRaffleGlobe.SetActive(false);
-                    panelRaffleSpin.SetActive(false);
-                    btRaffleLottery.image.color = selectedColor;
-                    infosRaffle.PopulateRaffleInfos(GameManager.instance.lotteryScriptable.sorteioOrdem.ToString(), GameManager.instance.lotteryScriptable.sorteioDescricao, GameManager.instance.lotteryScriptable.sorteioValor);
-
+                    panelGlobeDraw.SetActive(true);
+                    panelSpinDraw.SetActive(false);
+                    btGlobeDraw.image.color = selectedColor;
+                    infosRaffle.PopulateRaffleInfos(GameManager.instance.globeData.GetOrder().ToString(), GameManager.instance.globeData.GetDescription(), GameManager.instance.globeData.GetValue());
                     break;
                 }
             case 2:
                 {
                     ResetColorButtons(normalColor);
-                    panelRaffleLottery.SetActive(false);
-                    panelRaffleGlobe.SetActive(true);
-                    panelRaffleSpin.SetActive(false);
-                    btRaffleGlobe.image.color = selectedColor;
-                    infosRaffle.PopulateRaffleInfos(GameManager.instance.globeScriptable.GetGlobeOrder().ToString(), GameManager.instance.globeScriptable.GetGlobeDescription(), GameManager.instance.globeScriptable.GetGlobeValue());
-                    break;
-                }
-            case 3:
-                {
-                    ResetColorButtons(normalColor);
-                    panelRaffleLottery.SetActive(false);
-                    panelRaffleGlobe.SetActive(false);
-                    panelRaffleSpin.SetActive(true);
-                    btRaffleSpin.image.color = selectedColor;
-                    infosRaffle.PopulateRaffleInfos(GameManager.instance.spinScriptable.sorteioOrdem.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
-                    //SpinController spinController = FindObjectOfType<SpinController>();
-                    //spinController.ActiveButtonNewRaffleSpin();
+                    panelGlobeDraw.SetActive(false);
+                    panelSpinDraw.SetActive(true);
+                    bSpinDraw.image.color = selectedColor;
+                    infosRaffle.PopulateRaffleInfos(GameManager.instance.spinData.sorteioOrdem.ToString(), GameManager.instance.spinData.sorteioDescricao, GameManager.instance.spinData.sorteioValor);
                     break;
                 }
             default:
                 {
                     ResetColorButtons(normalColor);
-                    panelRaffleLottery.SetActive(false);
-                    panelRaffleGlobe.SetActive(false);
-                    panelRaffleSpin.SetActive(false);
+                    panelGlobeDraw.SetActive(false);
+                    panelSpinDraw.SetActive(false);
                     break;
                 }
         }
         GameManager.instance.sceneId = index;
-        GameManager.instance.OperatorData.panelActive = index;
+        GameManager.instance.operatorData.panelActive = index;
     }
     public void RaffleTypeScene(int type)
     {
@@ -185,17 +154,12 @@ public class UIChangeRaffleType : MonoBehaviour
         {
             case 1:
                 {
-                    SetRaffleLottery();
+                    SetGlobeDraw();
                     break;
                 }
             case 2:
                 {
-                    SetRaffleGlobe();
-                    break;
-                }
-            case 3:
-                {
-                    SetRaffleSpin();
+                    SetSpinDraw();
                     break;
                 }
         }
@@ -234,7 +198,7 @@ public class UIChangeRaffleType : MonoBehaviour
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
             btRecovery.image.color = Color.green;
             SetStateButtonsRaffle(true);
-            if (panelRaffleGlobe.activeSelf == true)
+            if (panelGlobeDraw.activeSelf == true)
                 globeController.UpdateScreen();
         }
     }
@@ -246,44 +210,35 @@ public class UIChangeRaffleType : MonoBehaviour
     {
         if (GameManager.instance.isBackup)
         {
-            btRaffleLottery.interactable = false;
-            btRaffleGlobe.interactable = false;
-            btRaffleSpin.interactable = false;
+            btLotteryDraw.interactable = false;
+            btGlobeDraw.interactable = false;
+            bSpinDraw.interactable = false;
             btVisibilityRaffle.interactable = false;
         }
         else
         {
             btVisibilityRaffle.interactable = true;
 
-            if (hasActiveLottery)
-            {
-                btRaffleLottery.interactable = isActive;
-            }
-            else
-            {
-                btRaffleLottery.interactable = false;
-            }
-
             if (hasActiveGlobe)
             {
-                btRaffleGlobe.interactable = isActive;
+                btGlobeDraw.interactable = isActive;
             }
             else
             {
-                btRaffleGlobe.interactable = false;
+                btGlobeDraw.interactable = false;
             }
 
             if (hasActiveSpin)
             {
-                btRaffleSpin.interactable = isActive;
+                bSpinDraw.interactable = isActive;
             }
             else
             {
-                btRaffleSpin.interactable = false;
+                bSpinDraw.interactable = false;
             }
         }
     }
-    public void SetStateHasRaffleVisibility()
+    public void SetStateHasVisibilityDraw()
     {
         if (GameManager.instance.isVisibleRaffle)
         {
@@ -322,39 +277,27 @@ public class UIChangeRaffleType : MonoBehaviour
         TcpNetworkManager.instance.Server.SendToAll(GetMessageVisibilityRaffle(Message.Create(MessageSendMode.unreliable, ServerToClientId.messageVisibilityRaffle), GameManager.instance.isVisibleRaffle, GameManager.instance.sceneId));
 
     }
-    public void SendInfosRaffle()
+    public void SendInfosDraw()
     {
-
-        if (panelRaffleLottery.activeSelf == true)
-        {
-            SendMessageLotteryInfos(
-       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
-       GameManager.instance.lotteryScriptable.resultadoLoteriaFederalNumeroConcurso,
-       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-       GameManager.instance.lotteryScriptable.resultadoLoteriaFederalDataConcurso,
-       GameManager.instance.lotteryScriptable.sorteioOrdem,
-       GameManager.instance.lotteryScriptable.sorteioDescricao,
-       GameManager.instance.lotteryScriptable.sorteioValor);
-        }
-        else if (panelRaffleGlobe.activeSelf == true)
+        if (panelGlobeDraw.activeSelf == true)
         {
             SendMessageGlobeInfos(
-       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].nome,
-       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
-       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-       GameManager.instance.globeScriptable.GetGlobeOrder(),
-       GameManager.instance.globeScriptable.GetGlobeDescription(),
-       GameManager.instance.globeScriptable.GetGlobeValue());
+       GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].nome,
+       GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].numero,
+       GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+       GameManager.instance.globeData.GetOrder(),
+       GameManager.instance.globeData.GetDescription(),
+       GameManager.instance.globeData.GetValue());
         }
-        else if (panelRaffleSpin.activeSelf == true)
+        else if (panelSpinDraw.activeSelf == true)
         {
             SendMessageSpinInfos(
-       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].nome,
-       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
-       GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
-       GameManager.instance.spinScriptable.sorteioOrdem,
-       GameManager.instance.spinScriptable.sorteioDescricao,
-       GameManager.instance.spinScriptable.sorteioValor);
+       GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].nome,
+       GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].numero,
+       GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].dataRealizacao,
+       GameManager.instance.spinData.sorteioOrdem,
+       GameManager.instance.spinData.sorteioDescricao,
+       GameManager.instance.spinData.sorteioValor);
         }
         SendMessageVisibilityRaffle();
     }

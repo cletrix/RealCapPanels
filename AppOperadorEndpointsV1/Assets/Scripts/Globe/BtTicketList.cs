@@ -34,7 +34,7 @@ public class BtTicketList : MonoBehaviour
     }
     public void SelectWinner()
     {
-        OnShowticket?.Invoke(GameManager.instance.globeDraw.ganhadorContemplado[index]);
+        OnShowticket?.Invoke(GameManager.instance.globeDrawData.ganhadorContemplado[index]);
         button.image.color = selectedColor;
         isSelected = true;
 

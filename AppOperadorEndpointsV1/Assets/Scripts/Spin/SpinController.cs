@@ -63,7 +63,7 @@ public class SpinController : MonoBehaviour
             item.SetEventButton(ShowTicketSpin);
         }
         SetButtonsEvent();
-        ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
+        ShowSpinOrder(GameManager.instance.spinData.sorteioOrdem);
         SetSpinPrize();
         PopulateFieldsSpinData();
         UpdateFieldScreen();
@@ -78,13 +78,13 @@ public class SpinController : MonoBehaviour
         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
 
         txtSpinID.text = $"{order}º GIRO";
-        uiInfos.PopulateRaffleInfos(order.ToString(), GameManager.instance.spinScriptable.sorteioDescricao, GameManager.instance.spinScriptable.sorteioValor);
+        uiInfos.PopulateRaffleInfos(order.ToString(), GameManager.instance.spinData.sorteioDescricao, GameManager.instance.spinData.sorteioValor);
     }
     private void SetSpinPrize()
     {
         for (int i = 0; i < spinRaffleDatas.Count; i++)
         {
-            spinRaffleDatas[i].SetSpinPrize(GameManager.instance.spinScriptable.sorteioValor);
+            spinRaffleDatas[i].SetSpinPrize(GameManager.instance.spinData.sorteioValor);
             spinRaffleDatas[i].SetStateInteractableButton(false);
         }
     }
@@ -119,7 +119,7 @@ public class SpinController : MonoBehaviour
     }
     private void SpawnNewLuckyNumber()
     {
-        RestNetworkManager.instance.SetPostResultSpin(GameManager.instance.spinScriptable.sorteioOrdem);
+        RestNetworkManager.instance.SetPostResultSpin(GameManager.instance.spinData.sorteioOrdem);
 
         btGenerateLuckyNumber.interactable = false;
     }
@@ -142,12 +142,12 @@ public class SpinController : MonoBehaviour
     }
     private IEnumerator RaffleNumberLuckySpin()
     {
-        SendMessageToClientSpinNumber(GameManager.instance.spinResultScriptable.numeroSorteado);
-        SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
-        currentNumberRaffled = GameManager.instance.spinResultScriptable.numeroSorteado;
-        GameManager.instance.OperatorData.UpdateSpinConfig(currentNumberRaffled, GameManager.instance.spinResultScriptable.ganhadorContemplado);
-        GameManager.instance.spinScriptable.sorteioOrdem = GameManager.instance.OperatorData.spinIndex;
-        indexSpin = GameManager.instance.spinScriptable.sorteioOrdem;
+        SendMessageToClientSpinNumber(GameManager.instance.spinDrawData.numeroSorteado);
+        SendMessageRoundID(GameManager.instance.spinData.sorteioOrdem);
+        currentNumberRaffled = GameManager.instance.spinDrawData.numeroSorteado;
+        GameManager.instance.operatorData.UpdateSpinConfig(currentNumberRaffled, GameManager.instance.spinDrawData.ganhadorContemplado);
+        GameManager.instance.spinData.sorteioOrdem = GameManager.instance.operatorData.spinIndex;
+        indexSpin = GameManager.instance.spinData.sorteioOrdem;
         UpdateFieldScreen();
 
         //currentNumberRaffled = string.Empty;
@@ -172,7 +172,7 @@ public class SpinController : MonoBehaviour
     }
     public void ActiveLastSpin()
     {
-        spinRaffleDatas[GameManager.instance.spinScriptable.sorteioOrdem - 1].SetStateInteractableButton(true);
+        spinRaffleDatas[GameManager.instance.spinData.sorteioOrdem - 1].SetStateInteractableButton(true);
     }
     public void PopulateSpinsFields(List<string> spinNumbers)
     {
@@ -240,25 +240,25 @@ public class SpinController : MonoBehaviour
     public void PopulateTicketSpin()
     {
         ticketController.PopulateTicketInfos(
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.nome,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.cpf,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.dataNascimento,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.telefone,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.email,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.bairro,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.municipio,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.estado,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.dataSorteio,
-            GameManager.instance.editonData.edicaoInfos[GameManager.instance.EditionIndex].numero,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.valor,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.PDV,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.bairoPDV,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.dataCompra,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.horaCompra,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.numeroTitulo,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.chance,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.numeroCartela,
-            GameManager.instance.spinResultScriptable.ganhadorContemplado.numeroSorte,
+            GameManager.instance.spinDrawData.ganhadorContemplado.nome,
+            GameManager.instance.spinDrawData.ganhadorContemplado.cpf,
+            GameManager.instance.spinDrawData.ganhadorContemplado.dataNascimento,
+            GameManager.instance.spinDrawData.ganhadorContemplado.telefone,
+            GameManager.instance.spinDrawData.ganhadorContemplado.email,
+            GameManager.instance.spinDrawData.ganhadorContemplado.bairro,
+            GameManager.instance.spinDrawData.ganhadorContemplado.municipio,
+            GameManager.instance.spinDrawData.ganhadorContemplado.estado,
+            GameManager.instance.spinDrawData.ganhadorContemplado.dataSorteio,
+            GameManager.instance.editionData.edicaoInfos[GameManager.instance.EditionIndex].numero,
+            GameManager.instance.spinDrawData.ganhadorContemplado.valor,
+            GameManager.instance.spinDrawData.ganhadorContemplado.PDV,
+            GameManager.instance.spinDrawData.ganhadorContemplado.bairoPDV,
+            GameManager.instance.spinDrawData.ganhadorContemplado.dataCompra,
+            GameManager.instance.spinDrawData.ganhadorContemplado.horaCompra,
+            GameManager.instance.spinDrawData.ganhadorContemplado.numeroTitulo,
+            GameManager.instance.spinDrawData.ganhadorContemplado.chance,
+            GameManager.instance.spinDrawData.ganhadorContemplado.numeroCartela,
+            GameManager.instance.spinDrawData.ganhadorContemplado.numeroSorte,
             false,
             3);
     }
@@ -283,7 +283,7 @@ public class SpinController : MonoBehaviour
 
     //private void FixedUpdate()
     //{
-    //    txtSpinID.text = $"{ GameManager.instance.spinScriptable.sorteioOrdem}º GIRO";
+    //    txtSpinID.text = $"{ GameManager.instance.spinData.sorteioOrdem}º GIRO";
     //}
 
 }

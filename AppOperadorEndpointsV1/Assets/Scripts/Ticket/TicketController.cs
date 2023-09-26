@@ -77,26 +77,26 @@ public class TicketController : MonoBehaviour
             GameManager.instance.isTicketVisible = false;
             SendMessageToClientHideTicket(GameManager.instance.isTicketVisible);
             int count = 0;
-            for (int i = 0; i < GameManager.instance.globeDraw.ticketListVisible.Length; i++)
+            for (int i = 0; i < GameManager.instance.globeDrawData.ticketListVisible.Length; i++)
             {
-                if (GameManager.instance.globeDraw.ticketListVisible[i] == true)
+                if (GameManager.instance.globeDrawData.ticketListVisible[i] == true)
                     count++;
             }
-            if (count == GameManager.instance.globeDraw.ticketListVisible.Length)
+            if (count == GameManager.instance.globeDrawData.ticketListVisible.Length)
             {
                 UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
-                if (uIChangeRaffle.panelRaffleGlobe.activeSelf == true)
+                if (uIChangeRaffle.panelGlobeDraw.activeSelf == true)
                 {
-                    uIChangeRaffle.SetStateHasRaffleVisibility();
+                    uIChangeRaffle.SetStateHasVisibilityDraw();
                     uIChangeRaffle.SendMessageVisibilityRaffle();
                 }
             }
-            if (GameManager.instance.spinScriptable.sorteioOrdem >= GameManager.instance.recoveryData.limit_spin)
+            if (GameManager.instance.spinData.sorteioOrdem >= GameManager.instance.recoveryData.limit_spin)
             {
                 UIChangeRaffleType uIChangeRaffle = FindObjectOfType<UIChangeRaffleType>();
-                if (uIChangeRaffle.panelRaffleSpin.activeSelf == true)
+                if (uIChangeRaffle.panelSpinDraw.activeSelf == true)
                 {
-                    uIChangeRaffle.SetStateHasRaffleVisibility();
+                    uIChangeRaffle.SetStateHasVisibilityDraw();
                     uIChangeRaffle.SendMessageVisibilityRaffle();
                 }
             }
@@ -131,13 +131,13 @@ public class TicketController : MonoBehaviour
         if (spin != null)
         {
             spin.ActiveButtonNewRaffleSpin();
-            if (GameManager.instance.spinScriptable.sorteioOrdem < GameManager.instance.recoveryData.limit_spin)
+            if (GameManager.instance.spinData.sorteioOrdem < GameManager.instance.recoveryData.limit_spin)
             {
-                if (spin.indexSpin == GameManager.instance.spinScriptable.sorteioOrdem)
+                if (spin.indexSpin == GameManager.instance.spinData.sorteioOrdem)
                 {
-                    GameManager.instance.spinScriptable.sorteioOrdem = spin.indexSpin + 1;
-                    spin.SendMessageRoundID(GameManager.instance.spinScriptable.sorteioOrdem);
-                    spin.ShowSpinOrder(GameManager.instance.spinScriptable.sorteioOrdem);
+                    GameManager.instance.spinData.sorteioOrdem = spin.indexSpin + 1;
+                    spin.SendMessageRoundID(GameManager.instance.spinData.sorteioOrdem);
+                    spin.ShowSpinOrder(GameManager.instance.spinData.sorteioOrdem);
                 }
             }
         }
@@ -253,7 +253,7 @@ public class TicketController : MonoBehaviour
             {
                 numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().text = _numbersCard[i].ToString();
                 numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.blue;
-                if (_numbersCard[i].ToString() == GameManager.instance.globeDraw.bolasSorteadas[GameManager.instance.globeDraw.bolasSorteadas.Count - 1])
+                if (_numbersCard[i].ToString() == GameManager.instance.globeDrawData.bolasSorteadas[GameManager.instance.globeDrawData.bolasSorteadas.Count - 1])
                 {
                     numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
                 }

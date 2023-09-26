@@ -88,12 +88,12 @@ public class UiManagerLoginScene : MonoBehaviour
 
                         string json = webRequest.downloadHandler.text;
                         print(json);
-                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.editonData);
+                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.editionData);
                         GameManager.instance.CallEventLogin();
                         panelSelectEdition.SetActive(true);
                         panelLogin.SetActive(false);
                         PopulateDropdownEditions();
-                        GameManager.instance.editonData.SetInfosTecnical(inputUsername.text,"XXX.XXX.XXX-XX");
+                        GameManager.instance.editionData.SetInfosTecnical(inputUsername.text,"XXX.XXX.XXX-XX");
                     }
                     break;
             }
@@ -105,9 +105,9 @@ public class UiManagerLoginScene : MonoBehaviour
         dropdown.ClearOptions();
         List<string> newOptions = new List<string>();
 
-        for (int i = 0; i < GameManager.instance.editonData.edicaoInfos.Count; i++)
+        for (int i = 0; i < GameManager.instance.editionData.edicaoInfos.Count; i++)
         {
-            string option = $"{GameManager.instance.editonData.edicaoInfos[i].numero} - {GameManager.instance.editonData.edicaoInfos[i].nome} - {GameManager.instance.editonData.edicaoInfos[i].dataRealizacao}";
+            string option = $"{GameManager.instance.editionData.edicaoInfos[i].numero} - {GameManager.instance.editionData.edicaoInfos[i].nome} - {GameManager.instance.editionData.edicaoInfos[i].dataRealizacao}";
             newOptions.Add(option);
         }
         dropdown.AddOptions(newOptions);

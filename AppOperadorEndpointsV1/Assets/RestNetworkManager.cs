@@ -68,7 +68,7 @@ public class RestNetworkManager : MonoBehaviour
     #region REQUESTS
     private void Start()
     {
-        string json = JsonUtility.ToJson(GameManager.instance.globeScriptable);
+        string json = JsonUtility.ToJson(GameManager.instance.globeData);
 
     }
     private void SetCurrentMode(MODE _current_mode)
@@ -104,8 +104,6 @@ public class RestNetworkManager : MonoBehaviour
     public void GetRaffleInfos()
     {
         CallGetInfoServer();
-
-        StartCoroutine(GetLotteryInfos(baseUrl + urlInfoLottery));
 
         StartCoroutine(GetGlobeInfos(baseUrl + urlGlobeInfos));
 
@@ -174,7 +172,7 @@ public class RestNetworkManager : MonoBehaviour
     //}
     private IEnumerator PostWriteMemory(string uri)
     {
-        string json = JsonUtility.ToJson(GameManager.instance.OperatorData);
+        string json = JsonUtility.ToJson(GameManager.instance.operatorData);
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
         {
             byte[] jsonToSend = Encoding.UTF8.GetBytes(json);
@@ -227,8 +225,8 @@ public class RestNetworkManager : MonoBehaviour
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         byte[] bytesResponse = webRequest.downloadHandler.data;
                         string response = Encoding.UTF8.GetString(bytesResponse);
-                        JsonUtility.FromJsonOverwrite(response, GameManager.instance.OperatorData);
-                        GameManager.instance.OperatorData.PopulateConfig();
+                        JsonUtility.FromJsonOverwrite(response, GameManager.instance.operatorData);
+                        GameManager.instance.operatorData.PopulateConfig();
                         if (GameManager.instance.isBackup)
                         {
                             yield return new WaitForSeconds(1f);
@@ -240,33 +238,6 @@ public class RestNetworkManager : MonoBehaviour
         }
     }
 
-    private IEnumerator GetLotteryInfos(string uri)
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-        {
-            yield return webRequest.SendWebRequest();
-
-            string[] pages = uri.Split('/');
-            int page = pages.Length - 1;
-
-            switch (webRequest.result)
-            {
-                case UnityWebRequest.Result.ConnectionError:
-                case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.Success:
-                    {
-                        string json = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.lotteryScriptable);
-                    }
-                    break;
-            }
-        }
-    }
     private IEnumerator GetGlobeInfos(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -289,12 +260,12 @@ public class RestNetworkManager : MonoBehaviour
                     {
                         Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                         string jsonResponse = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeScriptable);
+                        JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeData);
 
                         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
                         if (uiInfos != null)
-                            uiInfos.PopulateRaffleInfos(GameManager.instance.globeScriptable.GetGlobeOrder().ToString(),
-                            GameManager.instance.globeScriptable.GetGlobeDescription(), GameManager.instance.globeScriptable.GetGlobeValue());
+                            uiInfos.PopulateRaffleInfos(GameManager.instance.globeData.GetOrder().ToString(),
+                            GameManager.instance.globeData.GetDescription(), GameManager.instance.globeData.GetValue());
                     }
                     break;
             }
@@ -309,11 +280,11 @@ public class RestNetworkManager : MonoBehaviour
     {
         GameManager.RequestBallsRaffled ballsRaffled = new GameManager.RequestBallsRaffled();
         ballsRaffled.balls = new List<int>();
-        for (int i = 0; i < GameManager.instance.globeDraw.bolasSorteadas.Count; i++)
+        for (int i = 0; i < GameManager.instance.globeDrawData.bolasSorteadas.Count; i++)
         {
-            ballsRaffled.balls.Add(int.Parse(GameManager.instance.globeDraw.bolasSorteadas[i]));
+            ballsRaffled.balls.Add(int.Parse(GameManager.instance.globeDrawData.bolasSorteadas[i]));
         }
-        ballsRaffled.sorteioOrdem = GameManager.instance.globeScriptable.GetGlobeOrder();
+        ballsRaffled.sorteioOrdem = GameManager.instance.globeData.GetOrder();
         string json = JsonUtility.ToJson(ballsRaffled);
 
         using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, json))
@@ -348,7 +319,7 @@ public class RestNetworkManager : MonoBehaviour
 
                         GlobeController globeController = FindObjectOfType<GlobeController>();
 
-                        JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeDraw);
+                        JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeDrawData);
                         GameManager.instance.PopulateListOfVisibleTicket();
                         if (globeController != null)
                         {
@@ -384,8 +355,8 @@ public class RestNetworkManager : MonoBehaviour
                 case UnityWebRequest.Result.Success:
 
                     string json = webRequest.downloadHandler.text;
-                    JsonUtility.FromJsonOverwrite(json, GameManager.instance.spinScriptable);
-                    //GameManager.instance.spinScriptable.sorteioOrdem = 1;
+                    JsonUtility.FromJsonOverwrite(json, GameManager.instance.spinData);
+                    //GameManager.instance.spinData.sorteioOrdem = 1;
                     break;
             }
         }
@@ -426,7 +397,7 @@ public class RestNetworkManager : MonoBehaviour
                 case UnityWebRequest.Result.Success:
                     Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     string jsonResponse = webRequest.downloadHandler.text;
-                    JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.spinResultScriptable);
+                    JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.spinDrawData);
                     
                     spinController.ShowNumberLuckySpin();
                     break;

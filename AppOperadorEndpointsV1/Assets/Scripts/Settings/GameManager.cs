@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
-
         if (instance != null)
         {
             Destroy(gameObject);
@@ -27,17 +25,14 @@ public class GameManager : MonoBehaviour
 
     public Resoucers.RecoveryData recoveryData;
     [Space]
-    public Resoucers.EditionData editonData;
-    public Resoucers.OperatorData OperatorData;
+    public Resoucers.EditionData editionData;
+    public Resoucers.OperatorData operatorData;
     [Space]
-    public LotteryScriptable lotteryScriptable;
-    public LotteryResultScriptable lotteryResultScriptable;
+    public Resoucers.GlobeData globeData;
+    public Resoucers.GlobeDrawData globeDrawData;
     [Space]
-    public GlobeScriptable globeScriptable;
-    public GlobeRaffleScriptable globeDraw;
-    [Space]
-    public SpinScriptable spinScriptable;
-    public SpinResultScriptable spinResultScriptable;
+    public Resoucers.SpinData spinData;
+    public Resoucers.SpinDrawData spinDrawData;
 
     [Header("Settings")]
     public bool isBackup = false;
@@ -55,8 +50,8 @@ public class GameManager : MonoBehaviour
     public int sceneId;
     void Start()
     {
-        globeDraw.ResetInfos();
-        OperatorData.ResetInfos();
+        globeDrawData.ResetInfos();
+        operatorData.ResetInfos();
         recoveryData.ResetInfos();
     }
     public void RecoveryGlobeScreen()
@@ -82,17 +77,17 @@ public class GameManager : MonoBehaviour
         if (uIChangeRaffleType != null)
         {
             uIChangeRaffleType.CheckStateVisibilityRaffle();
-            uIChangeRaffleType.SelectPanelForActivate(OperatorData.panelActive);
+            uIChangeRaffleType.SelectPanelForActivate(operatorData.panelActive);
         }
     }
     public void RecoverySpinScreen()
     {
         SpinController spinController = FindObjectOfType<SpinController>();
         TicketController ticket = FindObjectOfType<TicketController>();
-        if (spinController != null && OperatorData.spinNumbers.Count > 0)
+        if (spinController != null && operatorData.spinNumbers.Count > 0)
         {
-            spinController.ShowSpinOrder(OperatorData.spinIndex);
-            spinController.PopulateSpinsFields(OperatorData.spinNumbers);
+            spinController.ShowSpinOrder(operatorData.spinIndex);
+            spinController.PopulateSpinsFields(operatorData.spinNumbers);
             spinController.PopulateTicketSpin();
             ticket.CheckStateVisibility();
         }
@@ -101,7 +96,7 @@ public class GameManager : MonoBehaviour
         if (uIChangeRaffleType != null)
         {
             uIChangeRaffleType.CheckStateVisibilityRaffle();
-            uIChangeRaffleType.SelectPanelForActivate(OperatorData.panelActive);
+            uIChangeRaffleType.SelectPanelForActivate(operatorData.panelActive);
         }
     }
     public void LoadSceneGame(string map)
@@ -135,45 +130,54 @@ public class GameManager : MonoBehaviour
     }
 
     #region GLOBE FUNCTIONS
+
+    public int GetMatriz(int _editionID)
+    {
+        int number = 0;
+        int startIndex = editionData.edicaoInfos[_editionID].matriz.Length - 2;
+        number = int.Parse(editionData.edicaoInfos[_editionID].matriz.Substring(startIndex));
+        return number;
+
+    }
     public void SetNewBall(string newBall)
     {
-        if (!globeDraw.bolasSorteadas.Contains(newBall))
+        if (!globeDrawData.bolasSorteadas.Contains(newBall))
         {
-            globeDraw.SetNewBall(newBall);
+            globeDrawData.SetNewBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer();
         }
     }
     public List<String> GetBallsRaffled()
     {
-        return globeDraw.bolasSorteadas;
+        return globeDrawData.bolasSorteadas;
     }
     public void SetRemoveBall(string newBall)
     {
-        if (globeDraw.bolasSorteadas.Contains(newBall))
+        if (globeDrawData.bolasSorteadas.Contains(newBall))
         {
-            globeDraw.RevokeBall(newBall);
+            globeDrawData.RevokeBall(newBall);
             RestNetworkManager.instance.SendBallsRaffledFromServer();
         }
     }
     public void PopulateListOfVisibleTicket()
     {
-        globeDraw.ticketListVisible = new bool[globeDraw.ganhadorContemplado.Length];
+        globeDrawData.ticketListVisible = new bool[globeDrawData.ganhadorContemplado.Length];
     }
     public void SetIsVisibleTicketList(int index)
     {
-        globeDraw.ticketListVisible[index] = true;
+        globeDrawData.ticketListVisible[index] = true;
     }
     public bool GetAllTicketsVisible()
     {
         int index = 0;
-        for (int i = 0; i < globeDraw.ticketListVisible.Length; i++)
+        for (int i = 0; i < globeDrawData.ticketListVisible.Length; i++)
         {
-            if (globeDraw.ticketListVisible[i] == true)
+            if (globeDrawData.ticketListVisible[i] == true)
             {
                 index++;
             }
         }
-        if (index >= globeDraw.ticketListVisible.Length)
+        if (index >= globeDrawData.ticketListVisible.Length)
         {
             return true;
         }
@@ -186,9 +190,9 @@ public class GameManager : MonoBehaviour
     {
         List<string> forOneBalls = new List<string>();
 
-        for (int i = 0; i < globeDraw.porUmaBolas.Count; i++)
+        for (int i = 0; i < globeDrawData.porUmaBolas.Count; i++)
         {
-            forOneBalls.Add($"{globeDraw.porUmaBolas[i].numeroBola} - {globeDraw.porUmaBolas[i].numeroChance} - {globeDraw.porUmaBolas[i].numeroTitulo}");
+            forOneBalls.Add($"{globeDrawData.porUmaBolas[i].numeroBola} - {globeDrawData.porUmaBolas[i].numeroChance} - {globeDrawData.porUmaBolas[i].numeroTitulo}");
         }
         return forOneBalls;
     }
@@ -197,31 +201,31 @@ public class GameManager : MonoBehaviour
     {
         List<string> winners = new List<string>();
 
-        for (int i = 0; i < globeDraw.ganhadorContemplado.Length; i++)
+        for (int i = 0; i < globeDrawData.ganhadorContemplado.Length; i++)
         {
-            winners.Add($"{globeDraw.ganhadorContemplado[i].numeroTitulo} - {globeDraw.ganhadorContemplado[i].chance} ");
+            winners.Add($"{globeDrawData.ganhadorContemplado[i].numeroTitulo} - {globeDrawData.ganhadorContemplado[i].chance} ");
         }
         return winners;
     }
     public string GetForTwoBalls()
     {
         string result = string.Empty;
-        result = globeDraw.porDuasBolas.ToString();
+        result = globeDrawData.porDuasBolas.ToString();
         return result;
     }
     public string GetWinnersCount()
     {
         string result = string.Empty;
-        result = globeDraw.ganhadorContemplado.ToString();
+        result = globeDrawData.ganhadorContemplado.ToString();
         return result;
     }
 
     public void ResetScreenGlobe()
     {
-        globeDraw.bolasSorteadas.Clear();
-        globeDraw.porUmaBolas.Clear();
-        globeDraw.porDuasBolas = 0;
-        globeDraw.ganhadorContemplado = new TicketInfos[0];
+        globeDrawData.bolasSorteadas.Clear();
+        globeDrawData.porUmaBolas.Clear();
+        globeDrawData.porDuasBolas = 0;
+        globeDrawData.ganhadorContemplado = new TicketInfos[0];
 
         WriteInfosGlobe();
     }
@@ -231,9 +235,9 @@ public class GameManager : MonoBehaviour
     {
         if (!instance.isBackup)
         {
-            OperatorData.UpdateConfig(sceneId, globeScriptable.GetGlobeOrder(), isVisibleRaffle, globeDraw.porDuasBolas, globeDraw.porUmaBolas
-                , globeDraw.ganhadorContemplado.ToList(),
-                globeDraw.ticketListVisible.ToList(),
+            operatorData.UpdateConfig(sceneId, globeData.GetOrder(), isVisibleRaffle, globeDrawData.porDuasBolas, globeDrawData.porUmaBolas
+                , globeDrawData.ganhadorContemplado.ToList(),
+                globeDrawData.ticketListVisible.ToList(),
                ticketWinnerIndex, instance.isTicketVisible);
         }
     }
@@ -247,7 +251,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (globeDraw.ganhadorContemplado.Length > 0)
+        if (globeDrawData.ganhadorContemplado.Length > 0)
         {
             isWinner = true;
         }

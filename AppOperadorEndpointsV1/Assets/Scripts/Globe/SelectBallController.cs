@@ -18,7 +18,7 @@ public class SelectBallController : MonoBehaviour
     [SerializeField] private bool canActiveButtons = true;
     void Start()
     {
-        SetGridBalls(maxBalls);
+        SetGridBalls(GameManager.instance.GetMatriz(0));
     }
 
     private void SpawnBgBalls(int _amountBalls)

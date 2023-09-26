@@ -104,10 +104,10 @@ public class TcpNetworkManager : MonoBehaviour
         //    GameManager.instance.sceneId = sceneID;
         //    raffleType.SetStateCanChangeScene(isActive);
 
-        //    GameManager.instance.OperatorData.UpdateConfig(
+        //    GameManager.instance.operatorData.UpdateConfig(
         //              GameManager.instance.sceneId,
         //              GameManager.instance.globeRaffleScriptable.bolasSorteadas,
-        //              GameManager.instance.globeScriptable.sorteioOrdem,
+        //              GameManager.instance.globeData.sorteioOrdem,
         //              GameManager.instance.isVisibleRaffle
         //              );
         //}
@@ -136,10 +136,10 @@ public class TcpNetworkManager : MonoBehaviour
         //    if (sceneID != 0)
         //        GameManager.instance.sceneId = sceneID;
         //    raffleType.SelectPanelForActivate(sceneID);
-        //    GameManager.instance.OperatorData.UpdateConfig(
+        //    GameManager.instance.operatorData.UpdateConfig(
         //              GameManager.instance.sceneId,
         //              GameManager.instance.globeRaffleScriptable.bolasSorteadas,
-        //              GameManager.instance.globeScriptable.sorteioOrdem,
+        //              GameManager.instance.globeData.sorteioOrdem,
         //              GameManager.instance.isVisibleRaffle
         //              );
         //}
