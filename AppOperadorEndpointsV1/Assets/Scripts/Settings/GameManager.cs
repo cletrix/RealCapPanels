@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public Resoucers.SpinDrawData spinDrawData;
 
     [Header("Settings")]
+    [SerializeField] private int countBallsCard = 0;
+    [SerializeField] private int countBallsGrid = 0;
     public bool isBackup = false;
     public bool isConnected = false;
     public bool isVisibleRaffle = false;
@@ -127,17 +129,26 @@ public class GameManager : MonoBehaviour
     {
         isConnected = true;
         OnPopulateRaffles?.Invoke();
+        SetMatrizInfos();
     }
 
     #region GLOBE FUNCTIONS
 
-    public int GetMatriz(int _editionID)
+    public int GetCountBallsGrid()
     {
-        int number = 0;
-        int startIndex = editionData.edicaoInfos[_editionID].matriz.Length - 2;
-        number = int.Parse(editionData.edicaoInfos[_editionID].matriz.Substring(startIndex));
-        return number;
+        return countBallsGrid;
 
+    }
+    public int GetCountBallsCard()
+    {
+        return countBallsCard;
+
+    }
+    public void SetMatrizInfos()
+    {
+        countBallsCard = int.Parse(editionData.edicaoInfos[0].matriz.Substring(0, 2));
+        int startIndex = editionData.edicaoInfos[0].matriz.Length - 2;
+        countBallsGrid = int.Parse(editionData.edicaoInfos[0].matriz.Substring(startIndex));
     }
     public void SetNewBall(string newBall)
     {

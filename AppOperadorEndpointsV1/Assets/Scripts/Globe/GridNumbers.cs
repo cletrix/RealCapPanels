@@ -1,24 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SelectBallController : MonoBehaviour
+public class GridNumbers : ConfigGridController
 {
-    [Header("COMPONENTS SPAWN")]
-
-    [SerializeField] private GridLayoutGroup gridSelectBalls;
-
+   
     [Header("COMPONENTS")]
     [SerializeField] private SelectBall selectBall;
 
-    [SerializeField] int maxBalls = 60;
     [SerializeField] List<SelectBall> selectBalls;
 
-    [SerializeField] private bool canActiveButtons = true;
     void Start()
     {
-        SetGridBalls(GameManager.instance.GetMatriz(0));
+        SetGridBalls(GameManager.instance.GetCountBallsGrid());
     }
 
     private void SpawnBgBalls(int _amountBalls)
@@ -34,24 +30,10 @@ public class SelectBallController : MonoBehaviour
             selectBalls.Add(inst);
         }
     }
-    private void ConfigGridBalls(int _cellSizeX, int _cellSizeY, int _spacingX, int _spacingY, int _constraintCount)
-    {
-        gridSelectBalls.cellSize = new Vector2(_cellSizeX, _cellSizeY);
-        gridSelectBalls.spacing = new Vector2(_spacingX, _spacingY);
-        gridSelectBalls.constraintCount = _constraintCount;
-    }
-
-    private void ResetGrid()
-    {
-        for (int i = 0; i < selectBalls.Count; i++)
-        {
-            Destroy(transform.GetChild(i).gameObject, 0.1f);
-        }
-    }
     public void SetGridBalls(int _maxBalls)
     {
-        ResetGrid();
-        maxBalls = _maxBalls;
+        List<object> grid = new List<object>(selectBalls.Cast<object>());
+        ResetGrid(grid); ;
         switch (_maxBalls)
         {
             case 30:
@@ -81,10 +63,5 @@ public class SelectBallController : MonoBehaviour
                 }
         }
         SpawnBgBalls(_maxBalls);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

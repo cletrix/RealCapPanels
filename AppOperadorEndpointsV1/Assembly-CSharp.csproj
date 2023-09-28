@@ -50,7 +50,6 @@
      <Compile Include="Assets\RestNetworkManager.cs" />
      <Compile Include="Assets\Scripts\Spin\SpinRaffleData.cs" />
      <Compile Include="Assets\Scripts\Settings\GameManager.cs" />
-     <Compile Include="Assets\Scripts\Globe\SelectBallController.cs" />
      <Compile Include="Assets\Scripts\Globe\FadeController.cs" />
      <Compile Include="Assets\Scripts\Globe\GlobeController.cs" />
      <Compile Include="Assets\Scripts\Ticket\TicketInfos.cs" />
@@ -59,8 +58,11 @@
      <Compile Include="Assets\Scripts\UiManagerLoginScene.cs" />
      <Compile Include="Assets\Scripts\Spin\SpinResultScriptable.cs" />
      <Compile Include="Assets\Version\VersionController.cs" />
+     <Compile Include="Assets\Scripts\Settings\ConfigGridController.cs" />
+     <Compile Include="Assets\Scripts\Globe\GridNumbers.cs" />
      <Compile Include="Assets\Scripts\Spin\SpinController.cs" />
      <Compile Include="Assets\Scripts\Globe\TicketsListController.cs" />
+     <Compile Include="Assets\Scripts\Ticket\GridNumbersTicket.cs" />
      <Compile Include="Assets\Scripts\Globe\SelectBall.cs" />
      <Compile Include="Assets\Scripts\Globe\BtTicketList.cs" />
      <Compile Include="Assets\Scripts\Settings\UiManagerMainScene.cs" />

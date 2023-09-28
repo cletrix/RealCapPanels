@@ -79,7 +79,7 @@ public class RestNetworkManager : MonoBehaviour
                 baseUrl = "http://192.168.0.4:43212/";
                 break;
             case MODE.REMOTO:
-                baseUrl = "http://192.168.0.4:43212/";
+                baseUrl = "http://realcap.servegame.com:43212/";
                 break;
             case MODE.PRODUCAO:
                 baseUrl = "http://192.168.20.31:43212/";

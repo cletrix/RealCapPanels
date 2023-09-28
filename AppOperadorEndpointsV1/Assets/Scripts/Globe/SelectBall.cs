@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
 public class SelectBall : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class SelectBall : MonoBehaviour
     [SerializeField] private int numberBall;
     [SerializeField] private TextMeshProUGUI txtBall;
     [SerializeField] private Button btBall;
+    [SerializeField] private Image imgBall;
     [SerializeField] private bool hasRaffled = false;
     [SerializeField] private bool hasSelected = false;
     [SerializeField] private bool hasCanRevoked = false;
@@ -23,7 +25,15 @@ public class SelectBall : MonoBehaviour
     public void InitializeVariables()
     {
         btBall = GetComponent<Button>();
+        imgBall = GetComponent<Image>();
         btBall.onClick.AddListener(SetActionButton);
+    }
+    public void DisableButton()
+    {
+        if (gameObject.activeSelf == false) return;
+        btBall.enabled = false;
+        imgBall.color = Color.white;
+
     }
     public void SetNumberInText(string _numberBall)
     {

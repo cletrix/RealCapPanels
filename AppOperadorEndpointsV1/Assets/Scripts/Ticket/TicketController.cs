@@ -33,7 +33,7 @@ public class TicketController : MonoBehaviour
     [Header("RAFFLE INFOS")]
     [SerializeField] private TextMeshProUGUI numberTicket;
     [SerializeField] private TextMeshProUGUI Chance;
-    [SerializeField] private List<GameObject> numbersCard;
+    [SerializeField] private List<SelectBall> numbersCard;
     [SerializeField] private TextMeshProUGUI luckyNumber;
 
     [Header("Settings")]
@@ -223,6 +223,16 @@ public class TicketController : MonoBehaviour
         else
             return "SITE";
     }
+    private void SetArrayNumberCards()
+    {
+        numbersCard.Clear();
+
+        // Obtenha todos os SelectBall em groupCard uma vez e armazene-os em uma variável.
+        SelectBall[] selectBalls = groupCard.GetComponentsInChildren<SelectBall>();
+
+        // Adicione os SelectBall à lista numbersCard.
+        numbersCard.AddRange(selectBalls);
+    }
     public void PopulateTicketInfos(string _nameWinner, string _cpf, string _birthDate, string _phone,
         string _email, string _district, string _county, string _state, string _dateRaffle, string _editionName, float _value,
         string _PDV, string _districtPDV, string _dateBuy, string _hourBuy, string _ticketNumber, string _chance,
@@ -247,11 +257,12 @@ public class TicketController : MonoBehaviour
 
         if (_isCard)
         {
+            SetArrayNumberCards();
             groupCard.SetActive(true);
             luckyNumber.gameObject.SetActive(false);
             for (int i = 0; i < _numbersCard.Count; i++)
             {
-                numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().text = _numbersCard[i].ToString();
+                numbersCard[i].SetNumberInText(_numbersCard[i].ToString());
                 numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.blue;
                 if (_numbersCard[i].ToString() == GameManager.instance.globeDrawData.bolasSorteadas[GameManager.instance.globeDrawData.bolasSorteadas.Count - 1])
                 {

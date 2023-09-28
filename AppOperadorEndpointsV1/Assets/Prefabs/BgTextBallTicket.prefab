@@ -96,8 +96,24 @@ PrefabInstance:
       value: BgTextBallTicket
       objectReference: {fileID: 0}
     - target: {fileID: 6939323630036044679, guid: 400af6bf683ef7448835325234474b25, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ca610d11931e9f46b706acaa82df102, type: 3}
+    - target: {fileID: 6939323630036044679, guid: 400af6bf683ef7448835325234474b25, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939323630036044679, guid: 400af6bf683ef7448835325234474b25, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939323630036044679, guid: 400af6bf683ef7448835325234474b25, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939323630036044679, guid: 400af6bf683ef7448835325234474b25, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6939323630800762151, guid: 400af6bf683ef7448835325234474b25, type: 3}
       propertyPath: m_fontSize
@@ -121,7 +137,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894946630650783081}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
