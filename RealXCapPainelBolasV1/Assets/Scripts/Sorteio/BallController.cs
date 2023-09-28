@@ -10,15 +10,20 @@ public class BallController : MonoBehaviour
     public int countBallsRaffle;
     public int sortCount = 0;
     public string numberSTR;
-    void Start()
+  
+    public void PopulateListBalls()
     {
+        balls.Clear();
+        BallSlot[] childrens = groupBalls.GetComponentsInChildren<BallSlot>();
+        balls.AddRange(childrens);
         SetNumberInBalls();
     }
     private void SetNumberInBalls()
     {
         for (int i = 0; i < balls.Count; i++)
         {
-            balls[i].SetNumberBall(i + 1);
+            int number = i + 1;
+            balls[i].SetNumberInText(number.ToString());
         }
     }
 
@@ -40,13 +45,12 @@ public class BallController : MonoBehaviour
         {
             balls[i].ResetBall();
         }
-        ResetGrid();
     }
 
     public void UpdateScreenBalls(List<int> ballsRaffled)
     {
         ResetBalls();
-        UIManager.instance.panelScriptable.indexBalls--;
+        UIManager.instance.panelData.indexBalls--;
         for (int i = 0; i < ballsRaffled.Count; i++)
         {
             if (i < ballsRaffled.Count - 1)
@@ -58,38 +62,17 @@ public class BallController : MonoBehaviour
                 balls[ballsRaffled[i] - 1].SetSelectedBall();
             }
         }
-
     }
-
     public void ShowBallRaffled(int index)
     {
         DesactiveAllBorder();
         balls[index - 1].SetEnableBallBorder();
-        if (UIManager.instance.panelScriptable.winnersCount > 0)
+        if (UIManager.instance.panelData.winnersCount > 0)
         {
             Invoke("DisableAllBallsNoDrawn", 4f);
         }
         else
             UIManager.instance.canRaffleBall = true;
-    }
-
-    public void UpdateGrid(int _ballsDrawn)
-    {
-        if (_ballsDrawn > 40 )
-        {
-            groupBalls.cellSize = new Vector2(300, 300);
-            groupBalls.spacing = new Vector2(60, 50);
-        }
-        else if (_ballsDrawn <= 40 )
-        {
-            groupBalls.cellSize = new Vector2(300, 300);
-            groupBalls.spacing = new Vector2(80, 80);
-        }
-    }
-    public void ResetGrid()
-    {
-        groupBalls.cellSize = new Vector2(250, 250);
-        groupBalls.spacing = new Vector2(120, 80);
     }
     public void DisableAllBallsNoDrawn()
     {
@@ -105,6 +88,5 @@ public class BallController : MonoBehaviour
                 enableBalls++;
             }
         }
-        UpdateGrid(enableBalls);
     }
 }

@@ -29,11 +29,11 @@ public class BallSlot : MonoBehaviour
         ballTransform = GetComponent<Transform>();
     }
 
-    public void SetNumberBall(int _number)
+    public void SetNumberInText(string _number)
     {
         SetEnableBall();
-        numberBall = _number;
-        textNumber.text = _number.ToString();
+        numberBall = int.Parse(_number);
+        textNumber.text = _number;
 
         ballBorder.SetActive(false);
         ChangeColorBgLine();
@@ -77,7 +77,7 @@ public class BallSlot : MonoBehaviour
         SetEnableBall();
         isActive = true;
         hasRaffled = true;
-        if (UIManager.instance.panelScriptable.winnersCount > 0)
+        if (UIManager.instance.panelData.winnersCount > 0)
         {
             imageBall.color = winnerColor;
         }

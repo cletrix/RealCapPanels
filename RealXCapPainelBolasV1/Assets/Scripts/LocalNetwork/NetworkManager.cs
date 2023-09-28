@@ -158,6 +158,8 @@ public class NetworkManager : MonoBehaviour
     private static void ReceiveMessageChangeType(Message message)
     {
         string scene = message.GetString();
+        int maxBalls = message.GetInt();
+        UIManager.instance.SetMaxBallGrid(maxBalls);
         if (scene == "SceneGlobe")
         {
             UIManager.instance.ResetRaffle();
@@ -206,7 +208,7 @@ public class NetworkManager : MonoBehaviour
     {
         bool isActive = message.GetBool();
         int sceneActive = message.GetInt();
-        if (sceneActive == 2)
+        if (sceneActive == 1)
         {
             StandyByScreen.instance.SetManualVisibilityScreen(isActive);
         }

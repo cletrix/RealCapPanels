@@ -106,13 +106,13 @@ public class UIChangeRaffleType : MonoBehaviour
     public void SetGlobeDraw()
     {
         SelectPanelForActivate(1);
-        SendMessageToClientChangeRaffle("SceneGlobe");
+        SendMessageToClientChangeRaffle("SceneGlobe", GameManager.instance.GetCountBallsGrid());
 
     }
     public void SetSpinDraw()
     {
         SelectPanelForActivate(2);
-        SendMessageToClientChangeRaffle("SceneSpin");
+        SendMessageToClientChangeRaffle("SceneSpin", GameManager.instance.GetCountBallsGrid());
     }
 
     public void SelectPanelForActivate(int index)
@@ -314,11 +314,11 @@ public class UIChangeRaffleType : MonoBehaviour
             TcpNetworkManager.instance.Server.SendToAll(GetMessage(Message.Create(MessageSendMode.reliable, ServerToClientId.messageCheckSceneActive)));
         }
     }
-    public void SendMessageToClientChangeRaffle(string _messageString)
+    public void SendMessageToClientChangeRaffle(string _messageString, int maxBalls)
     {
         if (!GameManager.instance.isBackup)
         {
-            TcpNetworkManager.instance.Server.SendToAll(GetMessageString(Message.Create(MessageSendMode.reliable, ServerToClientId.messageTypeRaffle), _messageString));
+            TcpNetworkManager.instance.Server.SendToAll(GetMessageTypeRaffle(Message.Create(MessageSendMode.reliable, ServerToClientId.messageTypeRaffle), _messageString, maxBalls));
         }
     }
     public void SendMessageLotteryInfos(string _editionNumber, string __competitionNumber, string _dateRaffle, string _dateCompetition, int _ordem, string _description, float _value)
@@ -338,10 +338,16 @@ public class UIChangeRaffleType : MonoBehaviour
         if (!GameManager.instance.isBackup)
             TcpNetworkManager.instance.Server.SendToAll(GetMessageSpinInfos(Message.Create(MessageSendMode.reliable, ServerToClientId.messageInfosSpin), _editionName, _editionNumber, _date, _ordem, _description, _value));
     }
-    private Message GetMessageString(Message message, string _textMessage)
+    //private Message GetMessageString(Message message, string _textMessage)
+    //{
+    //    message.AddString(_textMessage);
+
+    //    return message;
+    //}
+    private Message GetMessageTypeRaffle(Message message, string _textMessage, int maxBalls)
     {
         message.AddString(_textMessage);
-
+        message.Add(maxBalls);
         return message;
     }
     private Message GetMessage(Message message)

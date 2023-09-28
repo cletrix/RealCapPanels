@@ -24,7 +24,8 @@ public class UIManager : MonoBehaviour
     }
 
     public BallController ballController;
-    public PanelScriptable panelScriptable;
+    public GridBallController gridBallController;
+    public Resoucers.PanelData panelData;
 
     [SerializeField] private float timeToSpawn;
     public float maxTimetoSpawn = 1.5f;
@@ -34,18 +35,28 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        gridBallController = FindObjectOfType<GridBallController>();
     }
-
+    public void SetMaxBallGrid(int _maxBall)
+    {
+        panelData.maxBallsGrid = _maxBall;
+        gridBallController.SetGridBalls(panelData.maxBallsGrid);
+        ballController.PopulateListBalls();
+    }
+    public int GetMaxGridBalls()
+    {
+        return panelData.maxBallsGrid;
+    }
     private void Start()
     {
         Invoke("Connect", 1f);
-        panelScriptable.ResetVariables();
+        panelData.ResetVariables();
         timeToSpawn = maxTimetoSpawn;
     }
     private void FakeDraw()
     {
         List<int> balls = new List<int>();
-        balls.AddRange(panelScriptable.Balls);
+        balls.AddRange(panelData.Balls);
         RecieveBalls(balls, 0);
     }
     public void Connect()
@@ -56,40 +67,40 @@ public class UIManager : MonoBehaviour
     public void ShowBall()
     {
         ballController.DesactiveAllBorder();
-        ballController.ShowBallRaffled(panelScriptable.Balls[panelScriptable.indexBalls]);
-        panelScriptable.indexBalls++;
+        ballController.ShowBallRaffled(panelData.Balls[panelData.indexBalls]);
+        panelData.indexBalls++;
     }
     public void ResetRaffle()
     {
         ballController.ResetBalls();
-        panelScriptable.ResetVariables();
+        panelData.ResetVariables();
     }
     public void RecieveBalls(List<int> ballsRaffled, int _winnersCount)
     {
-        panelScriptable.winnersCount = _winnersCount;
-        if (ballsRaffled.Count > panelScriptable.Balls.Count)
+        panelData.winnersCount = _winnersCount;
+        if (ballsRaffled.Count > panelData.Balls.Count)
         {
-            panelScriptable.Balls.Clear();
-            panelScriptable.Balls.AddRange(ballsRaffled);
+            panelData.Balls.Clear();
+            panelData.Balls.AddRange(ballsRaffled);
             VerifyBalls();
         }
-        else if (ballsRaffled.Count < panelScriptable.Balls.Count)
+        else if (ballsRaffled.Count < panelData.Balls.Count)
         {
 
-            panelScriptable.Balls.Clear();
-            panelScriptable.Balls.AddRange(ballsRaffled);
+            panelData.Balls.Clear();
+            panelData.Balls.AddRange(ballsRaffled);
             ballController.UpdateScreenBalls(ballsRaffled);
         }
     }
 
     public void VerifyBalls()
     {
-        if (panelScriptable.indexBalls < panelScriptable.Balls.Count)
+        if (panelData.indexBalls < panelData.Balls.Count)
             if (timeToSpawn <= 0)
             {
                 if (canRaffleBall == true)
                 {
-                    if (panelScriptable.Balls.Count <= 60)
+                    if (panelData.Balls.Count <= 60)
                     {
                         Invoke("ShowBall", 0.5f);
                         timeToSpawn = maxTimetoSpawn;
