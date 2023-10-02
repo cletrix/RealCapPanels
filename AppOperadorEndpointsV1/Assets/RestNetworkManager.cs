@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -25,7 +26,7 @@ public class RestNetworkManager : MonoBehaviour
             }
         }
     }
-    public Comunication comunication;
+    public Comunication comunication = new Comunication();
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -57,14 +58,11 @@ public class RestNetworkManager : MonoBehaviour
     [Header("PAYLOADS")]
     public string urlLogin;
     [Space]
-    public string urlInfoLottery;
-    public string urlResultLottery;
+    public string payloadInfosGlobe = "infosGlobe";
+    public string payloadDrawGlobe = "raffleGlobe";
     [Space]
-    public string urlGlobeInfos;
-    public string urlRaffleGlobe;
-    [Space]
-    public string urlSpin;
-    public string urlResultSpin;
+    public string urlSpin = "infosSpin";
+    public string urlResultSpin = "resultSpin";
 
     #region REQUESTS
     private void Start()
@@ -104,18 +102,12 @@ public class RestNetworkManager : MonoBehaviour
     }
     public void GetRaffleInfos()
     {
-        CallGetInfoServer();
+        GetRecoveryInfosDrawn();
 
-        StartCoroutine(GetGlobeInfos(baseUrl + urlGlobeInfos));
+        GetGlobeInfosDrawn();
 
         StartCoroutine(GetSpinInfos(baseUrl + urlSpin));
 
-    }
-    public void CallGetInfoServer()
-    {
-        StartCoroutine(GetInfosServer(baseUrl + payloadInfo));
-        if (GameManager.instance.isBackup == true)
-            StartCoroutine(GetReadMemory(baseUrl + payloadRead));
     }
     public async void GetRecoveryInfosDrawn()
     {
@@ -124,51 +116,46 @@ public class RestNetworkManager : MonoBehaviour
         GameManager.instance.recoveryData.UpdateInfosGlobe();
         if (GameManager.instance.isBackup)
         {
-
-            StartCoroutine(GetInfosServer(baseUrl + payloadInfo));
+            await Task.Delay(1000);
+            GetRecoveryInfosDrawn();
         }
-        //StartCoroutine(GetInfosServer(baseUrl + payloadInfo));
-        //if (GameManager.instance.isBackup == true)
-        //    StartCoroutine(GetReadMemory(baseUrl + payloadRead));
     }
-    public void CallInfosGlobe()
+    public async void GetGlobeInfosDrawn()
     {
-        StartCoroutine(GetGlobeInfos(baseUrl + urlGlobeInfos));
+        string response = await comunication.Get(baseUrl + payloadInfosGlobe);
+        JsonUtility.FromJsonOverwrite(response, GameManager.instance.globeData);
+
+        UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
+        if (uiInfos != null)
+            uiInfos.PopulateRaffleInfos(GameManager.instance.globeData.GetOrder().ToString(),
+            GameManager.instance.globeData.GetDescription(), GameManager.instance.globeData.GetValue());
     }
-    private IEnumerator GetInfosServer(string uri)
+    public async void SendBallsRaffledFromServer()
     {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        GameManager.RequestBallsRaffled ballsRaffled = new GameManager.RequestBallsRaffled();
+        ballsRaffled.balls = new List<int>();
+        for (int i = 0; i < GameManager.instance.globeDrawData.bolasSorteadas.Count; i++)
         {
-            yield return webRequest.SendWebRequest();
-
-            string[] pages = uri.Split('/');
-            int page = pages.Length - 1;
-
-            switch (webRequest.result)
-            {
-                case UnityWebRequest.Result.ConnectionError:
-                case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.Success:
-                    {
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                        string json = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(json, GameManager.instance.recoveryData);
-                        GameManager.instance.recoveryData.UpdateInfosGlobe();
-                        if (GameManager.instance.isBackup)
-                        {
-                            yield return new WaitForSeconds(1f);
-                            StartCoroutine(GetInfosServer(baseUrl + payloadInfo));
-                        }
-                        break;
-                    }
-            }
+            ballsRaffled.balls.Add(int.Parse(GameManager.instance.globeDrawData.bolasSorteadas[i]));
         }
+        ballsRaffled.sorteioOrdem = GameManager.instance.globeData.GetOrder();
+        string jsonToSend = JsonUtility.ToJson(ballsRaffled);
+
+        string response = await comunication.Post(baseUrl + payloadDrawGlobe, jsonToSend);
+        
+        GlobeController globeController = FindObjectOfType<GlobeController>();
+
+        JsonUtility.FromJsonOverwrite(response, GameManager.instance.globeDrawData);
+        GameManager.instance.PopulateListOfVisibleTicket();
+        if (globeController != null)
+        {
+
+            globeController.SendBallsRaffledToScreen();
+        }
+
+        //StartCoroutine(PostGlobeRaffle(baseUrl + payloadDrawGlobe));
     }
+
     public void CallWriteMemory()
     {
         if (!GameManager.instance.isBackup)
@@ -252,45 +239,7 @@ public class RestNetworkManager : MonoBehaviour
             }
         }
     }
-
-    private IEnumerator GetGlobeInfos(string uri)
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-        {
-            yield return webRequest.SendWebRequest();
-
-            string[] pages = uri.Split('/');
-            int page = pages.Length - 1;
-
-            switch (webRequest.result)
-            {
-                case UnityWebRequest.Result.ConnectionError:
-                case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.Success:
-                    {
-                        Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                        string jsonResponse = webRequest.downloadHandler.text;
-                        JsonUtility.FromJsonOverwrite(jsonResponse, GameManager.instance.globeData);
-
-                        UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
-                        if (uiInfos != null)
-                            uiInfos.PopulateRaffleInfos(GameManager.instance.globeData.GetOrder().ToString(),
-                            GameManager.instance.globeData.GetDescription(), GameManager.instance.globeData.GetValue());
-                    }
-                    break;
-            }
-        }
-    }
-
-    public void SendBallsRaffledFromServer()
-    {
-        StartCoroutine(PostGlobeRaffle(baseUrl + urlRaffleGlobe));
-    }
+   
     private IEnumerator PostGlobeRaffle(string uri)
     {
         GameManager.RequestBallsRaffled ballsRaffled = new GameManager.RequestBallsRaffled();

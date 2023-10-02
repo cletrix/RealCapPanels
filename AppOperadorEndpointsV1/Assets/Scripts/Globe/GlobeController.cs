@@ -319,7 +319,7 @@ public class GlobeController : MonoBehaviour
         SendMesageNextRaffle();
         DisableHasRevokedAll();
         ticketsListController.ResetGrid();
-        RestNetworkManager.instance.CallInfosGlobe();
+        RestNetworkManager.instance.GetGlobeInfosDrawn();
         yield return new WaitForSeconds(0.2f);
         UpdateScreen();
         uIChangeRaffle.SendMessageGlobeInfos(

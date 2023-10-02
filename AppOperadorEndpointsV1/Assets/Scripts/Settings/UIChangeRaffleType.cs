@@ -179,7 +179,7 @@ public class UIChangeRaffleType : MonoBehaviour
         else
         {
             GameManager.instance.isBackup = true;
-            RestNetworkManager.instance.CallGetInfoServer();
+            RestNetworkManager.instance.GetRecoveryInfosDrawn();
         }
         SetStateSelectBackupButton();
     }

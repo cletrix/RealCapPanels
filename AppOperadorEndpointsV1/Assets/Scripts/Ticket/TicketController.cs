@@ -113,7 +113,7 @@ public class TicketController : MonoBehaviour
     {
        
         if (!GameManager.instance.isBackup)
-            RestNetworkManager.instance.CallGetInfoServer();
+            RestNetworkManager.instance.GetRecoveryInfosDrawn();
 
         if (GameManager.instance.isTicketVisible)
         {
