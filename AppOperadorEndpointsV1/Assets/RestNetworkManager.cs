@@ -25,6 +25,7 @@ public class RestNetworkManager : MonoBehaviour
             }
         }
     }
+    public Comunication comunication;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -115,6 +116,20 @@ public class RestNetworkManager : MonoBehaviour
         StartCoroutine(GetInfosServer(baseUrl + payloadInfo));
         if (GameManager.instance.isBackup == true)
             StartCoroutine(GetReadMemory(baseUrl + payloadRead));
+    }
+    public async void GetRecoveryInfosDrawn()
+    {
+        string response = await comunication.Get(baseUrl + payloadInfo);
+        JsonUtility.FromJsonOverwrite(response, GameManager.instance.recoveryData);
+        GameManager.instance.recoveryData.UpdateInfosGlobe();
+        if (GameManager.instance.isBackup)
+        {
+
+            StartCoroutine(GetInfosServer(baseUrl + payloadInfo));
+        }
+        //StartCoroutine(GetInfosServer(baseUrl + payloadInfo));
+        //if (GameManager.instance.isBackup == true)
+        //    StartCoroutine(GetReadMemory(baseUrl + payloadRead));
     }
     public void CallInfosGlobe()
     {

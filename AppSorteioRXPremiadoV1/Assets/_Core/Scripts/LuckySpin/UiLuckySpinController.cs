@@ -27,8 +27,8 @@ public class UiLuckySpinController : MonoBehaviour
     {
         DateTime theTime = DateTime.Now;
         txtDateRaffle.text = theTime.ToString(("dd/MM/yyyy - HH:mm:ss"));
-        txtLiquidPrize.text = GameManager.instance.luckySpinScriptable.prizeDescription;
-        txtEdition.text = $"EDIÇÃO N° {GameManager.instance.luckySpinScriptable.editionID}";
+        txtLiquidPrize.text = GameManager.instance.spinData.prizeDescription;
+        txtEdition.text = $"EDIÇÃO N° {GameManager.instance.spinData.editionID}";
     }
 
 }

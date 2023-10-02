@@ -106,13 +106,13 @@ public class UIChangeRaffleType : MonoBehaviour
     public void SetGlobeDraw()
     {
         SelectPanelForActivate(1);
-        SendMessageToClientChangeRaffle("SceneGlobe", GameManager.instance.GetCountBallsGrid());
+        SendMessageToClientChangeRaffle("SceneGlobe", GameManager.instance.GetCountBallsGrid(), GameManager.instance.GetCountBallsCard());
 
     }
     public void SetSpinDraw()
     {
         SelectPanelForActivate(2);
-        SendMessageToClientChangeRaffle("SceneSpin", GameManager.instance.GetCountBallsGrid());
+        SendMessageToClientChangeRaffle("SceneSpin", GameManager.instance.GetCountBallsGrid(), GameManager.instance.GetCountBallsCard());
     }
 
     public void SelectPanelForActivate(int index)
@@ -275,7 +275,6 @@ public class UIChangeRaffleType : MonoBehaviour
     public void SendMessageVisibilityRaffle()
     {
         TcpNetworkManager.instance.Server.SendToAll(GetMessageVisibilityRaffle(Message.Create(MessageSendMode.unreliable, ServerToClientId.messageVisibilityRaffle), GameManager.instance.isVisibleRaffle, GameManager.instance.sceneId));
-
     }
     public void SendInfosDraw()
     {
@@ -314,18 +313,11 @@ public class UIChangeRaffleType : MonoBehaviour
             TcpNetworkManager.instance.Server.SendToAll(GetMessage(Message.Create(MessageSendMode.reliable, ServerToClientId.messageCheckSceneActive)));
         }
     }
-    public void SendMessageToClientChangeRaffle(string _messageString, int maxBalls)
+    public void SendMessageToClientChangeRaffle(string _messageString, int maxBalls,int gridNumbersTicket)
     {
         if (!GameManager.instance.isBackup)
         {
-            TcpNetworkManager.instance.Server.SendToAll(GetMessageTypeRaffle(Message.Create(MessageSendMode.reliable, ServerToClientId.messageTypeRaffle), _messageString, maxBalls));
-        }
-    }
-    public void SendMessageLotteryInfos(string _editionNumber, string __competitionNumber, string _dateRaffle, string _dateCompetition, int _ordem, string _description, float _value)
-    {
-        if (!GameManager.instance.isBackup)
-        {
-            TcpNetworkManager.instance.Server.SendToAll(GetMessageLotteryInfos(Message.Create(MessageSendMode.reliable, ServerToClientId.messageInfosLottery), _editionNumber, __competitionNumber, _dateRaffle, _dateCompetition, _ordem, _description, _value));
+            TcpNetworkManager.instance.Server.SendToAll(GetMessageTypeRaffle(Message.Create(MessageSendMode.reliable, ServerToClientId.messageTypeRaffle), _messageString, maxBalls, gridNumbersTicket));
         }
     }
     public void SendMessageGlobeInfos(string _editionName, string _editionNumber, string _date, int _ordem, string _description, float _value)
@@ -344,10 +336,11 @@ public class UIChangeRaffleType : MonoBehaviour
 
     //    return message;
     //}
-    private Message GetMessageTypeRaffle(Message message, string _textMessage, int maxBalls)
+    private Message GetMessageTypeRaffle(Message message, string _textMessage, int maxBalls,int gridNumbersTicket)
     {
         message.AddString(_textMessage);
         message.Add(maxBalls);
+        message.Add(gridNumbersTicket);
         return message;
     }
     private Message GetMessage(Message message)
@@ -355,18 +348,6 @@ public class UIChangeRaffleType : MonoBehaviour
         return message;
     }
 
-    private Message GetMessageLotteryInfos(Message message, string _editionNumber, string __competitionNumber, string _dateRaffle, string _dateCompetition, int _ordem, string _description, float _value)
-    {
-        message.AddString(_editionNumber);
-        message.AddString(__competitionNumber);
-        message.AddString(_dateRaffle);
-        message.AddString(_dateCompetition);
-        message.AddInt(_ordem);
-        message.AddString(_description);
-        message.AddFloat(_value);
-
-        return message;
-    }
     private Message GetMessageGlobeInfos(Message message, string _editionName, string _editionNumber, string _date, int _ordem, string _description, float _value)
     {
         message.AddString(_editionName);

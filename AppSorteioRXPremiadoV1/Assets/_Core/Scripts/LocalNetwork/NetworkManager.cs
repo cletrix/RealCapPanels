@@ -177,49 +177,12 @@ public class NetworkManager : MonoBehaviour
     [MessageHandler((ushort)ServerToClientId.messageTypeRaffle)]
     private static void ReceiveMessageChangeType(Message message)
     {
-        GameManager.instance.CallChangeSceneRaffle(message.GetString());
-    }
-
-    [MessageHandler((ushort)ServerToClientId.messageInfosLottery)]
-    private static void ReceiveMessageInfosLottery(Message message)
-    {
-        string _editionNumber = message.GetString();
-        string __competitionNumber = message.GetString();
-        string _dateRaffle = message.GetString();
-        string _dateCompetition = message.GetString();
-        int _ordem = message.GetInt();
-        string _description = message.GetString();
-        string _value = message.GetString();
-
-        LotteryController lotteryController = FindObjectOfType<LotteryController>();
-        lotteryController.SetPopulateInfosLottery(_editionNumber, __competitionNumber, _dateRaffle, _dateCompetition);
-    }
-    [MessageHandler((ushort)ServerToClientId.messageLotteryNumber)]
-    private static void ReceiveMessageLotteryNumber(Message message)
-    {
-        int indexNumber = 0;
-        string recieveNumbers = string.Empty;
-        indexNumber = message.GetInt();
-        recieveNumbers = message.GetString();
-
-        LotteryController lotteryController = FindObjectOfType<LotteryController>();
-        lotteryController.SetLotteryNumber(indexNumber, recieveNumbers);
-    }
-    [MessageHandler((ushort)ServerToClientId.messageLotteryNumberRaffle)]
-    private static void ReceiveMessageLotteryNumberRaffle(Message message)
-    {
-        string recieveNumber;
-        recieveNumber = message.GetString();
-
-        LotteryController lotteryController = FindObjectOfType<LotteryController>();
-        lotteryController.ShowLotteryNumberRaffle(recieveNumber);
-    }
-    [MessageHandler((ushort)ServerToClientId.messageVisibilityPanelLotteryRaffle)]
-    private static void ReceiveMessageVisibilityPanelLotteryRaffle(Message message)
-    {
-        LotteryController lotteryController = FindObjectOfType<LotteryController>();
-        lotteryController.SetVisibilityLotteryRaffle();
-    }
+        string scene = message.GetString();
+        int maxBalls = message.GetInt();
+        int gridBallsTicket = message.GetInt();
+        GameManager.instance.CallChangeSceneRaffle(scene);
+        GameManager.instance.SetGridBallsTicket(gridBallsTicket);
+    }  
     [MessageHandler((ushort)ServerToClientId.messageNextRaffleGlobe)]
     private static void ReceiveMessageNextRaffleGlobe(Message message)
     {

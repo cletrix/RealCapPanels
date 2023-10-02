@@ -226,11 +226,7 @@ public class TicketController : MonoBehaviour
     private void SetArrayNumberCards()
     {
         numbersCard.Clear();
-
-        // Obtenha todos os SelectBall em groupCard uma vez e armazene-os em uma variável.
         SelectBall[] selectBalls = groupCard.GetComponentsInChildren<SelectBall>();
-
-        // Adicione os SelectBall à lista numbersCard.
         numbersCard.AddRange(selectBalls);
     }
     public void PopulateTicketInfos(string _nameWinner, string _cpf, string _birthDate, string _phone,

@@ -136,7 +136,7 @@ public class BallController : MonoBehaviour
     }
     public void CallWinnerScreen()
     {
-        if (GameManager.instance.globeScriptable.Winners > 0)
+        if (GameManager.instance.globeData.Winners > 0)
         {
             WinnersScreen.instance.SetWinnersScreenVisibility(true);
         }
@@ -159,14 +159,14 @@ public class BallController : MonoBehaviour
             ballCount--;
         }
         RestoreBallsAfterRevoked(_numbers);
-        GameManager.instance.globeScriptable.indexBalls--;
+        GameManager.instance.globeData.indexBalls--;
 
     }
     ////Essa função mostra na tela em até um máximo das 5 ultimas bolas sorteadas.
     public void RestoreBallsAfterRevoked(List<string> _numbers)
     {
         List<string> _ballsRaflled = new List<string>();
-        _ballsRaflled.AddRange(GameManager.instance.globeScriptable.numberBalls);
+        _ballsRaflled.AddRange(GameManager.instance.globeData.numberBalls);
         animeGlobe.ResetBall(int.Parse(_ballsRaflled[_ballsRaflled.Count - 1]));
 
         if (_ballsRaflled.Count <= 5)
@@ -198,8 +198,8 @@ public class BallController : MonoBehaviour
         {
             bigBall.SetBgBallWithLogo();
         }
-        GameManager.instance.globeScriptable.numberBalls.Clear();
-        GameManager.instance.globeScriptable.numberBalls.AddRange(_numbers.ToList());
+        GameManager.instance.globeData.numberBalls.Clear();
+        GameManager.instance.globeData.numberBalls.AddRange(_numbers.ToList());
     }
     public void GetLastIndexBallsRaffle(int count, List<string> _numbers)
     {
@@ -229,7 +229,7 @@ public class BallController : MonoBehaviour
 
     public void SetBallWinner()
     {
-        if (GameManager.instance.globeScriptable.Winners > 0)
+        if (GameManager.instance.globeData.Winners > 0)
         {
             bigBall.SetBallWinner();
             BallsSelected[BallsSelected.Count - 1].SetBallWinner();

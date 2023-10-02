@@ -52,14 +52,14 @@
      <Compile Include="Assets\Version\VersionController.cs" />
      <Compile Include="Assets\Scripts\Sorteio\BallSlot.cs" />
      <Compile Include="Assets\Scripts\Sorteio\BallController.cs" />
+     <Compile Include="Assets\Scripts\LocalNetwork\Resoucers.cs" />
      <Compile Include="Assets\FPSCounter.cs" />
      <Compile Include="Assets\Scripts\LocalNetwork\NetworkManager.cs" />
+     <Compile Include="Assets\GridBallController.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\Scripts\Sorteio\SpriteManager.cs" />
      <Compile Include="Assets\PanelScriptable.cs" />
      <Compile Include="Assets\Scripts\StandyByScreen.cs" />
-     <Compile Include="Assets\Scripts\LocalNetwork\Resoucers.cs" />
-     <Compile Include="Assets\GridBallController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

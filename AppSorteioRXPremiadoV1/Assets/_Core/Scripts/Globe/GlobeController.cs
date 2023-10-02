@@ -35,10 +35,10 @@ public class GlobeController : MonoBehaviour
     {
         isWinner = false;
         winnersScreen = FindObjectOfType<WinnersScreen>();
-        ballController.GetLastIndexBallsRaffle(GameManager.instance.globeScriptable.numberBalls.Count, GameManager.instance.globeScriptable.numberBalls);
-        totalBallsCount.SetInfoTotalBall((GameManager.instance.globeScriptable.ballRaffledCount).ToString());
-        lastBallRaffle.SetTicketForOneBallInfo(GameManager.instance.globeScriptable.possiblesWinnersCount.ToString());
-        if (GameManager.instance.globeScriptable.possiblesWinnersCount > 0)
+        ballController.GetLastIndexBallsRaffle(GameManager.instance.globeData.numberBalls.Count, GameManager.instance.globeData.numberBalls);
+        totalBallsCount.SetInfoTotalBall((GameManager.instance.globeData.ballRaffledCount).ToString());
+        lastBallRaffle.SetTicketForOneBallInfo(GameManager.instance.globeData.possiblesWinnersCount.ToString());
+        if (GameManager.instance.globeData.possiblesWinnersCount > 0)
         {
             lastBallRaffle.PlayAnimationHeart(true);
         }
@@ -63,28 +63,28 @@ public class GlobeController : MonoBehaviour
     }
     public void PopulateInfosGlobe(string _editionName, string _editionNumber, string _date, int _order, string _description, float _value)
     {
-        GameManager.instance.globeScriptable.editionName = _editionName;
-        GameManager.instance.globeScriptable.editionNumber = _editionNumber;
-        GameManager.instance.globeScriptable.date = _date;
-        GameManager.instance.globeScriptable.order = _order;
-        GameManager.instance.globeScriptable.description = _description;
-        GameManager.instance.globeScriptable.value = _value;
+        GameManager.instance.globeData.editionName = _editionName;
+        GameManager.instance.globeData.editionNumber = _editionNumber;
+        GameManager.instance.globeData.date = _date;
+        GameManager.instance.globeData.order = _order;
+        GameManager.instance.globeData.description = _description;
+        GameManager.instance.globeData.value = _value;
     }
     public void PermissionCallNewBallBall()
     {
         canRafleeBall = true;
-        GameManager.instance.globeScriptable.indexBalls++;
+        GameManager.instance.globeData.indexBalls++;
     }
     public void UpdateScreenRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, float _prizeValue)
     {
-        if (GameManager.instance.globeScriptable.numberBalls.Count < _ballsRaffled.Length)
+        if (GameManager.instance.globeData.numberBalls.Count < _ballsRaffled.Length)
         {
             VerifyBalls();
-            GameManager.instance.globeScriptable.numberBalls.Clear();
-            GameManager.instance.globeScriptable.numberBalls.AddRange(_ballsRaffled.ToList());
+            GameManager.instance.globeData.numberBalls.Clear();
+            GameManager.instance.globeData.numberBalls.AddRange(_ballsRaffled.ToList());
 
         }
-        else if (GameManager.instance.globeScriptable.numberBalls.Count > _ballsRaffled.Length)
+        else if (GameManager.instance.globeData.numberBalls.Count > _ballsRaffled.Length)
         {
             ballController.SetRevokedBall(_ballsRaffled);
             UpdateInfosScreen(_ballsRaffled.Length, _forOneBall);
@@ -100,22 +100,22 @@ public class GlobeController : MonoBehaviour
         }
         TicketScreen.instance.SetLastBallGlobeRaffle(_ballsRaffled[_ballsRaffled.Length - 1]);
 
-        GameManager.instance.globeScriptable.Winners = _winnersCount;
-        GameManager.instance.globeScriptable.prizeValue = _prizeValue;
+        GameManager.instance.globeData.Winners = _winnersCount;
+        GameManager.instance.globeData.prizeValue = _prizeValue;
 
-        GameManager.instance.globeScriptable.ballRaffledCount = _ballsRaffled.Length;
-        GameManager.instance.globeScriptable.possiblesWinnersCount = _forOneBall;
+        GameManager.instance.globeData.ballRaffledCount = _ballsRaffled.Length;
+        GameManager.instance.globeData.possiblesWinnersCount = _forOneBall;
     }
     public void VerifyBalls()
     {
-        if (GameManager.instance.globeScriptable.indexBalls < GameManager.instance.globeScriptable.numberBalls.Count)
+        if (GameManager.instance.globeData.indexBalls < GameManager.instance.globeData.numberBalls.Count)
             if (timeToSpawn <= 0)
             {
                 if (canRafleeBall == true)
                 {
-                    if (GameManager.instance.globeScriptable.numberBalls.Count <= 60)
+                    if (GameManager.instance.globeData.numberBalls.Count <= 60)
                     {
-                        StartCoroutine(ballController.ShowBigBall(GameManager.instance.globeScriptable.numberBalls[GameManager.instance.globeScriptable.indexBalls]));
+                        StartCoroutine(ballController.ShowBigBall(GameManager.instance.globeData.numberBalls[GameManager.instance.globeData.indexBalls]));
                         timeToSpawn = 1f;
                         canRafleeBall = false;
                     }
@@ -125,9 +125,9 @@ public class GlobeController : MonoBehaviour
     }
     private void VerifyWinner()
     {
-        if (GameManager.instance.globeScriptable.Winners > 0)
+        if (GameManager.instance.globeData.Winners > 0)
         {
-            winnersScreen.SetInfosWinnerScreen(GameManager.instance.globeScriptable.Winners, GameManager.instance.globeScriptable.prizeValue);
+            winnersScreen.SetInfosWinnerScreen(GameManager.instance.globeData.Winners, GameManager.instance.globeData.prizeValue);
             UiGlobeManager uiGlobeManager = FindObjectOfType<UiGlobeManager>();
             if (isPlayWinnerSound == false)
             {
@@ -139,7 +139,7 @@ public class GlobeController : MonoBehaviour
     }
     public void SetUpdateInfoScreen()
     {
-        UpdateInfosScreen(GameManager.instance.globeScriptable.ballRaffledCount, GameManager.instance.globeScriptable.possiblesWinnersCount);
+        UpdateInfosScreen(GameManager.instance.globeData.ballRaffledCount, GameManager.instance.globeData.possiblesWinnersCount);
 
     }
     private void UpdateInfosScreen(int _totalNumberBalls, int _forOneBalls)

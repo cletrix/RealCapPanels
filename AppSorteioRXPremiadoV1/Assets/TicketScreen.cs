@@ -41,7 +41,7 @@ public class TicketScreen : MonoBehaviour
     [Header("RAFFLE INFOS")]
     [SerializeField] private TextMeshProUGUI numberTicket;
     [SerializeField] private TextMeshProUGUI Chance;
-    [SerializeField] private List<GameObject> numbersCard;
+    [SerializeField] private List<CellGridTicket> numbersCard;
     [SerializeField] private TextMeshProUGUI luckyNumber;
     [Space]
     [Header("Settings")]
@@ -50,6 +50,7 @@ public class TicketScreen : MonoBehaviour
     [SerializeField] private GameObject bgTicket;
     [SerializeField] private GameObject bgSuperior;
     [Header("REFERENCES")]
+    [SerializeField] private GridNumbersTicket gridNumbers;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private string lastBallRaffled;
 
@@ -70,7 +71,6 @@ public class TicketScreen : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
     private void Start()
     {
         InitializeVariables();
@@ -78,6 +78,13 @@ public class TicketScreen : MonoBehaviour
     private void InitializeVariables()
     {
         canvasGroup.alpha = 0;
+        groupCard.SetActive(false);
+    }
+    private void SetArrayNumberCards()
+    {
+        numbersCard.Clear();
+        CellGridTicket[] cellGridTickets = groupCard.GetComponentsInChildren<CellGridTicket>();
+        numbersCard.AddRange(cellGridTickets);
     }
     public void SetBgBlackVisibility(bool isActive)
     {
@@ -129,22 +136,26 @@ public class TicketScreen : MonoBehaviour
     }
 
     public void SetTicketInfos(string[] infosWinner, int[] _numbersCard, bool isCard, int typeRaffle)
-    {
+    {   
+        if(numbersCard.Count==0)
+        {
+            gridNumbers.SetGridBalls(GameManager.instance.GetGridBallsTicket());
+        }
         if (isCard)
         {
             imgTicket.sprite = bgticketGlobe;
             globeSuperior.SetActive(true);
             spinSuperior.SetActive(false);
-            txtGlobeRound.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
-            if (GameManager.instance.globeScriptable.Winners > 1)
+            txtGlobeRound.text = $"{GameManager.instance.globeData.order}º Sorteio";
+            if (GameManager.instance.globeData.Winners > 1)
             {
-                float newValue = Mathf.Floor(GameManager.instance.globeScriptable.prizeValue * 100) / 100;
+                float newValue = Mathf.Floor(GameManager.instance.globeData.prizeValue * 100) / 100;
                 string prizeFormated = string.Format(CultureInfo.CurrentCulture, "{0:C2}", newValue);
                 prizeNameGlobe.text = prizeFormated;
             }
             else
             {
-                prizeNameGlobe.text = GameManager.instance.globeScriptable.description;
+                prizeNameGlobe.text = GameManager.instance.globeData.description;
             }
         }
         else
@@ -152,8 +163,8 @@ public class TicketScreen : MonoBehaviour
             imgTicket.sprite = bgticketSpin;
             spinSuperior.SetActive(true);
             globeSuperior.SetActive(false);
-            txtSpinRound.text = $"{GameManager.instance.luckySpinScriptable.currentSpinID}º Sorteio";
-            prizeNameSpin.text = GameManager.instance.luckySpinScriptable.prizeDescription;
+            txtSpinRound.text = $"{GameManager.instance.spinData.currentSpinID}º Sorteio";
+            prizeNameSpin.text = GameManager.instance.spinData.prizeDescription;
             if (infosWinner[17].Length == 6)
                 SetResultSpin(infosWinner[17]);
 
@@ -208,28 +219,29 @@ public class TicketScreen : MonoBehaviour
         numberTicket.text = _ticketNumber;
         Chance.text = $"{_chance}";
 
-        for (int i = 0; i < _numbersCard.Length; i++)
-        {
-            numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().text = _numbersCard[i].ToString();
-            numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.blue;
-            if (_numbersCard[i].ToString() == lastBallRaffled)
-            {
-                numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
-            }
-        }
-        luckyNumber.text = _luckyNumber;
-
         if (isCard)
         {
+            SetArrayNumberCards();
+            for (int i = 0; i < _numbersCard.Length; i++)
+            {
+                numbersCard[i].SetNumberInText(_numbersCard[i].ToString());
+                numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.blue;
+                if (_numbersCard[i].ToString() == lastBallRaffled)
+                {
+                    numbersCard[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
+                }
+            }
             groupCard.SetActive(true);
             luckyNumber.gameObject.SetActive(false);
             UiGlobeManager uiGlobeManager = FindObjectOfType<UiGlobeManager>();
             uiGlobeManager.ActiveConfets();
         }
         else
-        {
+        {   
+
             groupCard.SetActive(false);
             luckyNumber.gameObject.SetActive(true);
+            luckyNumber.text = _luckyNumber;
             LuckySpinController luckySpin = FindObjectOfType<LuckySpinController>();
             luckySpin.ActiveConfets();
         }

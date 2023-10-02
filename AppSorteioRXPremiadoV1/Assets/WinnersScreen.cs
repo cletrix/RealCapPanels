@@ -70,7 +70,7 @@ public class WinnersScreen : MonoBehaviour
 
     public void SetInfosWinnerScreen(int _count, float _prize)
     {
-        prizeImageController.SetPrizeImage(GameManager.instance.globeScriptable.order);
+        prizeImageController.SetPrizeImage(GameManager.instance.globeData.order);
         float newValue = Mathf.Floor(_prize * 100) / 100;
         string prizeFormated = string.Format(CultureInfo.CurrentCulture, "{0:C2}", newValue);
         if(_count>1)
@@ -84,7 +84,7 @@ public class WinnersScreen : MonoBehaviour
             txtTitle.text = $"TEMOS {_count}\nGANHADOR";
             PrizeGo.SetActive(false);
         }
-        txtRaffleRound.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
+        txtRaffleRound.text = $"{GameManager.instance.globeData.order}º Sorteio";
 
     }
 }

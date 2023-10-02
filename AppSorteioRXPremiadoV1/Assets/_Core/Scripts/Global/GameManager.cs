@@ -29,11 +29,10 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public GlobeScriptable globeScriptable;
-    public LuckySpinScriptable luckySpinScriptable;
+    public Resoucers.GlobeData globeData;
+    public Resoucers.SpinData spinData;
 
-
-    // [SerializeField] private FadeController fade;
+    [SerializeField]private int gridBallsTicket;
     [SerializeField] public bool isConnected = false;
     [SerializeField] public bool isLotteryOpenedScreen = false;
     [SerializeField] private string currentSceneName;
@@ -44,6 +43,14 @@ public class GameManager : MonoBehaviour
     {
         InitializeVariables();
     }
+    public void SetGridBallsTicket( int _gridBalls)
+    {
+        gridBallsTicket = _gridBalls;
+    }
+    public int GetGridBallsTicket()
+    {
+        return gridBallsTicket;
+    }
     public string FormatMoneyInfo(float value, int decimalHouse = 2)
     {
         string prizeFormated = string.Format(CultureInfo.CurrentCulture, value.ToString($"C{decimalHouse}"));
@@ -53,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         Invoke("ConnectServer", 1f);
         Application.targetFrameRate = 60;
-        globeScriptable.ResetRaffle();
+        globeData.ResetRaffle();
         WinnersScreen.instance.SetWinnersScreenVisibility(false, 0.1f);
         TicketScreen.instance.SetTicketVisibilityForNextDraw(false, 0.1f);
     }
@@ -71,7 +78,7 @@ public class GameManager : MonoBehaviour
     }
     public void ResetScene()
     {
-        globeScriptable.ResetRaffle();
+        globeData.ResetRaffle();
         SceneManager.LoadScene(currentSceneName);
 
     }

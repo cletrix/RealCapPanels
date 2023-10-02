@@ -56,17 +56,17 @@ public class UiGlobeManager : MonoBehaviour
         globeController.PopulateInfosGlobe(_editionName, _editionNumber, _date, _order, _description, _value);
 
 
-        txtRoundRaffle.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
+        txtRoundRaffle.text = $"{GameManager.instance.globeData.order}º Sorteio";
 
-        //txtPrizeName.text = $"{GameManager.instance.globeScriptable.description}";
-        //txtPrizeValue.text = $"Valor Líquido {GameManager.instance.FormatMoneyInfo(GameManager.instance.globeScriptable.value,2)}";
-        prizeImageController.SetPrizeImage(GameManager.instance.globeScriptable.order);
+        //txtPrizeName.text = $"{GameManager.instance.globeData.description}";
+        //txtPrizeValue.text = $"Valor Líquido {GameManager.instance.FormatMoneyInfo(GameManager.instance.globeData.value,2)}";
+        prizeImageController.SetPrizeImage(GameManager.instance.globeData.order);
         StartCoroutine(ActiveRaffle());
 
     }
     public void UpdateOrder()
     {
-        txtRoundRaffle.text = $"{GameManager.instance.globeScriptable.order}º Sorteio";
+        txtRoundRaffle.text = $"{GameManager.instance.globeData.order}º Sorteio";
 
     }
     public void SetGlobeRaffle(string[] _ballsRaffled, int _forOneBall, int _winnersCount, float _prizeValue)
@@ -97,7 +97,7 @@ public class UiGlobeManager : MonoBehaviour
     {
         DateTime theTime = DateTime.Now;
         txtDateRaffle.text = theTime.ToString(("dd/MM/yyyy - HH:mm:ss"));
-        txtEditionInfo.text = $"EDIÇÃO N° {GameManager.instance.globeScriptable.editionNumber}";
+        txtEditionInfo.text = $"EDIÇÃO N° {GameManager.instance.globeData.editionNumber}";
     }
 }
 

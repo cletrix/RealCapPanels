@@ -24,8 +24,8 @@ public class LuckySpinController : MonoBehaviour
     {
         hasStop = true;
         uiLuckySpinController = FindObjectOfType<UiLuckySpinController>();
-        GameManager.instance.luckySpinScriptable.Reset();
-        GameManager.instance.globeScriptable.ResetRaffle();
+        GameManager.instance.spinData.Reset();
+        GameManager.instance.globeData.ResetRaffle();
         GameManager.instance.SetCamActiveInCanvas(Camera.main);
     }
 
@@ -40,13 +40,13 @@ public class LuckySpinController : MonoBehaviour
     public void SetResult(string _raffleLuckyNumber)
     {
         enableConfet = true;
-        GameManager.instance.luckySpinScriptable.currentResult = _raffleLuckyNumber;
-        GameManager.instance.luckySpinScriptable.allSpinsResult.Add(GameManager.instance.luckySpinScriptable.currentResult);
+        GameManager.instance.spinData.currentResult = _raffleLuckyNumber;
+        GameManager.instance.spinData.allSpinsResult.Add(GameManager.instance.spinData.currentResult);
 
         for (int i = 0; i < spins.Count; i++)
         {
             spins[i].numberSlotsFinal.Clear();
-            spins[i].indexNumber = System.Convert.ToInt16(GameManager.instance.luckySpinScriptable.currentResult[i].ToString());
+            spins[i].indexNumber = System.Convert.ToInt16(GameManager.instance.spinData.currentResult[i].ToString());
             spins[i].ReloadPositions();
         }
         ActiveMovementRaffle();
@@ -119,15 +119,15 @@ public class LuckySpinController : MonoBehaviour
 
     public void SetPopulateSpinInfos(float _value, string _edition, string _description)
     {
-        GameManager.instance.luckySpinScriptable.prizeDescription = _description;
-        GameManager.instance.luckySpinScriptable.prizeValue = _value;
-        GameManager.instance.luckySpinScriptable.editionID = _edition;
+        GameManager.instance.spinData.prizeDescription = _description;
+        GameManager.instance.spinData.prizeValue = _value;
+        GameManager.instance.spinData.editionID = _edition;
         uiLuckySpinController.PopulateSpinInfos(_value, _description, _edition);
     }
     public void SetRoundIDSpin(int _roundNumber)
     {
         uiLuckySpinController.SetRoundIDLuckySpin(_roundNumber);
-        GameManager.instance.luckySpinScriptable.currentSpinID = _roundNumber;
+        GameManager.instance.spinData.currentSpinID = _roundNumber;
     }
 
     private void ActiveWinners()
