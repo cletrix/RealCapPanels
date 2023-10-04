@@ -43,7 +43,7 @@ public class UIChangeRaffleType : MonoBehaviour
         GameManager.instance.RecoveryGlobeScreen();
         SetStateSelectBackupButton();
         CheckStateVisibilityRaffle();
-        RestNetworkManager.instance.CallWriteMemory();
+        RestNetworkManager.instance.PostWriteMemory();
     }
 
     private void SetModality()
@@ -147,6 +147,7 @@ public class UIChangeRaffleType : MonoBehaviour
         }
         GameManager.instance.sceneId = index;
         GameManager.instance.operatorData.panelActive = index;
+        //RestNetworkManager.instance.PostWriteMemory();
     }
     public void RaffleTypeScene(int type)
     {
@@ -174,7 +175,6 @@ public class UIChangeRaffleType : MonoBehaviour
         if (GameManager.instance.isBackup)
         {
             GameManager.instance.isBackup = false;
-            RestNetworkManager.instance.DisableInvokInfosServer();
         }
         else
         {

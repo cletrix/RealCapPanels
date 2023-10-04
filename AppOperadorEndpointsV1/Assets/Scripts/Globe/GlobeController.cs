@@ -331,7 +331,7 @@ public class GlobeController : MonoBehaviour
            GameManager.instance.globeData.GetValue());
 
         CheckBtNextRaffle();
-        RestNetworkManager.instance.SendBallsRaffledFromServer();
+        RestNetworkManager.instance.PostBallsRaffled();
     }
 
 

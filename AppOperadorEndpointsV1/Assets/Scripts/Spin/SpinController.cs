@@ -30,7 +30,11 @@ public class SpinController : MonoBehaviour
         PopulateSpinDatas(GameManager.instance.recoveryData.limit_spin);
         InitializeVariables();
     }
-
+    private void OnEnable()
+    {
+        GameManager.instance.spinData.SetSpinOrder(GameManager.instance.recoveryData.sorteio_spin_numero);
+        ShowSpinOrder(GameManager.instance.spinData.sorteioOrdem);
+    }
     public void PopulateSpinDatas(int _spinAmout)
     {
         spinRaffleDatas.Clear();
@@ -43,6 +47,7 @@ public class SpinController : MonoBehaviour
             spinRaffleDatas.Add(inst);
         }
     }
+
     private void InitializeVariables()
     {
         contentScrollView = GameObject.Find("Content");
@@ -63,7 +68,7 @@ public class SpinController : MonoBehaviour
             item.SetEventButton(ShowTicketSpin);
         }
         SetButtonsEvent();
-        ShowSpinOrder(GameManager.instance.spinData.sorteioOrdem);
+        ShowSpinOrder(GameManager.instance.recoveryData.sorteio_spin_numero);
         SetSpinPrize();
         PopulateFieldsSpinData();
         UpdateFieldScreen();
@@ -76,8 +81,8 @@ public class SpinController : MonoBehaviour
     public void ShowSpinOrder(int order)
     {
         UiInfosRaffle uiInfos = FindObjectOfType<UiInfosRaffle>();
-
-        txtSpinID.text = $"{order}º GIRO";
+        if (txtSpinID != null)
+            txtSpinID.text = $"{order}º GIRO";
         uiInfos.PopulateRaffleInfos(order.ToString(), GameManager.instance.spinData.sorteioDescricao, GameManager.instance.spinData.sorteioValor);
     }
     private void SetSpinPrize()
@@ -119,7 +124,7 @@ public class SpinController : MonoBehaviour
     }
     private void SpawnNewLuckyNumber()
     {
-        RestNetworkManager.instance.SetPostResultSpin(GameManager.instance.spinData.sorteioOrdem);
+        RestNetworkManager.instance.PostResultSpin(GameManager.instance.spinData.sorteioOrdem);
 
         btGenerateLuckyNumber.interactable = false;
     }
@@ -128,7 +133,7 @@ public class SpinController : MonoBehaviour
     {
         if (!GameManager.instance.isBackup)
         {
-            if (GameManager.instance.recoveryData.sorteio_tipo == "finish" || GameManager.instance.isVisibleRaffle==false)
+            if (GameManager.instance.recoveryData.sorteio_tipo == "finish" || GameManager.instance.isVisibleRaffle == false)
                 btGenerateLuckyNumber.interactable = false;
             else
                 btGenerateLuckyNumber.interactable = _isActive;

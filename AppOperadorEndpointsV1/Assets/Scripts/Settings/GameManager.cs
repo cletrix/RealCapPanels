@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
         if (!globeDrawData.bolasSorteadas.Contains(newBall))
         {
             globeDrawData.SetNewBall(newBall);
-            RestNetworkManager.instance.SendBallsRaffledFromServer();
+            RestNetworkManager.instance.PostBallsRaffled();
         }
     }
     public List<String> GetBallsRaffled()
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         if (globeDrawData.bolasSorteadas.Contains(newBall))
         {
             globeDrawData.RevokeBall(newBall);
-            RestNetworkManager.instance.SendBallsRaffledFromServer();
+            RestNetworkManager.instance.PostBallsRaffled();
         }
     }
     public void PopulateListOfVisibleTicket()

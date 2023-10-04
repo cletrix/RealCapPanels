@@ -151,7 +151,7 @@ public class Resoucers
             currentGlobeDesc = GameManager.instance.globeData.GetDescription();
             currentGlobeValue = GameManager.instance.globeData.GetValue();
 
-            RestNetworkManager.instance.CallWriteMemory();
+            RestNetworkManager.instance.PostWriteMemory();
         }
         public void UpdateSpinConfig(string _spinNumber, TicketInfos _ticketSpin)
         {
@@ -159,7 +159,7 @@ public class Resoucers
             if (!spinNumbers.Contains(_spinNumber))
                 spinNumbers.Add(_spinNumber);
             spinIndex = spinNumbers.Count;
-            RestNetworkManager.instance.CallWriteMemory();
+            RestNetworkManager.instance.PostWriteMemory();
 
         }
         public void PopulateConfig()
@@ -331,6 +331,12 @@ public class Resoucers
         public int sorteioOrdem;
         public string sorteioDescricao;
         public float sorteioValor;
+
+        public void SetSpinOrder(int order)
+        {
+            sorteioOrdem = order; 
+        }
+
 
     }
     #endregion
