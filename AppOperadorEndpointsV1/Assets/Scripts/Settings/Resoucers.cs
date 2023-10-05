@@ -179,7 +179,7 @@ public class Resoucers
             GameManager.instance.ticketWinnerIndex = currentTicketIndex;
 
 
-            if (GameManager.instance.sceneId == 2)
+            if (GameManager.instance.sceneId == 1)
             {
                 for (int i = 0; i < ticketInfos.Count; i++)
                 {
@@ -188,7 +188,7 @@ public class Resoucers
                 }
                 GameManager.instance.RecoveryGlobeScreen();
             }
-            if (GameManager.instance.sceneId == 3)
+            if (GameManager.instance.sceneId == 2)
             {
                 GameManager.instance.RecoverySpinScreen();
                 GameManager.instance.spinData.sorteioOrdem = spinIndex;
@@ -297,11 +297,10 @@ public class Resoucers
 
         public void IncreseForOneBalls(List<porUmaBola> _oneBalls)
         {
-
+            porUmaBolas.Clear();
             for (int i = 0; i < _oneBalls.Count; i++)
             {
-                if (!porUmaBolas.Contains(_oneBalls[i]))
-                    porUmaBolas.Add(_oneBalls[i]);
+               porUmaBolas.Add(_oneBalls[i]);
             }
         }
         public void ResetInfos()

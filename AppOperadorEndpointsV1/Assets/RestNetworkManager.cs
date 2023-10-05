@@ -95,7 +95,10 @@ public class RestNetworkManager : MonoBehaviour
 
         GetGlobeInfosDrawn();
         GetSpinInfos();
-        GetReadMemory();
+        if(GameManager.instance.isBackup)
+        {
+            GetReadMemory();
+        }
 
     }
     public async void GetRecoveryInfosDrawn()
@@ -152,13 +155,17 @@ public class RestNetworkManager : MonoBehaviour
 
         }
     }
-
+    string readMemoryDataSaved = string.Empty;
     public async void GetReadMemory()
     {
         string response = await comunication.Get(baseUrl + payloadRead);
         Debug.Log("response:  " + response);
-        JsonUtility.FromJsonOverwrite(response, GameManager.instance.operatorData);
-        GameManager.instance.operatorData.PopulateConfig();
+        if(readMemoryDataSaved!= response)
+        {
+            JsonUtility.FromJsonOverwrite(response, GameManager.instance.operatorData);
+            readMemoryDataSaved = response;
+            GameManager.instance.operatorData.PopulateConfig();
+        }
         if (GameManager.instance.isBackup)
         {
             await Task.Delay(1000);
