@@ -31,11 +31,7 @@ public class TicketsListController : MonoBehaviour
             }
 
             btTickets.Add(inst);
-            //if (!savedInfos.Contains(_infos[i]))
-            //    savedInfos.Add(_infos[i]);
         }
-
-
     }
 
     public void CheckWinnerButtonState(List<bool> _ticketsShown, int index)

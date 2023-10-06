@@ -135,7 +135,7 @@ public class RestNetworkManager : MonoBehaviour
 
         string response = await comunication.Post(baseUrl + payloadDrawGlobe, jsonToSend);
         
-        GlobeController globeController = FindObjectOfType<GlobeController>();
+        GlobeManager globeController = FindObjectOfType<GlobeManager>();
 
         JsonUtility.FromJsonOverwrite(response, GameManager.instance.globeDrawData);
         GameManager.instance.PopulateListOfVisibleTicket();

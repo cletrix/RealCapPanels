@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     }
     public void RecoveryGlobeScreen()
     {
-        GlobeController globeController = FindObjectOfType<GlobeController>();
+        GlobeManager globeController = FindObjectOfType<GlobeManager>();
         if (globeController != null)
         {
             if (isBackup)

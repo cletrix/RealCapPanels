@@ -6,7 +6,7 @@ using RiptideNetworking;
 public class UIChangeRaffleType : MonoBehaviour
 {
     [Header("CONTROLLERS")]
-    [SerializeField] GlobeController globeController;
+    [SerializeField] GlobeManager globeController;
     [SerializeField] SpinController spinController;
 
     [Header("GERAL")]
@@ -257,7 +257,7 @@ public class UIChangeRaffleType : MonoBehaviour
             btVisibilityRaffle.GetComponentInChildren<TextMeshProUGUI>().text = "OCULTAR SORTEIO";
             btVisibilityRaffle.image.color = selectedColor;
             SetStateButtonsRaffle(false);
-            globeController.SetEnableAll();
+            globeController.selectBallsController.SetEnableAll();
             spinController.SetActiveBtGenerateSpin(true);
         }
         else
@@ -265,7 +265,7 @@ public class UIChangeRaffleType : MonoBehaviour
             btVisibilityRaffle.GetComponentInChildren<TextMeshProUGUI>().text = "MOSTRAR SORTEIO";
             btVisibilityRaffle.image.color = normalColor;
             SetStateButtonsRaffle(true);
-            globeController.SetDisableAll();
+            globeController.selectBallsController.SetDisableAll();
             spinController.SetActiveBtGenerateSpin(false);
         }
     }

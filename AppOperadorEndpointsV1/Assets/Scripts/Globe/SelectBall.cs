@@ -47,8 +47,9 @@ public class SelectBall : MonoBehaviour
     }
     public void SetActionButton()
     {
-        GlobeController globeController = FindObjectOfType<GlobeController>();
-        globeController.OpenPanelBall(numberBall);
+        GlobeManager globeManager = FindObjectOfType<GlobeManager>();
+        globeManager.selectBallsController.OpenPanelBall(numberBall);
+
     }
     public void SetStateButton(bool _isActive)
     {
