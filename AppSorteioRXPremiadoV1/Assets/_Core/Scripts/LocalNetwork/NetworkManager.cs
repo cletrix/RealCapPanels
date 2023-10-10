@@ -251,7 +251,7 @@ public class NetworkManager : MonoBehaviour
         float value = message.GetFloat();
         LuckySpinController luckySpinController = FindObjectOfType<LuckySpinController>();
         if (SceneManager.GetActiveScene().buildIndex == 3)
-            luckySpinController.SetPopulateSpinInfos(value, editionNumber, description);
+            luckySpinController.SetPopulateSpinInfos(value, editionNumber, order, description);
     }
     [MessageHandler((ushort)ServerToClientId.messageSpinRoundID)]
     private static void ReceiveMessageSpinRoundID(Message message)

@@ -40,13 +40,13 @@ public class RestNetworkManager : MonoBehaviour
             instance = this;
         }
 
-        SetCurrentMode(current_mode);
+        SetCurrentMode(currentMode);
         DontDestroyOnLoad(gameObject);
     }
     
     public enum MODE{LOCAL, REMOTO,PRODUCAO}
 
-    public MODE current_mode = MODE.LOCAL;
+    public MODE currentMode = MODE.LOCAL;
     
     [Header("BASE URL")]
     public string baseUrl;
@@ -197,7 +197,6 @@ public class RestNetworkManager : MonoBehaviour
         {
             spinController.btGenerateLuckyNumber.interactable = true;
         }
-    
     }
 
     //public string RemoveAccents(string text)

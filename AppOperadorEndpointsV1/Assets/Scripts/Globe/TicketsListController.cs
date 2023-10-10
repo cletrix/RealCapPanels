@@ -42,6 +42,7 @@ public class TicketsListController : MonoBehaviour
         }
         btTickets[index].SelectWinner();
     }
+
     public void SetInteractableBtTicketsList(bool _isActive)
     {
         for (int i = 0; i < btTickets.Count; i++)

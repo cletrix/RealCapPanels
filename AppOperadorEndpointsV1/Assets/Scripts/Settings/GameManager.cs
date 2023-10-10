@@ -23,16 +23,16 @@ public class GameManager : MonoBehaviour
     }
     public static event Action OnPopulateRaffles;
 
-    public Resoucers.RecoveryData recoveryData;
+    public Resourcers.RecoveryData recoveryData;
     [Space]
-    public Resoucers.EditionData editionData;
-    public Resoucers.OperatorData operatorData;
+    public Resourcers.EditionData editionData;
+    public Resourcers.OperatorData operatorData;
     [Space]
-    public Resoucers.GlobeData globeData;
-    public Resoucers.GlobeDrawData globeDrawData;
+    public Resourcers.GlobeData globeData;
+    public Resourcers.GlobeDrawData globeDrawData;
     [Space]
-    public Resoucers.SpinData spinData;
-    public Resoucers.SpinDrawData spinDrawData;
+    public Resourcers.SpinData spinData;
+    public Resourcers.SpinDrawData spinDrawData;
 
     [Header("Settings")]
     [SerializeField] private int countBallsCard = 0;

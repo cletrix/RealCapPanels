@@ -14,7 +14,7 @@ public class GlobeManager : MonoBehaviour
     [SerializeField] public Button btTicketVisibility;
 
     [Header("COMPONENTS")]
-    [SerializeField] private DrawGlobeInfos drawGlobeInfos;
+    public DrawGlobeInfos drawGlobeInfos;
     [SerializeField] public SelectBallsController selectBallsController;
 
     
@@ -30,7 +30,7 @@ public class GlobeManager : MonoBehaviour
         selectBallsController.StartVariables();
         ticketController = FindObjectOfType<TicketController>();
         btNextRaffle.interactable = false;
-        UpdateScreen();
+        
         UpdateStateVisibilityButtonsTicket(false);
 
         if (GameManager.instance.isBackup)
@@ -38,6 +38,7 @@ public class GlobeManager : MonoBehaviour
             selectBallsController.SetDisableAll();
         }
         GameManager.instance.RecoveryGlobeScreen();
+        UpdateScreen();
     }
     public void UpdateStateVisibilityButtonsTicket(bool isActive)
     {
@@ -53,6 +54,7 @@ public class GlobeManager : MonoBehaviour
 
     public void UpdateScreen()
     {
+
         selectBallsController.DisableHasRevokedAll();
         selectBallsController.indexBalls.Clear();
         for (int i = 0; i < GameManager.instance.globeDrawData.bolasSorteadas.Count; i++)

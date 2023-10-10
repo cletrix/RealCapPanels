@@ -39,6 +39,7 @@ public class Comunication
         }
         return response;
     }
+
     public async Task<string> Post(string url,string json)
     {
         string response = string.Empty;

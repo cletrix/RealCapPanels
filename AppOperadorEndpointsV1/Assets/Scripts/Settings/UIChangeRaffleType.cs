@@ -6,7 +6,7 @@ using RiptideNetworking;
 public class UIChangeRaffleType : MonoBehaviour
 {
     [Header("CONTROLLERS")]
-    [SerializeField] GlobeManager globeController;
+    [SerializeField] GlobeManager globeManager;
     [SerializeField] SpinController spinController;
 
     [Header("GERAL")]
@@ -191,6 +191,8 @@ public class UIChangeRaffleType : MonoBehaviour
             btRecovery.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
             btRecovery.image.color = Color.red;
             SetStateButtonsRaffle(false);
+            globeManager.UpdateStateVisibilityButtonsTicket(false);
+            globeManager.drawGlobeInfos.ticketsList.SetInteractableBtTicketsList(false);
         }
         else
         {
@@ -199,8 +201,9 @@ public class UIChangeRaffleType : MonoBehaviour
             btRecovery.image.color = Color.green;
             SetStateButtonsRaffle(true);
             if (panelGlobeDraw.activeSelf == true)
-                globeController.UpdateScreen();
+                globeManager.UpdateScreen();
         }
+        CheckStateVisibilityRaffle();
     }
     #endregion
 
@@ -257,16 +260,24 @@ public class UIChangeRaffleType : MonoBehaviour
             btVisibilityRaffle.GetComponentInChildren<TextMeshProUGUI>().text = "OCULTAR SORTEIO";
             btVisibilityRaffle.image.color = selectedColor;
             SetStateButtonsRaffle(false);
-            globeController.selectBallsController.SetEnableAll();
+            globeManager.selectBallsController.SetEnableAll();
             spinController.SetActiveBtGenerateSpin(true);
+            globeManager.UpdateStateVisibilityButtonsTicket(GameManager.instance.isWinner);
+            globeManager.drawGlobeInfos.ticketsList.SetInteractableBtTicketsList(GameManager.instance.isWinner);
+
         }
         else
         {
             btVisibilityRaffle.GetComponentInChildren<TextMeshProUGUI>().text = "MOSTRAR SORTEIO";
             btVisibilityRaffle.image.color = normalColor;
             SetStateButtonsRaffle(true);
-            globeController.selectBallsController.SetDisableAll();
+            globeManager.selectBallsController.SetDisableAll();
+
             spinController.SetActiveBtGenerateSpin(false);
+            globeManager.UpdateStateVisibilityButtonsTicket(false);
+            globeManager.drawGlobeInfos.ticketsList.SetInteractableBtTicketsList(false);
+
+
         }
     }
     #endregion

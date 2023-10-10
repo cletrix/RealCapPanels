@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Core/Scenes/SceneLottery.unity
     guid: 86e86e8f0db07e84ab13820c0dc497c7
-  - enabled: 0
-    path: Assets/_Core/Scenes/SceneGlobe.unity
-    guid: 1d26e77705f1edc40bce2418c2fe199a
   - enabled: 1
     path: Assets/_Core/Scenes/SceneGlobeFull.unity
     guid: 4c8f4db981ab3404bb68e21ee6d10f61

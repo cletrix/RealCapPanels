@@ -117,12 +117,14 @@ public class LuckySpinController : MonoBehaviour
         //AudioManager.instance.PlaySFX("Winner");
     }
 
-    public void SetPopulateSpinInfos(float _value, string _edition, string _description)
+    public void SetPopulateSpinInfos(float _value, string _edition,int _orderID, string _description)
     {
         GameManager.instance.spinData.prizeDescription = _description;
         GameManager.instance.spinData.prizeValue = _value;
         GameManager.instance.spinData.editionID = _edition;
+        GameManager.instance.spinData.currentSpinID = _orderID;
         uiLuckySpinController.PopulateSpinInfos(_value, _description, _edition);
+        uiLuckySpinController.SetRoundIDLuckySpin(_orderID);
     }
     public void SetRoundIDSpin(int _roundNumber)
     {

@@ -87,8 +87,8 @@ public class TcpNetworkManager : MonoBehaviour
     {
         //if (!GameManager.instance.isbackup)
         //{
-        //    GlobeManager globeController = FindObjectOfType<GlobeManager>();
-        //    globeController.UpdateScreen();
+        //    GlobeManager globeManager = FindObjectOfType<GlobeManager>();
+        //    globeManager.UpdateScreen();
         //}
 
     }

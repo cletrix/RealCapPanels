@@ -29,10 +29,6 @@ public class SelectBallsController : MonoBehaviour
     [SerializeField] private GameObject panelRevokeBall;
     [SerializeField] private TextMeshProUGUI txtViewNumberBallRevoke;
 
-    void Start()
-    {
-
-    }
     public void StartVariables()
     {
         balls = new List<SelectBall>();
